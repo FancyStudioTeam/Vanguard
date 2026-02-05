@@ -10,13 +10,13 @@ export function VanguardCombinationMark({
 }: VanguardCombinationMarksProps) {
 	return (
 		<Link
-			{...props}
 			aria-label='Vanguard Home'
 			className={twMerge(
-				'flex select-none items-center gap-0.5 transition-opacity hover:opacity-75',
+				'flex select-none items-center gap-1 transition-colors hover:text-neutral-50/75',
 				className,
 			)}
 			prefetch={false}
+			{...props}
 		>
 			<VanguardSymbol />
 			<VanguardLogo />
