@@ -12,8 +12,6 @@ import {
 	INTERNAL_SERVER_ERROR_STATUS_TEXT,
 	OK_STATUS_CODE,
 	OK_STATUS_TEXT,
-	UNAUTHORIZED_STATUS_CODE,
-	UNAUTHORIZED_STATUS_TEXT,
 } from '#/lib/HTTPStatus.ts';
 import { createErrorJsonResponse } from '#/utils/createErrorJsonResponse.ts';
 import { createJsonResponse } from '#/utils/createJsonResponse.ts';
@@ -36,14 +34,7 @@ export function SESSION_RESPONSE(user: SessionResponseUser): NextResponse {
 }
 
 export function UNAUTHORIZED_RESPONSE(): NextResponse {
-	return createErrorJsonResponse(
-		UNAUTHORIZED_STATUS_CODE,
-		UNAUTHORIZED_STATUS_TEXT,
-		{
-			code: 'UNAUTHORIZED',
-			message: 'You cannot perform this operation without authentication',
-		},
-	);
+	return createJsonResponse(OK_STATUS_CODE, OK_STATUS_TEXT, null);
 }
 
 interface SessionResponseUser {
