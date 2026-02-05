@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export function createJsonResponse(
 	statusCode: number,
 	statusText: string,
-	data: DataOptions,
+	data: unknown,
 ): NextResponse {
 	return NextResponse.json(
 		{
@@ -17,5 +17,3 @@ export function createJsonResponse(
 		},
 	);
 }
-
-type DataOptions = Record<string, unknown>;
