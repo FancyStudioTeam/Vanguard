@@ -4,8 +4,6 @@
  */
 
 import 'server-only';
-
-import type { Snowflake } from 'discord-api-types/v10';
 import type { NextResponse } from 'next/server';
 import {
 	INTERNAL_SERVER_ERROR_STATUS_CODE,
@@ -15,6 +13,7 @@ import {
 } from '#/lib/HTTPStatus.ts';
 import { createErrorJsonResponse } from '#/utils/createErrorJsonResponse.ts';
 import { createJsonResponse } from '#/utils/createJsonResponse.ts';
+import type { SessionEndpointDataResponse } from './Types.ts';
 
 export function INTERNAL_SERVER_ERROR_RESPONSE(): NextResponse {
 	return createErrorJsonResponse(
@@ -27,7 +26,9 @@ export function INTERNAL_SERVER_ERROR_RESPONSE(): NextResponse {
 	);
 }
 
-export function SESSION_RESPONSE(user: SessionResponseUser): NextResponse {
+export function SESSION_RESPONSE(
+	user: SessionEndpointDataResponse,
+): NextResponse {
 	return createJsonResponse(OK_STATUS_CODE, OK_STATUS_TEXT, {
 		user,
 	});
@@ -35,10 +36,4 @@ export function SESSION_RESPONSE(user: SessionResponseUser): NextResponse {
 
 export function UNAUTHORIZED_RESPONSE(): NextResponse {
 	return createJsonResponse(OK_STATUS_CODE, OK_STATUS_TEXT, null);
-}
-
-interface SessionResponseUser {
-	avatar: string | null;
-	id: Snowflake;
-	name: string;
 }
