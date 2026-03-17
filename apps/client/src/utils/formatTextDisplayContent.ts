@@ -1,11 +1,6 @@
+import { codeBlock } from '@discordjs/formatters';
 import chalk from 'chalk';
-import { CodeBlockLanguage, codeBlock } from 'linkcord/utils';
 
-/**
- * @remarks
- * - If you want to create one content pair, you must use an array with one
- *   element inside.
- */
 export function formatTextDisplayContent(
 	content: string | string[],
 	delimiter = '»',
@@ -18,7 +13,7 @@ export function formatTextDisplayContent(
 		codeBlockContent = formatArrayContent(content, delimiter);
 	}
 
-	return codeBlock(CodeBlockLanguage.ANSI, codeBlockContent);
+	return codeBlock('ansi', codeBlockContent);
 }
 
 function formatArrayContent(content: string[], delimiter = '»'): string {

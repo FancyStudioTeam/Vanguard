@@ -32,12 +32,15 @@ importers:
 
   apps/client:
     dependencies:
+      '@discordeno/bot':
+        specifier: 21.0.0
+        version: 21.0.0
+      '@discordjs/formatters':
+        specifier: 0.6.2
+        version: 0.6.2
       chalk:
         specifier: 5.6.2
         version: 5.6.2
-      linkcord:
-        specifier: file:linkcord-0.0.0.tgz
-        version: file:apps/client/linkcord-0.0.0.tgz
       mongodb:
         specifier: 7.0.0
         version: 7.0.0(socks@2.8.7)
@@ -321,9 +324,28 @@ packages:
   '@dabh/diagnostics@2.0.8':
     resolution: {integrity: sha512-R4MSXTVnuMzGD7bzHdW2ZhhdPC/igELENcq5IjEverBvq5hn1SXCWcsi6eSsdWP0/Ur+SItRRjAktmdoX/8R/Q==}
 
+  '@discordeno/bot@21.0.0':
+    resolution: {integrity: sha512-x6EcVHBvWIhjY5/lcwgZzzCiqdpKFZqu2qUaZqKb7RYS8L8Q8zY40hCnbToVehLB8+BGcnHzxCeEvWWg8tnT/g==}
+
+  '@discordeno/gateway@21.0.0':
+    resolution: {integrity: sha512-ur5Hatd1x86PPI4UnXKghAWat3vS90NvLJcpOSu1B1gYSENRZow8dohZ8Ov58SXWq5nZVuBYDJNCR248pWJvrg==}
+
+  '@discordeno/rest@21.0.0':
+    resolution: {integrity: sha512-ew5ddhUd7Qyv/GSzCy42bEmRv0yr2PspCMsLD/NeMiTLd3+OrVN5pAxBN9z+9JpS/daiiD/PVmvuUAVx/nXTEw==}
+
+  '@discordeno/types@21.0.0':
+    resolution: {integrity: sha512-TUZAEqqlXRNQji+NCaQo8DruzI8rXbBvMaZYsZvN9f03PrdSddzMOy3cjs4eeL6ZMVocmMVRIaVnB713blylCw==}
+
+  '@discordeno/utils@21.0.0':
+    resolution: {integrity: sha512-I7I3Szlk+LkT/CRmJJiLPsjuBUjbuXUCvOzsgWCltkxDMIGmQeNoQtFK7t89V1Gcc4icsrnHVMho1BcaAITijg==}
+
   '@discordjs/collection@2.1.1':
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
     engines: {node: '>=18'}
+
+  '@discordjs/formatters@0.6.2':
+    resolution: {integrity: sha512-y4UPwWhH6vChKRkGdMB4odasUbHOUwy7KL+OVwF86PvT6QVOwElx+TiI1/6kcmcEe+g5YRXJFiXSXUdabqZOvQ==}
+    engines: {node: '>=16.11.0'}
 
   '@discordjs/rest@2.6.0':
     resolution: {integrity: sha512-RDYrhmpB7mTvmCKcpj+pc5k7POKszS4E2O9TYc+U+Y4iaCP+r910QdO43qmpOja8LRr1RJ0b3U+CqVsnPqzf4w==}
@@ -332,10 +354,6 @@ packages:
   '@discordjs/util@1.2.0':
     resolution: {integrity: sha512-3LKP7F2+atl9vJFhaBjn4nOaSWahZ/yWjOvA4e5pnXkt2qyXRCHLxoBQy81GFtLGCq7K9lPm9R517M1U+/90Qg==}
     engines: {node: '>=18'}
-
-  '@discordjs/voice@0.19.0':
-    resolution: {integrity: sha512-UyX6rGEXzVyPzb1yvjHtPfTlnLvB5jX/stAMdiytHhfoydX+98hfympdOwsnTktzr+IRvphxTbdErgYDJkEsvw==}
-    engines: {node: '>=22.12.0'}
 
   '@emnapi/runtime@1.8.1':
     resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
@@ -1649,9 +1667,6 @@ packages:
   '@types/whatwg-url@13.0.0':
     resolution: {integrity: sha512-N8WXpbE6Wgri7KUSvrmQcqrMllKZ9uxkYWMt+mCSGwNc0Hsw9VQTW7ApqI4XNrx6/SaM2QQJCzMPDEXE058s+Q==}
 
-  '@types/ws@8.18.1':
-    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
-
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
@@ -2158,6 +2173,9 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
+  fzstd@0.1.1:
+    resolution: {integrity: sha512-dkuVSOKKwh3eas5VkJy1AW1vFpet8TA/fGmVA5krThl8YcOVE/8ZIoEA1+U1vEn5ckxxhLirSdY837azmbaNHA==}
+
   get-caller-file@2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
@@ -2188,6 +2206,7 @@ packages:
   git-raw-commits@4.0.0:
     resolution: {integrity: sha512-ICsMM1Wk8xSGMowkOmPrzo2Fgmfo4bMHLNX6ytHjajRJUqvHOw/TFapQ+QG75c3X/tTDDhOSRPGC52dDbNM8FQ==}
     engines: {node: '>=16'}
+    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
     hasBin: true
 
   git-sha1@0.1.2:
@@ -2444,11 +2463,6 @@ packages:
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
-
-  linkcord@file:apps/client/linkcord-0.0.0.tgz:
-    resolution: {integrity: sha512-vAbvVAO0ssv2laIm4WEYakeQpQX/O9Id6DLPh0cXjYfWLG6emCBypU3kiVd78N2S/3/CRhBBCqRAxQTz67dKFA==, tarball: file:apps/client/linkcord-0.0.0.tgz}
-    version: 0.0.0
-    engines: {node: '>=22.18.0'}
 
   lint-staged@16.2.7:
     resolution: {integrity: sha512-lDIj4RnYmK7/kXMya+qJsmkRFkGolciXjrsZ6PC25GdTfWOAWetR0ZbsNXRAj1EHHImRSalc+whZFg56F5DVow==}
@@ -2917,23 +2931,6 @@ packages:
   postcss@8.5.6:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
-
-  prism-media@1.3.5:
-    resolution: {integrity: sha512-IQdl0Q01m4LrkN1EGIE9lphov5Hy7WWlH6ulf5QdGePLlPas9p2mhgddTEHrlaXYjjFToM1/rWuwF37VF4taaA==}
-    peerDependencies:
-      '@discordjs/opus': '>=0.8.0 <1.0.0'
-      ffmpeg-static: ^5.0.2 || ^4.2.7 || ^3.0.0 || ^2.4.0
-      node-opus: ^0.3.3
-      opusscript: ^0.0.8
-    peerDependenciesMeta:
-      '@discordjs/opus':
-        optional: true
-      ffmpeg-static:
-        optional: true
-      node-opus:
-        optional: true
-      opusscript:
-        optional: true
 
   promptly@2.2.0:
     resolution: {integrity: sha512-aC9j+BZsRSSzEsXBNBwDnAxujdx19HycZoKgRgzWnS8eOHg1asuf9heuLprfbe739zY3IdUQx+Egv6Jn135WHA==}
@@ -3537,9 +3534,6 @@ packages:
     resolution: {integrity: sha512-4LCcse/U2MHZ63HAJVE+v71o7yOdIe4cZ70Wpf8D/IyjDKYQLV5GD46B+hSTjJsvV5PztjvHoU580EftxjDZFQ==}
     engines: {node: '>=12.20'}
 
-  zod@4.3.5:
-    resolution: {integrity: sha512-k7Nwx6vuWx1IJ9Bjuf4Zt1PEllcwe7cls3VNzm4CQ1/hgtFUK2bRNG3rvnpPUhFjmqJKAKtjV576KnUkHocg/g==}
-
   zod@4.3.6:
     resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
 
@@ -3718,7 +3712,43 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
+  '@discordeno/bot@21.0.0':
+    dependencies:
+      '@discordeno/gateway': 21.0.0
+      '@discordeno/rest': 21.0.0
+      '@discordeno/types': 21.0.0
+      '@discordeno/utils': 21.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@discordeno/gateway@21.0.0':
+    dependencies:
+      '@discordeno/types': 21.0.0
+      '@discordeno/utils': 21.0.0
+      ws: 8.19.0
+    optionalDependencies:
+      fzstd: 0.1.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@discordeno/rest@21.0.0':
+    dependencies:
+      '@discordeno/types': 21.0.0
+      '@discordeno/utils': 21.0.0
+
+  '@discordeno/types@21.0.0': {}
+
+  '@discordeno/utils@21.0.0':
+    dependencies:
+      '@discordeno/types': 21.0.0
+
   '@discordjs/collection@2.1.1': {}
+
+  '@discordjs/formatters@0.6.2':
+    dependencies:
+      discord-api-types: 0.38.37
 
   '@discordjs/rest@2.6.0':
     dependencies:
@@ -3735,22 +3765,6 @@ snapshots:
   '@discordjs/util@1.2.0':
     dependencies:
       discord-api-types: 0.38.37
-
-  '@discordjs/voice@0.19.0':
-    dependencies:
-      '@types/ws': 8.18.1
-      discord-api-types: 0.38.37
-      prism-media: 1.3.5
-      tslib: 2.8.1
-      ws: 8.19.0
-    transitivePeerDependencies:
-      - '@discordjs/opus'
-      - bufferutil
-      - ffmpeg-static
-      - node-opus
-      - opusscript
-      - utf-8-validate
-    optional: true
 
   '@emnapi/runtime@1.8.1':
     dependencies:
@@ -5013,11 +5027,6 @@ snapshots:
     dependencies:
       '@types/webidl-conversions': 7.0.3
 
-  '@types/ws@8.18.1':
-    dependencies:
-      '@types/node': 25.0.10
-    optional: true
-
   '@ungap/structured-clone@1.3.0': {}
 
   '@vladfrangu/async_event_emitter@2.4.7': {}
@@ -5485,6 +5494,9 @@ snapshots:
 
   function-bind@1.1.2: {}
 
+  fzstd@0.1.1:
+    optional: true
+
   get-caller-file@2.0.5: {}
 
   get-east-asian-width@1.4.0: {}
@@ -5757,19 +5769,6 @@ snapshots:
       lightningcss-win32-x64-msvc: 1.30.2
 
   lines-and-columns@1.2.4: {}
-
-  linkcord@file:apps/client/linkcord-0.0.0.tgz:
-    dependencies:
-      zod: 4.3.5
-    optionalDependencies:
-      '@discordjs/voice': 0.19.0
-    transitivePeerDependencies:
-      - '@discordjs/opus'
-      - bufferutil
-      - ffmpeg-static
-      - node-opus
-      - opusscript
-      - utf-8-validate
 
   lint-staged@16.2.7:
     dependencies:
@@ -6539,9 +6538,6 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prism-media@1.3.5:
-    optional: true
-
   promptly@2.2.0:
     dependencies:
       read: 1.0.7
@@ -7190,8 +7186,7 @@ snapshots:
 
   ws@7.5.10: {}
 
-  ws@8.19.0:
-    optional: true
+  ws@8.19.0: {}
 
   y18n@5.0.8: {}
 
@@ -7212,8 +7207,6 @@ snapshots:
       yargs-parser: 21.1.1
 
   yocto-queue@1.2.2: {}
-
-  zod@4.3.5: {}
 
   zod@4.3.6: {}
 

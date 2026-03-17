@@ -1,8 +1,9 @@
 {
 	"author": "Vanguard Development Team",
 	"dependencies": {
+		"@discordeno/bot": "21.0.0",
+		"@discordjs/formatters": "0.6.2",
 		"chalk": "5.6.2",
-		"linkcord": "file:linkcord-0.0.0.tgz",
 		"mongodb": "7.0.0",
 		"winston": "3.19.0"
 	},

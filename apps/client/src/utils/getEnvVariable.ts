@@ -1,10 +1,5 @@
 import { env } from 'node:process';
 
-/**
- * @remarks
- * - This method throws an error if the specified environment variable is not
- *   configured.
- */
 export function getEnvVariable(variableName: string): string {
 	const variable = env[variableName];
 
