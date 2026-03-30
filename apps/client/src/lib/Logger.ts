@@ -11,16 +11,8 @@ const LOGGER_BASE_FORMAT = combine(
 	format((info) => {
 		const { level, message } = info;
 
-		const getMessage = () => {
-			if (typeof message === 'object' && message !== null) {
-				return JSON.stringify(message, null, 4);
-			}
-
-			return message;
-		};
-
 		const formattedLevel = level.toUpperCase();
-		const formattedMessage = getMessage();
+		const formattedMessage = message;
 
 		info.level = formattedLevel;
 		info.memoryUsage = getMemoryUsage();
