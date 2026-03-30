@@ -1,5 +1,15 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
+		"actions": {
+			"recommended": true,
+			"source": {
+				"noDuplicateClasses": "on",
+				"useSortedAttributes": "on",
+				"useSortedProperties": "on"
+			}
+		}
+	},
 	"css": {
 		"parser": {
 			"tailwindDirectives": true

@@ -33,8 +33,7 @@
 		"docker:build": "docker build -t vanguard .",
 		"docker:run": "docker run vanguard",
 		"prepare": "husky",
-		"turbo:build": "turbo build",
-		"turbo:start:pm2": "turbo start:pm2"
+		"turbo:build": "turbo build"
 	},
 	"type": "module",
 	"version": "0.1.0"
