@@ -14,7 +14,7 @@ const LOGGER_BASE_FORMAT = combine(
 		const { level, message } = info;
 
 		const getMessage = () => {
-			if (typeof message === 'object') {
+			if (typeof message === 'object' && message !== null) {
 				return JSON.stringify(message, null, 4);
 			}
 
@@ -46,7 +46,6 @@ const LOGGER_LEVEL_COLORS: Record<LoggerLevels, string> = {
 
 /*
  * Winston levels are sorted from most (0) to least severe.
- *
  * Reference: https://github.com/winstonjs/winston?tab=readme-ov-file#logging
  */
 const LOGGER_LEVELS = {

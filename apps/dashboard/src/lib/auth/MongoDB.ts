@@ -10,16 +10,14 @@ import {
 export const client = new MongoClient(MONGO_DB_CONNECTION_URL);
 export const db = client.db(MONGO_DB_DATABASE_NAME);
 
-export const sessionsCollection = db.collection<SessionDocument>(
-	MONGO_DB_COLLECTION_NAME,
-);
+export const sessionsCollection = db.collection<SessionDocument>(MONGO_DB_COLLECTION_NAME);
 
 export interface SessionDocument {
 	credentials: SessionDocumentCredentials;
-	session_id: string;
+	sessionId: string;
 }
 
 export interface SessionDocumentCredentials {
-	access_token: string;
-	refesh_token: string;
+	accessToken: string;
+	refeshToken: string;
 }

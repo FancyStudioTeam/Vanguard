@@ -5,19 +5,14 @@ import type { APIUser } from 'discord-api-types/v10';
 import { type JWTPayload, jwtVerify, SignJWT } from 'jose';
 import { AUTH_SECRET } from './Constants.ts';
 
-const JSON_WEB_TOKEN_AUDIENCE =
-	'https://vanguard.fancystudio.xyz/api/' as const;
+const JSON_WEB_TOKEN_AUDIENCE = 'https://vanguard.fancystudio.xyz/api/' as const;
 const JSON_WEB_TOKEN_ISSUER = 'https://vanguard.fancystudio.xyz/' as const;
 
 const TEXT_ENCODER = new TextEncoder();
 const TEXT_ENCODER_SECRET = TEXT_ENCODER.encode(AUTH_SECRET);
 
-export class Jose {
-	static async sign(
-		sessionId: string,
-		subjectId: Snowflake,
-		user: APIUser,
-	): Promise<string> {
+export const JoseUtils = {
+	async sign(sessionId: string, subjectId: Snowflake, user: APIUser): Promise<string> {
 		const { avatar, id, global_name, username } = user;
 
 		const jsonWebToken = new SignJWT({
@@ -46,11 +41,9 @@ export class Jose {
 		const signedJsonWebToken = await jsonWebToken.sign(TEXT_ENCODER_SECRET);
 
 		return signedJsonWebToken;
-	}
+	},
 
-	static async verify(
-		jsonWebToken: string,
-	): Promise<JsonWebTokenPayload | null> {
+	async verify(jsonWebToken: string): Promise<JsonWebTokenPayload | null> {
 		try {
 			const { payload } = await jwtVerify<JsonWebTokenPayload>(
 				jsonWebToken,
@@ -68,8 +61,8 @@ export class Jose {
 		} catch {
 			return null;
 		}
-	}
-}
+	},
+} as const;
 
 interface JsonWebTokenPayload extends JWTPayload {
 	user: JsonWebTokenPayloadUser;
