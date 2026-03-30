@@ -1,15 +1,18 @@
 import 'client-only';
-
 import { useRouter } from 'next/navigation';
 import useSwr from 'swr';
 
 const fetcher = (url: string) => fetch(url).then((response) => response.json());
 
 export function useSession() {
-	const { data, error, isLoading, isValidating } = useSwr(
-		'/api/v1/auth/session',
-		fetcher,
-	);
+	const {
+		data: response,
+		error,
+		isLoading,
+		isValidating,
+	} = useSwr<SwrSessionEndpointResponse>('/api/auth/session', fetcher);
+
+	const { data } = response ?? {};
 	const { replace } = useRouter();
 
 	return {
@@ -21,4 +24,9 @@ export function useSession() {
 		},
 		signIn: () => replace('/api/auth/sign-in'),
 	};
+}
+
+interface SwrSessionEndpointResponse {
+	data: unknown | null;
+	success: boolean;
 }
