@@ -1,13 +1,14 @@
 {
 	"author": "Vanguard Development Team",
+	"description": "Simplicity without compromise",
 	"devDependencies": {
-		"@biomejs/biome": "2.4.8",
+		"@biomejs/biome": "2.4.9",
 		"@commitlint/cli": "20.5.0",
 		"@commitlint/config-conventional": "20.5.0",
-		"@commitlint/types": "20.3.1",
+		"@commitlint/types": "20.5.0",
 		"husky": "9.1.7",
-		"lint-staged": "16.2.7",
-		"turbo": "2.8.20"
+		"lint-staged": "16.4.0",
+		"turbo": "2.8.21"
 	},
 	"engines": {
 		"node": ">=22.18.0"
@@ -25,6 +26,7 @@
 			"esbuild"
 		]
 	},
+	"private": true,
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/FancyStudioTeam/Vanguard"
@@ -39,5 +41,6 @@
 		"turbo:build": "turbo build",
 		"turbo:start:pm2": "turbo start:pm2"
 	},
-	"type": "module"
+	"type": "module",
+	"version": "0.1.0"
 }
