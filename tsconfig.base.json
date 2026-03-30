@@ -2,10 +2,9 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
-		"declaration": true,
+		"declaration": false,
 		"emitDeclarationOnly": false,
 		"emitDecoratorMetadata": true,
-		"erasableSyntaxOnly": false,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
