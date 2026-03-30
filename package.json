@@ -14,11 +14,6 @@
 		"node": ">=22.18.0"
 	},
 	"license": "MIT",
-	"lint-staged": {
-		"**/*.{js,cjs,mjs,jsx,ts,cts.mts,tsx,json,vue}": [
-			"pnpm biome:write"
-		]
-	},
 	"name": "vanguard",
 	"packageManager": "pnpm@10.0.0",
 	"pnpm": {
