@@ -45,7 +45,7 @@
 				"useSimplifiedLogicExpression": "error"
 			},
 			"correctness": {
-				"noNodejsModules": "warn",
+				"noNodejsModules": "off",
 				"noUndeclaredDependencies": {
 					"level": "error",
 					"options": {
