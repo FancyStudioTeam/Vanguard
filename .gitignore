@@ -1,18 +1,7 @@
-# Environment Variables
 .env
 .env.*
-
 !.env.example
 
-# Logs
-*.log
-logs
-
-# Miscellaneous
-.DS_Store
-.fleet
-.idea
 .turbo
 
-# Packages
 node_modules
