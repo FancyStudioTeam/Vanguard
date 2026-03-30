@@ -1,3 +1,5 @@
-export const EMERALD_COLOR = 0x10b981 as const;
-export const MONO_COLOR = 0xb8b9bc as const;
-export const ROSE_COLOR = 0xf43f5e as const;
+export enum Colors {
+	Amber = 0xf59e0b,
+	Emerald = 0x10b981,
+	Rose = 0x6366f1,
+}

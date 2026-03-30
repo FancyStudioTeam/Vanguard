@@ -1,12 +1,18 @@
 import { createBot, GatewayIntents } from '@discordeno/bot';
-import { getEnvVariable } from '#utils/getEnvVariable.js';
+import { DISCORD_CLIENT } from './Constants.js';
 
 export const bot = createBot({
+	desiredProperties: {
+		user: {
+			id: true,
+			username: true,
+		},
+	},
 	intents:
 		GatewayIntents.Guilds |
 		GatewayIntents.GuildMembers |
 		GatewayIntents.GuildMessages |
 		GatewayIntents.GuildPresences |
 		GatewayIntents.MessageContent,
-	token: getEnvVariable('DISCORD_TOKEN'),
+	token: DISCORD_CLIENT,
 });

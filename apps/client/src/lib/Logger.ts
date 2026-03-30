@@ -1,5 +1,5 @@
 import { addColors, createLogger, format, transports } from 'winston';
-import { getMemoryUsage } from '#utils/getMemoryUsage.js';
+import { getMemoryUsage } from '#/utils/getMemoryUsage.js';
 
 const { align, colorize, combine, errors, printf, timestamp } = format;
 const { Console } = transports;
@@ -44,7 +44,6 @@ const LOGGER_LEVEL_COLORS: Record<LoggerLevels, string> = {
 
 /*
  * Winston levels are sorted from most (0) to least severe.
- *
  * Reference: https://github.com/winstonjs/winston?tab=readme-ov-file#logging
  */
 const LOGGER_LEVELS = {
