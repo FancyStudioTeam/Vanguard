@@ -4,19 +4,17 @@ import { twMerge } from 'tailwind-merge';
 import { VanguardLogo } from './VanguardLogo.tsx';
 import { VanguardSymbol } from './VanguardSymbol.tsx';
 
-export function VanguardCombinationMark({
-	className,
-	...props
-}: VanguardCombinationMarksProps) {
+export function VanguardCombinationMark({ className, ...props }: VanguardCombinationMarksProps) {
 	return (
 		<Link
+			{...props}
 			aria-label='Vanguard Home'
 			className={twMerge(
 				'flex select-none items-center gap-1 transition-colors hover:text-neutral-50/75',
 				className,
 			)}
 			prefetch={false}
-			{...props}
+			href='/'
 		>
 			<VanguardSymbol />
 			<VanguardLogo />
@@ -24,4 +22,4 @@ export function VanguardCombinationMark({
 	);
 }
 
-export type VanguardCombinationMarksProps = ComponentProps<typeof Link>;
+export type VanguardCombinationMarksProps = Omit<ComponentProps<typeof Link>, 'href'>;
