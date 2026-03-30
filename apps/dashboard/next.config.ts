@@ -1,17 +1,6 @@
-import createMdx from '@next/mdx';
 import type { NextConfig } from 'next';
 
-const withMdx = createMdx({
-	extension: /\.(md|mdx)$/,
-	options: {
-		rehypePlugins: [],
-		remarkPlugins: [
-			'remark-gfm',
-		],
-	},
-});
-
-export default withMdx({
+export default {
 	experimental: {
 		authInterrupts: true,
 		viewTransition: true,
@@ -43,4 +32,4 @@ export default withMdx({
 			},
 		];
 	},
-} as NextConfig);
+} as NextConfig;
