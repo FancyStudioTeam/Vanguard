@@ -1,12 +1,11 @@
 import 'server-only';
-
 import type { Snowflake } from 'discord-api-types/globals';
 import type { APIUser } from 'discord-api-types/v10';
 import { type JWTPayload, jwtVerify, SignJWT } from 'jose';
 import { AUTH_SECRET } from './Constants.ts';
 
-const JSON_WEB_TOKEN_AUDIENCE = 'https://vanguard.fancystudio.xyz/api/' as const;
-const JSON_WEB_TOKEN_ISSUER = 'https://vanguard.fancystudio.xyz/' as const;
+const JSON_WEB_TOKEN_AUDIENCE = 'https://vanguard.fancystudio.xyz/api' as const;
+const JSON_WEB_TOKEN_ISSUER = 'https://vanguard.fancystudio.xyz' as const;
 
 const TEXT_ENCODER = new TextEncoder();
 const TEXT_ENCODER_SECRET = TEXT_ENCODER.encode(AUTH_SECRET);

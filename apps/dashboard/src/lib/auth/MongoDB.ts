@@ -1,5 +1,4 @@
 import 'server-only';
-
 import { MongoClient } from 'mongodb';
 import {
 	MONGO_DB_COLLECTION_NAME,

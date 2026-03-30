@@ -1,5 +1,4 @@
 import 'server-only';
-
 import { AES, enc } from 'crypto-js';
 import { ENCRYPTION_KEY } from './Constants.ts';
 

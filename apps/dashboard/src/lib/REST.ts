@@ -1,5 +1,4 @@
 import 'server-only';
-
 import { REST } from '@discordjs/rest';
 import { CLIENT_TOKEN } from './Constants.ts';
 
