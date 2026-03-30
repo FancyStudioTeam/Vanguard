@@ -4,6 +4,9 @@ on: [push, pull_request]
 
 jobs:
     ci:
+        permissions:
+            contents: read
+
         runs-on: ubuntu-latest
 
         steps:
@@ -12,7 +15,6 @@ jobs:
 
             - name: Setup Node.js
               uses: actions/setup-node@v6
-
               with:
                   node-version: 24
 
@@ -24,6 +26,3 @@ jobs:
 
             - name: Build Applications
               run: pnpm turbo:build
-
-              env:
-                  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}

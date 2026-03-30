@@ -1,7 +1,8 @@
-version: 2
 updates:
-    - directory: "/"
-      package-ecosystem: "npm"
+    - directory: /
+      package-ecosystem: npm
       schedule:
-          interval: "daily"
-      versioning-strategy: "increase"
+          interval: daily
+      versioning-strategy: increase
+
+version: 2
