@@ -1,16 +1,9 @@
 {
 	"compilerOptions": {
-		"baseUrl": "src",
 		"outDir": "dist",
 		"paths": {
-			"#db/*": [
-				"db/*"
-			],
-			"#lib/*": [
-				"lib/*"
-			],
-			"#utils/*": [
-				"utils/*"
+			"#/*": [
+				"./src/*"
 			]
 		},
 		"rootDir": "src",

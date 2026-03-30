@@ -12,19 +12,22 @@
 		"cross-env": "10.1.0",
 		"pm2": "6.0.14",
 		"rimraf": "6.1.3",
-		"tsc-alias": "1.8.16",
 		"tsx": "4.21.0",
 		"typescript": "6.0.2"
+	},
+	"imports": {
+		"#/*": [
+			"./dist/*"
+		]
 	},
 	"license": "MIT",
 	"main": "dist/index.js",
 	"name": "client",
+	"packageManager": "pnpm@10.0.0",
 	"private": true,
 	"scripts": {
-		"build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-		"linkcord:update": "pnpm add ./linkcord-0.0.0.tgz --force",
-		"prebuild": "pnpm rimraf",
-		"rimraf": "rimraf dist",
+		"build": "tsc --project tsconfig.json",
+		"prebuild": "rimraf dist",
 		"start:dev": "cross-env NODE_ENV=development tsx src/index.ts",
 		"start:pm2": "pm2 start pnpm --name 'Vanguard Client' -- start:prod",
 		"start:prod": "cross-env NODE_ENV=production node dist/index.js"
