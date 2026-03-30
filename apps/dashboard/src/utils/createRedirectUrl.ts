@@ -1,5 +1,4 @@
 import 'server-only';
-
 import { OAuth2Routes, OAuth2Scopes } from 'discord-api-types/v10';
 import { CLIENT_ID } from '#/lib/Constants.ts';
 import { createCallbackUrl } from './createCallbackUrl.ts';

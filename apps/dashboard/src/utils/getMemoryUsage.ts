@@ -2,15 +2,14 @@ import 'server-only';
 import { memoryUsage } from 'node:process';
 
 const CONVERSION_FACTOR = 1_024;
-const BYTES_IN_MEGABYTES = CONVERSION_FACTOR * CONVERSION_FACTOR;
 
 export function getMemoryUsage() {
 	const { heapUsed } = memoryUsage();
-	const formattedMegaBytes = formatToMegaBytes(heapUsed);
+	const heapUsageInMegaBytes = convertToMegaBytes(heapUsed);
 
-	return `${formattedMegaBytes} MB` as const;
+	return `${heapUsageInMegaBytes} MB` as const;
 }
 
-function formatToMegaBytes(bytes: number): string {
-	return (bytes / BYTES_IN_MEGABYTES).toFixed(2);
+function convertToMegaBytes(bytes: number): string {
+	return (bytes / (CONVERSION_FACTOR * CONVERSION_FACTOR)).toFixed(2);
 }
