@@ -1,10 +1,7 @@
 import { codeBlock } from '@discordjs/formatters';
 import chalk from 'chalk';
 
-export function formatTextDisplayContent(
-	content: string | string[],
-	delimiter = '»',
-): string {
+export function formatTextDisplayContent(content: string | string[], delimiter = '»'): string {
 	let codeBlockContent: string;
 
 	if (typeof content === 'string') {

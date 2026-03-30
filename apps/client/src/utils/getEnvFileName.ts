@@ -6,7 +6,5 @@ export function getEnvFileName() {
 	const productionStringRegex = /production/i;
 	const isProductionEnvironment = productionStringRegex.test(NODE_ENV);
 
-	return isProductionEnvironment
-		? ('.env.production' as const)
-		: ('.env.development' as const);
+	return isProductionEnvironment ? ('.env.production' as const) : ('.env.development' as const);
 }
