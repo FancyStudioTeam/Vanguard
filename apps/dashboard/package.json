@@ -9,7 +9,7 @@
 		"@phosphor-icons/react": "2.1.10",
 		"crypto-js": "4.2.0",
 		"gsap": "3.14.2",
-		"jose": "6.1.3",
+		"jose": "6.2.2",
 		"mongodb": "7.1.1",
 		"next": "16.2.1",
 		"radix-ui": "1.4.3",
