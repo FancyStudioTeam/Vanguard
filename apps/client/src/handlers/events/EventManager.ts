@@ -39,6 +39,7 @@ export class EventManager {
 			const { config: eventConfig, handler: eventHandler } = (await import(
 				eventFilePathUrl.href
 			)) as EventFileImportData;
+
 			const { name: eventName } = eventConfig;
 
 			Object.defineProperty(events, eventName, {
