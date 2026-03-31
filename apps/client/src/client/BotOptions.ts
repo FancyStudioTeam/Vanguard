@@ -19,5 +19,5 @@ export const BOT_GATEWAY_MANAGER_PROPERTIES: BotGatewayManagerProperties = {
 	os: platform,
 };
 
-type BotGatewayManagerProperties = CreateGatewayManagerOptions['properties'];
 type BotDesiredProperties = DesiredProperties;
+type BotGatewayManagerProperties = CreateGatewayManagerOptions['properties'];
