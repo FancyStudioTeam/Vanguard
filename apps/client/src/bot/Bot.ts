@@ -1,4 +1,5 @@
 import { createBot } from '@discordeno/bot';
+import { CommandManager } from '#handlers/commands/CommandManager.js';
 import { EventManager } from '#handlers/events/EventManager.js';
 import { DISCORD_GATEWAY_INTENTS, DISCORD_TOKEN } from '#lib/Constants.js';
 import { BOT_DESIRED_PROPERTIES, BOT_GATEWAY_MANAGER_PROPERTIES } from './BotOptions.js';
@@ -16,6 +17,12 @@ export const discordenoBot = createBot({
 export const bot = discordenoBot as Bot;
 
 Object.defineProperties(bot, {
+	commandManager: {
+		configurable: false,
+		enumerable: false,
+		value: new CommandManager(bot),
+		writable: false,
+	},
 	eventManager: {
 		configurable: false,
 		enumerable: false,
@@ -24,8 +31,9 @@ Object.defineProperties(bot, {
 	},
 });
 
-void (await Promise.allSettled([
+await Promise.allSettled([
+	bot.commandManager.initialize(),
 	bot.eventManager.initialize(),
-]));
+]);
 
-void (await bot.start());
+await bot.start();
