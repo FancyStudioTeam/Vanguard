@@ -2,8 +2,14 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {
-			"#/*": [
-				"./src/*"
+			"#client/*": [
+				"./src/client/*"
+			],
+			"#lib/*": [
+				"./src/lib/*"
+			],
+			"#utils/*": [
+				"./src/utils/*"
 			]
 		},
 		"rootDir": "src",
