@@ -5,19 +5,19 @@ import {
 	DESIRED_MESSAGE_PROPERTIES,
 	DESIRED_USER_PROPERTIES,
 	type DesiredProperties,
-} from './ClientDesiredProperties.js';
+} from './BotDesiredProperties.js';
 
-export const CLIENT_DESIRED_PROPERTIES: ClientDesiredProperties = {
+export const BOT_DESIRED_PROPERTIES: BotDesiredProperties = {
 	guild: DESIRED_GUILD_PROPERTIES,
 	message: DESIRED_MESSAGE_PROPERTIES,
 	user: DESIRED_USER_PROPERTIES,
 };
 
-export const CLIENT_GATEWAY_MANAGER_PROPERTIES: ClientGatewayManagerProperties = {
+export const BOT_GATEWAY_MANAGER_PROPERTIES: BotGatewayManagerProperties = {
 	browser: 'Discord Android',
 	device: 'Discordeno',
 	os: platform,
 };
 
-type ClientGatewayManagerProperties = CreateGatewayManagerOptions['properties'];
-type ClientDesiredProperties = DesiredProperties;
+type BotGatewayManagerProperties = CreateGatewayManagerOptions['properties'];
+type BotDesiredProperties = DesiredProperties;
