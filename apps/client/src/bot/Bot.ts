@@ -15,7 +15,14 @@ export const discordenoBot = createBot({
 });
 export const bot = discordenoBot as Bot;
 
-bot.eventManager = new EventManager();
+Object.defineProperties(bot, {
+	eventManager: {
+		configurable: false,
+		enumerable: false,
+		value: new EventManager(bot),
+		writable: false,
+	},
+});
 
 void (await Promise.allSettled([
 	bot.eventManager.initialize(),
