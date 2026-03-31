@@ -17,7 +17,8 @@
 		"typescript": "6.0.2"
 	},
 	"imports": {
-		"#client/*": "./dist/client/*",
+		"#bot/*": "./dist/bot/*",
+		"#handlers/*": "./dist/handlers/*",
 		"#lib/*": "./dist/lib/*",
 		"#utils/*": "./dist/utils/*"
 	},

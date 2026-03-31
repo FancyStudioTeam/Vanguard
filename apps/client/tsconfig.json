@@ -2,8 +2,11 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {
-			"#client/*": [
-				"./src/client/*"
+			"#bot/*": [
+				"./src/bot/*"
+			],
+			"#handlers/*": [
+				"./src/handlers/*"
 			],
 			"#lib/*": [
 				"./src/lib/*"

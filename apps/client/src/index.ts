@@ -1,2 +1,2 @@
 import './env.js';
-import '#client/Client.js';
+import '#bot/Bot.js';
