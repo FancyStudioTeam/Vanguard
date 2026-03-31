@@ -2,6 +2,7 @@ import { platform } from 'node:process';
 import type { CreateGatewayManagerOptions } from '@discordeno/bot';
 import {
 	DESIRED_GUILD_PROPERTIES,
+	DESIRED_INTERACTION_PROPERTIES,
 	DESIRED_MESSAGE_PROPERTIES,
 	DESIRED_USER_PROPERTIES,
 	type DesiredProperties,
@@ -9,6 +10,7 @@ import {
 
 export const BOT_DESIRED_PROPERTIES = {
 	guild: DESIRED_GUILD_PROPERTIES,
+	interaction: DESIRED_INTERACTION_PROPERTIES,
 	message: DESIRED_MESSAGE_PROPERTIES,
 	user: DESIRED_USER_PROPERTIES,
 } satisfies BotDesiredProperties;

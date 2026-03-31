@@ -8,6 +8,11 @@ export const DESIRED_GUILD_PROPERTIES = {
 	toggles: true,
 } satisfies DesiredGuildProperties;
 
+export const DESIRED_INTERACTION_PROPERTIES = {
+	id: true,
+	token: true,
+} satisfies DesiredInteractionProperties;
+
 export const DESIRED_MESSAGE_PROPERTIES = {
 	author: true,
 	channelId: true,
@@ -26,5 +31,6 @@ export const DESIRED_USER_PROPERTIES = {
 export type DesiredProperties = RecursivePartial<TransformersDesiredProperties>;
 
 type DesiredGuildProperties = DesiredProperties['guild'];
+type DesiredInteractionProperties = DesiredProperties['interaction'];
 type DesiredMessageProperties = DesiredProperties['message'];
 type DesiredUserProperties = DesiredProperties['user'];
