@@ -29,3 +29,5 @@ export const bot = createBot({
 		GatewayIntents.MessageContent,
 	token: DISCORD_CLIENT,
 });
+
+export type Bot = typeof bot;

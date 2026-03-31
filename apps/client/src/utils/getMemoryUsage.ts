@@ -10,5 +10,5 @@ export function getMemoryUsage(): `${string} MB` {
 }
 
 function convertToMegaBytes(bytes: number): string {
-	return (bytes / (CONVERSION_FACTOR * CONVERSION_FACTOR)).toFixed(2);
+	return (bytes / CONVERSION_FACTOR ** 2).toFixed(2);
 }
