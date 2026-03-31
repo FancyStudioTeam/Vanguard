@@ -7,11 +7,11 @@ import {
 	type DesiredProperties,
 } from './BotDesiredProperties.js';
 
-export const BOT_DESIRED_PROPERTIES: BotDesiredProperties = {
+export const BOT_DESIRED_PROPERTIES = {
 	guild: DESIRED_GUILD_PROPERTIES,
 	message: DESIRED_MESSAGE_PROPERTIES,
 	user: DESIRED_USER_PROPERTIES,
-};
+} satisfies BotDesiredProperties;
 
 export const BOT_GATEWAY_MANAGER_PROPERTIES: BotGatewayManagerProperties = {
 	browser: 'Discord Android',
