@@ -1,3 +1,6 @@
-import type { BotTransformers } from '#bot/BotTypes.js';
+import type { BotInferredTypes } from '#bot/BotTypes.js';
 
-export type Interaction = BotTransformers['$inferredTypes']['interaction'];
+export type Guild = BotInferredTypes['guild'];
+export type Interaction = BotInferredTypes['interaction'];
+export type Message = BotInferredTypes['message'];
+export type User = BotInferredTypes['user'];
