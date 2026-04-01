@@ -2,16 +2,20 @@ import { createBot } from '@discordeno/bot';
 import { Collection } from '@discordjs/collection';
 import { CommandManager } from '#handlers/commands/CommandManager.js';
 import { EventManager } from '#handlers/events/EventManager.js';
-import { DISCORD_GATEWAY_INTENTS, DISCORD_TOKEN } from '#lib/Constants.js';
 import { defineReadonlyProperty } from '#utils/defineReadonlyProperty.js';
-import { BOT_DESIRED_PROPERTIES, BOT_GATEWAY_MANAGER_OPTIONS } from './BotOptions.js';
+import {
+	BOT_DESIRED_PROPERTIES,
+	BOT_GATEWAY_MANAGER,
+	BOT_INTENTS,
+	BOT_TOKEN,
+} from './BotOptions.js';
 import type { Bot } from './BotTypes.js';
 
 export const discordenoBot = createBot({
 	desiredProperties: BOT_DESIRED_PROPERTIES,
-	gateway: BOT_GATEWAY_MANAGER_OPTIONS,
-	intents: DISCORD_GATEWAY_INTENTS,
-	token: DISCORD_TOKEN,
+	gateway: BOT_GATEWAY_MANAGER,
+	intents: BOT_INTENTS,
+	token: BOT_TOKEN,
 });
 export const bot = discordenoBot as Bot;
 

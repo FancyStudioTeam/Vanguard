@@ -1,5 +1,6 @@
 import { platform } from 'node:process';
 import type { CreateGatewayManagerOptions } from '@discordeno/bot';
+import { DISCORD_GATEWAY_INTENTS, DISCORD_TOKEN } from '#lib/Constants.js';
 import {
 	DESIRED_GUILD_PROPERTIES,
 	DESIRED_INTERACTION_PROPERTIES,
@@ -21,11 +22,15 @@ export const BOT_GATEWAY_MANAGER_PROPERTIES: BotGatewayManagerProperties = {
 	os: platform,
 };
 
-export const BOT_GATEWAY_MANAGER_OPTIONS: BotGatewayManagerOptions = {
+export const BOT_GATEWAY_MANAGER: BotGatewayManager = {
 	compress: true,
 	properties: BOT_GATEWAY_MANAGER_PROPERTIES,
 };
 
+export const BOT_INTENTS = DISCORD_GATEWAY_INTENTS;
+export const BOT_TOKEN = DISCORD_TOKEN;
+
 type BotDesiredProperties = DesiredProperties;
-type BotGatewayManagerOptions = Omit<CreateGatewayManagerOptions, 'token'>;
+
+type BotGatewayManager = Omit<CreateGatewayManagerOptions, 'token'>;
 type BotGatewayManagerProperties = CreateGatewayManagerOptions['properties'];
