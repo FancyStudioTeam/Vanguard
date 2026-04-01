@@ -1,14 +1,13 @@
-import { ApplicationCommandTypes, type CreateSlashApplicationCommand } from '@discordeno/bot';
-import type { Bot } from '#bot/BotTypes.js';
-import type { Interaction } from '#lib/InferredTypes.js';
+import { ApplicationCommandTypes, type CreateApplicationCommand } from '@discordeno/bot';
+import { HandlerBase } from '#handlers/base/HandlerBase.js';
 import type { Constructor } from '#lib/Types.js';
 
-export abstract class ChatInputCommandHandler {
+export abstract class ChatInputCommandHandler extends HandlerBase {
 	declare readonly declare: ChatInputCommandHandlerDeclareOptions;
 
-	abstract run(options: ChatInputCommandHandlerRunOptions): unknown;
+	abstract run(): unknown;
 
-	toOptions(): CreateSlashApplicationCommand {
+	toOptions(): CreateApplicationCommand {
 		const { declare } = this;
 
 		return {
@@ -18,10 +17,16 @@ export abstract class ChatInputCommandHandler {
 	}
 }
 
-export interface ChatInputCommandHandlerRunOptions {
-	bot: Bot;
-	interaction: Interaction;
-}
-
 export type ChatInputCommandHandlerConstructor = Constructor<ChatInputCommandHandler>;
-export type ChatInputCommandHandlerDeclareOptions = Omit<CreateSlashApplicationCommand, 'type'>;
+export type ChatInputCommandHandlerDeclareOptions = Pick<
+	CreateApplicationCommand,
+	| 'contexts'
+	| 'defaultMemberPermissions'
+	| 'description'
+	| 'descriptionLocalizations'
+	| 'integrationTypes'
+	| 'name'
+	| 'nameLocalizations'
+	| 'nsfw'
+	| 'options'
+>;
