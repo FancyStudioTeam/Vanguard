@@ -33,4 +33,4 @@ export const BOT_TOKEN = DISCORD_TOKEN;
 type BotDesiredProperties = DesiredProperties;
 
 type BotGatewayManager = Omit<CreateGatewayManagerOptions, 'token'>;
-type BotGatewayManagerProperties = CreateGatewayManagerOptions['properties'];
+type BotGatewayManagerProperties = BotGatewayManager['properties'];
