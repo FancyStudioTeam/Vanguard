@@ -24,6 +24,7 @@ export const DESIRED_MESSAGE_PROPERTIES = {
 
 export const DESIRED_USER_PROPERTIES = {
 	avatar: true,
+	discriminator: true,
 	id: true,
 	toggles: true,
 	username: true,

@@ -15,8 +15,6 @@ export default defineEventListener({
 			return;
 		}
 
-		console.log(data);
-
 		const { commands } = bot;
 		const { type, name } = data;
 
