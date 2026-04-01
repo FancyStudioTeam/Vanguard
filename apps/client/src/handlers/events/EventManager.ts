@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { pathToFileURL } from 'node:url';
 import type { Bot, BotEventNames } from '#bot/BotTypes.js';
-import type { EventConfig, EventHandler } from './EventTypes.js';
+import type { EventListener } from './EventTypes.js';
 
 const EVENTS_PATTERNS = [
 	'**/events/**/*.event.{js,ts}',
@@ -45,15 +45,16 @@ export class EventManager {
 			const eventFilePathUrlHref = this.createEventFileImportUrl(name, parentPath);
 			const eventFileImportData = (await import(eventFilePathUrlHref)) as EventFileImportData;
 
-			const { config: eventConfig, handler: eventHandler } = eventFileImportData;
-			const { name: eventName } = eventConfig;
+			const { default: eventListener } = eventFileImportData;
 
-			events[eventName] = eventHandler;
+			const { data: eventListenerData, run: eventRun } = eventListener;
+			const { name: eventName } = eventListenerData;
+
+			events[eventName] = eventRun;
 		}
 	}
 }
 
 interface EventFileImportData {
-	config: EventConfig<BotEventNames>;
-	handler: EventHandler<EventConfig<BotEventNames>>;
+	default: EventListener<BotEventNames>;
 }

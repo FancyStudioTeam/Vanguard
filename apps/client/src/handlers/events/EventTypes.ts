@@ -1,8 +1,15 @@
 import type { BotEventNames, BotEvents } from '#bot/BotTypes.js';
-import type { DefineEventConfigOptions } from './functions/defineEventConfig.js';
 
-export type EventConfig<Name extends BotEventNames> = DefineEventConfigOptions<Name>;
-export type EventHandler<Config extends EventConfig<BotEventNames>> = (
+export interface EventListener<Name extends BotEventNames> {
+	data: EventListenerData<Name>;
+	run: EventListenerRunFunction<Name>;
+}
+
+export interface EventListenerData<Name extends BotEventNames> {
+	name: Name;
+}
+
+export type EventListenerRunFunction<Name extends BotEventNames> = (
 	// @ts-expect-error
-	...data: Parameters<BotEvents[Config['name']]>
+	...data: Parameters<BotEvents[Name]>
 ) => unknown;
