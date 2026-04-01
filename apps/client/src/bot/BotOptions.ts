@@ -16,16 +16,16 @@ export const BOT_DESIRED_PROPERTIES = {
 	user: DESIRED_USER_PROPERTIES,
 } satisfies BotDesiredProperties;
 
-export const BOT_GATEWAY_MANAGER_PROPERTIES: BotGatewayManagerProperties = {
+export const BOT_GATEWAY_MANAGER_PROPERTIES = {
 	browser: 'Discord Android',
 	device: 'Discordeno',
 	os: platform,
-};
+} satisfies BotGatewayManagerProperties;
 
-export const BOT_GATEWAY_MANAGER: BotGatewayManager = {
+export const BOT_GATEWAY_MANAGER = {
 	compress: true,
 	properties: BOT_GATEWAY_MANAGER_PROPERTIES,
-};
+} satisfies BotGatewayManager;
 
 export const BOT_INTENTS = DISCORD_GATEWAY_INTENTS;
 export const BOT_TOKEN = DISCORD_TOKEN;
