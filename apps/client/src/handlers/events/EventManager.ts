@@ -17,6 +17,15 @@ export class EventManager {
 		this.bot = bot;
 	}
 
+	private createEventFileImportUrl(name: string, parentPath: string): string {
+		const eventFilePath = join(parentPath, name);
+		const eventFilePathUrl = pathToFileURL(eventFilePath);
+
+		const { href: eventFilePathUrlHref } = eventFilePathUrl;
+
+		return eventFilePathUrlHref;
+	}
+
 	private async findEventFiles(): Promise<Dirent[]> {
 		const eventFileDirentsIterator = glob(EVENTS_PATTERNS, {
 			cwd: cwd(),
@@ -33,21 +42,13 @@ export class EventManager {
 		const eventFiles = await this.findEventFiles();
 
 		for (const { name, parentPath } of eventFiles) {
-			const eventFilePath = join(parentPath, name);
-			const eventFilePathUrl = pathToFileURL(eventFilePath);
+			const eventFilePathUrlHref = this.createEventFileImportUrl(name, parentPath);
+			const eventFileImportData = (await import(eventFilePathUrlHref)) as EventFileImportData;
 
-			const { config: eventConfig, handler: eventHandler } = (await import(
-				eventFilePathUrl.href
-			)) as EventFileImportData;
-
+			const { config: eventConfig, handler: eventHandler } = eventFileImportData;
 			const { name: eventName } = eventConfig;
 
-			Object.defineProperty(events, eventName, {
-				configurable: false,
-				enumerable: false,
-				value: eventHandler,
-				writable: false,
-			});
+			events[eventName] = eventHandler;
 		}
 	}
 }
