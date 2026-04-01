@@ -21,5 +21,11 @@ export const BOT_GATEWAY_MANAGER_PROPERTIES: BotGatewayManagerProperties = {
 	os: platform,
 };
 
+export const BOT_GATEWAY_MANAGER_OPTIONS: BotGatewayManagerOptions = {
+	compress: true,
+	properties: BOT_GATEWAY_MANAGER_PROPERTIES,
+};
+
 type BotDesiredProperties = DesiredProperties;
+type BotGatewayManagerOptions = Omit<CreateGatewayManagerOptions, 'token'>;
 type BotGatewayManagerProperties = CreateGatewayManagerOptions['properties'];

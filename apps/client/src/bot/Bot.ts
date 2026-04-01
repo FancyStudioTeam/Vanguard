@@ -4,15 +4,12 @@ import { CommandManager } from '#handlers/commands/CommandManager.js';
 import { EventManager } from '#handlers/events/EventManager.js';
 import { DISCORD_GATEWAY_INTENTS, DISCORD_TOKEN } from '#lib/Constants.js';
 import { defineReadonlyProperty } from '#utils/defineReadonlyProperty.js';
-import { BOT_DESIRED_PROPERTIES, BOT_GATEWAY_MANAGER_PROPERTIES } from './BotOptions.js';
+import { BOT_DESIRED_PROPERTIES, BOT_GATEWAY_MANAGER_OPTIONS } from './BotOptions.js';
 import type { Bot } from './BotTypes.js';
 
 export const discordenoBot = createBot({
 	desiredProperties: BOT_DESIRED_PROPERTIES,
-	gateway: {
-		compress: true,
-		properties: BOT_GATEWAY_MANAGER_PROPERTIES,
-	},
+	gateway: BOT_GATEWAY_MANAGER_OPTIONS,
 	intents: DISCORD_GATEWAY_INTENTS,
 	token: DISCORD_TOKEN,
 });
@@ -25,9 +22,11 @@ defineReadonlyProperty(bot, 'commands', {
 	chatInput: new Collection(),
 });
 
+const { commandManager, eventManager } = bot;
+
 Promise.all([
-	bot.commandManager.initialize(),
-	bot.eventManager.initialize(),
+	commandManager.initialize(),
+	eventManager.initialize(),
 ]);
 
 bot.start();
