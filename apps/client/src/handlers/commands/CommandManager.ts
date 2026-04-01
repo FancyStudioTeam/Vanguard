@@ -1,6 +1,6 @@
 import type { Dirent } from 'node:fs';
 import { glob } from 'node:fs/promises';
-import { join } from 'node:path/win32';
+import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { pathToFileURL } from 'node:url';
 import type { CreateApplicationCommand } from '@discordeno/bot';
