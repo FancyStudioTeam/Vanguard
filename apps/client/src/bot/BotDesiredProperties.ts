@@ -9,6 +9,7 @@ export const DESIRED_GUILD_PROPERTIES = {
 } satisfies DesiredGuildProperties;
 
 export const DESIRED_INTERACTION_PROPERTIES = {
+	data: true,
 	id: true,
 	token: true,
 } satisfies DesiredInteractionProperties;

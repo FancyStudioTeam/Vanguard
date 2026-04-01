@@ -25,9 +25,9 @@ defineReadonlyProperty(bot, 'commands', {
 	chatInput: new Collection(),
 });
 
-await Promise.allSettled([
+Promise.all([
 	bot.commandManager.initialize(),
 	bot.eventManager.initialize(),
 ]);
 
-await bot.start();
+bot.start();
