@@ -18,6 +18,7 @@
 	"imports": {
 		"#bot/*": "./dist/bot/*",
 		"#handlers/*": "./dist/handlers/*",
+		"#jsx/*": "./dist/jsx/*",
 		"#lib/*": "./dist/lib/*",
 		"#utils/*": "./dist/utils/*"
 	},

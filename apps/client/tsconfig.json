@@ -1,5 +1,7 @@
 {
 	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "#jsx",
 		"outDir": "dist",
 		"paths": {
 			"#bot/*": [
@@ -7,6 +9,9 @@
 			],
 			"#handlers/*": [
 				"./src/handlers/*"
+			],
+			"#jsx/*": [
+				"./src/jsx/*"
 			],
 			"#lib/*": [
 				"./src/lib/*"
@@ -20,8 +25,5 @@
 			"node"
 		]
 	},
-	"extends": "../../tsconfig.base.json",
-	"include": [
-		"src/**/*.ts"
-	]
+	"extends": "../../tsconfig.base.json"
 }
