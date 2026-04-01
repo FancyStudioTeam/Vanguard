@@ -7,6 +7,7 @@ import type { CreateApplicationCommand } from '@discordeno/bot';
 import type { Bot } from '#bot/BotTypes.js';
 import type { DeclarableCommandConstructor } from '#handlers/decorators/DeclareTypes.js';
 import { ChatInputCommandHandler } from './structures/ChatInputCommandHandler.js';
+import { UserContextCommandHandler } from './structures/UserContextCommandHandler.js';
 
 const COMMANDS_PATTERNS = [
 	'**/commands/**/*.command.{js,ts}',
@@ -38,7 +39,7 @@ export class CommandManager {
 	}
 
 	private getCommandHandlerOptions(
-		commandInstance: ChatInputCommandHandler,
+		commandInstance: ChatInputCommandHandler | UserContextCommandHandler,
 	): CreateApplicationCommand {
 		const { bot } = this;
 
@@ -46,8 +47,11 @@ export class CommandManager {
 			case commandInstance instanceof ChatInputCommandHandler: {
 				return this.handleChatInputCommandHandler(bot, commandInstance);
 			}
+			case commandInstance instanceof UserContextCommandHandler: {
+				return this.handleUserContextCommandHandler(bot, commandInstance);
+			}
 			default: {
-				throw new Error(`Command instance '${commandInstance}' is not handled`);
+				throw new Error('Command instance is not handled');
 			}
 		}
 	}
@@ -64,6 +68,22 @@ export class CommandManager {
 		const { name } = options;
 
 		chatInput.set(name, chatInputCommandHandler);
+
+		return options;
+	}
+
+	private handleUserContextCommandHandler(
+		bot: Bot,
+		userContextCommandHandler: UserContextCommandHandler,
+	): CreateApplicationCommand {
+		const { commands } = bot;
+		const { userContext } = commands;
+
+		const options = userContextCommandHandler.toOptions();
+
+		const { name } = options;
+
+		userContext.set(name, userContextCommandHandler);
 
 		return options;
 	}

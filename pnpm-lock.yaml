@@ -33,8 +33,8 @@ importers:
   apps/client:
     dependencies:
       '@discordeno/bot':
-        specifier: 21.0.0
-        version: 21.0.0
+        specifier: 22.0.1-next.09f2dfd
+        version: 22.0.1-next.09f2dfd
       '@discordjs/formatters':
         specifier: 0.6.2
         version: 0.6.2
@@ -333,20 +333,20 @@ packages:
   '@dabh/diagnostics@2.0.8':
     resolution: {integrity: sha512-R4MSXTVnuMzGD7bzHdW2ZhhdPC/igELENcq5IjEverBvq5hn1SXCWcsi6eSsdWP0/Ur+SItRRjAktmdoX/8R/Q==}
 
-  '@discordeno/bot@21.0.0':
-    resolution: {integrity: sha512-x6EcVHBvWIhjY5/lcwgZzzCiqdpKFZqu2qUaZqKb7RYS8L8Q8zY40hCnbToVehLB8+BGcnHzxCeEvWWg8tnT/g==}
+  '@discordeno/bot@22.0.1-next.09f2dfd':
+    resolution: {integrity: sha512-9XeWkLgYVLqIpXKuLZSL3u8ksHt78a59gEBIaIGsHxAiSowjWOrjQX7bSX/aAiWXAiu/CPel12M0stJ6rZddlw==}
 
-  '@discordeno/gateway@21.0.0':
-    resolution: {integrity: sha512-ur5Hatd1x86PPI4UnXKghAWat3vS90NvLJcpOSu1B1gYSENRZow8dohZ8Ov58SXWq5nZVuBYDJNCR248pWJvrg==}
+  '@discordeno/gateway@22.0.1-next.09f2dfd':
+    resolution: {integrity: sha512-WJ0Mk4ZiNxKr4xa0QtpLBoabz+uYN95OnnuzD+7IknBuda/xRPl4XtwPlVkb5KImZKhqtlTcUR122Jcwrg0OaQ==}
 
-  '@discordeno/rest@21.0.0':
-    resolution: {integrity: sha512-ew5ddhUd7Qyv/GSzCy42bEmRv0yr2PspCMsLD/NeMiTLd3+OrVN5pAxBN9z+9JpS/daiiD/PVmvuUAVx/nXTEw==}
+  '@discordeno/rest@22.0.1-next.09f2dfd':
+    resolution: {integrity: sha512-cutxKLOFkZQzXJFE2K0wWat7oD/K65X/HvPWc2DSwLywU5+5UJ8zDZyf6N0f1i/8cyPHgbzL/Rwzs7G35ivlMQ==}
 
-  '@discordeno/types@21.0.0':
-    resolution: {integrity: sha512-TUZAEqqlXRNQji+NCaQo8DruzI8rXbBvMaZYsZvN9f03PrdSddzMOy3cjs4eeL6ZMVocmMVRIaVnB713blylCw==}
+  '@discordeno/types@22.0.1-next.09f2dfd':
+    resolution: {integrity: sha512-1IW1W5kAT8Cb/SgFplxTNPHOMDuyJjvIw6CGdJku0u4d0Qv3RBArMZQYpTrJasGYmfENdvr/0yeYHEYLY+dTag==}
 
-  '@discordeno/utils@21.0.0':
-    resolution: {integrity: sha512-I7I3Szlk+LkT/CRmJJiLPsjuBUjbuXUCvOzsgWCltkxDMIGmQeNoQtFK7t89V1Gcc4icsrnHVMho1BcaAITijg==}
+  '@discordeno/utils@22.0.1-next.09f2dfd':
+    resolution: {integrity: sha512-AhHacd1BwB8bzqoj1o/2dnIXnzRI7Qjq2loVzjgh9b7XIAveHoavs3rMhqbXcZtw59V4GAzvZMxXXVs0KvOcOw==}
 
   '@discordjs/collection@2.1.1':
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
@@ -3591,20 +3591,20 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@discordeno/bot@21.0.0':
+  '@discordeno/bot@22.0.1-next.09f2dfd':
     dependencies:
-      '@discordeno/gateway': 21.0.0
-      '@discordeno/rest': 21.0.0
-      '@discordeno/types': 21.0.0
-      '@discordeno/utils': 21.0.0
+      '@discordeno/gateway': 22.0.1-next.09f2dfd
+      '@discordeno/rest': 22.0.1-next.09f2dfd
+      '@discordeno/types': 22.0.1-next.09f2dfd
+      '@discordeno/utils': 22.0.1-next.09f2dfd
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@discordeno/gateway@21.0.0':
+  '@discordeno/gateway@22.0.1-next.09f2dfd':
     dependencies:
-      '@discordeno/types': 21.0.0
-      '@discordeno/utils': 21.0.0
+      '@discordeno/types': 22.0.1-next.09f2dfd
+      '@discordeno/utils': 22.0.1-next.09f2dfd
       ws: 8.20.0
     optionalDependencies:
       fzstd: 0.1.1
@@ -3612,16 +3612,16 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@discordeno/rest@21.0.0':
+  '@discordeno/rest@22.0.1-next.09f2dfd':
     dependencies:
-      '@discordeno/types': 21.0.0
-      '@discordeno/utils': 21.0.0
+      '@discordeno/types': 22.0.1-next.09f2dfd
+      '@discordeno/utils': 22.0.1-next.09f2dfd
 
-  '@discordeno/types@21.0.0': {}
+  '@discordeno/types@22.0.1-next.09f2dfd': {}
 
-  '@discordeno/utils@21.0.0':
+  '@discordeno/utils@22.0.1-next.09f2dfd':
     dependencies:
-      '@discordeno/types': 21.0.0
+      '@discordeno/types': 22.0.1-next.09f2dfd
 
   '@discordjs/collection@2.1.1': {}
 
