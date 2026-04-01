@@ -59,9 +59,7 @@ export default class AvatarCommand extends UserContextCommandHandler {
 		};
 	}
 
-	private getUserAvatarUrl(user: User): string {
-		const { avatar, discriminator, id } = user;
-
+	private getUserAvatarUrl({ avatar, discriminator, id }: User): string {
 		if (!avatar) {
 			return defaultAvatarUrl(id, discriminator);
 		}
