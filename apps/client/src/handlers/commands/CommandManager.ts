@@ -10,7 +10,7 @@ import { ChatInputCommandHandler } from './structures/ChatInputCommandHandler.js
 import { UserContextCommandHandler } from './structures/UserContextCommandHandler.js';
 
 const COMMANDS_PATTERNS = [
-	'**/commands/**/*.command.{js,ts}',
+	'**/commands/**/*.command.{js,jsx,ts,tsx}',
 ];
 
 export class CommandManager {

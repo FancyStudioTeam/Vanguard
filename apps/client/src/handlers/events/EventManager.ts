@@ -7,7 +7,7 @@ import type { Bot, BotEventNames } from '#bot/BotTypes.js';
 import type { EventListener } from './EventTypes.js';
 
 const EVENTS_PATTERNS = [
-	'**/events/**/*.event.{js,ts}',
+	'**/events/**/*.event.{js,jsx,ts,tsx}',
 ];
 
 export class EventManager {
