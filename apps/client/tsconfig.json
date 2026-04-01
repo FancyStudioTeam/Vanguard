@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"jsx": "react-jsx",
-		"jsxImportSource": "#jsx",
+		"jsxImportSource": "ddenox",
 		"outDir": "dist",
 		"paths": {
 			"#bot/*": [
@@ -9,9 +9,6 @@
 			],
 			"#handlers/*": [
 				"./src/handlers/*"
-			],
-			"#jsx/*": [
-				"./src/jsx/*"
 			],
 			"#lib/*": [
 				"./src/lib/*"

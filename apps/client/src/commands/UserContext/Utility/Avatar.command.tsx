@@ -4,9 +4,9 @@ import {
 	defaultAvatarUrl,
 	MessageFlags,
 } from '@discordeno/bot';
+import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from 'ddenox/components';
 import { UserContextCommandHandler } from '#handlers/commands/structures/UserContextCommandHandler.js';
 import { Declare } from '#handlers/decorators/Declare.js';
-import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from '#jsx/components.js';
 import type { User } from '#lib/InferredTypes.js';
 
 @Declare({
