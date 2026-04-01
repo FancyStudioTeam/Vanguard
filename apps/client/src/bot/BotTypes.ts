@@ -1,4 +1,4 @@
-import type { Collection } from '@discordjs/collection';
+import type { Collection } from '@discordeno/bot';
 import type { CommandManager } from '#handlers/commands/CommandManager.js';
 import type { ChatInputCommandHandler } from '#handlers/commands/structures/ChatInputCommandHandler.js';
 import type { EventManager } from '#handlers/events/EventManager.js';

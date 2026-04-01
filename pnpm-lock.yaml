@@ -35,9 +35,6 @@ importers:
       '@discordeno/bot':
         specifier: 21.0.0
         version: 21.0.0
-      '@discordjs/collection':
-        specifier: 2.1.1
-        version: 2.1.1
       '@discordjs/formatters':
         specifier: 0.6.2
         version: 0.6.2

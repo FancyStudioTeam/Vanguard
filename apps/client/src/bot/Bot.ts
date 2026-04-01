@@ -1,5 +1,4 @@
-import { createBot } from '@discordeno/bot';
-import { Collection } from '@discordjs/collection';
+import { Collection, createBot } from '@discordeno/bot';
 import { CommandManager } from '#handlers/commands/CommandManager.js';
 import { EventManager } from '#handlers/events/EventManager.js';
 import { defineReadonlyProperty } from '#utils/defineReadonlyProperty.js';
@@ -24,6 +23,8 @@ defineReadonlyProperty(bot, 'eventManager', new EventManager(bot));
 
 defineReadonlyProperty(bot, 'commands', {
 	chatInput: new Collection(),
+	messageContext: new Collection(),
+	userContext: new Collection(),
 });
 
 const { commandManager, eventManager } = bot;
