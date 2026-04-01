@@ -3,11 +3,11 @@ import { HandlerBase } from '#handlers/base/HandlerBase.js';
 import type { Constructor } from '#lib/Types.js';
 
 export abstract class ChatInputCommandHandler extends HandlerBase {
-	declare readonly declare: ChatInputCommandHandlerDeclareOptions;
+	public declare readonly declare: ChatInputCommandHandlerDeclareOptions;
 
-	abstract run(): unknown;
+	public abstract run(): unknown;
 
-	toOptions(): CreateApplicationCommand {
+	public toOptions(): CreateApplicationCommand {
 		const { declare } = this;
 
 		return {

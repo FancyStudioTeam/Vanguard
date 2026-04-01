@@ -3,11 +3,11 @@ import { HandlerBase } from '#handlers/base/HandlerBase.js';
 import type { Constructor } from '#lib/Types.js';
 
 export abstract class UserContextCommandHandler extends HandlerBase {
-	declare readonly declare: UserContextCommandHandlerDeclareOptions;
+	public declare readonly declare: UserContextCommandHandlerDeclareOptions;
 
-	abstract run(): unknown;
+	public abstract run(): unknown;
 
-	toOptions(): CreateApplicationCommand {
+	public toOptions(): CreateApplicationCommand {
 		const { declare } = this;
 
 		return {
