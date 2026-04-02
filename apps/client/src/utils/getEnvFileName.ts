@@ -1,12 +1,7 @@
-import { env } from 'node:process';
-
-const { NODE_ENV = 'production' } = env;
+import { IS_PRODUCTION_ENVIRONMENT } from '#lib/Constants.js';
 
 export function getEnvFileName(): EnvironmentFileName {
-	const productionStringRegex = /production/i;
-	const isProductionEnvironment = productionStringRegex.test(NODE_ENV);
-
-	return isProductionEnvironment ? '.env.production' : '.env.development';
+	return IS_PRODUCTION_ENVIRONMENT ? '.env.production' : '.env.development';
 }
 
 type EnvironmentFileName = '.env.production' | '.env.development';
