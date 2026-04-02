@@ -5,8 +5,7 @@ import {
 	MessageFlags,
 } from '@discordeno/bot';
 import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from 'ddenox/components';
-import { UserContextCommandHandler } from '#handlers/commands/structures/UserContextCommandHandler.js';
-import { Declare } from '#handlers/decorators/Declare.js';
+import { Declare, UserContextCommandHandler } from 'ddenox/handlers';
 import type { User } from '#lib/InferredTypes.js';
 
 @Declare({

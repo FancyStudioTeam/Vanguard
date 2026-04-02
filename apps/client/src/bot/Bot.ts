@@ -29,7 +29,9 @@ export const enhancedBot = createEnhancedBot(discordenoBot, {
 
 export const bot = enhancedBot as Bot;
 
-bot.initializeModules();
+bot.commandManager.register();
+bot.eventManager.register();
+
 bot.start();
 
 declare module 'ddenox' {
