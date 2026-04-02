@@ -1,5 +1,5 @@
 import { ApplicationCommandTypes, type CreateApplicationCommand } from '@discordeno/bot';
-import { HandlerBase } from '#handlers/base/HandlerBase.js';
+import { HandlerBase } from 'ddenox/handlers';
 import type { User } from '#lib/InferredTypes.js';
 import type { Constructor } from '#lib/Types.js';
 

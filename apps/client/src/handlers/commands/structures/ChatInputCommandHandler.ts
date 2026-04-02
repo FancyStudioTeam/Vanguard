@@ -1,5 +1,5 @@
 import { ApplicationCommandTypes, type CreateApplicationCommand } from '@discordeno/bot';
-import { HandlerBase } from '#handlers/base/HandlerBase.js';
+import { HandlerBase } from 'ddenox/handlers';
 import type { Constructor } from '#lib/Types.js';
 
 export abstract class ChatInputCommandHandler extends HandlerBase {
