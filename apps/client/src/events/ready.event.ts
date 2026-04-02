@@ -5,7 +5,7 @@ export default defineEventListener({
 	data: {
 		name: 'ready',
 	},
-	run: (payload) => {
+	run(payload) {
 		const { user } = payload;
 		const { username } = user;
 

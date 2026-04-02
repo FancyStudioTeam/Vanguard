@@ -1,14 +1,15 @@
 /* biome-ignore-all lint/complexity/useLiteralKeys: (x) */
 
 import { ApplicationCommandTypes } from '@discordeno/bot';
+import { defineEventListener } from 'ddenox/handlers';
 import { bot } from '#bot/Bot.js';
-import { defineEventListener } from '#handlers/events/functions/defineEventListener.js';
 
 export default defineEventListener({
 	data: {
 		name: 'interactionCreate',
 	},
 	run: async (interaction) => {
+		console.log(interaction);
 		const { data } = interaction;
 
 		if (!data) {
