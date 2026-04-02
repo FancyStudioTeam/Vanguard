@@ -12,6 +12,7 @@ export const DESIRED_INTERACTION_PROPERTIES = {
 	data: true,
 	id: true,
 	token: true,
+	type: true,
 } satisfies DesiredInteractionProperties;
 
 export const DESIRED_MESSAGE_PROPERTIES = {

@@ -1981,7 +1981,7 @@ packages:
     resolution: {integrity: sha512-3VmRXEtw7RZKAf+4Tv1Ym9AGeo8r8+CjDi26x+7SYQil1UqtqdaokhzoEJohqlzt0m5kacJSDhJQkG/LWhpRBw==}
 
   ddenox@file:apps/client/ddenox-0.1.0.tgz:
-    resolution: {integrity: sha512-ANP9No1u+WHMk4XR/vjpWw+X7KP/muVZHjkDvioFkHsJCeZiMjk/Y0pJl0IosQghWOCl7Xkj54/CefRjil5VOw==, tarball: file:apps/client/ddenox-0.1.0.tgz}
+    resolution: {integrity: sha512-nkexpVXI34PLJyPjRIND8XvLfVqJRxIq0moB3O/m6HU4eu72rTxd8Q9HyGFsK0hb0Njy1Lyu1SCgHwTHb/obrA==, tarball: file:apps/client/ddenox-0.1.0.tgz}
     version: 0.1.0
 
   debug@3.2.7:
