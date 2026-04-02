@@ -1,7 +1,7 @@
-import { IS_PRODUCTION_ENVIRONMENT } from '#lib/Constants.js';
+import { isProductionEnvironment } from './isProductionEnvironment.js';
 
 export function getEnvFileName(): EnvironmentFileName {
-	return IS_PRODUCTION_ENVIRONMENT ? '.env.production' : '.env.development';
+	return isProductionEnvironment() ? '.env.production' : '.env.development';
 }
 
 type EnvironmentFileName = '.env.production' | '.env.development';
