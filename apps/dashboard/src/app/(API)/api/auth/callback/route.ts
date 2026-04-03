@@ -4,8 +4,8 @@ import type { RESTGetAPIUserResult, RESTPostOAuth2AccessTokenResult } from 'disc
 import { cookies as NextCookies } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
 import { sessionsCollection } from '#/lib/auth/MongoDB.ts';
-import { EncryptionUtils } from '#/lib/Encryption.ts';
 import { logger } from '#/lib/Logger.ts';
+import { encrypt } from '#/utils/encryption/encrypt.ts';
 import {
 	INTERNAL_SERVER_ERROR_RESPONSE,
 	INVALID_AUTHORIZATION_STATE_RESPONSE,
@@ -96,8 +96,8 @@ export async function GET(nextRequest: NextRequest) {
 		/*
 		 * Keep personal and private information from users encrypted.
 		 */
-		const encryptedAccessToken = EncryptionUtils.encrypt(accessToken);
-		const encryptedRefreshToken = EncryptionUtils.encrypt(refreshToken);
+		const encryptedAccessToken = encrypt(accessToken);
+		const encryptedRefreshToken = encrypt(refreshToken);
 
 		const sessionIdBytes = randomBytes(SESSION_ID_BYTES_LENGTH);
 		const sessionId = sessionIdBytes.toString('hex');
