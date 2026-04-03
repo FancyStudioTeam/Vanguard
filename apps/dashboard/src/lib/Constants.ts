@@ -2,17 +2,23 @@ import 'server-only';
 import { env } from 'node:process';
 
 export const {
-	AUTH_SECRET = 'youshallnopass',
+	AUTH_SECRET,
 
-	BASE_URL = 'http://localhost:3000',
+	BASE_URL,
 
-	CLIENT_ID = '1234567890987654321',
-	CLIENT_SECRET = 'youshallnopass',
-	CLIENT_TOKEN = 'xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx',
+	CLIENT_ID,
+	CLIENT_SECRET,
+	CLIENT_TOKEN,
 
-	ENCRYPTION_KEY = 'youshallnopass',
+	ENCRYPTION_KEY,
 
-	MONGO_DB_COLLECTION_NAME = 'sessions',
-	MONGO_DB_CONNECTION_URL = 'mongodb://localhost:27017',
-	MONGO_DB_DATABASE_NAME = 'sessions',
+	MONGO_DB_COLLECTION_NAME,
+	MONGO_DB_CONNECTION_URL,
+	MONGO_DB_DATABASE_NAME,
 } = env;
+
+export const JSON_WEB_TOKEN_AUDIENCE = 'https://vanguard.fancystudio.xyz/api' as const;
+export const JSON_WEB_TOKEN_ISSUER = 'https://vanguard.fancystudio.xyz' as const;
+
+export const TEXT_ENCODER = new TextEncoder();
+export const TEXT_ENCODER_SECRET = TEXT_ENCODER.encode(AUTH_SECRET);
