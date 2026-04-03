@@ -18,5 +18,5 @@ export interface SessionDocument {
 
 export interface SessionDocumentCredentials {
 	accessToken: string;
-	refeshToken: string;
+	refreshToken: string;
 }

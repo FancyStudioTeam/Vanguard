@@ -105,7 +105,7 @@ export async function GET(nextRequest: NextRequest) {
 		await sessionsCollection.insertOne({
 			credentials: {
 				accessToken: encryptedAccessToken,
-				refeshToken: encryptedRefreshToken,
+				refreshToken: encryptedRefreshToken,
 			},
 			sessionId,
 		});
