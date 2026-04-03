@@ -3,5 +3,9 @@ import { type JsonWebTokenPayload, verifyJsonWebToken } from '../jose/verifyJson
 export async function verifySessionCookie(
 	sessionCookieValue: string | null,
 ): Promise<JsonWebTokenPayload | null> {
-	return await verifyJsonWebToken(sessionCookieValue ?? '');
+	if (!sessionCookieValue) {
+		return null;
+	}
+
+	return await verifyJsonWebToken(sessionCookieValue);
 }
