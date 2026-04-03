@@ -18,7 +18,7 @@ export function NavbarProfileDropdownLink({
 				href={href}
 				target={target}
 			>
-				<span className='truncate text-sm'>{text}</span>
+				<span className='truncate'>{text}</span>
 				<Icon
 					className='srink-0 size-5 text-neutral-400'
 					weight='duotone'
