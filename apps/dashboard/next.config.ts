@@ -16,7 +16,7 @@ export default {
 	redirects() {
 		return [
 			{
-				destination: 'https://github.com/FancyStudioTeam',
+				destination: 'https://github.com/FancyStudioTeam/Vanguard',
 				permanent: true,
 				source: '/github',
 			},
