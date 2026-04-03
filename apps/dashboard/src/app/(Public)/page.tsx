@@ -1,5 +1,3 @@
-import { PageLayout } from '#/layouts/PageLayout.tsx';
-
 export default function () {
-	return <PageLayout></PageLayout>;
+	return <h1>Home</h1>;
 }
