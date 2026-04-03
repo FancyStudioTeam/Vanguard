@@ -1,3 +1,4 @@
+import type { SessionEndpointDataResponse } from '#/lib/responses/Auth.ts';
 import 'client-only';
 import { useRouter } from 'next/navigation';
 import useSwr from 'swr';
@@ -27,6 +28,6 @@ export function useSession() {
 }
 
 interface SwrSessionEndpointResponse {
-	data: unknown | null;
+	data: SessionEndpointDataResponse | null;
 	success: boolean;
 }
