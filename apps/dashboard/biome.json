@@ -44,6 +44,7 @@
 						"functions": [
 							"class",
 							"className",
+							"cva",
 							"twMerge"
 						]
 					}
