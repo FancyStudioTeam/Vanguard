@@ -64,6 +64,6 @@ export const JoseUtils = {
 	},
 } as const;
 
-interface JsonWebTokenPayload extends JWTPayload {
+export interface JsonWebTokenPayload extends JWTPayload {
 	user: User;
 }
