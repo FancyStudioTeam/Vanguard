@@ -11,20 +11,23 @@ export function useSession() {
 		isLoading,
 		isValidating,
 	} = useSwr<SwrSessionEndpointResponse>('/api/auth/session', fetcher);
-
-	const { data } = response ?? {};
+	const { data: responseData } = response ?? {};
 
 	return {
 		session: {
-			data,
 			error,
 			isLoading,
 			isValidating,
+			responseData,
 		},
 	};
 }
 
 interface SwrSessionEndpointResponse {
-	data: User | null;
+	data: SwrSessionEndpointResponseData | null;
 	success: boolean;
+}
+
+interface SwrSessionEndpointResponseData {
+	user: User;
 }
