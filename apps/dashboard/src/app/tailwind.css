@@ -4,3 +4,7 @@
 @theme inline {
 	--font-general-sans: var(--font-general-sans);
 }
+
+* {
+	@apply focus:outline-0;
+}
