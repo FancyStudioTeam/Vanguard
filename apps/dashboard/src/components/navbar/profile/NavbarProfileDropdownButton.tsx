@@ -9,6 +9,7 @@ export function NavbarProfileDropdownButton({ user }: NavbarProfileDropdownButto
 	return (
 		<Button
 			asChild={true}
+			className='w-full max-w-40'
 			variant='secondary'
 		>
 			<DropdownMenuTrigger>

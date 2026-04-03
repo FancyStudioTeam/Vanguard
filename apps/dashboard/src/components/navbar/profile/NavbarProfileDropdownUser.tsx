@@ -1,3 +1,4 @@
+import { UserIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/Avatar.tsx';
 import type { User } from '#/lib/types/User.ts';
@@ -16,7 +17,12 @@ export function NavbarProfileDropdownUser({ user }: NavbarProfileDropdownUserPro
 		>
 			<Avatar>
 				<AvatarImage src={userAvatarUrl} />
-				<AvatarFallback>{name}</AvatarFallback>
+				<AvatarFallback>
+					<UserIcon
+						className='srink-0 size-5'
+						weight='duotone'
+					/>
+				</AvatarFallback>
 			</Avatar>
 			<ul>
 				<li className='truncate font-bold'>@{name}</li>

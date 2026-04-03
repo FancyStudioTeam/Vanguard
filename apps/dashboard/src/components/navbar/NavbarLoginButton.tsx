@@ -6,7 +6,7 @@ export function NavbarLoginButton() {
 	return (
 		<Button
 			asChild={true}
-			className='max-w-50'
+			className='w-full max-w-40'
 			variant='secondary'
 		>
 			<Link href='/api/auth/sign-in'>
