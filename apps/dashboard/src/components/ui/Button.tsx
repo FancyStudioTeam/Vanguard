@@ -9,6 +9,7 @@ const buttonVariants = cva(
 			variant: {
 				default: 'bg-neutral-50 text-neutral-950 hover:bg-neutral-50/75',
 				ghost: 'bg-transparent hover:bg-neutral-800/75',
+				secondary: 'bg-neutral-800 hover:bg-neutral-800/75',
 			},
 		},
 	},
