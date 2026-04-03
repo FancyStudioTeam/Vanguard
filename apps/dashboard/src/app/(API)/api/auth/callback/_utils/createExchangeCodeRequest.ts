@@ -3,7 +3,7 @@ import 'server-only';
 import { type RESTPostOAuth2AccessTokenResult, Routes } from 'discord-api-types/v10';
 import { CLIENT_ID, CLIENT_SECRET } from '#/lib/Constants.ts';
 import { rest } from '#/lib/REST.ts';
-import { createCallbackUrl } from '#/utils/createCallbackUrl.ts';
+import { createCallbackUrl } from '#/utils/url/createCallbackUrl.ts';
 
 const { oauth2TokenExchange } = Routes;
 
@@ -29,8 +29,8 @@ export async function createExchangeCodeRequest(
 function createExchangeCodeRequestBody(code: string): URLSearchParams {
 	// biome-ignore-start lint/style/useNamingConvention: (x)
 	return new URLSearchParams({
-		client_id: CLIENT_ID,
-		client_secret: CLIENT_SECRET,
+		client_id: CLIENT_ID ?? '',
+		client_secret: CLIENT_SECRET ?? '',
 		code,
 		grant_type: 'authorization_code',
 		redirect_uri: createCallbackUrl(),

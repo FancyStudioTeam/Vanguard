@@ -1,7 +1,7 @@
 import { cookies as NextCookies } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
 import { logger } from '#/lib/Logger.ts';
-import { createRedirectUrl } from '#/utils/createRedirectUrl.ts';
+import { createRedirectUrl } from '#/utils/url/createRedirectUrl.ts';
 import { INTERNAL_SERVER_ERROR_RESPONSE } from './_lib/Responses.ts';
 import { createAuthState } from './_utils/createAuthState.ts';
 

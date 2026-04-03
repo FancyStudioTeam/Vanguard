@@ -31,7 +31,7 @@ export function createRedirectUrl(state: string): string {
 	 */
 	authorizationUrl.search = `scope=${scopesString}`;
 
-	searchParams.set('client_id', CLIENT_ID);
+	searchParams.set('client_id', CLIENT_ID ?? '');
 	searchParams.set('redirect_uri', callbackUrl);
 	searchParams.set('response_type', 'code');
 
