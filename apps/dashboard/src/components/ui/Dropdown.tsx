@@ -8,13 +8,16 @@ export function DropdownMenu({ ...props }: DropdownMenuProps) {
 
 export function DropdownMenuContent({ className, ...props }: DropdownMenuContentProps) {
 	return (
-		<RadixDropdownMenu.Content
-			{...props}
-			className={twMerge(
-				'z-50 data-[state=closed]:animate-duration-100 data-[state=closed]:animate-fade-out-up data-[state=open]:animate-duration-100 data-[state=open]:animate-fade-in-down',
-				className,
-			)}
-		/>
+		<RadixDropdownMenu.Portal>
+			<RadixDropdownMenu.Content
+				className={twMerge(
+					'z-50 flex w-60 max-w-60 flex-col gap-2 rounded-xl border-2 border-neutral-800 bg-neutral-900 p-2 shadow-md data-[state=open]:animate-duration-100 data-[state=open]:animate-fade-in-down',
+					className,
+				)}
+				sideOffset={5}
+				{...props}
+			/>
+		</RadixDropdownMenu.Portal>
 	);
 }
 
@@ -22,23 +25,23 @@ export function DropdownMenuGroup({ ...props }: DropdownMenuGroupProps) {
 	return <RadixDropdownMenu.Group {...props} />;
 }
 
-export function DropdownMenuItem({ ...props }: DropdownMenuItemProps) {
-	return <RadixDropdownMenu.Item {...props} />;
-}
-
-export function DropdownMenuLabel({ ...props }: DropdownMenuLabelProps) {
-	return <RadixDropdownMenu.Label {...props} />;
-}
-
-export function DropdownMenuPortal({ ...props }: DropdownMenuPortalProps) {
-	return <RadixDropdownMenu.Portal {...props} />;
+export function DropdownMenuItem({ className, ...props }: DropdownMenuItemProps) {
+	return (
+		<RadixDropdownMenu.Item
+			className={twMerge(
+				'rounded-md p-2 transition-colors hover:bg-neutral-800/75',
+				className,
+			)}
+			{...props}
+		/>
+	);
 }
 
 export function DropdownMenuSeparator({ className, ...props }: DropdownMenuSeparatorProps) {
 	return (
 		<RadixDropdownMenu.Separator
+			className={twMerge('h-0.5 bg-neutral-800', className)}
 			{...props}
-			className={twMerge('h-px bg-neutral-700', className)}
 		/>
 	);
 }
@@ -50,8 +53,6 @@ export function DropdownMenuTrigger({ ...props }: DropdownMenuTriggerProps) {
 export type DropdownMenuContentProps = ComponentProps<typeof RadixDropdownMenu.Content>;
 export type DropdownMenuGroupProps = ComponentProps<typeof RadixDropdownMenu.Group>;
 export type DropdownMenuItemProps = ComponentProps<typeof RadixDropdownMenu.Item>;
-export type DropdownMenuLabelProps = ComponentProps<typeof RadixDropdownMenu.Label>;
-export type DropdownMenuPortalProps = ComponentProps<typeof RadixDropdownMenu.Portal>;
 export type DropdownMenuProps = ComponentProps<typeof RadixDropdownMenu.Root>;
 export type DropdownMenuSeparatorProps = ComponentProps<typeof RadixDropdownMenu.Separator>;
 export type DropdownMenuTriggerProps = ComponentProps<typeof RadixDropdownMenu.Trigger>;
