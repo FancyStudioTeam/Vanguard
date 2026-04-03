@@ -5,7 +5,7 @@ import {
 	OK_STATUS_CODE,
 	OK_STATUS_TEXT,
 } from '#/lib/HttpStatus.ts';
-import type { SessionEndpointDataResponse } from '#/lib/responses/Auth.ts';
+import type { User } from '#/lib/types/User.ts';
 import { createErrorJsonResponse } from '#/utils/createErrorJsonResponse.ts';
 import { createJsonResponse } from '#/utils/createJsonResponse.ts';
 
@@ -15,7 +15,7 @@ export const INTERNAL_SERVER_ERROR_RESPONSE = () =>
 		message: 'Something went wrong while processing your request',
 	});
 
-export const SESSION_RESPONSE = (user: SessionEndpointDataResponse) =>
+export const SESSION_RESPONSE = (user: User) =>
 	createJsonResponse(OK_STATUS_CODE, OK_STATUS_TEXT, {
 		user,
 	});

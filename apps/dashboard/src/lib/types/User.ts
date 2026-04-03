@@ -1,6 +1,6 @@
 import type { Snowflake } from 'discord-api-types/globals';
 
-export interface SessionEndpointDataResponse {
+export interface User {
 	avatar: string | null;
 	id: Snowflake;
 	name: string;

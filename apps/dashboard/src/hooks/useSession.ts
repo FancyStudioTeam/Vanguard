@@ -1,7 +1,6 @@
-import type { SessionEndpointDataResponse } from '#/lib/responses/Auth.ts';
 import 'client-only';
-import { useRouter } from 'next/navigation';
 import useSwr from 'swr';
+import type { User } from '#/lib/types/User.ts';
 
 const fetcher = (url: string) => fetch(url).then((response) => response.json());
 
@@ -14,7 +13,6 @@ export function useSession() {
 	} = useSwr<SwrSessionEndpointResponse>('/api/auth/session', fetcher);
 
 	const { data } = response ?? {};
-	const { replace } = useRouter();
 
 	return {
 		session: {
@@ -23,11 +21,10 @@ export function useSession() {
 			isLoading,
 			isValidating,
 		},
-		signIn: () => replace('/api/auth/sign-in'),
 	};
 }
 
 interface SwrSessionEndpointResponse {
-	data: SessionEndpointDataResponse | null;
+	data: User | null;
 	success: boolean;
 }

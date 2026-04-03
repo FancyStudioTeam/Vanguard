@@ -3,6 +3,7 @@ import type { Snowflake } from 'discord-api-types/globals';
 import type { APIUser } from 'discord-api-types/v10';
 import { type JWTPayload, jwtVerify, SignJWT } from 'jose';
 import { AUTH_SECRET } from './Constants.ts';
+import type { User } from './types/User.ts';
 
 const JSON_WEB_TOKEN_AUDIENCE = 'https://vanguard.fancystudio.xyz/api' as const;
 const JSON_WEB_TOKEN_ISSUER = 'https://vanguard.fancystudio.xyz' as const;
@@ -64,11 +65,5 @@ export const JoseUtils = {
 } as const;
 
 interface JsonWebTokenPayload extends JWTPayload {
-	user: JsonWebTokenPayloadUser;
-}
-
-interface JsonWebTokenPayloadUser {
-	avatar: string | null;
-	id: Snowflake;
-	name: string;
+	user: User;
 }
