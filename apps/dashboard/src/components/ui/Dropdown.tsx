@@ -11,7 +11,7 @@ export function DropdownMenuContent({ className, ...props }: DropdownMenuContent
 		<RadixDropdownMenu.Portal>
 			<RadixDropdownMenu.Content
 				className={twMerge(
-					'z-50 flex w-60 max-w-60 flex-col gap-2 rounded-xl border-2 border-neutral-800 bg-neutral-900 p-2 shadow-md data-[state=open]:animate-duration-100 data-[state=open]:animate-fade-in-down',
+					'z-50 flex w-60 max-w-60 flex-col gap-2 rounded-xl border-2 border-neutral-800 bg-neutral-900 p-2 shadow-md shadow-neutral-950/50 data-[state=open]:animate-duration-100 data-[state=open]:animate-fade-in-down',
 					className,
 				)}
 				sideOffset={5}
