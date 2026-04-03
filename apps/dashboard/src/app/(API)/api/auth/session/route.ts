@@ -1,13 +1,14 @@
 import type { NextRequest } from 'next/server';
 import { logger } from '#/lib/Logger.ts';
-import { SessionUtils } from '#/lib/Session.ts';
+import { getSessionCookieValue } from '#/utils/session/getSessionCookieValue.ts';
+import { verifySessionCookie } from '#/utils/session/verifySessionCookie.ts';
 import { INTERNAL_SERVER_ERROR_RESPONSE } from '../sign-in/_lib/Responses.ts';
 import { SESSION_RESPONSE, UNAUTHORIZED_RESPONSE } from './_lib/Responses.ts';
 
 export async function GET(nextRequest: NextRequest) {
 	try {
-		const sessionCookieValue = await SessionUtils.getSessionCookieValue();
-		const jsonWebTokenPayload = await SessionUtils.verifySessionCookie(sessionCookieValue);
+		const sessionCookieValue = await getSessionCookieValue();
+		const jsonWebTokenPayload = await verifySessionCookie(sessionCookieValue);
 
 		if (!jsonWebTokenPayload) {
 			return UNAUTHORIZED_RESPONSE();
