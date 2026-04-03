@@ -3,7 +3,10 @@ import { twMerge } from 'tailwind-merge';
 
 export function VanguardLogo({ className, ...props }: VanguardLogoProps) {
 	return (
-		<span className={twMerge('font-bold text-xl', className)} {...props}>
+		<span
+			className={twMerge('font-bold text-xl', className)}
+			{...props}
+		>
 			Vanguard
 		</span>
 	);

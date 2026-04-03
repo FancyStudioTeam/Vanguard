@@ -29,7 +29,11 @@ export function NavbarProfileDropdownLinks() {
 	return (
 		<DropdownMenuGroup>
 			{DROPDOWN_LINKS.map(({ text, ...link }) => (
-				<NavbarProfileDropdownLink key={text} text={text} {...link} />
+				<NavbarProfileDropdownLink
+					key={text}
+					text={text}
+					{...link}
+				/>
 			))}
 		</DropdownMenuGroup>
 	);

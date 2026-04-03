@@ -22,6 +22,9 @@
 			"!!**/next-env.d.ts"
 		]
 	},
+	"formatter": {
+		"attributePosition": "multiline"
+	},
 	"linter": {
 		"domains": {
 			"next": "all",

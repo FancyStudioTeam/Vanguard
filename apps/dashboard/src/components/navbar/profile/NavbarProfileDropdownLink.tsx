@@ -10,10 +10,19 @@ export function NavbarProfileDropdownLink({
 	text,
 }: NavbarProfileDropdownLinkProps) {
 	return (
-		<DropdownMenuItem asChild={true} className='justify-between'>
-			<Link href={href} target={target}>
+		<DropdownMenuItem
+			asChild={true}
+			className='justify-between'
+		>
+			<Link
+				href={href}
+				target={target}
+			>
 				<span className='truncate text-sm'>{text}</span>
-				<Icon className='srink-0 size-5 text-neutral-400' weight='duotone' />
+				<Icon
+					className='srink-0 size-5 text-neutral-400'
+					weight='duotone'
+				/>
 			</Link>
 		</DropdownMenuItem>
 	);

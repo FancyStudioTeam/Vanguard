@@ -7,9 +7,15 @@ export function NavbarProfileDropdownButton({ user }: NavbarProfileDropdownButto
 	const { name } = user;
 
 	return (
-		<Button asChild={true} variant='secondary'>
+		<Button
+			asChild={true}
+			variant='secondary'
+		>
 			<DropdownMenuTrigger>
-				<UserIcon className='size-5 shrink-0' weight='duotone' />
+				<UserIcon
+					className='size-5 shrink-0'
+					weight='duotone'
+				/>
 				<span className='truncate'>{name}</span>
 			</DropdownMenuTrigger>
 		</Button>

@@ -4,9 +4,16 @@ import { Button } from '../ui/Button.tsx';
 
 export function NavbarLoginButton() {
 	return (
-		<Button asChild={true} className='max-w-50' variant='secondary'>
+		<Button
+			asChild={true}
+			className='max-w-50'
+			variant='secondary'
+		>
 			<Link href='/api/auth/sign-in'>
-				<FingerprintIcon className='size-5 shrink-0' weight='duotone' />
+				<FingerprintIcon
+					className='size-5 shrink-0'
+					weight='duotone'
+				/>
 				<span className='truncate'>Login with Discord</span>
 			</Link>
 		</Button>
