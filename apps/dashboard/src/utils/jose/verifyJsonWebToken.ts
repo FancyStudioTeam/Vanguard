@@ -1,3 +1,4 @@
+import 'server-only';
 import { type JWTPayload, jwtVerify } from 'jose';
 import {
 	JSON_WEB_TOKEN_AUDIENCE,

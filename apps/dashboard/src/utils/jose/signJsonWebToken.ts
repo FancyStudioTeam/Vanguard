@@ -1,3 +1,4 @@
+import 'server-only';
 import type { Snowflake } from 'discord-api-types/globals';
 import type { APIUser } from 'discord-api-types/v10';
 import { SignJWT } from 'jose';

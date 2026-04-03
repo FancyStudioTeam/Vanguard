@@ -29,8 +29,8 @@ export async function createExchangeCodeRequest(
 function createExchangeCodeRequestBody(code: string): URLSearchParams {
 	// biome-ignore-start lint/style/useNamingConvention: (x)
 	return new URLSearchParams({
-		client_id: CLIENT_ID ?? '',
-		client_secret: CLIENT_SECRET ?? '',
+		client_id: CLIENT_ID,
+		client_secret: CLIENT_SECRET,
 		code,
 		grant_type: 'authorization_code',
 		redirect_uri: createCallbackUrl(),
