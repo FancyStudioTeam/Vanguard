@@ -29,7 +29,7 @@ export function DropdownMenuItem({ className, ...props }: DropdownMenuItemProps)
 	return (
 		<RadixDropdownMenu.Item
 			className={twMerge(
-				'rounded-md p-2 transition-colors hover:bg-neutral-800/75',
+				'flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-neutral-800/75',
 				className,
 			)}
 			{...props}

@@ -2,16 +2,17 @@
 
 import { useSession } from '#/hooks/useSession.ts';
 import { NavbarLoginButton } from './NavbarLoginButton.tsx';
+import { NavbarProfileDropdown } from './profile/NavbarProfileDropdown.tsx';
 
 export function NavbarCtaButton() {
 	const { session } = useSession();
-	const { error, isLoading } = session;
+	const { error, isLoading, responseData } = session;
 
-	if (isLoading) {
+	if (isLoading || error || !responseData) {
 		return <NavbarLoginButton />;
 	}
 
-	if (error) {
-		console.error('ERROR: ', error);
-	}
+	const { user } = responseData;
+
+	return <NavbarProfileDropdown user={user} />;
 }

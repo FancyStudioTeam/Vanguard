@@ -1,0 +1,31 @@
+'use client';
+
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuSeparator,
+} from '#/components/ui/Dropdown.tsx';
+import type { User } from '#/lib/types/User.ts';
+import { NavbarProfileDropdownButton } from './NavbarProfileDropdownButton.tsx';
+import { NavbarProfileDropdownLinks } from './NavbarProfileDropdownLinks.tsx';
+import { NavbarProfileDropdownLogout } from './NavbarProfileDropdownLogout.tsx';
+import { NavbarProfileDropdownUser } from './NavbarProfileDropdownUser.tsx';
+
+export function NavbarProfileDropdown({ user }: NavbarProfileDropdownProps) {
+	return (
+		<DropdownMenu>
+			<NavbarProfileDropdownButton user={user} />
+			<DropdownMenuContent>
+				<NavbarProfileDropdownUser user={user} />
+				<DropdownMenuSeparator />
+				<NavbarProfileDropdownLinks />
+				<DropdownMenuSeparator />
+				<NavbarProfileDropdownLogout />
+			</DropdownMenuContent>
+		</DropdownMenu>
+	);
+}
+
+export interface NavbarProfileDropdownProps {
+	user: User;
+}
