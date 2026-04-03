@@ -3,13 +3,13 @@ import { memoryUsage } from 'node:process';
 
 const CONVERSION_FACTOR = 1_024;
 
-export function getMemoryUsage() {
+export function getMemoryUsage(): `${string} MB` {
 	const { heapUsed } = memoryUsage();
 	const heapUsageInMegaBytes = convertToMegaBytes(heapUsed);
 
-	return `${heapUsageInMegaBytes} MB` as const;
+	return `${heapUsageInMegaBytes} MB`;
 }
 
 function convertToMegaBytes(bytes: number): string {
-	return (bytes / (CONVERSION_FACTOR * CONVERSION_FACTOR)).toFixed(2);
+	return (bytes / CONVERSION_FACTOR ** 2).toFixed(2);
 }

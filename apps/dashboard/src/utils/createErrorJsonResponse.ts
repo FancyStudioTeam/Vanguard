@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export function createErrorJsonResponse(
 	statusCode: number,
 	statusText: string,
-	error: ErrorResponseOptions,
+	error: CreateErrorResponseError,
 ): NextResponse {
 	return NextResponse.json(
 		{
@@ -18,7 +18,7 @@ export function createErrorJsonResponse(
 	);
 }
 
-interface ErrorResponseOptions {
+interface CreateErrorResponseError {
 	code: string;
 	details?: Record<string, unknown>;
 	message: string;
