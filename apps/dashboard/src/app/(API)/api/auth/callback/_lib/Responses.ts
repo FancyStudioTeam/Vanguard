@@ -7,7 +7,7 @@ import {
 	TOO_MANY_REQUESTS_STATUS_CODE,
 	TOO_MANY_REQUESTS_STATUS_TEXT,
 } from '#/lib/HttpStatus.ts';
-import { createErrorJsonResponse } from '#/utils/createErrorJsonResponse.ts';
+import { createErrorJsonResponse } from '#/utils/responses/createErrorJsonResponse.ts';
 
 export const INTERNAL_SERVER_ERROR_RESPONSE = () =>
 	createErrorJsonResponse(INTERNAL_SERVER_ERROR_STATUS_CODE, INTERNAL_SERVER_ERROR_STATUS_TEXT, {
