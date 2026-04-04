@@ -41,21 +41,6 @@ export async function getUserGuilds(accessToken: string): Promise<UserGuildsData
 	}
 }
 
-async function createUserGuildsRequest(accessToken: string): Promise<Response> {
-	return await fetch(`${api}/${userGuildsEndpoint()}?with_counts=true`, {
-		cache: 'force-cache',
-		headers: {
-			authorization: `Bearer ${accessToken}`,
-		},
-		next: {
-			revalidate: 15,
-			tags: [
-				`user-guilds-${accessToken}`,
-			],
-		},
-	});
-}
-
 function buildUserGuildsData(userGuilds: UserGuild[]): UserGuildsData {
 	return {
 		guilds: userGuilds,
@@ -78,6 +63,21 @@ function buildUserGuildsRateLimitData(): UserGuildsData {
 		isError: false,
 		isRateLimit: true,
 	};
+}
+
+async function createUserGuildsRequest(accessToken: string): Promise<Response> {
+	return await fetch(`${api}/${userGuildsEndpoint()}?with_counts=true`, {
+		cache: 'force-cache',
+		headers: {
+			authorization: `Bearer ${accessToken}`,
+		},
+		next: {
+			revalidate: 15,
+			tags: [
+				`user-guilds-${accessToken}`,
+			],
+		},
+	});
 }
 
 function filterGuildsWithPermissions(userGuilds: UserGuild[]): UserGuild[] {
