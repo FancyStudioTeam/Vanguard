@@ -13,6 +13,18 @@
 		"paths": {
 			"#/*": [
 				"./src/*"
+			],
+			"#layouts/*": [
+				"./src/layouts/*"
+			],
+			"#lib/*": [
+				"./src/lib/*"
+			],
+			"#types/*": [
+				"./src/types/*"
+			],
+			"#utils/*": [
+				"./src/utils/*"
 			]
 		},
 		"plugins": [
