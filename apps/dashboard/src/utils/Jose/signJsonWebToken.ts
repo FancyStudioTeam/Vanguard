@@ -1,12 +1,7 @@
-import 'server-only';
 import type { Snowflake } from 'discord-api-types/globals';
 import type { APIUser } from 'discord-api-types/v10';
 import { SignJWT } from 'jose';
-import {
-	JSON_WEB_TOKEN_AUDIENCE,
-	JSON_WEB_TOKEN_ISSUER,
-	TEXT_ENCODER_SECRET,
-} from '#/lib/Constants.ts';
+import { AUTH_SECRET_ENCODED, JOSE_AUDIENCE, JOSE_ISSUER } from '#lib/Constants.ts';
 
 export async function signJsonWebToken(
 	sessionId: string,
@@ -29,16 +24,16 @@ export async function signJsonWebToken(
 		typ: 'JWT',
 	});
 
-	jsonWebToken.setAudience(JSON_WEB_TOKEN_AUDIENCE);
+	jsonWebToken.setAudience(JOSE_AUDIENCE);
 
-	jsonWebToken.setIssuer(JSON_WEB_TOKEN_ISSUER);
+	jsonWebToken.setIssuer(JOSE_ISSUER);
 	jsonWebToken.setIssuedAt();
 
 	jsonWebToken.setSubject(subjectId);
 
 	jsonWebToken.setExpirationTime('1d');
 
-	const signedJsonWebToken = await jsonWebToken.sign(TEXT_ENCODER_SECRET);
+	const signedJsonWebToken = await jsonWebToken.sign(AUTH_SECRET_ENCODED);
 
 	return signedJsonWebToken;
 }

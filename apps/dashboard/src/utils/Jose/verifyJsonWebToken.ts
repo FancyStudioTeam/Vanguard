@@ -1,11 +1,6 @@
-import 'server-only';
 import { type JWTPayload, jwtVerify } from 'jose';
-import {
-	JSON_WEB_TOKEN_AUDIENCE,
-	JSON_WEB_TOKEN_ISSUER,
-	TEXT_ENCODER_SECRET,
-} from '#/lib/Constants.ts';
-import type { User } from '#/lib/types/User.ts';
+import { AUTH_SECRET_ENCODED, JOSE_AUDIENCE, JOSE_ISSUER } from '#lib/Constants.ts';
+import type { User } from '#lib/types/User.ts';
 
 export async function verifyJsonWebToken(
 	jsonWebToken: string,
@@ -13,13 +8,13 @@ export async function verifyJsonWebToken(
 	try {
 		const { payload } = await jwtVerify<JsonWebTokenPayload>(
 			jsonWebToken,
-			TEXT_ENCODER_SECRET,
+			AUTH_SECRET_ENCODED,
 			{
 				algorithms: [
 					'HS256',
 				],
-				audience: JSON_WEB_TOKEN_AUDIENCE,
-				issuer: JSON_WEB_TOKEN_ISSUER,
+				audience: JOSE_AUDIENCE,
+				issuer: JOSE_ISSUER,
 			},
 		);
 
