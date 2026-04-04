@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { UserGuild } from '#/lib/types/User.ts';
+import type { UserGuild } from '#/types/Discord.ts';
 import { GuildCardFooter } from './GuildCardFooter.tsx';
 import { GuildCardHeader } from './GuildCardHeader.tsx';
 

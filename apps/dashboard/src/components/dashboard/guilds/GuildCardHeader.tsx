@@ -1,4 +1,4 @@
-import type { UserGuild } from '#/lib/types/User.ts';
+import type { UserGuild } from '#/types/Discord.ts';
 
 export function GuildCardHeader({ banner, id }: GuildHeaderProps) {
 	if (!banner) {

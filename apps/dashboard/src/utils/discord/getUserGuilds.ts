@@ -5,8 +5,8 @@ import {
 	Routes,
 } from 'discord-api-types/v10';
 import { TOO_MANY_REQUESTS_STATUS_CODE } from '#/lib/HttpStatus.ts';
-import type { UserGuild } from '#/lib/types/User.ts';
-import { hasPermission } from '../hasPermission.ts';
+import type { UserGuild } from '#/types/Discord.ts';
+import { hasPermission } from './hasPermission.ts';
 
 const { api } = RouteBases;
 const { userGuilds: userGuildsEndpoint } = Routes;
