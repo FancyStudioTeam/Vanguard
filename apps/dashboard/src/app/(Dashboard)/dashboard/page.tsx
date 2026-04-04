@@ -1,22 +1,21 @@
-import { headers } from 'next/headers';
-import { unauthorized } from 'next/navigation';
-import { Navbar } from '#/components/navbar/Navbar.tsx';
-import { auth } from '#/lib/Auth.ts';
+import { Suspense } from 'react';
+import { GuildSelector } from '#/components/dashboard/guilds/GuildSelector.tsx';
+import { GuildSelectorFallback } from '#/components/dashboard/guilds/GuildSelectorFallback.tsx';
+import { PageLayout } from '#/layouts/PageLayout.tsx';
+import { verifySession } from '#/utils/session/verifySession.ts';
 
 export default async function () {
-	const sessionData = await auth.api.getSession({
-		headers: await headers(),
-	});
-
-	if (!sessionData) {
-		unauthorized();
-	}
+	const { accessToken, user } = await verifySession(true);
+	const { name } = user;
 
 	return (
-		<div className='flex h-full min-h-dvh justify-center'>
-			<div className='w-full max-w-7xl xl:border-x'>
-				<Navbar />
-			</div>
-		</div>
+		<PageLayout>
+			<h1 className='text-center font-bold text-2xl'>
+				Welcome back, <span className='text-neutral-400'>{name}</span>!
+			</h1>
+			<Suspense fallback={<GuildSelectorFallback />}>
+				<GuildSelector accessToken={accessToken} />
+			</Suspense>
+		</PageLayout>
 	);
 }
