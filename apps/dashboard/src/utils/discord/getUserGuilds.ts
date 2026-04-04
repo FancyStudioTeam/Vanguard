@@ -42,7 +42,7 @@ export async function getUserGuilds(accessToken: string): Promise<UserGuildsData
 }
 
 async function createUserGuildsRequest(accessToken: string): Promise<Response> {
-	return await fetch(`${api}/${userGuildsEndpoint()}`, {
+	return await fetch(`${api}/${userGuildsEndpoint()}?with_counts=true`, {
 		cache: 'force-cache',
 		headers: {
 			authorization: `Bearer ${accessToken}`,
@@ -87,9 +87,10 @@ function filterGuildsWithPermissions(userGuilds: UserGuild[]): UserGuild[] {
 }
 
 function parseUserGuild(rawUserGuild: RESTAPIPartialCurrentUserGuild): UserGuild {
-	const { icon, id, name, owner, permissions } = rawUserGuild;
+	const { banner, icon, id, name, owner, permissions } = rawUserGuild;
 
 	return {
+		banner,
 		icon,
 		id,
 		name,

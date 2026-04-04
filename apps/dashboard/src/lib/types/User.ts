@@ -7,6 +7,7 @@ export interface User {
 }
 
 export interface UserGuild {
+	banner: string | null;
 	icon: string | null;
 	id: Snowflake;
 	name: string;
