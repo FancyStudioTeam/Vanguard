@@ -1,4 +1,4 @@
-import { UserIcon } from '@phosphor-icons/react';
+import { IdentificationCardIcon, UserIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/Avatar.tsx';
 import type { User } from '#/lib/types/User.ts';
@@ -11,7 +11,7 @@ export function NavbarProfileDropdownUser({ user }: NavbarProfileDropdownUserPro
 
 	return (
 		<Link
-			className='flex items-center gap-4 rounded-md p-2 transition-colors hover:bg-neutral-800/75'
+			className='flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-neutral-800/75'
 			href={userUrl}
 			target='_blank'
 		>
@@ -26,7 +26,13 @@ export function NavbarProfileDropdownUser({ user }: NavbarProfileDropdownUserPro
 			</Avatar>
 			<ul className='min-w-0'>
 				<li className='truncate font-bold'>@{name}</li>
-				<li className='truncate text-neutral-400 text-xs'>{id}</li>
+				<li className='flex items-center gap-1 text-neutral-400 text-xs'>
+					<IdentificationCardIcon
+						className='size-5 shrink-0'
+						weight='fill'
+					/>
+					<span className='truncate'>{id}</span>
+				</li>
 			</ul>
 		</Link>
 	);

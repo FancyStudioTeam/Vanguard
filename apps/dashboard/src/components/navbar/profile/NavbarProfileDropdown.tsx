@@ -15,7 +15,7 @@ export function NavbarProfileDropdown({ user }: NavbarProfileDropdownProps) {
 	return (
 		<DropdownMenu>
 			<NavbarProfileDropdownButton user={user} />
-			<DropdownMenuContent>
+			<DropdownMenuContent className='w-60'>
 				<NavbarProfileDropdownUser user={user} />
 				<DropdownMenuSeparator />
 				<NavbarProfileDropdownLinks />
