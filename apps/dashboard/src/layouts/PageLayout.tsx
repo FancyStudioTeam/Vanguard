@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Navbar } from '#/components/navbar/Navbar.tsx';
+import { Navbar } from '#/components/layout/navbar/Navbar.tsx';
 
 export function PageLayout({ children }: { children: ReactNode }) {
 	return (
