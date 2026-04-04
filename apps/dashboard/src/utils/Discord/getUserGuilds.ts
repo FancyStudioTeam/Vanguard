@@ -35,33 +35,28 @@ export async function getUserGuilds(accessToken: string): Promise<UserGuildsData
 		const userGuilds = parseUserGuilds(rawUserGuilds);
 		const userGuildsWithPermissions = filterGuildsWithPermissions(userGuilds);
 
-		return buildUserGuildsData(userGuildsWithPermissions);
+		return buildUserGuildsSuccessData(userGuildsWithPermissions);
 	} catch {
 		return buildUserGuildsErrorData();
 	}
 }
 
-function buildUserGuildsData(userGuilds: UserGuild[]): UserGuildsData {
+function buildUserGuildsErrorData(): UserGuildsErrorData {
+	return {
+		status: UserGuildsDataStatus.Error,
+	};
+}
+
+function buildUserGuildsSuccessData(userGuilds: UserGuild[]): UserGuildsSuccessData {
 	return {
 		guilds: userGuilds,
-		isError: false,
-		isRateLimit: false,
+		status: UserGuildsDataStatus.Success,
 	};
 }
 
-function buildUserGuildsErrorData(): UserGuildsData {
+function buildUserGuildsRateLimitData(): UserGuildsRateLimitData {
 	return {
-		guilds: [],
-		isError: true,
-		isRateLimit: false,
-	};
-}
-
-function buildUserGuildsRateLimitData(): UserGuildsData {
-	return {
-		guilds: [],
-		isError: false,
-		isRateLimit: true,
+		status: UserGuildsDataStatus.RateLimit,
 	};
 }
 
@@ -103,8 +98,21 @@ function parseUserGuilds(rawUserGuilds: RESTAPIPartialCurrentUserGuild[]): UserG
 	return rawUserGuilds.map(parseUserGuild);
 }
 
-interface UserGuildsData {
+interface UserGuildsDataBase<Status extends UserGuildsDataStatus> {
+	status: Status;
+}
+
+interface UserGuildsSuccessData extends UserGuildsDataBase<UserGuildsDataStatus.Success> {
 	guilds: UserGuild[];
-	isError: boolean;
-	isRateLimit: boolean;
+}
+
+type UserGuildsData = UserGuildsErrorData | UserGuildsRateLimitData | UserGuildsSuccessData;
+
+type UserGuildsErrorData = UserGuildsDataBase<UserGuildsDataStatus.Error>;
+type UserGuildsRateLimitData = UserGuildsDataBase<UserGuildsDataStatus.RateLimit>;
+
+export enum UserGuildsDataStatus {
+	Error = 'ERROR',
+	RateLimit = 'RATE_LIMIT',
+	Success = 'SUCCESS',
 }

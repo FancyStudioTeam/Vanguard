@@ -126,6 +126,9 @@ importers:
       tailwind-merge:
         specifier: 3.5.0
         version: 3.5.0
+      ts-pattern:
+        specifier: 5.9.0
+        version: 5.9.0
       winston:
         specifier: 3.19.0
         version: 3.19.0
@@ -3251,6 +3254,9 @@ packages:
 
   trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
+
+  ts-pattern@5.9.0:
+    resolution: {integrity: sha512-6s5V71mX8qBUmlgbrfL33xDUwO0fq48rxAu2LBE11WBeGdpCPOsXksQbZJHvHwhrd3QjUusd3mAOM5Gg0mFBLg==}
 
   tslib@1.9.3:
     resolution: {integrity: sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==}
@@ -6818,6 +6824,8 @@ snapshots:
   triple-beam@1.4.1: {}
 
   trough@2.2.0: {}
+
+  ts-pattern@5.9.0: {}
 
   tslib@1.9.3: {}
 
