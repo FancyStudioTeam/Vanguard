@@ -11,8 +11,8 @@ export function NavbarProfileDropdownLogout() {
 			<Link href={'/api/auth/sign-out'}>
 				<span className='truncate'>Log Out</span>
 				<SignOutIcon
-					className='srink-0 size-5'
-					weight='duotone'
+					className='size-5 shrink-0'
+					weight='fill'
 				/>
 			</Link>
 		</DropdownMenuItem>

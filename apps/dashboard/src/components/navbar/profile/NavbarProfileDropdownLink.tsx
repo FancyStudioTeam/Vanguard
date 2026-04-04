@@ -20,8 +20,8 @@ export function NavbarProfileDropdownLink({
 			>
 				<span className='truncate'>{text}</span>
 				<Icon
-					className='srink-0 size-5 text-neutral-400'
-					weight='duotone'
+					className='size-5 shrink-0 text-neutral-400'
+					weight='fill'
 				/>
 			</Link>
 		</DropdownMenuItem>
