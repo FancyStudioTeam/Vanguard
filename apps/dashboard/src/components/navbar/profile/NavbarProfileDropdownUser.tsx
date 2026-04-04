@@ -19,14 +19,14 @@ export function NavbarProfileDropdownUser({ user }: NavbarProfileDropdownUserPro
 				<AvatarImage src={userAvatarUrl} />
 				<AvatarFallback>
 					<UserIcon
-						className='srink-0 size-5'
+						className='size-5 shrink-0'
 						weight='duotone'
 					/>
 				</AvatarFallback>
 			</Avatar>
-			<ul>
+			<ul className='min-w-0'>
 				<li className='truncate font-bold'>@{name}</li>
-				<li className='text-neutral-400 text-xs'>{id}</li>
+				<li className='truncate text-neutral-400 text-xs'>{id}</li>
 			</ul>
 		</Link>
 	);
