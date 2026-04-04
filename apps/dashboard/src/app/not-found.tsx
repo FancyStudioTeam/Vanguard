@@ -10,12 +10,12 @@ export const metadata: Metadata = createMetadataObject(MetadataPage.NotFound);
 export default function () {
 	return (
 		<PageLayout>
-			<section className='grid h-100 place-content-center gap-4 rounded-xl border-2 border-neutral-800 bg-neutral-900'>
+			<main className='grid h-100 place-content-center gap-4 rounded-xl border-2 border-neutral-800 bg-neutral-900'>
 				<h1 className='font-bold text-5xl'>Not Found</h1>
 				<Button asChild={true}>
 					<Link href='/'>Return Home</Link>
 				</Button>
-			</section>
+			</main>
 		</PageLayout>
 	);
 }
