@@ -17,7 +17,7 @@ export default function ({ children }: { children: ReactNode }) {
 	return (
 		<html lang='en-US'>
 			<body
-				className={`${GeneralSansVariable} my-6 w-full bg-neutral-950 bg-fixed font-general-sans font-medium text-zinc-50`}
+				className={`${GeneralSansVariable} w-full bg-neutral-950 bg-fixed font-general-sans font-medium text-zinc-50`}
 			>
 				{children}
 			</body>
