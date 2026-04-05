@@ -2,7 +2,7 @@ import { memoryUsage } from 'node:process';
 
 const CONVERSION_FACTOR = 1_024;
 
-export function getMemoryUsage(): `${string} MB` {
+export function getMemoryUsage(): string {
 	const { heapUsed } = memoryUsage();
 	const heapUsageInMegaBytes = convertToMegaBytes(heapUsed);
 
