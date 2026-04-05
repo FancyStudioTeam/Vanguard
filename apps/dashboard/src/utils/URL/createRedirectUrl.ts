@@ -15,7 +15,7 @@ export function createRedirectUrl(state: string): string {
 	const callbackUrl = createCallbackUrl();
 
 	/*
-	 * NOTE: Join Discord scopes with '+'.
+	 * Discord scopes MUST be joined with '+'.
 	 */
 	const scopesString = SCOPES.join('+');
 
