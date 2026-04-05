@@ -166,9 +166,6 @@ importers:
       client-only:
         specifier: 0.0.1
         version: 0.0.1
-      discord-api-types:
-        specifier: 0.38.43
-        version: 0.38.43
       pm2:
         specifier: 6.0.14
         version: 6.0.14

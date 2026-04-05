@@ -1,13 +1,11 @@
-import type { Snowflake } from 'discord-api-types/globals';
-
 export interface Guild {
-	id: Snowflake;
+	id: string;
 	name: string;
 }
 
 export interface User {
 	avatar: string | null;
-	id: Snowflake;
+	id: string;
 	name: string;
 }
 
@@ -20,7 +18,7 @@ export interface UserCredentials {
 export interface UserGuild {
 	banner: string | null;
 	icon: string | null;
-	id: Snowflake;
+	id: string;
 	name: string;
 	owner: boolean;
 	permissions: string;
