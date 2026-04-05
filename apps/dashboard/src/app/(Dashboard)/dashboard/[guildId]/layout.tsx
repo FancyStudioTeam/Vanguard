@@ -1,4 +1,4 @@
-import { Sidebar } from '#/components/sidebar/Sidebar.tsx';
+import { Sidebar } from '#components/dashboard/sidebar/Sidebar.tsx';
 
 export default async function ({
 	params,

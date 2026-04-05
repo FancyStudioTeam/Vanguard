@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
-import { GuildSelector } from '#/components/dashboard/guilds/GuildSelector.tsx';
-import { GuildSelectorFallback } from '#/components/dashboard/guilds/GuildSelectorFallback.tsx';
-import { PageLayout } from '#/layouts/PageLayout.tsx';
-import { verifySession } from '#/utils/session/verifySession.ts';
+import { GuildSelector } from '#components/dashboard/guilds/GuildSelector.tsx';
+import { GuildSelectorFallback } from '#components/dashboard/guilds/GuildSelectorFallback.tsx';
+import { PageLayout } from '#layouts/PageLayout.tsx';
+import { verifySession } from '#utils/Session/verifySession.ts';
 
 export default async function () {
 	const { accessToken, user } = await verifySession(true);
