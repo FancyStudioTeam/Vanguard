@@ -11,6 +11,11 @@ export interface User {
 	name: string;
 }
 
+export interface UserCredentials {
+	accessToken: string;
+	refreshToken: string;
+}
+
 export interface UserGuild {
 	banner: string | null;
 	icon: string | null;
