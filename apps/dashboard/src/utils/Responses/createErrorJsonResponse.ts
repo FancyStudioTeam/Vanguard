@@ -3,11 +3,11 @@ import { NextResponse } from 'next/server';
 export function createErrorJsonResponse(
 	statusCode: number,
 	statusText: string,
-	error: CreateErrorResponseError,
+	data: CreateErrorResponseData,
 ): NextResponse {
 	return NextResponse.json(
 		{
-			error,
+			error: data,
 			success: false,
 		},
 		{
@@ -17,7 +17,7 @@ export function createErrorJsonResponse(
 	);
 }
 
-interface CreateErrorResponseError {
+interface CreateErrorResponseData {
 	code: string;
 	details?: Record<string, unknown>;
 	message: string;
