@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
-import { METADATA_PAGE_DESCRIPTION, METADATA_PAGE_TITLE, MetadataPage } from '#lib/Metadata.ts';
+import {
+	METADATA_PAGE_DESCRIPTION,
+	METADATA_PAGE_TITLE,
+	MetadataPage,
+} from '#lib/Metadata.ts';
 
 export function createMetadataObject(page: MetadataPage): Metadata {
 	const { description, robots, title } = buildPageInformationData(page);
