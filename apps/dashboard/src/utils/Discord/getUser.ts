@@ -83,18 +83,18 @@ function parseUser(apiUser: APIUser): User {
 	};
 }
 
-interface UserDataBase<Status extends UserDataStatus> {
+export interface UserDataBase<Status extends UserDataStatus> {
 	status: Status;
 }
 
-interface UserSuccessData extends UserDataBase<UserDataStatus.Success> {
+export interface UserSuccessData extends UserDataBase<UserDataStatus.Success> {
 	user: User;
 }
 
-type UserData = UserErrorData | UserRateLimitData | UserSuccessData;
+export type UserData = UserErrorData | UserRateLimitData | UserSuccessData;
 
-type UserErrorData = UserDataBase<UserDataStatus.Error>;
-type UserRateLimitData = UserDataBase<UserDataStatus.RateLimit>;
+export type UserErrorData = UserDataBase<UserDataStatus.Error>;
+export type UserRateLimitData = UserDataBase<UserDataStatus.RateLimit>;
 
 export enum UserDataStatus {
 	Error = 'ERROR',

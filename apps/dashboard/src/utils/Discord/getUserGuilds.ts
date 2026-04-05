@@ -109,22 +109,23 @@ function parseUserGuilds(
 	return rawUserGuilds.map(parseUserGuild);
 }
 
-interface UserGuildsDataBase<Status extends UserGuildsDataStatus> {
+export interface UserGuildsDataBase<Status extends UserGuildsDataStatus> {
 	status: Status;
 }
 
-interface UserGuildsSuccessData
+export interface UserGuildsSuccessData
 	extends UserGuildsDataBase<UserGuildsDataStatus.Success> {
 	guilds: UserGuild[];
 }
 
-type UserGuildsData =
+export type UserGuildsData =
 	| UserGuildsErrorData
 	| UserGuildsRateLimitData
 	| UserGuildsSuccessData;
 
-type UserGuildsErrorData = UserGuildsDataBase<UserGuildsDataStatus.Error>;
-type UserGuildsRateLimitData =
+export type UserGuildsErrorData =
+	UserGuildsDataBase<UserGuildsDataStatus.Error>;
+export type UserGuildsRateLimitData =
 	UserGuildsDataBase<UserGuildsDataStatus.RateLimit>;
 
 export enum UserGuildsDataStatus {
