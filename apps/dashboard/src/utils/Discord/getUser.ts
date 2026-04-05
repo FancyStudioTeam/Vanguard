@@ -45,16 +45,16 @@ function buildUserErrorData(): UserErrorData {
 	};
 }
 
+function buildUserRateLimitData(): UserRateLimitData {
+	return {
+		status: UserDataStatus.RateLimit,
+	};
+}
+
 function buildUserSuccessData(user: User): UserSuccessData {
 	return {
 		status: UserDataStatus.Success,
 		user,
-	};
-}
-
-function buildUserRateLimitData(): UserRateLimitData {
-	return {
-		status: UserDataStatus.RateLimit,
 	};
 }
 

@@ -52,18 +52,18 @@ function buildUserGuildsErrorData(): UserGuildsErrorData {
 	};
 }
 
+function buildUserGuildsRateLimitData(): UserGuildsRateLimitData {
+	return {
+		status: UserGuildsDataStatus.RateLimit,
+	};
+}
+
 function buildUserGuildsSuccessData(
 	userGuilds: UserGuild[],
 ): UserGuildsSuccessData {
 	return {
 		guilds: userGuilds,
 		status: UserGuildsDataStatus.Success,
-	};
-}
-
-function buildUserGuildsRateLimitData(): UserGuildsRateLimitData {
-	return {
-		status: UserGuildsDataStatus.RateLimit,
 	};
 }
 
