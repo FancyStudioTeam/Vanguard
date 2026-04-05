@@ -1,14 +1,15 @@
 import type { NextRequest } from 'next/server';
+import { verifyJsonWebToken } from '#utils/Jose/verifyJsonWebToken.ts';
 import { handleRouteError } from '#utils/Miscellaneous/handleRouteError.ts';
 import { getSessionCookieValue } from '#utils/Session/getSessionCookieValue.ts';
-import { verifySessionCookie } from '#utils/Session/verifySessionCookie.ts';
 import { SESSION_RESPONSE, UNAUTHORIZED_RESPONSE } from './_lib/Responses.ts';
 
 export async function GET(nextRequest: NextRequest) {
 	try {
 		const sessionCookieValue = await getSessionCookieValue();
-		const jsonWebTokenPayload =
-			await verifySessionCookie(sessionCookieValue);
+		const jsonWebTokenPayload = await verifyJsonWebToken(
+			sessionCookieValue ?? '',
+		).catch(() => null);
 
 		if (!jsonWebTokenPayload) {
 			return UNAUTHORIZED_RESPONSE();

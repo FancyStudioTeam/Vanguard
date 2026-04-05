@@ -1,23 +1,13 @@
 import { randomBytes } from 'node:crypto';
-import { RateLimitError } from '@discordjs/rest';
-import type { RESTGetAPIUserResult, RESTPostOAuth2AccessTokenResult } from 'discord-api-types/v10';
 import { cookies as NextCookies } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
-import { sessionsCollection } from '#/lib/auth/MongoDB.ts';
-import { logger } from '#/lib/Logger.ts';
-import { encrypt } from '#/utils/encryption/encrypt.ts';
-import {
-	INTERNAL_SERVER_ERROR_RESPONSE,
-	INVALID_AUTHORIZATION_STATE_RESPONSE,
-	MISSING_QUERY_STRING_PARAM_RESPONSE,
-	RATE_LIMITED_ERROR_RESPONSE,
-	UNABLE_TO_EXCHANGE_CODE_RESPONSE,
-	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
-} from './_lib/Responses.ts';
-import { checkIsValidAuthState } from './_utils/checkIsValidAuthState.ts';
-import { createExchangeCodeRequest } from './_utils/createExchangeCodeRequest.ts';
-import { createJsonWebToken } from './_utils/createJsonWebToken.ts';
-import { getUserInformation } from './_utils/getUserInformation.ts';
+import { SessionsCollection } from '#lib/MongoDB/Auth.ts';
+import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.ts';
+import { exchangeAccessCode } from '#utils/Discord/exchangeAccessCode.ts';
+import { getCurrentUser } from '#utils/Discord/getCurrentUser.ts';
+import { createJsonWebToken } from '#utils/Jose/createJsonWebToken.ts';
+import { encryptData } from '#utils/Jose/encryptData.ts';
+import { handleRouteError } from '#utils/Miscellaneous/handleRouteError.ts';
 
 const SESSION_ID_BYTES_LENGTH = 32;
 
@@ -27,82 +17,22 @@ export async function GET(nextRequest: NextRequest) {
 		const { origin, searchParams } = nextUrl;
 
 		const code = searchParams.get('code');
-		const state = searchParams.get('state');
 
 		if (!code) {
 			return MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
 
-		if (!state) {
-			return MISSING_QUERY_STRING_PARAM_RESPONSE('state');
-		}
+		const { accessToken, expiresIn, refreshToken } =
+			await exchangeAccessCode(code);
+		const user = await getCurrentUser(accessToken);
 
-		/*
-		 * Check whether the provided state by Discord is the same as the stored
-		 * OAuth2 state.
-		 *
-		 * If the state is not the same, the user may have been clickjacked.
-		 *
-		 * Reference: https://discord.com/developers/docs/topics/oauth2#state-and-security
-		 */
-		const nextCookies = await NextCookies();
-		const isValidAuthState = checkIsValidAuthState(state, nextCookies);
-
-		if (!isValidAuthState) {
-			return INVALID_AUTHORIZATION_STATE_RESPONSE();
-		}
-
-		let exchangeCodeResult: RESTPostOAuth2AccessTokenResult;
-		let userInformationResult: RESTGetAPIUserResult;
-
-		try {
-			exchangeCodeResult = await createExchangeCodeRequest(code);
-		} catch (error) {
-			switch (true) {
-				case error instanceof RateLimitError: {
-					return RATE_LIMITED_ERROR_RESPONSE();
-				}
-
-				default: {
-					logger.error('Error while exchanging the authorization code:\n\t', error);
-
-					return UNABLE_TO_EXCHANGE_CODE_RESPONSE();
-				}
-			}
-		}
-
-		const {
-			access_token: accessToken,
-			expires_in: expiresIn,
-			refresh_token: refreshToken,
-		} = exchangeCodeResult;
-
-		try {
-			userInformationResult = await getUserInformation(accessToken);
-		} catch (error) {
-			switch (true) {
-				case error instanceof RateLimitError: {
-					return RATE_LIMITED_ERROR_RESPONSE();
-				}
-
-				default: {
-					logger.error('Error while fetching the user information:\n\t', error);
-
-					return UNABLE_TO_GET_USER_INFORMATION_RESPONSE();
-				}
-			}
-		}
-
-		/*
-		 * Keep personal and private information from users encrypted.
-		 */
-		const encryptedAccessToken = encrypt(accessToken);
-		const encryptedRefreshToken = encrypt(refreshToken);
+		const encryptedAccessToken = await encryptData(accessToken);
+		const encryptedRefreshToken = await encryptData(refreshToken);
 
 		const sessionIdBytes = randomBytes(SESSION_ID_BYTES_LENGTH);
 		const sessionId = sessionIdBytes.toString('hex');
 
-		await sessionsCollection.insertOne({
+		await SessionsCollection.insertOne({
 			credentials: {
 				accessToken: encryptedAccessToken,
 				refreshToken: encryptedRefreshToken,
@@ -110,19 +40,22 @@ export async function GET(nextRequest: NextRequest) {
 			sessionId,
 		});
 
-		await createJsonWebToken(nextCookies, {
-			expiresIn,
-			sessionId,
-			user: userInformationResult,
+		const jsonWebToken = await createJsonWebToken({
+			sid: sessionId,
+			user,
+		});
+		const nextCookies = await NextCookies();
+
+		nextCookies.set('session', jsonWebToken, {
+			httpOnly: true,
+			maxAge: expiresIn,
+			path: '/',
+			sameSite: 'lax',
+			secure: true,
 		});
 
 		return NextResponse.redirect(origin);
 	} catch (error) {
-		const { nextUrl } = nextRequest;
-		const { href } = nextUrl;
-
-		logger.error(`Error while processing route '${href}':\n\t`, error);
-
-		return INTERNAL_SERVER_ERROR_RESPONSE();
+		return handleRouteError(nextRequest, error);
 	}
 }
