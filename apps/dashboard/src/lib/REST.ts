@@ -1,9 +1,6 @@
-import 'server-only';
-import { REST } from '@discordjs/rest';
+import { createRestManager } from '@discordeno/rest';
 import { CLIENT_TOKEN } from './Constants.ts';
 
-export const rest = new REST({
-	version: '10',
+export const rest = createRestManager({
+	token: CLIENT_TOKEN,
 });
-
-rest.setToken(CLIENT_TOKEN);
