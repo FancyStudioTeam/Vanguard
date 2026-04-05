@@ -30,7 +30,7 @@ export async function verifySession(
 		const { sid: sessionId } = jsonWebTokenPayload;
 
 		const sessionData = await SessionsCollection.findOne({
-			sessionId: String(sessionId),
+			sessionId,
 		});
 
 		if (!sessionData) {
