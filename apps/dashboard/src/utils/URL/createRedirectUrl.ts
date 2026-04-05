@@ -1,14 +1,12 @@
-import { OAuth2Routes, OAuth2Scopes } from 'discord-api-types/v10';
-import { CLIENT_ID } from '#lib/Constants.ts';
+import { OAuth2Scope } from '@discordeno/types';
+import { CLIENT_ID } from '#lib/Constants/Client.ts';
 import { createCallbackUrl } from './createCallbackUrl.ts';
 
-const { authorizationURL } = OAuth2Routes;
-
 const SCOPES = [
-	OAuth2Scopes.Email,
-	OAuth2Scopes.Identify,
-	OAuth2Scopes.Guilds,
-	OAuth2Scopes.GuildsMembersRead,
+	OAuth2Scope.Email,
+	OAuth2Scope.Identify,
+	OAuth2Scope.Guilds,
+	OAuth2Scope.GuildsMembersRead,
 ];
 
 export function createRedirectUrl(): string {
@@ -19,7 +17,9 @@ export function createRedirectUrl(): string {
 	 */
 	const scopesString = SCOPES.join('+');
 
-	const authorizationUrl = new URL(authorizationURL);
+	const authorizationUrl = new URL(
+		'https://discord.com/api/v10/oauth2/authorize',
+	);
 	const { searchParams } = authorizationUrl;
 
 	/*
