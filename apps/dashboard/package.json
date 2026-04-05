@@ -2,6 +2,8 @@
 	"author": "Vanguard Development Team",
 	"dependencies": {
 		"@discordeno/rest": "21.0.0",
+		"@discordeno/types": "21.0.0",
+		"@discordeno/utils": "21.0.0",
 		"@gsap/react": "2.1.2",
 		"@mdx-js/loader": "3.1.1",
 		"@mdx-js/react": "3.1.1",
