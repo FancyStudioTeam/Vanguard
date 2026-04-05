@@ -1,6 +1,5 @@
-import 'client-only';
 import useSwr from 'swr';
-import type { User } from '#/lib/types/User.ts';
+import type { User } from '#types/Discord.ts';
 
 const fetcher = (url: string) => fetch(url).then((response) => response.json());
 
@@ -24,10 +23,6 @@ export function useSession() {
 }
 
 interface SwrSessionEndpointResponse {
-	data: SwrSessionEndpointResponseData | null;
+	data: User | null;
 	success: boolean;
-}
-
-interface SwrSessionEndpointResponseData {
-	user: User;
 }
