@@ -6,7 +6,10 @@ export function DropdownMenu({ ...props }: DropdownMenuProps) {
 	return <RadixDropdownMenu.Root {...props} />;
 }
 
-export function DropdownMenuContent({ className, ...props }: DropdownMenuContentProps) {
+export function DropdownMenuContent({
+	className,
+	...props
+}: DropdownMenuContentProps) {
 	return (
 		<RadixDropdownMenu.Portal>
 			<RadixDropdownMenu.Content
@@ -25,7 +28,10 @@ export function DropdownMenuGroup({ ...props }: DropdownMenuGroupProps) {
 	return <RadixDropdownMenu.Group {...props} />;
 }
 
-export function DropdownMenuItem({ className, ...props }: DropdownMenuItemProps) {
+export function DropdownMenuItem({
+	className,
+	...props
+}: DropdownMenuItemProps) {
 	return (
 		<RadixDropdownMenu.Item
 			className={twMerge(
@@ -37,7 +43,10 @@ export function DropdownMenuItem({ className, ...props }: DropdownMenuItemProps)
 	);
 }
 
-export function DropdownMenuSeparator({ className, ...props }: DropdownMenuSeparatorProps) {
+export function DropdownMenuSeparator({
+	className,
+	...props
+}: DropdownMenuSeparatorProps) {
 	return (
 		<RadixDropdownMenu.Separator
 			className={twMerge('h-0.5 bg-neutral-800', className)}
@@ -50,9 +59,19 @@ export function DropdownMenuTrigger({ ...props }: DropdownMenuTriggerProps) {
 	return <RadixDropdownMenu.Trigger {...props} />;
 }
 
-export type DropdownMenuContentProps = ComponentProps<typeof RadixDropdownMenu.Content>;
-export type DropdownMenuGroupProps = ComponentProps<typeof RadixDropdownMenu.Group>;
-export type DropdownMenuItemProps = ComponentProps<typeof RadixDropdownMenu.Item>;
+export type DropdownMenuContentProps = ComponentProps<
+	typeof RadixDropdownMenu.Content
+>;
+export type DropdownMenuGroupProps = ComponentProps<
+	typeof RadixDropdownMenu.Group
+>;
+export type DropdownMenuItemProps = ComponentProps<
+	typeof RadixDropdownMenu.Item
+>;
 export type DropdownMenuProps = ComponentProps<typeof RadixDropdownMenu.Root>;
-export type DropdownMenuSeparatorProps = ComponentProps<typeof RadixDropdownMenu.Separator>;
-export type DropdownMenuTriggerProps = ComponentProps<typeof RadixDropdownMenu.Trigger>;
+export type DropdownMenuSeparatorProps = ComponentProps<
+	typeof RadixDropdownMenu.Separator
+>;
+export type DropdownMenuTriggerProps = ComponentProps<
+	typeof RadixDropdownMenu.Trigger
+>;

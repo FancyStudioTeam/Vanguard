@@ -1,5 +1,9 @@
 import { type JWTPayload, jwtVerify } from 'jose';
-import { AUTH_SECRET_ENCODED, JOSE_AUDIENCE, JOSE_ISSUER } from '#lib/Constants.ts';
+import {
+	AUTH_SECRET_ENCODED,
+	JOSE_AUDIENCE,
+	JOSE_ISSUER,
+} from '#lib/Constants.ts';
 import type { User } from '#lib/types/User.ts';
 
 export async function verifyJsonWebToken(

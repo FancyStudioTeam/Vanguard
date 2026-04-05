@@ -2,7 +2,10 @@ import { InfoIcon, WarningOctagonIcon } from '@phosphor-icons/react/dist/ssr';
 import type { ReactNode } from 'react';
 import { match, P } from 'ts-pattern';
 import { Alert, AlertDescription } from '#/components/ui/Alert.tsx';
-import { getUserGuilds, UserGuildsDataStatus } from '#utils/Discord/getUserGuilds.ts';
+import {
+	getUserGuilds,
+	UserGuildsDataStatus,
+} from '#utils/Discord/getUserGuilds.ts';
 import { GuildCard } from './GuildCard.tsx';
 
 export async function GuildSelector({ accessToken }: GuildSelectorProps) {
@@ -21,8 +24,8 @@ export async function GuildSelector({ accessToken }: GuildSelectorProps) {
 						weight='fill'
 					/>
 					<AlertDescription>
-						You are sending too many requests in a short period of time. Please try
-						again in a few seconds.
+						You are sending too many requests in a short period of
+						time. Please try again in a few seconds.
 					</AlertDescription>
 				</Alert>
 			),
@@ -38,8 +41,8 @@ export async function GuildSelector({ accessToken }: GuildSelectorProps) {
 						weight='fill'
 					/>
 					<AlertDescription>
-						Something went wrong while your request was being processed. Please try
-						again in a few seconds.
+						Something went wrong while your request was being
+						processed. Please try again in a few seconds.
 					</AlertDescription>
 				</Alert>
 			),
@@ -56,7 +59,8 @@ export async function GuildSelector({ accessToken }: GuildSelectorProps) {
 						weight='fill'
 					/>
 					<AlertDescription>
-						It seems you don't have a server where you have permissions...
+						It seems you don't have a server where you have
+						permissions...
 					</AlertDescription>
 				</Alert>
 			),

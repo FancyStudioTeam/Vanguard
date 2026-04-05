@@ -1,5 +1,12 @@
-import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react/dist/ssr';
-import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/Avatar.tsx';
+import {
+	IdentificationCardIcon,
+	ImageIcon,
+} from '@phosphor-icons/react/dist/ssr';
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from '#/components/ui/Avatar.tsx';
 import type { UserGuild } from '#/types/Discord.ts';
 
 export function GuildCardFooter({ icon, id, name }: GuildCardFooterProps) {

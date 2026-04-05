@@ -1,4 +1,8 @@
-import { DiscordLogoIcon, GithubLogoIcon, GridFourIcon } from '@phosphor-icons/react';
+import {
+	DiscordLogoIcon,
+	GithubLogoIcon,
+	GridFourIcon,
+} from '@phosphor-icons/react';
 import { DropdownMenuGroup } from '#/components/ui/Dropdown.tsx';
 import {
 	type NavbarProfileDropdownLinkProps as DropdownLink,

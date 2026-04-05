@@ -1,7 +1,11 @@
 import type { Snowflake } from 'discord-api-types/globals';
 import type { APIUser } from 'discord-api-types/v10';
 import { SignJWT } from 'jose';
-import { AUTH_SECRET_ENCODED, JOSE_AUDIENCE, JOSE_ISSUER } from '#lib/Constants.ts';
+import {
+	AUTH_SECRET_ENCODED,
+	JOSE_AUDIENCE,
+	JOSE_ISSUER,
+} from '#lib/Constants.ts';
 
 export async function signJsonWebToken(
 	sessionId: string,

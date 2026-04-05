@@ -17,7 +17,11 @@ const alertVariants = cva(
 	},
 );
 
-export function Alert({ className, variant = 'default', ...props }: AlertProps) {
+export function Alert({
+	className,
+	variant = 'default',
+	...props
+}: AlertProps) {
 	return (
 		<div
 			className={alertVariants({
@@ -29,7 +33,10 @@ export function Alert({ className, variant = 'default', ...props }: AlertProps) 
 	);
 }
 
-export function AlertDescription({ className, ...props }: AlertDescriptionProps) {
+export function AlertDescription({
+	className,
+	...props
+}: AlertDescriptionProps) {
 	return (
 		<span
 			className={twMerge('text-balance text-sm', className)}
@@ -39,4 +46,5 @@ export function AlertDescription({ className, ...props }: AlertDescriptionProps)
 }
 
 export type AlertDescriptionProps = ComponentProps<'span'>;
-export type AlertProps = ComponentProps<'div'> & VariantProps<typeof alertVariants>;
+export type AlertProps = ComponentProps<'div'> &
+	VariantProps<typeof alertVariants>;

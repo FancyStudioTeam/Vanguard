@@ -1,4 +1,7 @@
-import { type JsonWebTokenPayload, verifyJsonWebToken } from '../jose/verifyJsonWebToken.ts';
+import {
+	type JsonWebTokenPayload,
+	verifyJsonWebToken,
+} from '../jose/verifyJsonWebToken.ts';
 
 export async function verifySessionCookie(
 	sessionCookieValue: string | null,

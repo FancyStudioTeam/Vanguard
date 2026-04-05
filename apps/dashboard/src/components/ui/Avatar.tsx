@@ -5,7 +5,10 @@ import { twMerge } from 'tailwind-merge';
 export function Avatar({ className, ...props }: AvatarProps) {
 	return (
 		<RadixAvatar.Root
-			className={twMerge('shrink-0 select-none overflow-hidden', className)}
+			className={twMerge(
+				'shrink-0 select-none overflow-hidden',
+				className,
+			)}
 			{...props}
 		/>
 	);

@@ -4,7 +4,10 @@ import { twMerge } from 'tailwind-merge';
 import { VanguardLogo } from './VanguardLogo.tsx';
 import { VanguardSymbol } from './VanguardSymbol.tsx';
 
-export function VanguardCombinationMark({ className, ...props }: VanguardCombinationMarksProps) {
+export function VanguardCombinationMark({
+	className,
+	...props
+}: VanguardCombinationMarksProps) {
 	return (
 		<Link
 			{...props}
@@ -21,4 +24,7 @@ export function VanguardCombinationMark({ className, ...props }: VanguardCombina
 	);
 }
 
-export type VanguardCombinationMarksProps = Omit<ComponentProps<typeof Link>, 'href'>;
+export type VanguardCombinationMarksProps = Omit<
+	ComponentProps<typeof Link>,
+	'href'
+>;

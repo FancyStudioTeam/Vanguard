@@ -7,7 +7,8 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-neutral-50 text-neutral-950 hover:bg-neutral-50/75',
+				default:
+					'bg-neutral-50 text-neutral-950 hover:bg-neutral-50/75',
 				ghost: 'bg-transparent hover:bg-neutral-800/75',
 				secondary: 'bg-neutral-800 hover:bg-neutral-800/75',
 			},
@@ -15,7 +16,12 @@ const buttonVariants = cva(
 	},
 );
 
-export function Button({ asChild = false, className, variant = 'default', ...props }: ButtonProps) {
+export function Button({
+	asChild = false,
+	className,
+	variant = 'default',
+	...props
+}: ButtonProps) {
 	const Component = asChild ? Slot.Slot : 'button';
 
 	return (
@@ -29,6 +35,8 @@ export function Button({ asChild = false, className, variant = 'default', ...pro
 	);
 }
 
-export interface ButtonProps extends ComponentProps<'button'>, VariantProps<typeof buttonVariants> {
+export interface ButtonProps
+	extends ComponentProps<'button'>,
+		VariantProps<typeof buttonVariants> {
 	asChild?: boolean;
 }

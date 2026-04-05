@@ -1,9 +1,15 @@
 import { IdentificationCardIcon, UserIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
-import { Avatar, AvatarFallback, AvatarImage } from '#/components/ui/Avatar.tsx';
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from '#/components/ui/Avatar.tsx';
 import type { User } from '#/lib/types/User.ts';
 
-export function NavbarProfileDropdownUser({ user }: NavbarProfileDropdownUserProps) {
+export function NavbarProfileDropdownUser({
+	user,
+}: NavbarProfileDropdownUserProps) {
 	const { avatar, id, name } = user;
 
 	const userAvatarUrl = `https://cdn.discordapp.com/avatars/${id}/${avatar}`;
