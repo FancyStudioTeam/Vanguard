@@ -1,7 +1,7 @@
 import type { Icon as PhosphorIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
 import type { HTMLAttributeAnchorTarget } from 'react';
-import { DropdownMenuItem } from '#/components/ui/Dropdown.tsx';
+import { DropdownMenuItem } from '#components/ui/Dropdown.tsx';
 
 export function NavbarProfileDropdownLink({
 	href,

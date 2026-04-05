@@ -1,6 +1,6 @@
 import { SignOutIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
-import { DropdownMenuItem } from '#/components/ui/Dropdown.tsx';
+import { DropdownMenuItem } from '#components/ui/Dropdown.tsx';
 
 export function NavbarProfileDropdownLogout() {
 	return (

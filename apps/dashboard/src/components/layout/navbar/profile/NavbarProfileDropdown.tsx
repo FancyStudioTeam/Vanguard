@@ -4,8 +4,8 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuSeparator,
-} from '#/components/ui/Dropdown.tsx';
-import type { User } from '#/lib/types/User.ts';
+} from '#components/ui/Dropdown.tsx';
+import type { AuthUser } from '#types/Auth.ts';
 import { NavbarProfileDropdownButton } from './NavbarProfileDropdownButton.tsx';
 import { NavbarProfileDropdownLinks } from './NavbarProfileDropdownLinks.tsx';
 import { NavbarProfileDropdownLogout } from './NavbarProfileDropdownLogout.tsx';
@@ -27,5 +27,5 @@ export function NavbarProfileDropdown({ user }: NavbarProfileDropdownProps) {
 }
 
 export interface NavbarProfileDropdownProps {
-	user: User;
+	user: AuthUser;
 }

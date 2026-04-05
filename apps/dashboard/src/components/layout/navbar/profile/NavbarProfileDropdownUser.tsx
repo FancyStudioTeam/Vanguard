@@ -1,11 +1,7 @@
 import { IdentificationCardIcon, UserIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarImage,
-} from '#/components/ui/Avatar.tsx';
-import type { User } from '#/lib/types/User.ts';
+import { Avatar, AvatarFallback, AvatarImage } from '#components/ui/Avatar.tsx';
+import type { AuthUser } from '#types/Auth.ts';
 
 export function NavbarProfileDropdownUser({
 	user,
@@ -45,5 +41,5 @@ export function NavbarProfileDropdownUser({
 }
 
 export interface NavbarProfileDropdownUserProps {
-	user: User;
+	user: AuthUser;
 }

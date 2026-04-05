@@ -1,7 +1,7 @@
 import { UserIcon } from '@phosphor-icons/react';
-import { Button } from '#/components/ui/Button.tsx';
-import { DropdownMenuTrigger } from '#/components/ui/Dropdown.tsx';
-import type { User } from '#/lib/types/User.ts';
+import { Button } from '#components/ui/Button.tsx';
+import { DropdownMenuTrigger } from '#components/ui/Dropdown.tsx';
+import type { AuthUser } from '#types/Auth.ts';
 
 export function NavbarProfileDropdownButton({
 	user,
@@ -26,5 +26,5 @@ export function NavbarProfileDropdownButton({
 }
 
 export interface NavbarProfileDropdownButtonProps {
-	user: User;
+	user: AuthUser;
 }

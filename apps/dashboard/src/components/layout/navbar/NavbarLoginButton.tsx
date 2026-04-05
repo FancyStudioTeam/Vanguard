@@ -1,6 +1,6 @@
 import { FingerprintIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
-import { Button } from '../ui/Button.tsx';
+import { Button } from '#components/ui/Button.tsx';
 
 export function NavbarLoginButton() {
 	return (
