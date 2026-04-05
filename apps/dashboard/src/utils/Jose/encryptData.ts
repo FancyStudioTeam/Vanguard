@@ -1,5 +1,5 @@
 import { CompactEncrypt } from 'jose';
-import { ENCRYPTION_SECRET_ENCODED } from '#lib/Constants.ts';
+import { JOSE_ENCRYPTION_SECRET } from '#lib/Constants/Jose.ts';
 
 export async function encryptData(unencryptedData: string): Promise<string> {
 	const compactEncryptData = new TextEncoder().encode(unencryptedData);
@@ -10,5 +10,5 @@ export async function encryptData(unencryptedData: string): Promise<string> {
 		enc: 'A256GCM',
 	});
 
-	return await compactEncrypt.encrypt(ENCRYPTION_SECRET_ENCODED);
+	return await compactEncrypt.encrypt(JOSE_ENCRYPTION_SECRET);
 }

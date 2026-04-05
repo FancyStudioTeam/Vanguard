@@ -1,9 +1,9 @@
 import { SignJWT } from 'jose';
 import {
-	AUTH_SECRET_ENCODED,
 	JOSE_AUDIENCE,
+	JOSE_AUTH_SECRET,
 	JOSE_ISSUER,
-} from '#lib/Constants.ts';
+} from '#lib/Constants/Jose.ts';
 import type { AuthJsonWebTokenPayload } from '#types/Auth.ts';
 
 export async function createJsonWebToken(
@@ -23,5 +23,5 @@ export async function createJsonWebToken(
 
 	signJwt.setExpirationTime('1d');
 
-	return await signJwt.sign(AUTH_SECRET_ENCODED);
+	return await signJwt.sign(JOSE_AUTH_SECRET);
 }
