@@ -31,9 +31,7 @@ export async function getUser(accessToken: string): Promise<UserData> {
 			return buildUserErrorData();
 		}
 
-		const user = parseUser(rawUser);
-
-		return buildUserSuccessData(user);
+		return buildUserSuccessData(parseUser(rawUser));
 	} catch {
 		return buildUserErrorData();
 	}
@@ -73,9 +71,7 @@ async function createUserRequest(accessToken: string): Promise<Response> {
 	});
 }
 
-function parseUser(apiUser: APIUser): User {
-	const { avatar, id, global_name, username } = apiUser;
-
+function parseUser({ avatar, id, global_name, username }: APIUser): User {
 	return {
 		avatar,
 		id,

@@ -1,6 +1,7 @@
 import {
 	PermissionFlagsBits,
 	type RESTAPIPartialCurrentUserGuild,
+	type RESTGetAPICurrentUserGuildsResult,
 	RouteBases,
 	Routes,
 } from 'discord-api-types/v10';
@@ -29,7 +30,7 @@ export async function getUserGuilds(
 				.otherwise(buildUserGuildsErrorData);
 		}
 
-		const rawUserGuilds: RESTAPIPartialCurrentUserGuild[] | null =
+		const rawUserGuilds: RESTGetAPICurrentUserGuildsResult | null =
 			await response.json().catch(() => null);
 
 		if (!rawUserGuilds) {
@@ -88,11 +89,14 @@ function filterGuildsWithPermissions(userGuilds: UserGuild[]): UserGuild[] {
 	);
 }
 
-function parseUserGuild(
-	apiUserGuild: RESTAPIPartialCurrentUserGuild,
-): UserGuild {
-	const { banner, icon, id, name, owner, permissions } = apiUserGuild;
-
+function parseUserGuild({
+	banner,
+	icon,
+	id,
+	name,
+	owner,
+	permissions,
+}: RESTAPIPartialCurrentUserGuild): UserGuild {
 	return {
 		banner,
 		icon,
