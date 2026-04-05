@@ -5,7 +5,7 @@ import { INTERNAL_SERVER_ERROR_RESPONSE } from './_lib/Responses.ts';
 
 export function GET(nextRequest: NextRequest) {
 	try {
-		const redirectUrl = createRedirectUrl(oauth2State);
+		const redirectUrl = createRedirectUrl();
 
 		return NextResponse.redirect(redirectUrl);
 	} catch (error) {
