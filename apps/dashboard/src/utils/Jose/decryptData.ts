@@ -2,11 +2,7 @@ import { compactDecrypt } from 'jose';
 import { ENCRYPTION_SECRET_ENCODED } from '#lib/Constants.ts';
 
 export async function decryptData(encryptedData: string): Promise<string> {
-	const { plaintext: decryptedPlainText } = await compactDecrypt(
-		encryptedData,
-		ENCRYPTION_SECRET_ENCODED,
+	return await compactDecrypt(encryptedData, ENCRYPTION_SECRET_ENCODED).then(
+		({ plaintext }) => new TextDecoder().decode(plaintext),
 	);
-	const decryptedData = new TextDecoder().decode(decryptedPlainText);
-
-	return decryptedData;
 }
