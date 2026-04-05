@@ -8,7 +8,10 @@ export function NavbarProfileDropdownLogout() {
 			asChild={true}
 			className='justify-between text-rose-400'
 		>
-			<Link href={'/api/auth/sign-out'}>
+			<Link
+				href={'/api/auth/sign-out'}
+				prefetch={false}
+			>
 				<span className='truncate'>Log Out</span>
 				<SignOutIcon
 					className='size-5 shrink-0'

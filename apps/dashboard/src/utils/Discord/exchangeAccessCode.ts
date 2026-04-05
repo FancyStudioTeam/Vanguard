@@ -1,7 +1,7 @@
 import { CLIENT_ID, CLIENT_SECRET } from '#lib/Constants/Client.ts';
 import { rest } from '#lib/REST.ts';
 import type { UserCredentials } from '#types/Discord.ts';
-import { createRedirectUrl } from '#utils/URL/createRedirectUrl.ts';
+import { createCallbackUrl } from '#utils/URL/createCallbackUrl.ts';
 
 export async function exchangeAccessCode(
 	code: string,
@@ -9,6 +9,6 @@ export async function exchangeAccessCode(
 	return await rest.exchangeToken(CLIENT_ID, CLIENT_SECRET, {
 		code,
 		grantType: 'authorization_code',
-		redirectUri: createRedirectUrl(),
+		redirectUri: createCallbackUrl(),
 	});
 }

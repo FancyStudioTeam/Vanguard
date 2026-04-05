@@ -9,7 +9,10 @@ export function NavbarLoginButton() {
 			className='w-full max-w-40'
 			variant='secondary'
 		>
-			<Link href='/api/auth/sign-in'>
+			<Link
+				href='/api/auth/sign-in'
+				prefetch={false}
+			>
 				<FingerprintIcon
 					className='size-5 shrink-0'
 					weight='duotone'
