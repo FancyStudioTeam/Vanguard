@@ -1,6 +1,7 @@
 import { randomBytes } from 'node:crypto';
 import { cookies as NextCookies } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
+import { COOKIE_SESSION_NAME } from '#lib/Constants/Cookies.ts';
 import { SessionsCollection } from '#lib/MongoDB/Auth.ts';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.ts';
 import { exchangeAccessCode } from '#utils/Discord/exchangeAccessCode.ts';
@@ -46,7 +47,7 @@ export async function GET(nextRequest: NextRequest) {
 		});
 		const nextCookies = await NextCookies();
 
-		nextCookies.set('session', jsonWebToken, {
+		nextCookies.set(COOKIE_SESSION_NAME, jsonWebToken, {
 			httpOnly: true,
 			maxAge: expiresIn,
 			path: '/',
