@@ -3,7 +3,7 @@ import { Slot } from 'radix-ui';
 import type { ComponentProps } from 'react';
 
 const buttonVariants = cva(
-	'inline-flex cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 text-sm transition-colors',
+	'flex cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 text-sm transition-colors',
 	{
 		variants: {
 			variant: {
