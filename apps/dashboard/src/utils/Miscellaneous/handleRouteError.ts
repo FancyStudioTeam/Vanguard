@@ -6,7 +6,7 @@ import {
 import { logger } from '#lib/Logger.ts';
 import { createErrorJsonResponse } from '#utils/Responses/createErrorJsonResponse.ts';
 
-export function handleRouterError(nextRequest: NextRequest, error: unknown): NextResponse {
+export function handleRouteError(nextRequest: NextRequest, error: unknown): NextResponse {
 	const { nextUrl } = nextRequest;
 	const { href } = nextUrl;
 
