@@ -3,8 +3,8 @@ import {
 	MONGO_DB_COLLECTION_NAME,
 	MONGO_DB_CONNECTION_URL,
 	MONGO_DB_DATABASE_NAME,
-	NODE_ENV,
-} from '#lib/Constants.ts';
+} from '#lib/Constants/MongoDB.ts';
+import { NODE_ENV } from '#lib/Constants/Shared.ts';
 
 export const client =
 	global.mongoClient ?? new MongoClient(MONGO_DB_CONNECTION_URL);

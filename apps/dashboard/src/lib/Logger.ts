@@ -1,6 +1,5 @@
-import 'server-only';
 import { addColors, createLogger, format, transports } from 'winston';
-import { getMemoryUsage } from '#/utils/getMemoryUsage.ts';
+import { getMemoryUsage } from '#utils/Process/getMemoryUsage.ts';
 
 const { align, colorize, combine, errors, printf, timestamp } = format;
 const { Console } = transports;

@@ -1,5 +1,3 @@
-import 'server-only';
-
 export enum MetadataPage {
 	Home = 'HOME',
 	NotFound = 'NOT_FOUND',

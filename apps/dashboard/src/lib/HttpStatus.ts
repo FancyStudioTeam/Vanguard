@@ -1,5 +1,3 @@
-import 'server-only';
-
 export const BAD_REQUEST_STATUS_CODE = 400;
 export const BAD_REQUEST_STATUS_TEXT = 'Bad Request';
 

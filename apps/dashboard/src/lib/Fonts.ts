@@ -1,4 +1,3 @@
-import 'server-only';
 import LocalFont from 'next/font/local';
 
 export const GeneralSansFont = LocalFont({
