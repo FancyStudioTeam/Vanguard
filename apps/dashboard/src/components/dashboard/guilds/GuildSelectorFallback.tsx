@@ -1,5 +1,5 @@
 import { InfoIcon } from '@phosphor-icons/react/dist/ssr';
-import { Alert, AlertDescription } from '#/components/ui/Alert.tsx';
+import { Alert, AlertDescription } from '#components/ui/Alert.tsx';
 
 export function GuildSelectorFallback() {
 	return (
