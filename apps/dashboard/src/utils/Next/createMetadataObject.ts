@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { METADATA_PAGE_DESCRIPTION, METADATA_PAGE_TITLE, MetadataPage } from '#lib/Metadata.ts';
 
 export function createMetadataObject(page: MetadataPage): Metadata {
-	const { description, robots, title } = getPageInformation(page);
+	const { description, robots, title } = buildPageInformationData(page);
 
 	return {
 		description,
@@ -28,11 +28,7 @@ export function createMetadataObject(page: MetadataPage): Metadata {
 	};
 }
 
-function getPageDescription(page: MetadataPage): string {
-	return METADATA_PAGE_DESCRIPTION[page];
-}
-
-function getPageInformation(page: MetadataPage): PageInformation {
+function buildPageInformationData(page: MetadataPage): PageInformationData {
 	const description = getPageDescription(page);
 	const robots = getPageRobots(page);
 	const title = getPageTitle(page);
@@ -42,6 +38,10 @@ function getPageInformation(page: MetadataPage): PageInformation {
 		robots,
 		title,
 	};
+}
+
+function getPageDescription(page: MetadataPage): string {
+	return METADATA_PAGE_DESCRIPTION[page];
 }
 
 function getPageRobots(page: MetadataPage): string {
@@ -56,7 +56,7 @@ function getPageTitle(page: MetadataPage): string {
 	return METADATA_PAGE_TITLE[page];
 }
 
-interface PageInformation {
+interface PageInformationData {
 	description: string;
 	robots: string;
 	title: string;
