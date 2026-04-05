@@ -11,7 +11,7 @@ const SCOPES = [
 	OAuth2Scopes.GuildsMembersRead,
 ];
 
-export function createRedirectUrl(state: string): string {
+export function createRedirectUrl(): string {
 	const callbackUrl = createCallbackUrl();
 
 	/*
@@ -33,7 +33,6 @@ export function createRedirectUrl(state: string): string {
 	searchParams.set('response_type', 'code');
 
 	searchParams.set('prompt', 'none');
-	searchParams.set('state', state);
 
 	return authorizationUrl.toString();
 }
