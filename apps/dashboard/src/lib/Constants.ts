@@ -1,5 +1,8 @@
 import { createSecretKey } from 'node:crypto';
+import { env } from 'node:process';
 import { getEnvVariable } from '#utils/Process/getEnvVariable.ts';
+
+export const { NODE_ENV } = env;
 
 export const AUTH_SECRET = getEnvVariable('AUTH_SECRET');
 export const AUTH_SECRET_ENCODED = new TextEncoder().encode(AUTH_SECRET);
