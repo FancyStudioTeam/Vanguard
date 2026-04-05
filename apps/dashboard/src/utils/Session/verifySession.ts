@@ -1,9 +1,9 @@
 import { unauthorized } from 'next/navigation';
-import { sessionsCollection } from '#/lib/auth/MongoDB.ts';
-import { decrypt } from '../encryption/decrypt.ts';
-import type { JsonWebTokenPayload } from '../jose/verifyJsonWebToken.ts';
+import { SessionsCollection } from '#lib/MongoDB/Auth.ts';
+import type { AuthJsonWebTokenPayload } from '#types/Auth.ts';
+import { decryptData } from '#utils/Jose/decryptData.ts';
+import { verifyJsonWebToken } from '#utils/Jose/verifyJsonWebToken.ts';
 import { getSessionCookieValue } from './getSessionCookieValue.ts';
-import { verifySessionCookie } from './verifySessionCookie.ts';
 
 export async function verifySession(
 	withCredentials?: false,
@@ -14,9 +14,11 @@ export async function verifySession(
 
 export async function verifySession(
 	withCredentials?: boolean,
-): Promise<JsonWebTokenPayload> {
+): Promise<AuthJsonWebTokenPayload> {
 	const sessionCookieValue = await getSessionCookieValue();
-	const jsonWebTokenPayload = await verifySessionCookie(sessionCookieValue);
+	const jsonWebTokenPayload = await verifyJsonWebToken(
+		sessionCookieValue ?? '',
+	);
 
 	if (!jsonWebTokenPayload) {
 		unauthorized();
@@ -26,7 +28,8 @@ export async function verifySession(
 		return jsonWebTokenPayload;
 	} else {
 		const { sid: sessionId } = jsonWebTokenPayload;
-		const sessionData = await sessionsCollection.findOne({
+
+		const sessionData = await SessionsCollection.findOne({
 			sessionId: String(sessionId),
 		});
 
@@ -37,8 +40,8 @@ export async function verifySession(
 		const { credentials } = sessionData;
 		const { accessToken, refreshToken } = credentials;
 
-		const unencryptedAccessToken = decrypt(accessToken);
-		const unencryptedRefreshToken = decrypt(refreshToken);
+		const unencryptedAccessToken = await decryptData(accessToken);
+		const unencryptedRefreshToken = await decryptData(refreshToken);
 
 		return {
 			...jsonWebTokenPayload,
@@ -48,9 +51,9 @@ export async function verifySession(
 	}
 }
 
-interface SessionWithCredentials extends JsonWebTokenPayload {
+interface SessionWithCredentials extends AuthJsonWebTokenPayload {
 	accessToken: string;
 	refreshToken: string;
 }
 
-type SessionWithoutCredentials = JsonWebTokenPayload;
+type SessionWithoutCredentials = AuthJsonWebTokenPayload;
