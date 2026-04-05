@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { logError } from '#utils/Miscellaneous/logError.ts';
+import { handleRouteError } from '#utils/Miscellaneous/handleRouteError.ts';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.ts';
-import { INTERNAL_SERVER_ERROR_RESPONSE } from './_lib/Responses.ts';
 
 export function GET(nextRequest: NextRequest) {
 	try {
@@ -9,8 +8,6 @@ export function GET(nextRequest: NextRequest) {
 
 		return NextResponse.redirect(redirectUrl);
 	} catch (error) {
-		logError(nextRequest, error);
-
-		return INTERNAL_SERVER_ERROR_RESPONSE();
+		return handleRouteError(nextRequest, error);
 	}
 }
