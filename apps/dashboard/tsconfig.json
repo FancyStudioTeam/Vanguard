@@ -11,6 +11,9 @@
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"paths": {
+			"#components/*": [
+				"./src/components/*"
+			],
 			"#layouts/*": [
 				"./src/layouts/*"
 			],

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button } from '#/components/ui/Button.tsx';
-import { PageLayout } from '#/layouts/PageLayout.tsx';
-import { MetadataPage } from '#/lib/Metadata.ts';
-import { createMetadataObject } from '#/utils/createMetadataObject.ts';
+import { Button } from '#components/ui/Button.tsx';
+import { PageLayout } from '#layouts/PageLayout.tsx';
+import { MetadataPage } from '#lib/Metadata.ts';
+import { createMetadataObject } from '#utils/Next/createMetadataObject.ts';
 
 export const metadata: Metadata = createMetadataObject(MetadataPage.NotFound);
 

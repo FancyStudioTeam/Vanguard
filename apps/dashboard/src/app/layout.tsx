@@ -5,9 +5,9 @@ import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { GeneralSansVariable } from '#/lib/Fonts.ts';
-import { MetadataPage } from '#/lib/Metadata.ts';
-import { createMetadataObject } from '#/utils/createMetadataObject.ts';
+import { GeneralSansVariable } from '#lib/Fonts.ts';
+import { MetadataPage } from '#lib/Metadata.ts';
+import { createMetadataObject } from '#utils/Next/createMetadataObject.ts';
 
 gsap.registerPlugin(SplitText);
 
