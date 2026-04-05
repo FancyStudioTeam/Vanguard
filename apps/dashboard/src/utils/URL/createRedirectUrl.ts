@@ -1,6 +1,5 @@
-import 'server-only';
 import { OAuth2Routes, OAuth2Scopes } from 'discord-api-types/v10';
-import { CLIENT_ID } from '#/lib/Constants.ts';
+import { CLIENT_ID } from '#lib/Constants.ts';
 import { createCallbackUrl } from './createCallbackUrl.ts';
 
 const { authorizationURL } = OAuth2Routes;
@@ -24,8 +23,6 @@ export function createRedirectUrl(state: string): string {
 	const { searchParams } = authorizationUrl;
 
 	/*
-	 * When using '<URLSearchParams>.set', its value will be encoded.
-	 *
 	 * This assignment MUST be made before setting other query string parameters,
 	 * as this property overrides all search properties.
 	 */
@@ -35,10 +32,6 @@ export function createRedirectUrl(state: string): string {
 	searchParams.set('redirect_uri', callbackUrl);
 	searchParams.set('response_type', 'code');
 
-	/*
-	 * Set 'prompt' to 'none' to avoid the user from clicking 'Authorize' when they
-	 * already previously authorized the application with the specified scopes.
-	 */
 	searchParams.set('prompt', 'none');
 	searchParams.set('state', state);
 
