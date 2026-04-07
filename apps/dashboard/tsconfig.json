@@ -20,6 +20,9 @@
 			"#lib/*": [
 				"./src/lib/*"
 			],
+			"#schemas/*": [
+				"./src/schemas/*"
+			],
 			"#types/*": [
 				"./src/types/*"
 			],

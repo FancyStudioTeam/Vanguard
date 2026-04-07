@@ -8,6 +8,8 @@ import {
 	INTERNAL_SERVER_ERROR_STATUS_TEXT,
 	TOO_MANY_REQUESTS_STATUS_CODE,
 	TOO_MANY_REQUESTS_STATUS_TEXT,
+	UNAUTHORIZED_STATUS_CODE,
+	UNAUTHORIZED_STATUS_TEXT,
 } from '#lib/HttpStatus.ts';
 import { createErrorJsonResponse } from '#utils/Responses/createErrorJsonResponse.ts';
 
@@ -59,6 +61,17 @@ export function RATE_LIMITED_RESPONSE(): NextResponse {
 			code: 'RATE_LIMITED',
 			message:
 				'You are being rate limited. Please try again in a few seconds.',
+		},
+	);
+}
+
+export function UNAUTHORIZED_RESPONSE(): NextResponse {
+	return createErrorJsonResponse(
+		UNAUTHORIZED_STATUS_CODE,
+		UNAUTHORIZED_STATUS_TEXT,
+		{
+			code: 'UNAUTHORIZED',
+			message: 'You are not authorized',
 		},
 	);
 }
