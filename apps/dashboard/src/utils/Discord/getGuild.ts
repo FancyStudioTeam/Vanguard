@@ -1,8 +1,6 @@
-import type { Camelize, DiscordGuild } from '@discordeno/types';
 import { rest } from '#lib/REST.ts';
+import type { Guild } from '#types/Discord.ts';
 
-export async function getGuild(
-	guildId: string,
-): Promise<Camelize<DiscordGuild>> {
+export async function getGuild(guildId: string): Promise<Guild> {
 	return await rest.getGuild(guildId);
 }
