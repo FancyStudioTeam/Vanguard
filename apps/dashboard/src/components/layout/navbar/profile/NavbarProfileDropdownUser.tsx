@@ -6,7 +6,7 @@ import type { AuthUser } from '#types/Auth.ts';
 export function NavbarProfileDropdownUser({
 	user,
 }: NavbarProfileDropdownUserProps) {
-	const { avatar, id, name } = user;
+	const { avatar, globalName, id, username } = user;
 
 	const userAvatarUrl = `https://cdn.discordapp.com/avatars/${id}/${avatar}`;
 	const userUrl = `https://discord.com/users/${id}`;
@@ -27,7 +27,9 @@ export function NavbarProfileDropdownUser({
 				</AvatarFallback>
 			</Avatar>
 			<ul className='min-w-0'>
-				<li className='truncate font-bold'>@{name}</li>
+				<li className='truncate font-bold'>
+					@{globalName ?? username}
+				</li>
 				<li className='flex items-center gap-1 text-neutral-400 text-xs'>
 					<IdentificationCardIcon
 						className='size-5 shrink-0'

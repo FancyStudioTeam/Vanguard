@@ -6,7 +6,7 @@ import type { AuthUser } from '#types/Auth.ts';
 export function NavbarProfileDropdownButton({
 	user,
 }: NavbarProfileDropdownButtonProps) {
-	const { name } = user;
+	const { globalName, username } = user;
 
 	return (
 		<Button
@@ -19,7 +19,7 @@ export function NavbarProfileDropdownButton({
 					className='size-5 shrink-0'
 					weight='fill'
 				/>
-				<span className='truncate'>{name}</span>
+				<span className='truncate'>{globalName ?? username}</span>
 			</DropdownMenuTrigger>
 		</Button>
 	);

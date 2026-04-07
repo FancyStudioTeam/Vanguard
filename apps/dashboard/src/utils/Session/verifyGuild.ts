@@ -21,7 +21,7 @@ export async function verifyGuild(
 			'guild-permissions',
 		],
 		{
-			revalidate: 60,
+			revalidate: 30,
 			tags: [
 				`guild-permissions:${guildId}:${userId}`,
 			],

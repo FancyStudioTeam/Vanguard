@@ -18,7 +18,7 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 	return (
 		<RadixAvatar.Fallback
 			className={twMerge(
-				'flex size-10 items-center justify-center rounded-md border-2 border-neutral-800 bg-neutral-800 text-sm',
+				'flex size-10 items-center justify-center rounded-md bg-neutral-800 text-sm',
 				className,
 			)}
 			{...props}
@@ -29,10 +29,7 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 export function AvatarImage({ className, ...props }: AvatarImageProps) {
 	return (
 		<RadixAvatar.Image
-			className={twMerge(
-				'aspect-square size-10 rounded-md border-2 border-neutral-800',
-				className,
-			)}
+			className={twMerge('aspect-square size-10 rounded-md', className)}
 			{...props}
 		/>
 	);
