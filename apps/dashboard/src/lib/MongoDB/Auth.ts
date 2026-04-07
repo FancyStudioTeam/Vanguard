@@ -5,6 +5,7 @@ import {
 	MONGO_DB_DATABASE_NAME,
 } from '#lib/Constants/MongoDB.ts';
 import { NODE_ENV } from '#lib/Constants/Shared.ts';
+import type { AuthUser } from '#types/Auth.ts';
 
 export const client =
 	global.mongoClient ?? new MongoClient(MONGO_DB_CONNECTION_URL);
@@ -32,12 +33,15 @@ export const SessionsCollection = await getCollection<SessionDocument>(
 export interface SessionDocument {
 	credentials: SessionDocumentCredentials;
 	sessionId: string;
+	user: SessionDocumentUser;
 }
 
 export interface SessionDocumentCredentials {
 	accessToken: string;
 	refreshToken: string;
 }
+
+export type SessionDocumentUser = AuthUser;
 
 declare global {
 	var mongoClient: MongoClient | null;

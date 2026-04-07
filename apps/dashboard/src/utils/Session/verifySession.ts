@@ -3,7 +3,7 @@ import { SessionsCollection } from '#lib/MongoDB/Auth.ts';
 import type { AuthJsonWebTokenPayload } from '#types/Auth.ts';
 import { decryptData } from '#utils/Jose/decryptData.ts';
 import { verifyJsonWebToken } from '#utils/Jose/verifyJsonWebToken.ts';
-import { getSessionCookieValue } from './getSessionCookieValue.ts';
+import { getSessionCookieValue } from './getSessionId.ts';
 
 export async function verifySession(
 	withCredentials?: false,

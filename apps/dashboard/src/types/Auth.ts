@@ -1,9 +1,6 @@
-import type { JWTPayload } from 'jose';
-import type { User } from './Discord.ts';
-
-export interface AuthJsonWebTokenPayload extends JWTPayload {
-	sid: string;
-	user: AuthUser;
+export interface AuthUser {
+	avatar: string | null;
+	globalName: string | null;
+	id: string;
+	username: string;
 }
-
-export type AuthUser = User;
