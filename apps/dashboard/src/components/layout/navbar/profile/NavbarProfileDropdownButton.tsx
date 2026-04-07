@@ -17,7 +17,7 @@ export function NavbarProfileDropdownButton({
 			<DropdownMenuTrigger>
 				<UserIcon
 					className='size-5 shrink-0'
-					weight='duotone'
+					weight='fill'
 				/>
 				<span className='truncate'>{name}</span>
 			</DropdownMenuTrigger>

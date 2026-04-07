@@ -4,7 +4,7 @@ import type { SidebarGroupProps } from './SidebarGroup.tsx';
 
 export function SidebarGroupTrigger({ name }: SidebarGroupTriggerProps) {
 	return (
-		<CollapsibleTrigger className='justify-between px-4 py-2 font-bold uppercase'>
+		<CollapsibleTrigger className='justify-between p-2 font-bold uppercase'>
 			<span className='truncate'>{name}</span>
 			<CaretUpDownIcon
 				className='size-5 shrink-0'

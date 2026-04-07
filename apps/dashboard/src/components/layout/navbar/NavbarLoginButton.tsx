@@ -15,7 +15,7 @@ export function NavbarLoginButton() {
 			>
 				<FingerprintIcon
 					className='size-5 shrink-0'
-					weight='duotone'
+					weight='fill'
 				/>
 				<span className='truncate'>Login with Discord</span>
 			</Link>

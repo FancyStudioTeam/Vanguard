@@ -3,7 +3,7 @@
 import type { Icon as PhosphorIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from '#components/ui/Button.tsx';
+import { twMerge } from 'tailwind-merge';
 
 export function SidebarGroupLink({
 	href,
@@ -11,22 +11,24 @@ export function SidebarGroupLink({
 	text,
 }: SidebarGroupLinkProps) {
 	const pathname = usePathname();
-	const variant = pathname === href ? 'secondary' : 'ghost';
+	const isActive = pathname === href;
 
 	return (
-		<Button
-			asChild={true}
-			className='justify-start'
-			variant={variant}
+		<Link
+			className={twMerge(
+				'flex items-center gap-2 rounded-md p-2 text-sm transition-colors hover:bg-neutral-800/75 hover:text-neutral-50',
+				isActive
+					? 'bg-neutral-800 text-neutral-50'
+					: 'text-neutral-400',
+			)}
+			href={href}
 		>
-			<Link href={href}>
-				<Icon
-					className='size-5 shrink-0'
-					weight='fill'
-				/>
-				<span className='truncate'>{text}</span>
-			</Link>
-		</Button>
+			<Icon
+				className='size-5 shrink-0'
+				weight='fill'
+			/>
+			<span className='truncate'>{text}</span>
+		</Link>
 	);
 }
 
