@@ -36,7 +36,7 @@ export function CollapsibleTrigger({
 	return (
 		<RadixCollapsible.Trigger
 			className={twMerge(
-				'flex w-full cursor-pointer items-center rounded-md text-sm transition-colors hover:bg-neutral-800/75',
+				'flex w-full cursor-pointer items-center rounded-md transition-colors hover:bg-neutral-800/75',
 				className,
 			)}
 			{...props}

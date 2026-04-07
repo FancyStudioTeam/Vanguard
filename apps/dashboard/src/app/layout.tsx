@@ -14,11 +14,11 @@ gsap.registerPlugin(SplitText);
 
 export const metadata: Metadata = createMetadataObject(MetadataPage.Home);
 
-export default function ({ children }: MainLayoutProps) {
+export default function ({ children }: LayoutProps) {
 	return (
 		<html lang='en-US'>
 			<body
-				className={`${GeneralSansVariable} w-full bg-neutral-950 font-general-sans font-medium text-zinc-50`}
+				className={`${GeneralSansVariable} w-full bg-neutral-950 font-general-sans font-medium text-zinc-50 selection:bg-neutral-50 selection:text-neutral-950`}
 			>
 				<div className='mx-auto my-6 flex w-full max-w-7xl flex-col gap-6 px-6'>
 					<Navbar />
@@ -29,6 +29,6 @@ export default function ({ children }: MainLayoutProps) {
 	);
 }
 
-interface MainLayoutProps {
+interface LayoutProps {
 	children: ReactNode;
 }
