@@ -12,7 +12,6 @@
 		"@phosphor-icons/react": "2.1.10",
 		"class-variance-authority": "0.7.1",
 		"clsx": "2.1.1",
-		"crypto-js": "4.2.0",
 		"gsap": "3.14.2",
 		"jose": "6.2.2",
 		"mongodb": "7.1.1",
@@ -26,20 +25,16 @@
 		"tailwind-merge": "3.5.0",
 		"ts-pattern": "5.9.0",
 		"tslog": "4.10.2",
-		"winston": "3.19.0",
 		"zod": "4.3.6"
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "4.2.2",
-		"@types/crypto-js": "4.2.2",
 		"@types/mdx": "2.0.13",
 		"@types/node": "25.5.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
 		"babel-plugin-react-compiler": "1.0.0",
-		"client-only": "0.0.1",
 		"pm2": "6.0.14",
-		"server-only": "0.0.1",
 		"tailwind-animations": "1.0.1",
 		"tailwindcss": "4.2.2",
 		"typescript": "6.0.2"
