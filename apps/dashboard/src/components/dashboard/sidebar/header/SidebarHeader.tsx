@@ -4,7 +4,7 @@ import { SidebarHeaderInfo } from './SidebarHeaderInfo.tsx';
 
 export function SidebarHeader(props: SidebarHeaderProps) {
 	return (
-		<header className='flex items-center gap-4'>
+		<header className='flex items-center gap-4 rounded-md bg-neutral-800 p-2'>
 			<SidebarHeaderAvatar {...props} />
 			<SidebarHeaderInfo {...props} />
 		</header>
