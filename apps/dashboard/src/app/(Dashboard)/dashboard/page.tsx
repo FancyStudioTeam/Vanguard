@@ -4,7 +4,7 @@ import { GuildSelectorFallback } from '#components/dashboard/guilds/GuildSelecto
 import { verifySession } from '#utils/Session/verifySession.ts';
 
 export default async function () {
-	const { credentials } = await verifySession();
+	const { credentials } = await verifySession(true);
 	const { accessToken } = credentials;
 
 	return (

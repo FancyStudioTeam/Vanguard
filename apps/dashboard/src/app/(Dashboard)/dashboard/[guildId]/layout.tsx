@@ -6,7 +6,7 @@ import { verifySession } from '#utils/Session/verifySession.ts';
 export default async function ({ children, params }: LayoutProps) {
 	const { guildId } = await params;
 
-	const { credentials, user } = await verifySession();
+	const { credentials, user } = await verifySession(true);
 
 	const { accessToken } = credentials;
 	const { id } = user;

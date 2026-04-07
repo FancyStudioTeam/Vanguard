@@ -3,16 +3,27 @@ import { type SessionDocument, SessionsCollection } from '#lib/MongoDB/Auth.ts';
 import { decryptData } from '#utils/Jose/decryptData.ts';
 import { getSessionId } from './getSessionId.ts';
 
-export async function verifySession(): Promise<
-	Omit<SessionDocument, 'sessionId'>
-> {
+export async function verifySession(
+	redirect?: boolean,
+): Promise<Omit<SessionDocument, 'sessionId'> | null>;
+export async function verifySession(
+	redirect: true,
+): Promise<Omit<SessionDocument, 'sessionId'>>;
+
+export async function verifySession(
+	redirect?: boolean,
+): Promise<Omit<SessionDocument, 'sessionId'> | null> {
 	const sessionId = await getSessionId();
 	const session = await SessionsCollection.findOne({
 		sessionId,
 	});
 
 	if (!session) {
-		unauthorized();
+		if (redirect) {
+			unauthorized();
+		}
+
+		return null;
 	}
 
 	const { credentials, user } = session;
