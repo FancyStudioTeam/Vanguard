@@ -4,9 +4,7 @@ import { createRedirectUrl } from '#utils/URL/createRedirectUrl.ts';
 
 export function GET(nextRequest: NextRequest) {
 	try {
-		const redirectUrl = createRedirectUrl();
-
-		return NextResponse.redirect(redirectUrl);
+		return NextResponse.redirect(createRedirectUrl());
 	} catch (error) {
 		return handleRouteError(nextRequest, error);
 	}
