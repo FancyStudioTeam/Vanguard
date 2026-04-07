@@ -1,12 +1,15 @@
-import { SessionsCollection } from '#lib/MongoDB/Auth.ts';
-import type { AuthUser } from '#types/Auth.ts';
+import {
+	type SessionDocumentCredentials,
+	type SessionDocumentUser,
+	SessionsCollection,
+} from '#lib/MongoDB/Auth.ts';
 
 export async function saveSessionDocument(
 	sessionId: string,
 	{ credentials, user }: SaveSessionDocumentOptions,
 ): Promise<void> {
 	const { accessToken, refreshToken } = credentials;
-	const { avatar, id, name } = user;
+	const { avatar, globalName, id, username } = user;
 
 	await SessionsCollection.insertOne({
 		credentials: {
@@ -16,20 +19,14 @@ export async function saveSessionDocument(
 		sessionId,
 		user: {
 			avatar,
+			globalName,
 			id,
-			name,
+			username,
 		},
 	});
 }
 
-interface SaveSessionDocumentCredentials {
-	accessToken: string;
-	refreshToken: string;
-}
-
 interface SaveSessionDocumentOptions {
-	credentials: SaveSessionDocumentCredentials;
-	user: SaveSessionDocumentUser;
+	credentials: SessionDocumentCredentials;
+	user: SessionDocumentUser;
 }
-
-type SaveSessionDocumentUser = AuthUser;
