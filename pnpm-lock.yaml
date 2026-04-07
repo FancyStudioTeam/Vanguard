@@ -144,6 +144,9 @@ importers:
       ts-pattern:
         specifier: 5.9.0
         version: 5.9.0
+      tslog:
+        specifier: 4.10.2
+        version: 4.10.2
       winston:
         specifier: 3.19.0
         version: 3.19.0
@@ -3429,6 +3432,10 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  tslog@4.10.2:
+    resolution: {integrity: sha512-XuELoRpMR+sq8fuWwX7P0bcj+PRNiicOKDEb3fGNURhxWVyykCi9BNq7c4uVz7h7P0sj8qgBsr5SWS6yBClq3g==}
+    engines: {node: '>=16'}
 
   tsx@4.21.0:
     resolution: {integrity: sha512-5C1sg4USs1lfG0GFb2RLXsdpXqBSEhAaA/0kPL01wxzpMqLILNxIxIOKiILz+cdg/pLnOUxFYOR5yhHU666wbw==}
@@ -7139,6 +7146,8 @@ snapshots:
   tslib@1.9.3: {}
 
   tslib@2.8.1: {}
+
+  tslog@4.10.2: {}
 
   tsx@4.21.0:
     dependencies:
