@@ -17,9 +17,6 @@
 			"#hooks/*": [
 				"./src/hooks/*"
 			],
-			"#layouts/*": [
-				"./src/layouts/*"
-			],
 			"#lib/*": [
 				"./src/lib/*"
 			],
