@@ -1,13 +1,20 @@
-import { VanguardCombinationMark } from '#components/shared/branding/VanguardCombinationMark.tsx';
+import { Separator } from '#components/ui/Separator.tsx';
+import type { Guild } from '#types/Discord.ts';
+import { SidebarHeader } from './header/SidebarHeader.tsx';
+import { SidebarGroups } from './SidebarGroups.tsx';
 
-export function Sidebar({ guildId }: SidebarProps) {
+export function Sidebar({ guild }: SidebarProps) {
+	const { id } = guild;
+
 	return (
-		<aside className='fixed inset-0 flex h-dvh w-100 flex-col gap-6 border-neutral-800 border-r-2 bg-neutral-950 p-8'>
-			<VanguardCombinationMark />
+		<aside className='sticky top-26 flex h-[calc(100dvh-8rem)] w-80 shrink-0 flex-col gap-4 overflow-y-auto rounded-xl border-2 border-neutral-800 bg-neutral-900 p-6'>
+			<SidebarHeader {...guild} />
+			<Separator />
+			<SidebarGroups id={id} />
 		</aside>
 	);
 }
 
 export interface SidebarProps {
-	guildId: string;
+	guild: Guild;
 }
