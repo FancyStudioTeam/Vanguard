@@ -1,6 +1,5 @@
-import { Separator as RadixSeparator } from 'radix-ui';
-import type { ComponentProps } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { Separator as SeparatorPrimitive } from '@base-ui/react/separator';
+import { classNames } from '#utils/Tailwind/classNames.ts';
 
 export function Separator({
 	className,
@@ -8,8 +7,8 @@ export function Separator({
 	...props
 }: SeparatorProps) {
 	return (
-		<RadixSeparator.Root
-			className={twMerge(
+		<SeparatorPrimitive
+			className={classNames(
 				'shrink-0 bg-neutral-800 data-[orientation=horizontal]:h-0.5 data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-0.5',
 				className,
 			)}
@@ -19,4 +18,4 @@ export function Separator({
 	);
 }
 
-export type SeparatorProps = ComponentProps<typeof RadixSeparator.Root>;
+export type SeparatorProps = SeparatorPrimitive.Props;
