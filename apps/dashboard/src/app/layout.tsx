@@ -13,7 +13,7 @@ gsap.registerPlugin(SplitText);
 
 export const metadata: Metadata = createMetadataObject(MetadataPage.Home);
 
-export default function ({ children }: { children: ReactNode }) {
+export default function ({ children }: MainLayoutProps) {
 	return (
 		<html lang='en-US'>
 			<body
@@ -23,4 +23,8 @@ export default function ({ children }: { children: ReactNode }) {
 			</body>
 		</html>
 	);
+}
+
+interface MainLayoutProps {
+	children: ReactNode;
 }
