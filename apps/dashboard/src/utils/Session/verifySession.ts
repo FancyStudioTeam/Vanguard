@@ -19,11 +19,11 @@ export async function verifySession(
 	});
 
 	if (!session) {
-		if (redirect) {
-			unauthorized();
+		if (!redirect) {
+			return null;
 		}
 
-		return null;
+		unauthorized();
 	}
 
 	const { credentials, user } = session;

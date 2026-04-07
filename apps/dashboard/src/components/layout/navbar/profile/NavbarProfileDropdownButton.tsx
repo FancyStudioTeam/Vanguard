@@ -1,4 +1,4 @@
-import { UserIcon } from '@phosphor-icons/react';
+import { UserIcon } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '#components/ui/Button.tsx';
 import { DropdownMenuTrigger } from '#components/ui/Dropdown.tsx';
 import type { AuthUser } from '#types/Auth.ts';

@@ -1,4 +1,7 @@
-import { IdentificationCardIcon, UserIcon } from '@phosphor-icons/react';
+import {
+	IdentificationCardIcon,
+	UserIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '#components/ui/Avatar.tsx';
 import type { AuthUser } from '#types/Auth.ts';

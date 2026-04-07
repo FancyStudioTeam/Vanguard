@@ -1,4 +1,4 @@
-import { SignOutIcon } from '@phosphor-icons/react';
+import { SignOutIcon } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 import { DropdownMenuItem } from '#components/ui/Dropdown.tsx';
 

@@ -1,16 +1,15 @@
-'use client';
-
-import { useSession } from '#hooks/useSession.ts';
+import { verifySession } from '#utils/Session/verifySession.ts';
 import { NavbarLoginButton } from './NavbarLoginButton.tsx';
 import { NavbarProfileDropdown } from './profile/NavbarProfileDropdown.tsx';
 
-export function NavbarCtaButton() {
-	const { session } = useSession();
-	const { error, isLoading, responseData } = session;
+export async function NavbarCtaButton() {
+	const session = await verifySession();
 
-	if (isLoading || error || !responseData) {
+	if (!session) {
 		return <NavbarLoginButton />;
 	}
 
-	return <NavbarProfileDropdown user={responseData} />;
+	const { user } = session;
+
+	return <NavbarProfileDropdown user={user} />;
 }

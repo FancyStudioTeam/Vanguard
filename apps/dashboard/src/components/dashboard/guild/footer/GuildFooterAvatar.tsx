@@ -5,12 +5,15 @@ import type { GuildFooterProps } from './GuildFooter.tsx';
 
 export function GuildFooterAvatar({ id, icon }: GuildFooterAvatarProps) {
 	return (
-		<Avatar>
+		<Avatar className='bg-red-800'>
 			<AvatarImage
-				className='size-15 bg-neutral-800'
-				src={guildIconUrl(id, icon ?? undefined)}
+				className='size-15'
+				src={guildIconUrl(id, icon ?? undefined, {
+					format: 'webp',
+					size: 512,
+				})}
 			/>
-			<AvatarFallback className='size-15 bg-neutral-900'>
+			<AvatarFallback className='size-15'>
 				<ImageIcon
 					className='size-10 shrink-0'
 					weight='fill'

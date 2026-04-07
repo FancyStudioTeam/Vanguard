@@ -1,4 +1,4 @@
-import { FingerprintIcon } from '@phosphor-icons/react';
+import { FingerprintIcon } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 import { Button } from '#components/ui/Button.tsx';
 
