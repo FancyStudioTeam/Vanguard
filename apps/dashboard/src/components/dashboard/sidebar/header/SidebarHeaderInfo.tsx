@@ -1,5 +1,5 @@
 import { IdentificationCardIcon } from '@phosphor-icons/react/dist/ssr';
-import type { Guild } from '#types/Discord.ts';
+import type { SidebarHeaderProps } from './SidebarHeader.tsx';
 
 export function SidebarHeaderInfo({ id, name }: SidebarHeaderInfoProps) {
 	return (
@@ -16,4 +16,4 @@ export function SidebarHeaderInfo({ id, name }: SidebarHeaderInfoProps) {
 	);
 }
 
-export type SidebarHeaderInfoProps = Pick<Guild, 'id' | 'name'>;
+export type SidebarHeaderInfoProps = Pick<SidebarHeaderProps, 'id' | 'name'>;

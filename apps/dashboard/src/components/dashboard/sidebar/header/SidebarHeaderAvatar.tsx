@@ -1,6 +1,6 @@
 import { ImageIcon } from '@phosphor-icons/react/dist/ssr';
 import { Avatar, AvatarFallback, AvatarImage } from '#components/ui/Avatar.tsx';
-import type { Guild } from '#types/Discord.ts';
+import type { SidebarHeaderProps } from './SidebarHeader.tsx';
 
 export function SidebarHeaderAvatar({ icon, id }: SidebarHeaderAvatarProps) {
 	const guildIconUrl = `https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512`;
@@ -21,4 +21,4 @@ export function SidebarHeaderAvatar({ icon, id }: SidebarHeaderAvatarProps) {
 	);
 }
 
-export type SidebarHeaderAvatarProps = Pick<Guild, 'icon' | 'id'>;
+export type SidebarHeaderAvatarProps = Pick<SidebarHeaderProps, 'icon' | 'id'>;
