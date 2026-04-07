@@ -1,4 +1,5 @@
 export interface Guild {
+	icon: string | null;
 	id: string;
 	name: string;
 }
