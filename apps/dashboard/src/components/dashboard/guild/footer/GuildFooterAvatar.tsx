@@ -5,7 +5,7 @@ import type { GuildFooterProps } from './GuildFooter.tsx';
 
 export function GuildFooterAvatar({ id, icon }: GuildFooterAvatarProps) {
 	return (
-		<Avatar className='bg-red-800'>
+		<Avatar>
 			<AvatarImage
 				className='size-15'
 				src={guildIconUrl(id, icon ?? undefined, {

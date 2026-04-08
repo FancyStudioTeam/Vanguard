@@ -5,14 +5,15 @@ import type { SidebarHeaderProps } from './SidebarHeader.tsx';
 
 export function SidebarHeaderAvatar({ icon, id }: SidebarHeaderAvatarProps) {
 	return (
-		<Avatar className='size-10 bg-neutral-800'>
+		<Avatar className='bg-neutral-900'>
 			<AvatarImage
+				className='size-10'
 				src={guildIconUrl(id, icon ?? undefined, {
 					format: 'webp',
 					size: 512,
 				})}
 			/>
-			<AvatarFallback>
+			<AvatarFallback className='size-10'>
 				<ImageIcon
 					className='size-5 shrink-0'
 					weight='fill'
