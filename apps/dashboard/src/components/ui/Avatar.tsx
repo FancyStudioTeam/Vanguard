@@ -6,7 +6,7 @@ export function Avatar({ className, ...props }: AvatarProps) {
 	return (
 		<RadixAvatar.Root
 			className={twMerge(
-				'shrink-0 select-none overflow-hidden',
+				'shrink-0 select-none overflow-hidden rounded-md bg-neutral-800',
 				className,
 			)}
 			{...props}
@@ -18,7 +18,7 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 	return (
 		<RadixAvatar.Fallback
 			className={twMerge(
-				'flex size-10 items-center justify-center rounded-md bg-neutral-800 text-sm',
+				'flex size-10 items-center justify-center rounded-md text-sm',
 				className,
 			)}
 			{...props}
