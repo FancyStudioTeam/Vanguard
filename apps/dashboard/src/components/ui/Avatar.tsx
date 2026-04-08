@@ -1,11 +1,10 @@
-import { Avatar as RadixAvatar } from 'radix-ui';
-import type { ComponentProps } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { Avatar as AvatarPrimitive } from '@base-ui/react';
+import { classNames } from '#utils/Tailwind/classNames.ts';
 
 export function Avatar({ className, ...props }: AvatarProps) {
 	return (
-		<RadixAvatar.Root
-			className={twMerge(
+		<AvatarPrimitive.Root
+			className={classNames(
 				'shrink-0 select-none overflow-hidden rounded-md bg-neutral-800',
 				className,
 			)}
@@ -16,8 +15,8 @@ export function Avatar({ className, ...props }: AvatarProps) {
 
 export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 	return (
-		<RadixAvatar.Fallback
-			className={twMerge(
+		<AvatarPrimitive.Fallback
+			className={classNames(
 				'flex size-10 items-center justify-center rounded-md text-sm',
 				className,
 			)}
@@ -28,13 +27,16 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 
 export function AvatarImage({ className, ...props }: AvatarImageProps) {
 	return (
-		<RadixAvatar.Image
-			className={twMerge('aspect-square size-10 rounded-md', className)}
+		<AvatarPrimitive.Image
+			className={classNames(
+				'aspect-square size-10 rounded-md',
+				className,
+			)}
 			{...props}
 		/>
 	);
 }
 
-export type AvatarFallbackProps = ComponentProps<typeof RadixAvatar.Fallback>;
-export type AvatarImageProps = ComponentProps<typeof RadixAvatar.Image>;
-export type AvatarProps = ComponentProps<typeof RadixAvatar.Root>;
+export type AvatarFallbackProps = AvatarPrimitive.Fallback.Props;
+export type AvatarImageProps = AvatarPrimitive.Image.Props;
+export type AvatarProps = AvatarPrimitive.Root.Props;
