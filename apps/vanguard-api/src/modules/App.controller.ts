@@ -1,12 +1,12 @@
-import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
-import type { FastifyReply } from 'fastify';
+import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
 
 @Controller()
 export class AppController {
 	@Get()
-	public handleIndex(@Res() fastifyReply: FastifyReply): FastifyReply {
-		return fastifyReply.status(HttpStatus.OK).send({
+	@HttpCode(HttpStatus.OK)
+	public handleIndex(): object {
+		return {
 			now: Date.now(),
-		});
+		};
 	}
 }
