@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { EncryptionModule } from '#modules/Encryption/Encryption.module.js';
 import { Session, SessionSchema } from '#schemas/Mongoose/Session.js';
-import { EncryptionService } from '#services/EncryptionService.js';
 import { AuthController } from './Auth.controller.js';
 import { AuthDiscordService, AuthService } from './Auth.service.js';
 
@@ -10,6 +10,7 @@ import { AuthDiscordService, AuthService } from './Auth.service.js';
 		AuthController,
 	],
 	imports: [
+		EncryptionModule,
 		MongooseModule.forFeature([
 			{
 				name: Session.name,
@@ -20,8 +21,6 @@ import { AuthDiscordService, AuthService } from './Auth.service.js';
 	providers: [
 		AuthDiscordService,
 		AuthService,
-
-		EncryptionService,
 	],
 })
 export class AuthModule {}

@@ -4,9 +4,17 @@ import { Controller, Get, Redirect, Req, Res } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { COOKIE_SESSION_ID_NAME } from '#lib/Constants/Cookies.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
-import type { EncryptionService } from '#services/EncryptionService.js';
-// biome-ignore lint/style/useImportType: (x)
+
+/*
+ * biome-ignore-start lint/style/useImportType: Providers cannot be imported
+ * using 'import type'.
+ */
+import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 import { AuthDiscordService, AuthService } from './Auth.service.js';
+/*
+ * biome-ignore-end lint/style/useImportType: Providers cannot be imported
+ * using 'import type'.
+ */
 
 @Controller('auth')
 export class AuthController {
