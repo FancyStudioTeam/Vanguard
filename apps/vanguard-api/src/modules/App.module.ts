@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller.js';
-import { AuthModule } from './auth/auth.module.js';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { LoggerInterceptor } from '#interceptors/LoggerInterceptor.js';
+import { AppController } from './App.controller.js';
+import { AuthModule } from './auth/Auth.module.js';
 
 @Module({
 	controllers: [
@@ -8,6 +10,12 @@ import { AuthModule } from './auth/auth.module.js';
 	],
 	imports: [
 		AuthModule,
+	],
+	providers: [
+		{
+			provide: APP_INTERCEPTOR,
+			useClass: LoggerInterceptor,
+		},
 	],
 })
 export class AppModule {}
