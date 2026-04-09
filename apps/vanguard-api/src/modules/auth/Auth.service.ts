@@ -6,7 +6,7 @@ import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 @Injectable()
 export class AuthService {
-	async exchangeToken(code: string): Promise<Camelize<DiscordAccessTokenResponse>> {
+	public async exchangeToken(code: string): Promise<Camelize<DiscordAccessTokenResponse>> {
 		return await rest.exchangeToken(CLIENT_ID, CLIENT_SECRET, {
 			code,
 			grantType: 'authorization_code',

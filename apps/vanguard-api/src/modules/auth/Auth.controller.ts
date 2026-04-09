@@ -1,7 +1,8 @@
-import { Controller, Get, HttpStatus, Req, Res } from '@nestjs/common';
-import type { FastifyReply, FastifyRequest } from 'fastify';
+import { Controller, Get, Req } from '@nestjs/common';
+import type { FastifyRequest } from 'fastify';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
-import type { AuthService } from './Auth.service.js';
+// biome-ignore lint/style/useImportType: (x)
+import { AuthService } from './Auth.service.js';
 
 @Controller('auth')
 export class AuthController {
@@ -9,10 +10,7 @@ export class AuthController {
 	public constructor(private readonly authService: AuthService) {}
 
 	@Get('callback')
-	public async handleCallback(
-		@Req() fastifyRequest: CallbackRequest,
-		@Res() fastifyReply: FastifyReply,
-	): Promise<FastifyReply> {
+	public async handleCallback(@Req() fastifyRequest: CallbackRequest): Promise<unknown> {
 		const { authService } = this;
 
 		const { query } = fastifyRequest;
@@ -24,7 +22,7 @@ export class AuthController {
 
 		const _accessTokenResponse = await authService.exchangeToken(code);
 
-		return fastifyReply.status(HttpStatus.OK);
+		return 'OK';
 	}
 }
 

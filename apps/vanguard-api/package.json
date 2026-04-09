@@ -15,6 +15,7 @@
 		"tslog": "4.10.2"
 	},
 	"devDependencies": {
+		"@nestjs/cli": "11.0.19",
 		"@types/node": "25.5.2",
 		"cross-env": "10.1.0",
 		"pm2": "6.0.14",
@@ -35,9 +36,9 @@
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
 	"scripts": {
-		"build": "tsc --project tsconfig.json",
+		"build": "nest build",
 		"prebuild": "rimraf dist",
-		"start:dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
+		"start:dev": "cross-env NODE_ENV=development nest start --watch",
 		"start:prod": "cross-env NODE_ENV=production node dist/index.js"
 	},
 	"type": "module",
