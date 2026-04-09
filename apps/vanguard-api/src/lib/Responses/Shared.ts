@@ -2,18 +2,14 @@
 
 import { HttpStatus } from '@nestjs/common';
 import type { FastifyReply } from 'fastify';
-import { createErrorJsonResponse } from '#utils/Responses/createErrorJsonResponse.js';
 
 export function INTERNAL_SERVER_ERROR_RESPONSE(
 	reply: FastifyReply,
 ): FastifyReply {
-	return createErrorJsonResponse(reply, {
-		data: {
-			code: 'INTERNAL_SERVER_ERROR',
-			message:
-				'Something went wrong while processing your request. Please try again in a few seconds.',
-		},
-		statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+	return reply.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+		code: 'INTERNAL_SERVER_ERROR',
+		message:
+			'Something went wrong while processing your request. Please try again in a few seconds.',
 	});
 }
 
@@ -21,14 +17,11 @@ export function MISSING_QUERY_STRING_PARAM_RESPONSE(
 	reply: FastifyReply,
 	name: string,
 ): FastifyReply {
-	return createErrorJsonResponse(reply, {
-		data: {
-			code: 'MISSING_QUERY_STRING_PARAM',
-			details: {
-				name,
-			},
-			message: `Missing query string param '${name}' from URL`,
+	return reply.status(HttpStatus.BAD_REQUEST).send({
+		code: 'MISSING_QUERY_STRING_PARAM',
+		details: {
+			name,
 		},
-		statusCode: HttpStatus.BAD_REQUEST,
+		message: `Missing query string param '${name}' from URL`,
 	});
 }
