@@ -1,8 +1,9 @@
-import { createRestManager } from '@discordeno/rest';
+import { API } from '@discordjs/core/http-only';
+import { REST } from '@discordjs/rest';
 import { CLIENT_TOKEN } from './Constants/Client.js';
 
-export const rest = createRestManager({
-	token: CLIENT_TOKEN,
-});
+const rest = new REST({
+	retries: 0,
+}).setToken(CLIENT_TOKEN);
 
-rest.maxRetryCount = 0;
+export const api = new API(rest);

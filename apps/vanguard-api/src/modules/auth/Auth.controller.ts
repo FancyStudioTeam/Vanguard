@@ -1,17 +1,28 @@
-import { Controller, Get, Req } from '@nestjs/common';
-import type { FastifyRequest } from 'fastify';
+// biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: (x)
+
+import { Controller, Get, Req, Res } from '@nestjs/common';
+import type { FastifyReply, FastifyRequest } from 'fastify';
+import { COOKIE_SESSION_ID_NAME } from '#lib/Constants/Cookies.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
 // biome-ignore lint/style/useImportType: (x)
-import { AuthService } from './Auth.service.js';
+import { AuthDiscordService, AuthService } from './Auth.service.js';
 
 @Controller('auth')
 export class AuthController {
-	// biome-ignore lint/correctness/noUnusedPrivateClassMembers: (x)
-	public constructor(private readonly authService: AuthService) {}
+	public constructor(
+		private readonly authService: AuthService,
+		private readonly authDiscordService: AuthDiscordService,
+	) {}
 
 	@Get('callback')
-	public async handleCallback(@Req() fastifyRequest: CallbackRequest): Promise<unknown> {
-		const { authService } = this;
+	public async handleCallback(
+		@Req() fastifyRequest: FastifyCallbackRequest,
+		@Res({
+			passthrough: true,
+		})
+		fastifyReply: FastifyReply,
+	) {
+		const { authDiscordService } = this;
 
 		const { query } = fastifyRequest;
 		const { code } = query;
@@ -20,17 +31,18 @@ export class AuthController {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
 
-		const _accessTokenResponse = await authService.exchangeToken(code);
+		const accessTokenResult = await authDiscordService.exchangeToken(code);
+		const _userResult = await authDiscordService.getCurrentUser(accessTokenResult);
 
-		return 'OK';
+		fastifyReply.setCookie(COOKIE_SESSION_ID_NAME, 'a');
 	}
 }
 
-interface CallbackRequestQueryStringParams {
+interface FastifyCallbackRequestQueryStringParams {
 	code?: string;
 }
 
-type CallbackRequest = FastifyRequest<{
+type FastifyCallbackRequest = FastifyRequest<{
 	// biome-ignore lint/style/useNamingConvention: (x)
-	Querystring: CallbackRequestQueryStringParams;
+	Querystring: FastifyCallbackRequestQueryStringParams;
 }>;
