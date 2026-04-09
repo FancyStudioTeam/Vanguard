@@ -1,3 +1,5 @@
+import './env.js';
+
 import FastifyCookie from '@fastify/cookie';
 import type { NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
