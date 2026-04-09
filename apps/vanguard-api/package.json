@@ -32,6 +32,8 @@
 		"#interceptors/*": "./dist/interceptors/*",
 		"#lib/*": "./dist/lib/*",
 		"#modules/*": "./dist/modules/*",
+		"#schemas/*": "./dist/schemas/*",
+		"#services/*": "./dist/services/*",
 		"#utils/*": "./dist/utils/*"
 	},
 	"license": "MIT",
