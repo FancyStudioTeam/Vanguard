@@ -1,18 +1,33 @@
+// biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: (x)
+
 import { randomBytes } from 'node:crypto';
 import type { RESTGetAPICurrentUserResult, RESTPostOAuth2AccessTokenResult } from '@discordjs/core';
 import { API } from '@discordjs/core/http-only';
 import { REST } from '@discordjs/rest';
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import type { Model } from 'mongoose';
 import { CLIENT_ID, CLIENT_SECRET } from '#lib/Constants/Client.js';
 import { api } from '#lib/REST.js';
 import {
 	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
 	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
 } from '#lib/Responses/Auth.js';
+import { Session } from '#schemas/Mongoose/Session.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 @Injectable()
 export class AuthService {
+	public constructor(@InjectModel(Session.name) private readonly sessionModel: Model<Session>) {}
+
+	public async getSession(sessionId: string): Promise<Session | null> {
+		const { sessionModel } = this;
+
+		return await sessionModel.findOne({
+			_id: sessionId,
+		});
+	}
+
 	public generateSessionId(): string {
 		const sessionIdBytesLength = 32;
 
