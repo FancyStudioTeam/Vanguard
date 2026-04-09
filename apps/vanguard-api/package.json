@@ -9,6 +9,7 @@
 		"@nestjs/core": "11.1.18",
 		"@nestjs/platform-fastify": "11.1.18",
 		"fastify": "5.8.4",
+		"rxjs": "7.8.2",
 		"tslog": "4.10.2"
 	},
 	"devDependencies": {
@@ -20,6 +21,7 @@
 		"typescript": "6.0.2"
 	},
 	"imports": {
+		"#interceptors/*": "./dist/interceptors/*",
 		"#lib/*": "./dist/lib/*",
 		"#modules/*": "./dist/modules/*",
 		"#utils/*": "./dist/utils/*"

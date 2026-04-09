@@ -205,6 +205,9 @@ importers:
       fastify:
         specifier: 5.8.4
         version: 5.8.4
+      rxjs:
+        specifier: 7.8.2
+        version: 7.8.2
       tslog:
         specifier: 4.10.2
         version: 4.10.2
