@@ -21,4 +21,11 @@ export class Session {
 
 export const SessionSchema = SchemaFactory.createForClass(Session);
 
+export type CreateSessionOptions = Readonly<{
+	_id: string;
+	accessToken: string;
+	refreshToken: string;
+	userId: string;
+}>;
+
 export type SessionDocument = HydratedDocument<Session>;

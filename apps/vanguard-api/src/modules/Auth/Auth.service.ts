@@ -13,12 +13,18 @@ import {
 	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
 	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
 } from '#lib/Responses/Auth.js';
-import { Session } from '#schemas/Mongoose/Session.js';
+import { type CreateSessionOptions, Session } from '#schemas/Mongoose/Session.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 @Injectable()
 export class AuthService {
 	public constructor(@InjectModel(Session.name) private readonly sessionModel: Model<Session>) {}
+
+	public async createSession(options: CreateSessionOptions): Promise<Session> {
+		const { sessionModel } = this;
+
+		return await sessionModel.create(options);
+	}
 
 	public async getSession(sessionId: string): Promise<Session | null> {
 		const { sessionModel } = this;
