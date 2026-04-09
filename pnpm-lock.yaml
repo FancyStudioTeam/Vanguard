@@ -181,6 +181,15 @@ importers:
 
   apps/vanguard-api:
     dependencies:
+      '@discordeno/rest':
+        specifier: 21.0.0
+        version: 21.0.0
+      '@discordeno/types':
+        specifier: 21.0.0
+        version: 21.0.0
+      '@discordeno/utils':
+        specifier: 21.0.0
+        version: 21.0.0
       '@fastify/cookie':
         specifier: 11.0.2
         version: 11.0.2

@@ -1,6 +1,9 @@
 {
 	"author": "Vanguard Development Team",
 	"dependencies": {
+		"@discordeno/rest": "21.0.0",
+		"@discordeno/types": "21.0.0",
+		"@discordeno/utils": "21.0.0",
 		"@fastify/cookie": "11.0.2",
 		"@nestjs/common": "11.1.18",
 		"@nestjs/core": "11.1.18",
