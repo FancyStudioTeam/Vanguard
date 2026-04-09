@@ -37,12 +37,12 @@ export class EncryptionService {
 		const ivBytes = randomBytes(ENCRYPTION_IV_LENGTH);
 		const cipher = createCipheriv(ENCRYPTION_ALGORITHM, ENCRYPTION_SECRET, ivBytes);
 
-		const authTag = cipher.getAuthTag();
-
 		const encryptedBuffer = Buffer.concat([
 			cipher.update(plainData, 'utf-8'),
 			cipher.final(),
 		]);
+
+		const authTag = cipher.getAuthTag();
 
 		const result = [
 			ivBytes,
