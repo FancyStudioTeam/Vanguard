@@ -5,6 +5,7 @@ import { HttpExceptionFilter } from '#filters/HttpExceptionFilter.js';
 import { LoggerInterceptor } from '#interceptors/LoggerInterceptor.js';
 import { MONGO_DB_CONNECTION_URL } from '#lib/Constants/MongoDB.js';
 import { AppController } from './App.controller.js';
+import { AuthModule } from './Auth/Auth.module.js';
 import { EncryptionModule } from './Encryption/Encryption.module.js';
 
 @Module({
@@ -12,6 +13,7 @@ import { EncryptionModule } from './Encryption/Encryption.module.js';
 		AppController,
 	],
 	imports: [
+		AuthModule,
 		EncryptionModule,
 		MongooseModule.forRoot(MONGO_DB_CONNECTION_URL),
 	],
