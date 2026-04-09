@@ -13,8 +13,11 @@ export class LoggerInterceptor implements NestInterceptor {
 				next: () => {
 					const httpContext = context.switchToHttp();
 
-					const { method, ip, url } = httpContext.getRequest<FastifyRequest>();
-					const { statusCode } = httpContext.getResponse<FastifyReply>();
+					const fastifyRequest = httpContext.getRequest<FastifyRequest>();
+					const fastifyReply = httpContext.getResponse<FastifyReply>();
+
+					const { ip, method, url } = fastifyRequest;
+					const { statusCode } = fastifyReply;
 
 					logger.info(`[${method}] '${url}' (${ip}) [${statusCode}]`);
 				},

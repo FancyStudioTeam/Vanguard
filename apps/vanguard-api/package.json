@@ -11,6 +11,7 @@
 		"dotenv": "17.4.1",
 		"fastify": "5.8.4",
 		"rxjs": "7.8.2",
+		"ts-pattern": "5.9.0",
 		"tslog": "4.10.2"
 	},
 	"devDependencies": {
@@ -22,6 +23,7 @@
 		"typescript": "6.0.2"
 	},
 	"imports": {
+		"#filters/*": "./dist/filters/*",
 		"#interceptors/*": "./dist/interceptors/*",
 		"#lib/*": "./dist/lib/*",
 		"#modules/*": "./dist/modules/*",

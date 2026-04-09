@@ -1,26 +1,27 @@
 // biome-ignore-all lint/style/useNamingConvention: (x)
 
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { type HttpException, HttpStatus } from '@nestjs/common';
+import { buildHttpException } from '#utils/Exceptions/buildHttpException.js';
 
 export function INTERNAL_SERVER_ERROR_RESPONSE(): HttpException {
-	return new HttpException(
-		{
+	return buildHttpException({
+		data: {
 			code: 'INTERNAL_SERVER_ERROR',
 			message: 'Something went wrong while processing your request. Please try again in a few seconds.',
 		},
-		HttpStatus.INTERNAL_SERVER_ERROR,
-	);
+		statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+	});
 }
 
 export function MISSING_QUERY_STRING_PARAM_RESPONSE(name: string): HttpException {
-	return new HttpException(
-		{
+	return buildHttpException({
+		data: {
 			code: 'MISSING_QUERY_STRING_PARAM',
 			details: {
 				name,
 			},
 			message: `Missing query string param '${name}' from URL`,
 		},
-		HttpStatus.BAD_REQUEST,
-	);
+		statusCode: HttpStatus.BAD_REQUEST,
+	});
 }
