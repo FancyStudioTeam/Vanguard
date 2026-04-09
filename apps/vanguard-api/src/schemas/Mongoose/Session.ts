@@ -6,6 +6,16 @@ export class Session {
 	@Prop({
 		required: true,
 	})
+	declare accessToken: string;
+
+	@Prop({
+		required: true,
+	})
+	declare refreshToken: string;
+
+	@Prop({
+		required: true,
+	})
 	declare userId: string;
 }
 
