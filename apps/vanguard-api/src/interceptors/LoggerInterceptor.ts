@@ -16,7 +16,7 @@ export class LoggerInterceptor implements NestInterceptor {
 					const { method, ip, url } = httpContext.getRequest<FastifyRequest>();
 					const { statusCode } = httpContext.getResponse<FastifyReply>();
 
-					logger.info(`[${method}] '${url}' - '${ip}' [${statusCode}]`);
+					logger.info(`[${method}] '${url}' (${ip}) [${statusCode}]`);
 				},
 			}),
 		);

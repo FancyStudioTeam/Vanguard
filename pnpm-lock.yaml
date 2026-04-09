@@ -211,6 +211,9 @@ importers:
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
+      ts-pattern:
+        specifier: 5.9.0
+        version: 5.9.0
       tslog:
         specifier: 4.10.2
         version: 4.10.2
