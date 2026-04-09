@@ -9,10 +9,10 @@ import {
 } from '@nestjs/platform-fastify';
 import { AppModule } from '#modules/App.module.js';
 
-const PORT = 3001;
+const APP_PORT = 3001;
 
-const APP_MODULE = AppModule;
 const APP_ADAPTER = new FastifyAdapter();
+const APP_MODULE = AppModule;
 const APP_OPTIONS: NestApplicationOptions = {
 	logger: [
 		'error',
@@ -27,4 +27,4 @@ const app = await NestFactory.create<NestFastifyApplication>(
 );
 
 await app.register(FastifyCookie);
-await app.listen(PORT);
+await app.listen(APP_PORT);
