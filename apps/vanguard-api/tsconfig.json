@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"outDir": "dist",
+		"paths": {
+			"#lib/*": [
+				"./src/lib/*"
+			],
+			"#modules/*": [
+				"./src/modules/*"
+			],
+			"#utils/*": [
+				"./src/utils/*"
+			]
+		},
+		"rootDir": "src",
+		"types": [
+			"node"
+		]
+	},
+	"extends": "../../tsconfig.base.json"
+}
