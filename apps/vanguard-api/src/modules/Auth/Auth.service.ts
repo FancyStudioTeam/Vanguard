@@ -1,52 +1,39 @@
-// biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: (x)
+/*
+ * biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: Biome
+ * falsely reports unused private members when extracting them from 'this'.
+ */
 
-import type { RESTGetAPICurrentUserResult, RESTPostOAuth2AccessTokenResult } from '@discordjs/core';
-import { API } from '@discordjs/core/http-only';
-import { REST } from '@discordjs/rest';
-import { Injectable } from '@nestjs/common';
-import { CLIENT_ID, CLIENT_SECRET } from '#lib/Constants/Client.js';
-import { api } from '#lib/REST.js';
-import {
-	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
-	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
-} from '#lib/Responses/Auth.js';
-import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
+import type { RESTAPIPartialCurrentUserGuild } from '@discordjs/core';
+import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
+import { Inject, Injectable } from '@nestjs/common';
+import { DiscordService } from '#modules/Discord/Discord.service.js';
 
 @Injectable()
-export class AuthDiscordService {
-	private createApiObject(accessTokenResult: RESTPostOAuth2AccessTokenResult): API {
-		const { access_token } = accessTokenResult;
+export class AuthService {
+	static USER_GUILDS_CACHE_TTL = 5 as const;
 
-		const rest = new REST({
-			authPrefix: 'Bearer',
-		}).setToken(access_token);
+	public constructor(
+		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
+		@Inject(DiscordService) private readonly discordService: DiscordService,
+	) {}
 
-		return new API(rest);
-	}
+	public async getGuilds(userId: string, accessToken: string): Promise<RESTAPIPartialCurrentUserGuild[]> {
+		const { USER_GUILDS_CACHE_TTL } = AuthService;
+		const { cacheService, discordService } = this;
 
-	public async exchangeToken(code: string): Promise<RESTPostOAuth2AccessTokenResult> {
-		return await api.oauth2
-			.tokenExchange({
-				// biome-ignore-start lint/style/useNamingConvention: (x)
-				client_id: CLIENT_ID,
-				client_secret: CLIENT_SECRET,
-				code,
-				grant_type: 'authorization_code',
-				redirect_uri: createCallbackUrl(),
-				// biome-ignore-end lint/style/useNamingConvention: (x)
-			})
-			.catch(() => {
-				throw UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE();
-			});
-	}
+		const cachedGuilds = await cacheService.get<RESTAPIPartialCurrentUserGuild[]>(`user:guilds:${userId}`);
 
-	public async getCurrentUser(
-		accessTokenResult: RESTPostOAuth2AccessTokenResult,
-	): Promise<RESTGetAPICurrentUserResult> {
-		return await this.createApiObject(accessTokenResult)
-			.users.getCurrent()
-			.catch(() => {
-				throw UNABLE_TO_GET_USER_INFORMATION_RESPONSE();
-			});
+		if (cachedGuilds) {
+			return cachedGuilds;
+		} else {
+			const guilds = await discordService.getCurrentUserGuilds(accessToken);
+			const cachedGuilds = await cacheService.set<RESTAPIPartialCurrentUserGuild[]>(
+				`user:guilds:${userId}`,
+				guilds,
+				USER_GUILDS_CACHE_TTL,
+			);
+
+			return cachedGuilds;
+		}
 	}
 }
