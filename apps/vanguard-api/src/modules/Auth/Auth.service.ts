@@ -30,7 +30,7 @@ export class AuthService {
 		const { sessionModel } = this;
 
 		return await sessionModel.findOne({
-			_id: sessionId,
+			sessionId,
 		});
 	}
 

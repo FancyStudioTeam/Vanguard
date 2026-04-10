@@ -16,15 +16,20 @@ export class Session {
 	@Prop({
 		required: true,
 	})
+	declare sessionId: string;
+
+	@Prop({
+		required: true,
+	})
 	declare userId: string;
 }
 
 export const SessionSchema = SchemaFactory.createForClass(Session);
 
 export type CreateSessionOptions = Readonly<{
-	_id: string;
 	accessToken: string;
 	refreshToken: string;
+	sessionId: string;
 	userId: string;
 }>;
 

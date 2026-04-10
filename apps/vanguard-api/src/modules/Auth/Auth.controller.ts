@@ -3,7 +3,7 @@
  * falsely reports unused private members when extracting them from 'this'.
  */
 
-import { Controller, Get, Req, Res } from '@nestjs/common';
+import { Controller, Get, Redirect, Req, Res } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { COOKIE_SESSION_ID_NAME } from '#lib/Constants/Cookies.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
@@ -29,7 +29,7 @@ export class AuthController {
 	) {}
 
 	@Get('callback')
-	// @Redirect('http://localhost:3000')
+	@Redirect('http://localhost:3000')
 	public async handleCallback(
 		@Req() fastifyRequest: FastifyCallbackRequest,
 		@Res({
@@ -58,20 +58,17 @@ export class AuthController {
 		const encryptedRefreshToken = encryptionService.encrypt(refresh_token);
 
 		fastifyReply.setCookie(COOKIE_SESSION_ID_NAME, sessionId, {
+			domain: 'vanguard.fancystudio.xyz',
 			sameSite: 'lax',
 			secure: true,
 		});
 
 		await authService.createSession({
-			_id: sessionId,
 			accessToken: encryptedAccessToken,
 			refreshToken: encryptedRefreshToken,
+			sessionId,
 			userId: id,
 		});
-
-		return {
-			hola: 'mundo',
-		};
 	}
 }
 
