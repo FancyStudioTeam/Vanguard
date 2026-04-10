@@ -21,19 +21,19 @@ export class AuthService {
 		const { USER_GUILDS_CACHE_TTL } = AuthService;
 		const { cacheService, discordService } = this;
 
-		const cachedGuilds = await cacheService.get<UserGuild[]>(`user:guilds:${userId}`);
+		const cachedUserGuilds = await cacheService.get<UserGuild[]>(`user:guilds:${userId}`);
 
-		if (cachedGuilds) {
-			return cachedGuilds;
-		} else {
-			const guilds = await discordService.getCurrentUserGuilds(accessToken);
-			const cachedGuilds = await cacheService.set<UserGuild[]>(
-				`user:guilds:${userId}`,
-				guilds,
-				USER_GUILDS_CACHE_TTL,
-			);
-
-			return cachedGuilds;
+		if (cachedUserGuilds) {
+			return cachedUserGuilds;
 		}
+
+		const userGuilds = await discordService.getCurrentUserGuilds(accessToken);
+		const userGuildsToCache = await cacheService.set<UserGuild[]>(
+			`user:guilds:${userId}`,
+			userGuilds,
+			USER_GUILDS_CACHE_TTL,
+		);
+
+		return userGuildsToCache;
 	}
 }
