@@ -1,7 +1,7 @@
 import './env.js';
 
 import FastifyCookie from '@fastify/cookie';
-import FastifySecureSession from '@fastify/secure-session';
+import FastifySecureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session';
 import type { NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
@@ -25,10 +25,7 @@ const APP_OPTIONS: NestApplicationOptions = {
 	],
 };
 
-const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
-
-await app.register(FastifyCookie);
-await app.register(FastifySecureSession, {
+const SECURE_SESSION_OPTIONS: SecureSessionPluginOptions = {
 	cookie: {
 		domain: COOKIE_SESSION_DATA_DOMAIN,
 		httpOnly: true,
@@ -40,5 +37,11 @@ await app.register(FastifySecureSession, {
 	cookieName: COOKIE_SESSION_DATA_NAME,
 	salt: COOKIE_SALT,
 	secret: COOKIE_SECRET,
-});
+};
+
+const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
+
+await app.register(FastifyCookie);
+await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
+
 await app.listen(APP_PORT);
