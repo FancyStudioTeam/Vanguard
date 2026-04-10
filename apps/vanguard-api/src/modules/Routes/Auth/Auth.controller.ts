@@ -6,11 +6,16 @@
 import { Controller, Get, Inject, Redirect, Req, Session } from '@nestjs/common';
 import type { FastifyRequest } from 'fastify';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
+import {
+	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
+	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
+} from '#lib/Responses/Auth.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Cookie.js';
 import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Utils/Encryption/Encryption.service.js';
 import { SessionsService } from '#modules/Utils/Sessions/Sessions.service.js';
+import type { User, UserAccessResult } from '#types/Discord.js';
 import { AuthService } from './Auth.service.js';
 
 @Controller('auth')
@@ -37,8 +42,23 @@ export class AuthController {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
 
-		const { accessToken, refreshToken } = await discordService.exchangeToken(code);
-		const user = await discordService.getCurrentUser(accessToken);
+		let userAccessResult: UserAccessResult;
+
+		try {
+			userAccessResult = await discordService.exchangeToken(code);
+		} catch {
+			throw UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE();
+		}
+
+		const { accessToken, refreshToken } = userAccessResult;
+
+		let user: User;
+
+		try {
+			user = await discordService.getCurrentUser(accessToken);
+		} catch {
+			throw UNABLE_TO_GET_USER_INFORMATION_RESPONSE();
+		}
 
 		const sessionId = sessionsService.generateSessionId();
 
