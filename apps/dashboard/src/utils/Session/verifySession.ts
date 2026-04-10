@@ -1,42 +1,27 @@
 import { unauthorized } from 'next/navigation';
-import { type SessionDocument, SessionsCollection } from '#lib/MongoDB/Auth.ts';
-import { decryptData } from '#utils/Jose/decryptData.ts';
-import { getSessionId } from './getSessionId.ts';
+import { BASE_API_URL } from '#lib/Constants/Shared.ts';
+import { getAllCookiesString } from './getAllCookiesString.ts';
 
-export async function verifySession(
-	redirect?: boolean,
-): Promise<Omit<SessionDocument, 'sessionId'> | null>;
-export async function verifySession(
-	redirect: true,
-): Promise<Omit<SessionDocument, 'sessionId'>>;
-
-export async function verifySession(
-	redirect?: boolean,
-): Promise<Omit<SessionDocument, 'sessionId'> | null> {
-	const sessionId = await getSessionId();
-	const session = await SessionsCollection.findOne({
-		sessionId,
+export async function verifySession(): Promise<AuthSessionUser> {
+	const cookie = await getAllCookiesString();
+	const response = await fetch(`${BASE_API_URL}/auth/session`, {
+		headers: {
+			cookie,
+		},
 	});
 
-	if (!session) {
-		if (!redirect) {
-			return null;
-		}
+	const { ok } = response;
 
+	if (!ok) {
 		unauthorized();
 	}
 
-	const { credentials, user } = session;
-	const { accessToken, refreshToken } = credentials;
+	return await response.json();
+}
 
-	const decryptedAccessToken = await decryptData(accessToken);
-	const decryptedRefreshToken = await decryptData(refreshToken);
-
-	return {
-		credentials: {
-			accessToken: decryptedAccessToken,
-			refreshToken: decryptedRefreshToken,
-		},
-		user,
-	};
+export interface AuthSessionUser {
+	avatar: string | null;
+	globalName: string | null;
+	id: string;
+	username: string;
 }
