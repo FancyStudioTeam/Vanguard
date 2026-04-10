@@ -25,3 +25,13 @@ export function MISSING_QUERY_STRING_PARAM_RESPONSE(name: string): HttpException
 		statusCode: HttpStatus.BAD_REQUEST,
 	});
 }
+
+export function UNAUTHORIZED_RESPONSE(): HttpException {
+	return buildHttpException({
+		data: {
+			code: 'UNAUTHORIZED',
+			message: '401: Unauthorized',
+		},
+		statusCode: HttpStatus.UNAUTHORIZED,
+	});
+}

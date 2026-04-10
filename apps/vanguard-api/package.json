@@ -7,6 +7,7 @@
 		"@discordjs/core": "2.4.0",
 		"@discordjs/rest": "2.6.1",
 		"@fastify/cookie": "11.0.2",
+		"@fastify/secure-session": "8.3.0",
 		"@nestjs/common": "11.1.18",
 		"@nestjs/core": "11.1.18",
 		"@nestjs/mongoose": "11.0.4",
