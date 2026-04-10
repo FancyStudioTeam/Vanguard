@@ -3,8 +3,9 @@
  * falsely reports unused private members when extracting them from 'this'.
  */
 
-import { Controller, Get, Inject, Req, Session } from '@nestjs/common';
+import { Controller, Get, Inject, Redirect, Req, Session } from '@nestjs/common';
 import type { FastifyRequest } from 'fastify';
+import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Cookie.js';
 import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
@@ -20,6 +21,7 @@ export class AuthController {
 	) {}
 
 	@Get('callback')
+	@Redirect(BASE_DASHBOARD_URL)
 	public async handleCallback(
 		@Req() fastifyRequest: FastifyCallbackRequest,
 		@Session() fastifySession: FastifySession,
@@ -68,14 +70,7 @@ export class AuthController {
 			throw UNAUTHORIZED_RESPONSE();
 		}
 
-		const { avatar, globalName, id, username } = user;
-
-		return {
-			avatar,
-			globalName,
-			id,
-			username,
-		};
+		return user;
 	}
 }
 
