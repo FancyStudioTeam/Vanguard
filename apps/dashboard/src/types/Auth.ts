@@ -1,4 +1,4 @@
-export interface AuthUser {
+export interface AuthSessionUser {
 	avatar: string | null;
 	globalName: string | null;
 	id: string;

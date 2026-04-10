@@ -1,5 +1,6 @@
 import { unauthorized } from 'next/navigation';
 import { BASE_API_URL } from '#lib/Constants/Shared.ts';
+import type { AuthSessionUser } from '#types/Auth.ts';
 import { getAllCookiesString } from './getAllCookiesString.ts';
 
 export async function verifySession(
@@ -30,11 +31,4 @@ export async function verifySession(
 	}
 
 	return await response.json();
-}
-
-export interface AuthSessionUser {
-	avatar: string | null;
-	globalName: string | null;
-	id: string;
-	username: string;
 }
