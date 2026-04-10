@@ -18,7 +18,7 @@ export class SessionsService {
 		private readonly encryptionService: EncryptionService,
 	) {}
 
-	public async createSession(options: CreateSessionOptions): Promise<Session> {
+	public async createDatabaseSession(options: CreateSessionOptions): Promise<Session> {
 		const { sessionModel } = this;
 
 		return await sessionModel.create(options);
@@ -34,7 +34,7 @@ export class SessionsService {
 	}
 
 	public async getAccessToken(sessionId: string): Promise<string> {
-		const session = await this.getSession(sessionId);
+		const session = await this.getDatabaseSession(sessionId);
 
 		if (!session) {
 			throw UNAUTHORIZED_RESPONSE();
@@ -48,7 +48,7 @@ export class SessionsService {
 		return decryptedAccessToken;
 	}
 
-	public async getSession(sessionId: string): Promise<Session | null> {
+	public async getDatabaseSession(sessionId: string): Promise<Session | null> {
 		const { sessionModel } = this;
 
 		return await sessionModel.findOne({
