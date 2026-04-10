@@ -17,6 +17,9 @@
 			"#schemas/*": [
 				"./src/schemas/*"
 			],
+			"#types/*": [
+				"./src/types/*"
+			],
 			"#utils/*": [
 				"./src/utils/*"
 			]

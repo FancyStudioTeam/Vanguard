@@ -35,6 +35,7 @@
 		"#lib/*": "./dist/lib/*",
 		"#modules/*": "./dist/modules/*",
 		"#schemas/*": "./dist/schemas/*",
+		"#types/*": "./dist/types/*",
 		"#utils/*": "./dist/utils/*"
 	},
 	"license": "MIT",
