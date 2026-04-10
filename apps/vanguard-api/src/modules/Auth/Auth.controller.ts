@@ -3,41 +3,28 @@
  * falsely reports unused private members when extracting them from 'this'.
  */
 
-import { Controller, Get, Redirect, Req, Res } from '@nestjs/common';
-import type { FastifyReply, FastifyRequest } from 'fastify';
-import { COOKIE_SESSION_ID_NAME } from '#lib/Constants/Cookies.js';
-import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
-
-/*
- * biome-ignore-start lint/style/useImportType: Providers cannot be imported
- * using 'import type'.
- */
+import { Controller, Get, Inject, Req, Session } from '@nestjs/common';
+import type { FastifyRequest } from 'fastify';
+import { MISSING_QUERY_STRING_PARAM_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
+import type { FastifySession } from '#lib/Types/Cookie.js';
 import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
-import { AuthDiscordService, AuthService } from './Auth.service.js';
-/*
- * biome-ignore-end lint/style/useImportType: Providers cannot be imported
- * using 'import type'.
- */
+import { SessionsService } from '#modules/Sessions/Sessions.service.js';
+import { AuthDiscordService } from './Auth.service.js';
 
 @Controller('auth')
 export class AuthController {
 	public constructor(
-		private readonly authService: AuthService,
-		private readonly authDiscordService: AuthDiscordService,
-
-		private readonly encryptionService: EncryptionService,
+		@Inject(AuthDiscordService) private readonly authDiscordService: AuthDiscordService,
+		@Inject(EncryptionService) private readonly encryptionService: EncryptionService,
+		@Inject(SessionsService) private readonly sessionsService: SessionsService,
 	) {}
 
 	@Get('callback')
-	@Redirect('http://localhost:3000')
 	public async handleCallback(
 		@Req() fastifyRequest: FastifyCallbackRequest,
-		@Res({
-			passthrough: true,
-		})
-		fastifyReply: FastifyReply,
+		@Session() fastifySession: FastifySession,
 	) {
-		const { authDiscordService, authService, encryptionService } = this;
+		const { authDiscordService, encryptionService, sessionsService } = this;
 
 		const { query } = fastifyRequest;
 		const { code } = query;
@@ -50,25 +37,45 @@ export class AuthController {
 		const userResult = await authDiscordService.getCurrentUser(accessTokenResult);
 
 		const { access_token, refresh_token } = accessTokenResult;
-		const { id } = userResult;
+		const { avatar, global_name, id, username } = userResult;
 
-		const sessionId = authService.generateSessionId();
+		const sessionId = sessionsService.generateSessionId();
 
 		const encryptedAccessToken = encryptionService.encrypt(access_token);
 		const encryptedRefreshToken = encryptionService.encrypt(refresh_token);
 
-		fastifyReply.setCookie(COOKIE_SESSION_ID_NAME, sessionId, {
-			//domain: 'vanguard.fancystudio.xyz',
-			sameSite: 'lax',
-			secure: true,
+		fastifySession.set('sessionId', sessionId);
+		fastifySession.set('user', {
+			avatar,
+			globalName: global_name,
+			id,
+			username,
 		});
 
-		await authService.createSession({
+		await sessionsService.createDatabaseSession({
 			accessToken: encryptedAccessToken,
 			refreshToken: encryptedRefreshToken,
 			sessionId,
 			userId: id,
 		});
+	}
+
+	@Get('session')
+	public handleSession(@Session() fastifySession: FastifySession) {
+		const user = fastifySession.get('user') ?? '';
+
+		if (!user) {
+			throw UNAUTHORIZED_RESPONSE();
+		}
+
+		const { avatar, globalName, id, username } = user;
+
+		return {
+			avatar,
+			globalName,
+			id,
+			username,
+		};
 	}
 }
 
@@ -77,6 +84,9 @@ interface FastifyCallbackRequestQueryStringParams {
 }
 
 type FastifyCallbackRequest = FastifyRequest<{
-	// biome-ignore lint/style/useNamingConvention: (x)
+	/*
+	 * biome-ignore lint/style/useNamingConvention: This convention comes from an
+	 * external API, which cannot be overwriten.
+	 */
 	Querystring: FastifyCallbackRequestQueryStringParams;
 }>;
