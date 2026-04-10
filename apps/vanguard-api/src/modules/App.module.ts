@@ -1,4 +1,3 @@
-import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -14,7 +13,6 @@ import { AuthModule } from './Auth/Auth.module.js';
 	],
 	imports: [
 		AuthModule,
-		CacheModule.register(),
 		MongooseModule.forRoot(MONGO_DB_CONNECTION_URL, {
 			dbName: 'sessions',
 		}),

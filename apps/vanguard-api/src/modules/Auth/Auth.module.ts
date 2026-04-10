@@ -1,3 +1,4 @@
+import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { EncryptionModule } from '#modules/Encryption/Encryption.module.js';
 import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
@@ -9,6 +10,7 @@ import { AuthDiscordService } from './Auth.service.js';
 		AuthController,
 	],
 	imports: [
+		CacheModule.register(),
 		EncryptionModule,
 		SessionsModule,
 	],
