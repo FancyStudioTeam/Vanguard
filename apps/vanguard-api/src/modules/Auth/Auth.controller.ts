@@ -58,7 +58,7 @@ export class AuthController {
 		const encryptedRefreshToken = encryptionService.encrypt(refresh_token);
 
 		fastifyReply.setCookie(COOKIE_SESSION_ID_NAME, sessionId, {
-			domain: 'vanguard.fancystudio.xyz',
+			//domain: 'vanguard.fancystudio.xyz',
 			sameSite: 'lax',
 			secure: true,
 		});
