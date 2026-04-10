@@ -1,6 +1,6 @@
 import { BitwisePermissionFlags } from '@discordeno/types';
 import { unstable_cache } from 'next/cache';
-import { forbidden, redirect } from 'next/navigation';
+import { forbidden } from 'next/navigation';
 import { rest } from '#lib/REST.ts';
 import type { Guild } from '#types/Discord.ts';
 import { getGuild } from '#utils/Discord/getGuild.ts';
@@ -9,7 +9,7 @@ import { createGuildInviteUrl } from '#utils/URL/createGuildInviteUrl.ts';
 
 export async function verifyGuild(
 	guildId: string,
-	{ accessToken, userId }: VerifyGuildOptions,
+	{ accessToken, shouldRedirect = false, userId }: VerifyGuildOptions,
 ): Promise<Guild> {
 	const getCachedPermissions = unstable_cache(
 		async (guildId: string, accessToken: string) =>
@@ -46,5 +46,6 @@ export async function verifyGuild(
 
 interface VerifyGuildOptions {
 	accessToken: string;
+	shouldRedirect?: boolean;
 	userId: string;
 }
