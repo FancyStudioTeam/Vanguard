@@ -1,4 +1,7 @@
-// biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: (x)
+/*
+ * biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: Biome
+ * falsely reports unused private members when extracting them from 'this'.
+ */
 
 import { randomBytes } from 'node:crypto';
 import { Inject, Injectable } from '@nestjs/common';
