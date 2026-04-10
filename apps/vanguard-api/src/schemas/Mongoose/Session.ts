@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import type { HydratedDocument, Types } from 'mongoose';
-import { type CreateUserOptions, User } from './User.js';
+import type { HydratedDocument } from 'mongoose';
 
 @Schema()
 export class Session {
@@ -22,9 +21,6 @@ export class Session {
 	})
 	declare sessionId: string;
 
-	@Prop(User)
-	declare user: User;
-
 	@Prop({
 		required: true,
 		type: String,
@@ -34,18 +30,8 @@ export class Session {
 
 export const SessionSchema = SchemaFactory.createForClass(Session);
 
-export type CreateSessionOptions = Readonly<
-	Omit<
-		{
-			[Key in keyof Session]: Session[Key];
-		},
-		'user'
-	> & {
-		user: CreateUserOptions;
-	}
->;
+export type CreateSessionOptions = Readonly<{
+	[Key in keyof Session]: Session[Key];
+}>;
 
-export type SessionDocument = HydratedDocument<Session, SessionDocumentOverride>;
-export type SessionDocumentOverride = {
-	user: Types.Subdocument<Types.ObjectId> & User;
-};
+export type SessionDocument = HydratedDocument<Session>;
