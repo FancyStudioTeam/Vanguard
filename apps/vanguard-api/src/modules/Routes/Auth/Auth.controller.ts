@@ -37,21 +37,18 @@ export class AuthController {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
 
-		const { access_token, refresh_token } = await discordService.exchangeToken(code);
-		const { avatar, global_name, id, username } = await discordService.getCurrentUser(access_token);
+		const { accessToken, refreshToken } = await discordService.exchangeToken(code);
+		const user = await discordService.getCurrentUser(accessToken);
 
 		const sessionId = sessionsService.generateSessionId();
 
-		const encryptedAccessToken = encryptionService.encrypt(access_token);
-		const encryptedRefreshToken = encryptionService.encrypt(refresh_token);
+		const encryptedAccessToken = encryptionService.encrypt(accessToken);
+		const encryptedRefreshToken = encryptionService.encrypt(refreshToken);
 
 		fastifySession.set('sessionId', sessionId);
-		fastifySession.set('user', {
-			avatar,
-			globalName: global_name,
-			id,
-			username,
-		});
+		fastifySession.set('user', user);
+
+		const { id } = user;
 
 		await sessionsService.createDatabaseSession({
 			accessToken: encryptedAccessToken,
@@ -78,8 +75,8 @@ export class AuthController {
 		const guilds = await authService.getGuilds(id, accessToken);
 
 		return {
-			...user,
 			guilds,
+			user,
 		};
 	}
 }

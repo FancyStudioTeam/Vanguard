@@ -1,11 +1,13 @@
-import type {
-	RESTAPIPartialCurrentUserGuild,
-	RESTGetAPICurrentUserGuildsResult,
-	RESTGetAPIUserResult,
-	RESTPostOAuth2AccessTokenResult,
+import {
+	PermissionFlagsBits,
+	type RESTAPIPartialCurrentUserGuild,
+	type RESTGetAPICurrentUserGuildsResult,
+	type RESTGetAPIUserResult,
+	type RESTPostOAuth2AccessTokenResult,
 } from '@discordjs/core';
 import { Injectable } from '@nestjs/common';
 import type { User, UserAccessResult, UserGuild } from '#types/Discord.js';
+import { hasPermission } from '#utils/Discord/hasPermission.js';
 
 @Injectable()
 export class DiscordParserService {
@@ -42,6 +44,8 @@ export class DiscordParserService {
 	}
 
 	public parseUserGuilds(response: RESTGetAPICurrentUserGuildsResult): UserGuild[] {
-		return response.map(this.parseUserGuild);
+		return response
+			.filter(({ permissions }) => hasPermission(permissions, PermissionFlagsBits.ManageGuild))
+			.map(this.parseUserGuild);
 	}
 }
