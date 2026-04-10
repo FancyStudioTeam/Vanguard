@@ -1,4 +1,4 @@
-import type { UserGuild } from '#types/Discord.ts';
+import type { SessionGuild } from '#types/Auth.ts';
 import { GuildFooterAvatar } from './GuildFooterAvatar.tsx';
 import { GuildFooterInfo } from './GuildFooterInfo.tsx';
 
@@ -11,4 +11,4 @@ export function GuildFooter(props: GuildFooterProps) {
 	);
 }
 
-export type GuildFooterProps = Pick<UserGuild, 'icon' | 'id' | 'name'>;
+export type GuildFooterProps = Pick<SessionGuild, 'icon' | 'id' | 'name'>;

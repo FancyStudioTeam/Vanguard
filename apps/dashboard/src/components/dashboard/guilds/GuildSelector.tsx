@@ -1,12 +1,10 @@
-import { getCurrentUserGuilds } from '#utils/Discord/getCurrentUserGuilds.ts';
+import type { SessionGuild } from '#types/Auth.ts';
 import { Guild } from '../guild/Guild.tsx';
 
-export async function GuildSelector({ accessToken }: GuildSelectorProps) {
-	const userGuilds = await getCurrentUserGuilds(accessToken);
-
+export function GuildSelector({ guilds }: GuildSelectorProps) {
 	return (
 		<div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-			{userGuilds.map(({ id, ...guild }) => (
+			{guilds.map(({ id, ...guild }) => (
 				<Guild
 					id={id}
 					key={id}
@@ -18,5 +16,5 @@ export async function GuildSelector({ accessToken }: GuildSelectorProps) {
 }
 
 export interface GuildSelectorProps {
-	accessToken: string;
+	guilds: SessionGuild[];
 }

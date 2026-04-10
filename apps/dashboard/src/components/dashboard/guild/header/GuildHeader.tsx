@@ -1,4 +1,4 @@
-import type { UserGuild } from '#types/Discord.ts';
+import type { SessionGuild } from '#types/Auth.ts';
 import { GuildHeaderBanner } from './GuildHeaderBanner.tsx';
 import { GuildHeaderGradient } from './GuildHeaderGradient.tsx';
 
@@ -12,4 +12,4 @@ export function GuildHeader(props: GuildHeaderProps) {
 	return <GuildHeaderBanner {...props} />;
 }
 
-export type GuildHeaderProps = Pick<UserGuild, 'banner' | 'id'>;
+export type GuildHeaderProps = Pick<SessionGuild, 'banner' | 'id'>;

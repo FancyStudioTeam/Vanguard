@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { UserGuild } from '#types/Discord.ts';
+import type { SessionGuild } from '#types/Auth.ts';
 import { GuildFooter } from './footer/GuildFooter.tsx';
 import { GuildHeader } from './header/GuildHeader.tsx';
 
@@ -17,4 +17,4 @@ export function Guild(props: GuildProps) {
 	);
 }
 
-export type GuildProps = UserGuild;
+export type GuildProps = SessionGuild;
