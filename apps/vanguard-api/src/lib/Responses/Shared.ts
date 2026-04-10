@@ -7,7 +7,7 @@ export function INTERNAL_SERVER_ERROR_RESPONSE(): HttpException {
 	return buildHttpException({
 		data: {
 			code: 'INTERNAL_SERVER_ERROR',
-			message: 'Something went wrong while processing your request. Please try again in a few seconds.',
+			message: '500: Internal Server Error',
 		},
 		statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
 	});
