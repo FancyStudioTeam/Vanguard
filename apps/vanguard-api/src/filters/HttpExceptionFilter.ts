@@ -8,9 +8,9 @@ export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
 
 		const fastifyReply = httpContext.getResponse<FastifyReply>();
 
-		const response = exception.getResponse();
-		const status = exception.getStatus();
+		const exceptionResponse = exception.getResponse();
+		const exceptionStatus = exception.getStatus();
 
-		fastifyReply.status(status).send(response);
+		fastifyReply.status(exceptionStatus).send(exceptionResponse);
 	}
 }
