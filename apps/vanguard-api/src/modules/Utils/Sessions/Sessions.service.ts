@@ -8,8 +8,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import type { Model } from 'mongoose';
 import { UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
-import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 import { type CreateSessionOptions, Session } from '#schemas/Mongoose/Session.js';
+import { EncryptionService } from '../Encryption/Encryption.service.js';
 
 @Injectable()
 export class SessionsService {

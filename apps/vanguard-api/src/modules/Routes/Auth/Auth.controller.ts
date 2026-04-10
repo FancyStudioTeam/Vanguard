@@ -8,9 +8,9 @@ import type { FastifyRequest } from 'fastify';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Cookie.js';
-import { DiscordService } from '#modules/Discord/Discord.service.js';
-import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
-import { SessionsService } from '#modules/Sessions/Sessions.service.js';
+import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';
+import { EncryptionService } from '#modules/Utils/Encryption/Encryption.service.js';
+import { SessionsService } from '#modules/Utils/Sessions/Sessions.service.js';
 import { AuthService } from './Auth.service.js';
 
 @Controller('auth')

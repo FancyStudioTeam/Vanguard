@@ -6,7 +6,7 @@
 import type { RESTAPIPartialCurrentUserGuild } from '@discordjs/core';
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
-import { DiscordService } from '#modules/Discord/Discord.service.js';
+import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';
 
 @Injectable()
 export class AuthService {
