@@ -1,10 +1,9 @@
 import { OAuth2Scope } from '@discordeno/types';
 import { createOAuth2Link } from '@discordeno/utils';
-import { CLIENT_ID } from '#lib/Constants/Client.ts';
 
 export function createGuildInviteUrl(guildId: string): string {
 	return createOAuth2Link({
-		clientId: CLIENT_ID,
+		clientId: '1447604099465085010',
 		disableGuildSelect: true,
 		guildId,
 		permissions: [
