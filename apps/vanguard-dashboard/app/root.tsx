@@ -2,7 +2,16 @@ import './fonts.css';
 import './tailwind.css';
 
 import type { ReactNode } from 'react';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import {
+	isRouteErrorResponse,
+	Links,
+	Meta,
+	Outlet,
+	Scripts,
+	ScrollRestoration,
+	useRouteError,
+} from 'react-router';
+import { match } from 'ts-pattern';
 import { Navbar } from '#components/Layout/Navbar/Navbar.tsx';
 
 export default function App() {
@@ -30,6 +39,27 @@ export function Layout({ children }: LayoutProps) {
 				<Scripts />
 			</body>
 		</html>
+	);
+}
+
+export function ErrorBoundary() {
+	const error = useRouteError();
+
+	return (
+		<main className='grid h-100 place-content-center rounded-xl border-2 border-neutral-800 border-dashed px-6'>
+			{match(error)
+				.returnType<ReactNode>()
+				.when(isRouteErrorResponse, ({ statusText }) => (
+					<h1 className='text-wrap font-bold text-5xl'>
+						{statusText}
+					</h1>
+				))
+				.otherwise(() => (
+					<h1 className='text-wrap font-bold text-5xl'>
+						Unknown Error
+					</h1>
+				))}
+		</main>
 	);
 }
 
