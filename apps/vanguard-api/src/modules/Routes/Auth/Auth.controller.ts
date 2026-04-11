@@ -80,7 +80,7 @@ export class AuthController {
 type FastifyCallbackRequest = FastifyRequest<{
 	/*
 	 * biome-ignore lint/style/useNamingConvention: This convention comes from an
-	 * external API, which cannot be Overwritten.
+	 * external API, which cannot be overwritten.
 	 */
 	Querystring: {
 		code?: string;
