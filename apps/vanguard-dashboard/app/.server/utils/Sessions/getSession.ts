@@ -7,7 +7,7 @@ export async function getSession(request: Request): Promise<User> {
 	const { ok } = response;
 
 	if (!ok) {
-		throw redirect('/');
+		throw redirect(`${BASE_API_URL}/auth/sign-in`);
 	}
 
 	return await response.json();
