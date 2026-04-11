@@ -14,7 +14,7 @@ WORKDIR /vanguard-client
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
 COPY apps/vanguard-client ./apps/client
 
-RUN pnpm install --filter vanguard-client
+RUN pnpm --filter vanguard-client install
 RUN pnpm --filter vanguard-client vanguard:build
 
 # Runtime
