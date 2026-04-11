@@ -16,6 +16,7 @@ export function VanguardCombinationMark({
 				className,
 			)}
 			to='/'
+			viewTransition={true}
 			{...props}
 		>
 			<VanguardSymbol />
