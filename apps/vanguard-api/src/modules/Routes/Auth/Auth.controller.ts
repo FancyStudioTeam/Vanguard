@@ -64,7 +64,7 @@ export class AuthController {
 		const encryptedRefreshToken = encryptionService.encrypt(refreshToken);
 
 		fastifySession.set('sessionId', sessionId);
-		fastifySession.set('user', user);
+		fastifySession.set('sessionUser', user);
 
 		const { id } = user;
 

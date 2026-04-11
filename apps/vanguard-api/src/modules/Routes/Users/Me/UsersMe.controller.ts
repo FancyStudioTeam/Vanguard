@@ -6,12 +6,12 @@ import type { FastifySession } from '#lib/Types/Fastify.js';
 export class UsersMeController {
 	@Get()
 	public handleGet(@Session() fastifySession: FastifySession) {
-		const user = fastifySession.get('user');
+		const sessionUser = fastifySession.get('sessionUser');
 
-		if (!user) {
+		if (!sessionUser) {
 			throw UNAUTHORIZED_RESPONSE();
 		}
 
-		return user;
+		return sessionUser;
 	}
 }
