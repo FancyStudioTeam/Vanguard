@@ -1,4 +1,9 @@
-import type { AuthUser } from './Auth.js';
+export interface User {
+	avatar: string | null;
+	globalName: string | null;
+	id: string;
+	username: string;
+}
 
 export interface UserAccessResult {
 	accessToken: string;
@@ -12,5 +17,3 @@ export interface UserGuild {
 	name: string;
 	permissions: string;
 }
-
-export type User = AuthUser;

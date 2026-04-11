@@ -11,11 +11,11 @@ import {
 	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
 } from '#lib/Responses/Auth.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
-import type { FastifySession } from '#lib/Types/Cookie.js';
+import type { User, UserAccessResult } from '#lib/Types/Discord.js';
+import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Utils/Encryption/Encryption.service.js';
 import { SessionsService } from '#modules/Utils/Sessions/Sessions.service.js';
-import type { User, UserAccessResult } from '#types/Discord.js';
 
 @Controller('auth')
 export class AuthController {

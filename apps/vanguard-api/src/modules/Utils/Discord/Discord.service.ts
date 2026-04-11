@@ -11,7 +11,7 @@ import { REST } from '@discordjs/rest';
 import { Inject, Injectable } from '@nestjs/common';
 import { CLIENT_ID, CLIENT_SECRET } from '#lib/Constants/Client.js';
 import { api } from '#lib/REST.js';
-import type { User, UserAccessResult, UserGuild } from '#types/Discord.js';
+import type { User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 import { DiscordParserService } from './Parser/DiscordParser.service.js';
 

@@ -5,8 +5,8 @@
 
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
+import type { UserGuild } from '#lib/Types/Discord.js';
 import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';
-import type { UserGuild } from '#types/Discord.js';
 
 @Injectable()
 export class AuthService {
