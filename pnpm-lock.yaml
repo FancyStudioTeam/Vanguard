@@ -266,6 +266,9 @@ importers:
       '@react-router/serve':
         specifier: 7.14.0
         version: 7.14.0(react-router@7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.2)
+      clsx:
+        specifier: 2.1.1
+        version: 2.1.1
       isbot:
         specifier: 5.1.37
         version: 5.1.37
@@ -278,6 +281,9 @@ importers:
       react-router:
         specifier: 7.14.0
         version: 7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      tailwind-merge:
+        specifier: 3.5.0
+        version: 3.5.0
     devDependencies:
       '@react-router/dev':
         specifier: 7.14.0

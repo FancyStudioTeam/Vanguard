@@ -13,6 +13,9 @@
 		"paths": {
 			"#components/*": [
 				"./components/*"
+			],
+			"#utils/*": [
+				"./utils/*"
 			]
 		},
 		"rootDirs": [
