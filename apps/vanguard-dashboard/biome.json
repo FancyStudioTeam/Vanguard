@@ -21,7 +21,8 @@
 	"extends": "//",
 	"files": {
 		"includes": [
-			"!!**/.react-router"
+			"!!**/.react-router",
+			"!!**/build"
 		]
 	},
 	"formatter": {
