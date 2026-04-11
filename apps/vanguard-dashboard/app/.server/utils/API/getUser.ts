@@ -1,8 +1,9 @@
 import { redirect } from 'react-router';
 import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
+import type { User } from '#server/lib/Types/API.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getSession(request: Request): Promise<User> {
+export async function getUser(request: Request): Promise<User> {
 	const response = await createRequest(request);
 	const { ok } = response;
 
@@ -22,19 +23,4 @@ async function createRequest(request: Request): Promise<Response> {
 	});
 
 	return response;
-}
-
-export interface User {
-	avatar: string | null;
-	globalName: string | null;
-	id: string;
-	username: string;
-}
-
-export interface UserGuild {
-	banner: string | null;
-	icon: string | null;
-	id: string;
-	name: string;
-	permissions: string;
 }
