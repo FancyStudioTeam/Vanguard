@@ -1,0 +1,33 @@
+{
+	"author": "Vanguard Development Team",
+	"dependencies": {
+		"@react-router/node": "7.14.0",
+		"@react-router/serve": "7.14.0",
+		"isbot": "5.1.36",
+		"react": "19.2.4",
+		"react-dom": "19.2.4",
+		"react-router": "7.14.0"
+	},
+	"devDependencies": {
+		"@react-router/dev": "7.14.0",
+		"@tailwindcss/vite": "4.2.2",
+		"@types/node": "25.5.2",
+		"@types/react": "19.2.14",
+		"@types/react-dom": "19.2.3",
+		"tailwindcss": "4.2.2",
+		"typescript": "5.9.3",
+		"vite": "8.0.3"
+	},
+	"license": "MIT",
+	"name": "vanguard-dashboard",
+	"packageManager": "pnpm@10.0.0",
+	"private": true,
+	"scripts": {
+		"router:build": "react-router build",
+		"router:dev": "react-router dev",
+		"router:start": "react-router-serve ./build/server/index.js",
+		"router:typecheck": "react-router typegen && tsc"
+	},
+	"type": "module",
+	"version": "0.1.0"
+}
