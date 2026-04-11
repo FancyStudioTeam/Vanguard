@@ -27,14 +27,14 @@
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
 	"scripts": {
-		"build": "tsc --project tsconfig.json",
 		"ddenox:update": "pnpm add ./ddenox-0.1.0.tgz --force",
 		"docker:build": "docker build --tag vanguard-client --file Dockerfile ../../.",
-		"docker:run": "docker run -d vanguard-client",
+		"docker:run": "docker run -d --env-file .env vanguard-client",
 		"prebuild": "rimraf dist",
-		"start:dev": "cross-env NODE_ENV=development tsx src/index.ts",
-		"start:prod": "cross-env NODE_ENV=production node dist/index.js",
-		"turbo:build": "pnpm build"
+		"turbo:build": "pnpm build",
+		"vanguard:build": "tsc --project tsconfig.json",
+		"vanguard:dev": "cross-env NODE_ENV=development tsx src/index.ts",
+		"vanguard:start": "cross-env NODE_ENV=production node dist/index.js"
 	},
 	"type": "module",
 	"version": "0.1.0"
