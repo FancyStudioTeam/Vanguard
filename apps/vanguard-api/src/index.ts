@@ -42,10 +42,12 @@ const SECURE_SESSION_OPTIONS: SecureSessionPluginOptions = {
 
 const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
 
+app.enableCors();
+
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT, '127.0.0.1').then((data) => {
+await app.listen(APP_PORT, '0.0.0.0').then((data) => {
 	let address = data.address();
 
 	if (typeof address === 'object' && address !== null) {
