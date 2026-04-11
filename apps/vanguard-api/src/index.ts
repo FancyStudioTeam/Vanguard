@@ -44,4 +44,4 @@ const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADA
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT);
+await app.listen(APP_PORT, '0.0.0.0');

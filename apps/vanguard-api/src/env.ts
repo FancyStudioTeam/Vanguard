@@ -1,3 +1,7 @@
-import { loadEnvFile } from 'node:process';
+import { env, loadEnvFile } from 'node:process';
 
-loadEnvFile();
+const { NODE_ENV } = env;
+
+if (NODE_ENV === 'development') {
+	loadEnvFile();
+}
