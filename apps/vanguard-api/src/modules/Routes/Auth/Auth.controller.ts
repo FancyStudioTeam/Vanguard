@@ -10,18 +10,16 @@ import {
 	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
 	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
 } from '#lib/Responses/Auth.js';
-import { MISSING_QUERY_STRING_PARAM_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
+import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Cookie.js';
 import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Utils/Encryption/Encryption.service.js';
 import { SessionsService } from '#modules/Utils/Sessions/Sessions.service.js';
 import type { User, UserAccessResult } from '#types/Discord.js';
-import { AuthService } from './Auth.service.js';
 
 @Controller('auth')
 export class AuthController {
 	public constructor(
-		@Inject(AuthService) private readonly authService: AuthService,
 		@Inject(DiscordService) private readonly discordService: DiscordService,
 		@Inject(EncryptionService) private readonly encryptionService: EncryptionService,
 		@Inject(SessionsService) private readonly sessionsService: SessionsService,
@@ -77,38 +75,14 @@ export class AuthController {
 			userId: id,
 		});
 	}
-
-	@Get('session')
-	public async handleSession(@Session() fastifySession: FastifySession) {
-		const { authService, sessionsService } = this;
-
-		const sessionId = fastifySession.get('sessionId');
-		const user = fastifySession.get('user');
-
-		if (!(sessionId && user)) {
-			throw UNAUTHORIZED_RESPONSE();
-		}
-
-		const { id } = user;
-
-		const accessToken = await sessionsService.getAccessToken(sessionId);
-		const guilds = await authService.getGuilds(id, accessToken);
-
-		return {
-			guilds,
-			user,
-		};
-	}
-}
-
-interface FastifyCallbackRequestQueryStringParams {
-	code?: string;
 }
 
 type FastifyCallbackRequest = FastifyRequest<{
 	/*
 	 * biome-ignore lint/style/useNamingConvention: This convention comes from an
-	 * external API, which cannot be overwriten.
+	 * external API, which cannot be Overwritten.
 	 */
-	Querystring: FastifyCallbackRequestQueryStringParams;
+	Querystring: {
+		code?: string;
+	};
 }>;

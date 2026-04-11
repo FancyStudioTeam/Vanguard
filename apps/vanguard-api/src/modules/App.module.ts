@@ -6,6 +6,7 @@ import { LoggerInterceptor } from '#interceptors/LoggerInterceptor.js';
 import { MONGO_DB_CONNECTION_URL } from '#lib/Constants/MongoDB.js';
 import { AppController } from './App.controller.js';
 import { AuthModule } from './Routes/Auth/Auth.module.js';
+import { UsersModule } from './Routes/Users/Users.module.js';
 
 @Module({
 	controllers: [
@@ -16,6 +17,7 @@ import { AuthModule } from './Routes/Auth/Auth.module.js';
 		MongooseModule.forRoot(MONGO_DB_CONNECTION_URL, {
 			dbName: 'sessions',
 		}),
+		UsersModule,
 	],
 	providers: [
 		{
