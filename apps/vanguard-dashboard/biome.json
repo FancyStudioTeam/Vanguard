@@ -1,0 +1,62 @@
+{
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
+		"actions": {
+			"recommended": true,
+			"source": {
+				"noDuplicateClasses": "on",
+				"useSortedAttributes": "on",
+				"useSortedProperties": "on"
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"extends": "//",
+	"files": {
+		"includes": [
+			"!!**/.react-router"
+		]
+	},
+	"formatter": {
+		"attributePosition": "multiline"
+	},
+	"linter": {
+		"domains": {
+			"react": "all"
+		},
+		"rules": {
+			"correctness": {
+				"useImportExtensions": {
+					"level": "error",
+					"options": {
+						"forceJsExtensions": false
+					}
+				}
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "error",
+					"options": {
+						"functions": [
+							"class",
+							"className",
+							"cva",
+							"twMerge"
+						]
+					}
+				}
+			},
+			"style": {
+				"noImplicitBoolean": "error"
+			},
+			"suspicious": {
+				"noUnknownAtRules": "off"
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ESNext"
+		],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"noEmit": true,
+		"paths": {
+			"~/*": [
+				"./app/*"
+			]
+		},
+		"rootDirs": [
+			".",
+			"./.react-router/types"
+		],
+		"types": [
+			"node",
+			"vite/client"
+		]
+	},
+	"extends": "../../tsconfig.base.json",
+	"include": [
+		".react-router/types/**/*",
+		"**/*",
+		"**/.client/**/*",
+		"**/.server/**/*"
+	]
+}

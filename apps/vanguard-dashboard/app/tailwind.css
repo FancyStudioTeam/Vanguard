@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme inline {
+	--font-general-sans: "General Sans";
+}
+
+* {
+	@apply focus:outline-0;
+}
