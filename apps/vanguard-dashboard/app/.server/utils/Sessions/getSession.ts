@@ -2,7 +2,7 @@ import { redirect } from 'react-router';
 import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getSession(request: Request): Promise<SessionData> {
+export async function getSession(request: Request): Promise<User> {
 	const response = await createRequest(request);
 	const { ok } = response;
 
@@ -10,18 +10,12 @@ export async function getSession(request: Request): Promise<SessionData> {
 		throw redirect('/');
 	}
 
-	const data = await response.json();
-	const { guilds, user } = data;
-
-	return {
-		guilds,
-		user,
-	};
+	return await response.json();
 }
 
 async function createRequest(request: Request): Promise<Response> {
 	const cookie = getCookieHeader(request);
-	const response = await fetch(`${BASE_API_URL}/auth/session`, {
+	const response = await fetch(`${BASE_API_URL}/users/@me`, {
 		headers: {
 			cookie,
 		},
@@ -30,19 +24,14 @@ async function createRequest(request: Request): Promise<Response> {
 	return response;
 }
 
-export interface SessionData {
-	guilds: SessionUserGuild[];
-	user: SessionUser;
-}
-
-export interface SessionUser {
+export interface User {
 	avatar: string | null;
 	globalName: string | null;
 	id: string;
 	username: string;
 }
 
-export interface SessionUserGuild {
+export interface UserGuild {
 	banner: string | null;
 	icon: string | null;
 	id: string;
