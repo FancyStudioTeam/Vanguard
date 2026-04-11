@@ -26,6 +26,7 @@ COPY --from=build /vanguard-dashboard/apps/dashboard/build ./build
 COPY --from=build /vanguard-dashboard/apps/dashboard/package.json ./
 COPY --from=build /vanguard-dashboard/apps/dashboard/public ./public
 
+ENV HOST=127.0.0.1
 ENV NODE_ENV=production
 
 RUN pnpm install
