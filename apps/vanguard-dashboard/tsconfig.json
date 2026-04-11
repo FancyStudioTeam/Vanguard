@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"allowImportingTsExtensions": true,
 		"jsx": "react-jsx",
 		"lib": [
 			"DOM",
@@ -10,8 +11,8 @@
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"paths": {
-			"~/*": [
-				"./app/*"
+			"#components/*": [
+				"./components/*"
 			]
 		},
 		"rootDirs": [
