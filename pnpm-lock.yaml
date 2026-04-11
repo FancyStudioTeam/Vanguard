@@ -200,6 +200,9 @@ importers:
       '@types/react-dom':
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
+      pm2:
+        specifier: 6.0.14
+        version: 6.0.14
       tailwind-animations:
         specifier: 1.0.1
         version: 1.0.1(tailwindcss@4.2.2)

@@ -20,6 +20,7 @@
 		"@types/node": "25.6.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
+		"pm2": "6.0.14",
 		"tailwind-animations": "1.0.1",
 		"tailwindcss": "4.2.2",
 		"typescript": "6.0.2",
@@ -30,10 +31,12 @@
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
 	"scripts": {
+		"pm2:start": "pm2 start pnpm --name 'Vanguard Dashboard' -- start:prod",
 		"router:build": "react-router build",
 		"router:dev": "react-router dev",
 		"router:start": "react-router-serve ./build/server/index.js",
-		"router:typecheck": "react-router typegen && tsc"
+		"router:typecheck": "react-router typegen && tsc",
+		"turborepo:build": "pnpm router:build"
 	},
 	"type": "module",
 	"version": "0.1.0"

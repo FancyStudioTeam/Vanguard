@@ -1,4 +1,4 @@
-import { InteractionTypes } from '@discordeno/bot';
+/*import { InteractionTypes } from '@discordeno/bot';
 import { defineEventListener } from 'ddenox/handlers';
 import { bot } from '#bot/Bot.js';
 
@@ -35,4 +35,4 @@ export default defineEventListener({
 			}
 		}
 	},
-});
+});*/

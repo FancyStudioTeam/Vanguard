@@ -42,10 +42,11 @@
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
 	"scripts": {
-		"build": "nest build",
+		"nest:build": "nest build",
+		"nest:dev": "cross-env NODE_ENV=development nest start --watch",
+		"nest:start": "cross-env NODE_ENV=production node dist/index.js",
 		"prebuild": "rimraf dist",
-		"start:dev": "cross-env NODE_ENV=development nest start --watch",
-		"start:prod": "cross-env NODE_ENV=production node dist/index.js"
+		"turborepo:build": "pnpm nest:build"
 	},
 	"type": "module",
 	"version": "0.1.0"

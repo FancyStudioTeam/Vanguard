@@ -33,7 +33,8 @@
 		"pm2:start": "pm2 start pnpm --name 'Vanguard Client' -- start:prod",
 		"prebuild": "rimraf dist",
 		"start:dev": "cross-env NODE_ENV=development tsx src/index.ts",
-		"start:prod": "cross-env NODE_ENV=production node dist/index.js"
+		"start:prod": "cross-env NODE_ENV=production node dist/index.js",
+		"turborepo:build": "pnpm build"
 	},
 	"type": "module",
 	"version": "0.1.0"
