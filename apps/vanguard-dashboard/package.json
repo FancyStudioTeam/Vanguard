@@ -34,7 +34,7 @@
 		"docker:run": "docker run -d -p 3000:3000 --env-file .env vanguard-dashboard",
 		"router:build": "react-router build",
 		"router:dev": "react-router dev",
-		"router:start": "react-router-serve ./build/server/index.js",
+		"router:start": "HOST=127.0.0.1 react-router-serve ./build/server/index.js",
 		"router:typecheck": "react-router typegen && tsc",
 		"turbo:build": "pnpm router:build"
 	},
