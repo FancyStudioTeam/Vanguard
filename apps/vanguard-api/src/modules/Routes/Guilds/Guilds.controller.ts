@@ -21,17 +21,15 @@ export class GuildsController {
 		const { guildsService, sessionsService } = this;
 
 		const sessionId = fastifySession.get('sessionId');
-		const sessionUser = fastifySession.get('sessionUser');
+		const sessionUserId = fastifySession.get('sessionUserId');
 
-		if (!(sessionId && sessionUser)) {
+		if (!(sessionId && sessionUserId)) {
 			throw UNAUTHORIZED_RESPONSE();
 		}
 
-		const { id } = sessionUser;
-		const accessToken = await sessionsService.getAccessToken(sessionId);
+		const userAccessToken = await sessionsService.getAccessToken(sessionId);
+		const userGuilds = await guildsService.getGuilds(sessionUserId, userAccessToken);
 
-		const guilds = await guildsService.getGuilds(id, accessToken);
-
-		return guilds;
+		return userGuilds;
 	}
 }

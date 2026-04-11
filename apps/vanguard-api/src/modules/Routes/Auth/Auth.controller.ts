@@ -27,6 +27,7 @@ export class AuthController {
 	) {}
 
 	@Get('callback')
+	@HttpCode(HttpStatus.TEMPORARY_REDIRECT)
 	@Redirect(BASE_DASHBOARD_URL)
 	public async handleCallback(
 		@Req() fastifyRequest: FastifyCallbackRequest,
@@ -64,16 +65,17 @@ export class AuthController {
 		const encryptedAccessToken = encryptionService.encrypt(accessToken);
 		const encryptedRefreshToken = encryptionService.encrypt(refreshToken);
 
+		const { id: userId } = user;
+
 		fastifySession.set('sessionId', sessionId);
 		fastifySession.set('sessionUser', user);
-
-		const { id } = user;
+		fastifySession.set('sessionUserId', userId);
 
 		await sessionsService.createDatabaseSession({
 			accessToken: encryptedAccessToken,
 			refreshToken: encryptedRefreshToken,
 			sessionId,
-			userId: id,
+			userId,
 		});
 	}
 

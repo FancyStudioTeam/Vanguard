@@ -4,6 +4,7 @@ import type { User } from './Discord.js';
 export interface FastifySessionData {
 	sessionId: string;
 	sessionUser: FastifySessionUser;
+	sessionUserId: string;
 }
 
 export type FastifySession = FastifySecureSession<FastifySessionData>;
