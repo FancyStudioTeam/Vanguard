@@ -12,10 +12,10 @@
 		"noEmit": true,
 		"paths": {
 			"#components/*": [
-				"./components/*"
+				"./app/components/*"
 			],
-			"#utils/*": [
-				"./utils/*"
+			"#server/*": [
+				"./app/.server/*"
 			]
 		},
 		"rootDirs": [
