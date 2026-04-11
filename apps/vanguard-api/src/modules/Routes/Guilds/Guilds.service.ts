@@ -9,8 +9,8 @@ import type { UserGuild } from '#lib/Types/Discord.js';
 import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';
 
 @Injectable()
-export class AuthService {
-	static USER_GUILDS_CACHE_TTL = 5_000 as const;
+export class GuildsService {
+	static USER_GUILDS_CACHE_TTL = 10_000 as const;
 
 	public constructor(
 		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
@@ -18,7 +18,7 @@ export class AuthService {
 	) {}
 
 	public async getGuilds(userId: string, accessToken: string): Promise<UserGuild[]> {
-		const { USER_GUILDS_CACHE_TTL } = AuthService;
+		const { USER_GUILDS_CACHE_TTL } = GuildsService;
 		const { cacheService, discordService } = this;
 
 		const cachedUserGuilds = await cacheService.get<UserGuild[]>(`user:guilds:${userId}`);
