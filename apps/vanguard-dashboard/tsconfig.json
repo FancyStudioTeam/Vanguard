@@ -16,6 +16,9 @@
 			],
 			"#server/*": [
 				"./app/.server/*"
+			],
+			"#utils/*": [
+				"./app/utils/*"
 			]
 		},
 		"rootDirs": [
