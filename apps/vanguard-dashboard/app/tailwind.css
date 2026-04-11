@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@import "tailwind-animations";
+@import 'tailwindcss';
+@import 'tailwind-animations';
 
 @theme inline {
-	--font-general-sans: "General Sans";
+	--font-general-sans: 'General Sans';
 }
 
 * {
