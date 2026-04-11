@@ -1,8 +1,6 @@
-import { getEnvVariable } from '#server/utils/Process/getEnvVariable.ts';
 import { normalizeUrl } from '#server/utils/URL/normalizeUrl.ts';
 
-const BASE_API_URL_VALUE = getEnvVariable('BASE_API_URL');
-const BASE_URL_VALUE = getEnvVariable('BASE_URL');
+const { VITE_BASE_API_URL, VITE_BASE_URL } = import.meta.env;
 
-export const BASE_API_URL = normalizeUrl(BASE_API_URL_VALUE);
-export const BASE_URL = normalizeUrl(BASE_URL_VALUE);
+export const BASE_API_URL = normalizeUrl(VITE_BASE_API_URL);
+export const BASE_URL = normalizeUrl(VITE_BASE_URL);
