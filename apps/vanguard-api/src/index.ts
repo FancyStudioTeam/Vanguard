@@ -12,6 +12,7 @@ import {
 	COOKIE_SESSION_DATA_MAX_AGE,
 	COOKIE_SESSION_DATA_NAME,
 } from '#lib/Constants/Cookies.js';
+import { logger } from '#lib/Logger.js';
 import { AppModule } from '#modules/App.module.js';
 
 const APP_PORT = 3001;
@@ -44,4 +45,14 @@ const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADA
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT, '0.0.0.0');
+await app.listen(APP_PORT, '127.0.0.1').then((data) => {
+	let address = data.address();
+
+	if (typeof address === 'object' && address !== null) {
+		const { address: host, port } = address;
+
+		address = `http://${host}:${port}`;
+	}
+
+	logger.info(`Listening on address '${address}'`);
+});
