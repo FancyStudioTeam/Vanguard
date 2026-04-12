@@ -11,9 +11,14 @@ import { REST } from '@discordjs/rest';
 import { Inject, Injectable } from '@nestjs/common';
 import { CLIENT_ID, CLIENT_SECRET } from '#lib/Constants/Client.js';
 import { api } from '#lib/REST.js';
-import type { User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
+import { GUILD_NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
+import type { Guild, User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 import { DiscordParserService } from './Parser/DiscordParser.service.js';
+
+/*
+ * TODO: Some of these Discord responses should be cached.
+ */
 
 @Injectable()
 export class DiscordService {
@@ -47,9 +52,11 @@ export class DiscordService {
 		const { discordParserService } = this;
 
 		const api = this.createManagerForBearer(accessToken);
-		const response = await api.users.getCurrent();
 
-		return discordParserService.parseUser(response);
+		const currentUser = await api.users.getCurrent();
+		const currentUserParsed = discordParserService.parseUser(currentUser);
+
+		return currentUserParsed;
 	}
 
 	public async getCurrentUserGuilds(accessToken: string): Promise<UserGuild[]> {
@@ -63,5 +70,16 @@ export class DiscordService {
 			.catch(() => []);
 
 		return discordParserService.parseUserGuilds(response);
+	}
+
+	public async getGuild(guildId: string): Promise<Guild> {
+		const { discordParserService } = this;
+		const { parseGuild } = discordParserService;
+
+		try {
+			return await api.guilds.get(guildId).then(parseGuild);
+		} catch {
+			throw GUILD_NOT_FOUND_RESPONSE(guildId);
+		}
 	}
 }
