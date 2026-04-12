@@ -86,7 +86,7 @@ export class DiscordService {
 			.returnType<Promise<Guild>>()
 			/*
 			 * This means that a previous request was sent to retrieve this guild but
-			 * Discord returned a 404 status code.
+			 * Discord's API returned a 404 status code.
 			 *
 			 * This value is cached in order to prevent multiple requests when
 			 * attempting to retrieve a guild that does not exist.
