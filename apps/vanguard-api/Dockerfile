@@ -25,6 +25,7 @@ WORKDIR /vanguard-api
 COPY --from=build /vanguard-api/apps/api/dist ./dist
 COPY --from=build /vanguard-api/apps/api/package.json ./
 
+ENV HOST=0.0.0.0
 ENV NODE_ENV=production
 
 RUN pnpm install

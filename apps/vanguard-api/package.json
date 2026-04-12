@@ -44,8 +44,8 @@
 		"docker:build": "docker build --tag vanguard-api --file Dockerfile ../../.",
 		"docker:run": "docker run -d -p 3001:3001 --env-file .env vanguard-api",
 		"nest:build": "nest build",
-		"nest:dev": "cross-env NODE_ENV=development nest start --watch",
-		"nest:start": "cross-env NODE_ENV=production node dist/index.js",
+		"nest:dev": "cross-env HOST=127.0.0.1 NODE_ENV=development nest start --watch",
+		"nest:start": "cross-env HOST=0.0.0.0 NODE_ENV=production node dist/index.js",
 		"prebuild": "rimraf dist",
 		"turbo:build": "pnpm nest:build"
 	},

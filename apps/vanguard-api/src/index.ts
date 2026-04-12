@@ -1,5 +1,6 @@
 import './env.js';
 
+import { env } from 'node:process';
 import FastifyCookie from '@fastify/cookie';
 import FastifySecureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session';
 import type { NestApplicationOptions } from '@nestjs/common';
@@ -15,6 +16,9 @@ import {
 import { logger } from '#lib/Logger.js';
 import { AppModule } from '#modules/App.module.js';
 
+const { HOST } = env;
+
+const APP_HOST = HOST;
 const APP_PORT = 3001;
 
 const APP_ADAPTER = new FastifyAdapter({
@@ -50,7 +54,7 @@ app.setGlobalPrefix('/api');
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT).then((data) => {
+await app.listen(APP_PORT, APP_HOST).then((data) => {
 	let address = data.address();
 
 	if (typeof address === 'object' && address !== null) {
