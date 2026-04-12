@@ -3,7 +3,7 @@
  * falsely reports unused private members when extracting them from 'this'.
  */
 
-import { Controller, Get, HttpCode, HttpStatus, Inject, Redirect, Req, Session } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Inject, Redirect, Req, Session } from '@nestjs/common';
 import type { FastifyRequest } from 'fastify';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import {
@@ -27,8 +27,7 @@ export class AuthController {
 	) {}
 
 	@Get('callback')
-	@HttpCode(HttpStatus.TEMPORARY_REDIRECT)
-	@Redirect(BASE_DASHBOARD_URL)
+	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
 	public async handleCallback(
 		@Req() fastifyRequest: FastifyCallbackRequest,
 		@Session() fastifySession: FastifySession,
@@ -80,8 +79,7 @@ export class AuthController {
 	}
 
 	@Get('sign-in')
-	@HttpCode(HttpStatus.TEMPORARY_REDIRECT)
-	@Redirect(createRedirectUrl())
+	@Redirect(createRedirectUrl(), HttpStatus.TEMPORARY_REDIRECT)
 	/*
 	 * biome-ignore lint/suspicious/noEmptyBlockStatements: This handler is
 	 * already handled by decorators.
