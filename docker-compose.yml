@@ -1,0 +1,25 @@
+services:
+    vanguard-api:
+        build:
+            context: .
+            dockerfile: ./apps/vanguard-api/Dockerfile
+        env_file:
+            - ./apps/vanguard-api/.env
+        ports:
+            - "3001:3001"
+
+    vanguard-client:
+        build:
+            context: .
+            dockerfile: ./apps/vanguard-client/Dockerfile
+        env_file:
+            - ./apps/vanguard-client/.env
+
+    vanguard-dashboard:
+        build:
+            context: .
+            dockerfile: ./apps/vanguard-dashboard/Dockerfile
+        env_file:
+            - ./apps/vanguard-dashboard/.env
+        ports:
+            - "3000:3000"

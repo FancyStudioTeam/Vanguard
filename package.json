@@ -30,6 +30,8 @@
 		"biome:check": "biome check",
 		"biome:ci": "biome ci",
 		"biome:write": "biome check --write",
+		"docker:compose:build": "docker compose build",
+		"docker:compose:up": "docker compose up -d",
 		"prepare": "husky",
 		"turborepo:build": "turbo build"
 	},
