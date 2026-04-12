@@ -3,8 +3,7 @@
  * falsely reports unused private members when extracting them from 'this'.
  */
 
-import { Controller, Get, HttpStatus, Inject, Redirect, Req, Session } from '@nestjs/common';
-import type { FastifyRequest } from 'fastify';
+import { Controller, Get, HttpStatus, Inject, Query, Redirect, Session } from '@nestjs/common';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import {
 	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
@@ -28,14 +27,8 @@ export class AuthController {
 
 	@Get('callback')
 	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
-	public async handleCallback(
-		@Req() fastifyRequest: FastifyCallbackRequest,
-		@Session() fastifySession: FastifySession,
-	) {
+	public async handleCallback(@Query('code') code: string | undefined, @Session() fastifySession: FastifySession) {
 		const { discordService, encryptionService, sessionsService } = this;
-
-		const { query } = fastifyRequest;
-		const { code } = query;
 
 		if (!code) {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
@@ -86,13 +79,3 @@ export class AuthController {
 	 */
 	public handleSignIn() {}
 }
-
-type FastifyCallbackRequest = FastifyRequest<{
-	/*
-	 * biome-ignore lint/style/useNamingConvention: This convention comes from an
-	 * external API, which cannot be overwritten.
-	 */
-	Querystring: {
-		code?: string;
-	};
-}>;
