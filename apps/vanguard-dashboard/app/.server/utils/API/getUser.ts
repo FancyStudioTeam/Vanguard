@@ -16,7 +16,7 @@ export async function getUser(request: Request): Promise<User> {
 
 async function createRequest(request: Request): Promise<Response> {
 	const cookie = getCookieHeader(request);
-	const response = await fetch(`${BASE_API_URL}/users/@me`, {
+	const response = await fetch(`${BASE_API_URL}/api/users/@me`, {
 		headers: {
 			cookie,
 		},

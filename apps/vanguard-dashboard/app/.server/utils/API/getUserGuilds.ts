@@ -15,7 +15,7 @@ export async function getUserGuilds(request: Request): Promise<UserGuild[]> {
 
 async function createRequest(request: Request): Promise<Response> {
 	const cookie = getCookieHeader(request);
-	const response = await fetch(`${BASE_API_URL}/guilds`, {
+	const response = await fetch(`${BASE_API_URL}/api/guilds`, {
 		headers: {
 			cookie,
 		},
