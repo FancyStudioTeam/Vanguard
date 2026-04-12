@@ -3,6 +3,19 @@
 import { type HttpException, HttpStatus } from '@nestjs/common';
 import { buildHttpException } from '#utils/Exceptions/buildHttpException.js';
 
+export function GUILD_NOT_FOUND_RESPONSE(guildId: string): HttpException {
+	return buildHttpException({
+		data: {
+			code: 'GUILD_NOT_FOUND',
+			details: {
+				guildId,
+			},
+			message: '404: Guild Not Found',
+		},
+		statusCode: HttpStatus.NOT_FOUND,
+	});
+}
+
 export function INTERNAL_SERVER_ERROR_RESPONSE(): HttpException {
 	return buildHttpException({
 		data: {
