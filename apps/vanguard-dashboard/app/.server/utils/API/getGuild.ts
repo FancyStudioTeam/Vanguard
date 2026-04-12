@@ -8,18 +8,24 @@ export async function getGuild(
 	request: Request,
 	guildId: string,
 ): Promise<Guild> {
-	const response = await createRequest(request, guildId);
-
-	return await match(response)
+	return await match(await createRequest(request, guildId))
 		.returnType<Promise<Guild>>()
 		.with(
 			{
 				ok: true,
 			},
-			async () => await response.json(),
+			async (response) => await response.json(),
+		)
+		.with(
+			{
+				status: 404,
+			},
+			() => {
+				throw redirect(`${BASE_API_URL}/api/guilds/${guildId}/invite`);
+			},
 		)
 		.otherwise(() => {
-			throw redirect(`${BASE_API_URL}/api/guilds/${guildId}/invite`);
+			throw redirect('/');
 		});
 }
 
