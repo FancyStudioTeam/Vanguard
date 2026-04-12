@@ -8,7 +8,7 @@ export async function getUser(request: Request): Promise<User> {
 	const { ok } = response;
 
 	if (!ok) {
-		throw redirect(`${BASE_API_URL}/auth/sign-in`);
+		throw redirect(`${BASE_API_URL}/api/auth/sign-in`);
 	}
 
 	return await response.json();
