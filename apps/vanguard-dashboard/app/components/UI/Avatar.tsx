@@ -1,4 +1,4 @@
-import { Avatar as AvatarPrimitive } from '@base-ui/react';
+import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import { classNames } from '#utils/Tailwind/classNames.ts';
 
 export function Avatar({ className, ...props }: AvatarProps) {
