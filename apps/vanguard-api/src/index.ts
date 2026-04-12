@@ -17,7 +17,9 @@ import { AppModule } from '#modules/App.module.js';
 
 const APP_PORT = 3001;
 
-const APP_ADAPTER = new FastifyAdapter();
+const APP_ADAPTER = new FastifyAdapter({
+	trustProxy: '127.0.0.1',
+});
 const APP_MODULE = AppModule;
 const APP_OPTIONS: NestApplicationOptions = {
 	logger: [
@@ -48,7 +50,7 @@ app.setGlobalPrefix('/api');
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT, 'localhost').then((data) => {
+await app.listen(APP_PORT).then((data) => {
 	let address = data.address();
 
 	if (typeof address === 'object' && address !== null) {
