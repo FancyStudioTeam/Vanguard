@@ -14,6 +14,9 @@
 			"#components/*": [
 				"./app/components/*"
 			],
+			"#context/*": [
+				"./app/context/*"
+			],
 			"#server/*": [
 				"./app/.server/*"
 			],
