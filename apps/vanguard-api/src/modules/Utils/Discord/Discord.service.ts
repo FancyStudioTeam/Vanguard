@@ -1,7 +1,4 @@
 /*
- * biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: Biome
- * falsely reports unused private members when extracting them from 'this'.
- *
  * biome-ignore-all lint/style/useNamingConvention: This convention comes from
  * an external API, which cannot be overwriten.
  */
@@ -10,7 +7,8 @@ import { API } from '@discordjs/core/http-only';
 import { REST } from '@discordjs/rest';
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
-import { match, P } from 'ts-pattern';
+import { Routes } from 'discord-api-types/v9';
+import type { APIGuildMember } from 'discord-api-types/v10';
 import { CLIENT_ID, CLIENT_SECRET } from '#lib/Constants/Client.js';
 import { api } from '#lib/REST.js';
 import { GUILD_NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
@@ -20,8 +18,12 @@ import { DiscordParserService } from './Parser/DiscordParser.service.js';
 
 @Injectable()
 export class DiscordService {
-	static GUILD_CACHE_KEY = (guildId: string) => `guild:${guildId}`;
-	static GUILD_CACHE_TTL = 10_000 as const;
+	private static GUILD_CACHE_KEY = (guildId: string) => `guild:${guildId}` as const;
+	private static GUILD_CACHE_TTL = 10_000 as const;
+
+	private static GUILD_MEMBER_PERMISSIONS_CACHE_KEY = (guildId: string, userId: string) =>
+		`guild:${guildId}:members:${userId}:permissions` as const;
+	private static GUILD_MEMBER_PERMISSIONS_CACHE_TTL = 5_000 as const;
 
 	public constructor(
 		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
@@ -77,13 +79,12 @@ export class DiscordService {
 	}
 
 	public async getGuild(guildId: string): Promise<Guild> {
-		const { GUILD_CACHE_KEY } = DiscordService;
-		const { cacheService, discordParserService } = this;
+		const guildCacheKey = DiscordService.GUILD_CACHE_KEY(guildId);
+		const guildCacheTtl = DiscordService.GUILD_CACHE_TTL;
 
-		const cachedGuild = await cacheService.get<Guild | 'not_found'>(GUILD_CACHE_KEY(guildId));
+		const cachedGuild = await this.cacheService.get<Guild | 'not_found'>(guildCacheKey);
 
-		return await match(cachedGuild)
-			.returnType<Promise<Guild>>()
+		if (cachedGuild) {
 			/*
 			 * This means that a previous request was sent to retrieve this guild but
 			 * Discord's API returned a 404 status code.
@@ -91,25 +92,58 @@ export class DiscordService {
 			 * This value is cached in order to prevent multiple requests when
 			 * attempting to retrieve a guild that does not exist.
 			 */
-			.with('not_found', () => {
+			if (cachedGuild === 'not_found') {
 				throw GUILD_NOT_FOUND_RESPONSE();
-			})
-			.with(P.nonNullable, async (cachedGuild) => cachedGuild)
-			.otherwise(async () => {
-				try {
-					const { parseGuild } = discordParserService;
+			}
 
-					const guild = await api.guilds.get(guildId);
-					const guildParsed = parseGuild(guild);
+			return cachedGuild;
+		}
 
-					await cacheService.set<Guild>(GUILD_CACHE_KEY(guildId), guildParsed);
+		try {
+			const guild = await api.guilds.get(guildId);
+			const guildParsed = this.discordParserService.parseGuild(guild);
 
-					return guildParsed;
-				} catch {
-					await cacheService.set<'not_found'>(GUILD_CACHE_KEY(guildId), 'not_found');
+			return await this.cacheService.set<Guild>(guildCacheKey, guildParsed, guildCacheTtl);
+		} catch {
+			await this.cacheService.set<'not_found'>(guildCacheKey, 'not_found', guildCacheTtl);
 
-					throw GUILD_NOT_FOUND_RESPONSE();
-				}
-			});
+			throw GUILD_NOT_FOUND_RESPONSE();
+		}
 	}
+
+	public async getGuildMemberPermissions(accessToken: string, guildId: string, userId: string): Promise<string> {
+		const guildMemberPermissionsCacheKey = DiscordService.GUILD_MEMBER_PERMISSIONS_CACHE_KEY(guildId, userId);
+		const guildMemberPermissionsCacheTttl = DiscordService.GUILD_MEMBER_PERMISSIONS_CACHE_TTL;
+
+		const cachedGuildMemberPermissions = await this.cacheService.get<string>(guildMemberPermissionsCacheKey);
+
+		if (cachedGuildMemberPermissions !== undefined) {
+			return cachedGuildMemberPermissions;
+		}
+
+		try {
+			const rest = new REST();
+
+			rest.options.authPrefix = 'Bearer';
+			rest.setToken(accessToken);
+
+			const { permissions } = (await rest.get(Routes.userGuildMember(guildId))) as APIGuildMemberWithPermissions;
+
+			return await this.cacheService.set<string>(
+				guildMemberPermissionsCacheKey,
+				permissions,
+				guildMemberPermissionsCacheTttl,
+			);
+		} catch {
+			return await this.cacheService.set<'0'>(
+				guildMemberPermissionsCacheKey,
+				'0',
+				guildMemberPermissionsCacheTttl,
+			);
+		}
+	}
+}
+
+interface APIGuildMemberWithPermissions extends APIGuildMember {
+	permissions: string;
 }
