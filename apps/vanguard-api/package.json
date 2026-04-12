@@ -14,6 +14,7 @@
 		"@nestjs/mongoose": "11.0.4",
 		"@nestjs/platform-fastify": "11.1.18",
 		"cache-manager": "7.2.8",
+		"discord-api-types": "0.38.45",
 		"fastify": "5.8.4",
 		"mongoose": "9.4.1",
 		"rxjs": "7.8.2",

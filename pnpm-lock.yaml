@@ -71,6 +71,9 @@ importers:
       cache-manager:
         specifier: 7.2.8
         version: 7.2.8
+      discord-api-types:
+        specifier: 0.38.45
+        version: 0.38.45
       fastify:
         specifier: 5.8.4
         version: 5.8.4
