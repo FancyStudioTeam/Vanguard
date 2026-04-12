@@ -4,9 +4,9 @@ import { getEnvVariable } from '#utils/Process/getEnvVariable.js';
 
 @Injectable()
 export class EncryptionService {
-	static ENCRYPTION_ALGORITHM = 'aes-256-gcm' as const;
-	static ENCRYPTION_IV_LENGTH = 16 as const;
-	static ENCRYPTION_SECRET = getEnvVariable('ENCRYPTION_SECRET');
+	private static ENCRYPTION_ALGORITHM = 'aes-256-gcm' as const;
+	private static ENCRYPTION_IV_LENGTH = 16 as const;
+	private static ENCRYPTION_SECRET = getEnvVariable('ENCRYPTION_SECRET');
 
 	public decrypt(encryptedData: string): string {
 		const { ENCRYPTION_ALGORITHM, ENCRYPTION_SECRET } = EncryptionService;
@@ -32,10 +32,12 @@ export class EncryptionService {
 	}
 
 	public encrypt(plainData: string): string {
-		const { ENCRYPTION_ALGORITHM, ENCRYPTION_IV_LENGTH, ENCRYPTION_SECRET } = EncryptionService;
-
-		const ivBytes = randomBytes(ENCRYPTION_IV_LENGTH);
-		const cipher = createCipheriv(ENCRYPTION_ALGORITHM, ENCRYPTION_SECRET, ivBytes);
+		const ivBytes = randomBytes(EncryptionService.ENCRYPTION_IV_LENGTH);
+		const cipher = createCipheriv(
+			EncryptionService.ENCRYPTION_ALGORITHM,
+			EncryptionService.ENCRYPTION_SECRET,
+			ivBytes,
+		);
 
 		const encryptedBuffer = Buffer.concat([
 			cipher.update(plainData, 'utf-8'),
