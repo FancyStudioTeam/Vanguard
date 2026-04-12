@@ -14,6 +14,15 @@ import {
 import { match } from 'ts-pattern';
 import { Navbar } from '#components/Layout/Navbar/Navbar.tsx';
 
+// biome-ignore lint/style/useComponentExportOnlyModules: (x)
+export function meta() {
+	return [
+		{
+			title: 'Vanguard',
+		},
+	];
+}
+
 export default function App() {
 	return <Outlet />;
 }
