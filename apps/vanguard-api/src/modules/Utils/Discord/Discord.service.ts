@@ -23,7 +23,7 @@ export class DiscordService {
 
 	private static GUILD_MEMBER_PERMISSIONS_CACHE_KEY = (guildId: string, userId: string) =>
 		`guild:${guildId}:members:${userId}:permissions` as const;
-	private static GUILD_MEMBER_PERMISSIONS_CACHE_TTL = 5_000 as const;
+	private static GUILD_MEMBER_PERMISSIONS_CACHE_TTL = 15_000 as const;
 
 	public constructor(
 		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
