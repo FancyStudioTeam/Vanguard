@@ -117,6 +117,9 @@ export class DiscordService {
 
 		const cachedGuildMemberPermissions = await this.cacheService.get<string>(guildMemberPermissionsCacheKey);
 
+		/*
+		 * The cached value may be '0', a falsy value in JavaScript.
+		 */
 		if (cachedGuildMemberPermissions !== undefined) {
 			return cachedGuildMemberPermissions;
 		}
