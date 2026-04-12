@@ -54,7 +54,7 @@ app.setGlobalPrefix('/api');
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT, APP_HOST).then((data) => {
+await app.listen(APP_PORT, APP_HOST ?? '0.0.0.0').then((data) => {
 	let address = data.address();
 
 	if (typeof address === 'object' && address !== null) {
