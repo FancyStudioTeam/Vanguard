@@ -2,15 +2,28 @@ import {
 	PermissionFlagsBits,
 	type RESTAPIPartialCurrentUserGuild,
 	type RESTGetAPICurrentUserGuildsResult,
+	type RESTGetAPIGuildResult,
 	type RESTGetAPIUserResult,
 	type RESTPostOAuth2AccessTokenResult,
 } from '@discordjs/core';
 import { Injectable } from '@nestjs/common';
-import type { User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
+import type { Guild, User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
 import { hasPermission } from '#utils/Discord/hasPermission.js';
 
 @Injectable()
 export class DiscordParserService {
+	public parseGuild(response: RESTGetAPIGuildResult): Guild {
+		const { banner, icon, id, name, owner_id } = response;
+
+		return {
+			banner,
+			icon,
+			id,
+			name,
+			ownerId: owner_id,
+		};
+	}
+
 	public parseUser(response: RESTGetAPIUserResult): User {
 		const { avatar, global_name, id, username } = response;
 

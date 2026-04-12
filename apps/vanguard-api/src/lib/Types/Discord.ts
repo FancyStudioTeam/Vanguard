@@ -1,3 +1,11 @@
+export interface Guild {
+	banner: string | null;
+	icon: string | null;
+	id: string;
+	name: string;
+	ownerId: string;
+}
+
 export interface User {
 	avatar: string | null;
 	globalName: string | null;
