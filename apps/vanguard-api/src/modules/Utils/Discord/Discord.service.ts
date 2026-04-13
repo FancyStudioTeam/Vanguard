@@ -69,11 +69,7 @@ export class DiscordService {
 		const { discordParserService } = this;
 
 		const api = this.createManagerForBearer(accessToken);
-		const response = await api.users
-			.getGuilds({
-				with_counts: true,
-			})
-			.catch(() => []);
+		const response = await api.users.getGuilds().catch(() => []);
 
 		return discordParserService.parseUserGuilds(response);
 	}

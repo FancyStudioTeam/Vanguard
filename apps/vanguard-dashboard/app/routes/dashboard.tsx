@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Await, useLoaderData } from 'react-router';
+import { Await } from 'react-router';
 import { GuildSelector } from '#components/Dashboard/GuildSelector/GuildSelector.tsx';
 import { GuildSelectorFallback } from '#components/Dashboard/GuildSelector/GuildSelectorFallback.tsx';
 import { getUser } from '#server/utils/API/getUser.ts';
@@ -14,9 +14,8 @@ export async function loader({ request }: Route.LoaderArgs) {
 	};
 }
 
-export default function () {
-	// biome-ignore lint/correctness/useHookAtTopLevel: (x)
-	const { guilds } = useLoaderData<typeof loader>();
+export default function ({ loaderData }: Route.ComponentProps) {
+	const { guilds } = loaderData;
 
 	return (
 		<Suspense fallback={<GuildSelectorFallback />}>
