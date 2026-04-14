@@ -33,7 +33,7 @@
 		"docker:compose:build": "docker compose build",
 		"docker:compose:up": "docker compose up -d",
 		"prepare": "husky",
-		"turborepo:build": "turbo build"
+		"turbo:build": "turbo build"
 	},
 	"type": "module",
 	"version": "0.1.0"

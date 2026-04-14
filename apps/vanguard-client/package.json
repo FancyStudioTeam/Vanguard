@@ -31,7 +31,7 @@
 		"docker:build": "docker build --tag vanguard-client --file Dockerfile ../../.",
 		"docker:run": "docker run -d --env-file .env vanguard-client",
 		"prebuild": "rimraf dist",
-		"turbo:build": "pnpm build",
+		"turbo:build": "pnpm vanguard:build",
 		"vanguard:build": "tsc --project tsconfig.json",
 		"vanguard:dev": "cross-env NODE_ENV=development tsx src/index.ts",
 		"vanguard:start": "cross-env NODE_ENV=production node dist/index.js"
