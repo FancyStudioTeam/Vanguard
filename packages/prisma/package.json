@@ -1,0 +1,37 @@
+{
+	"author": "Vanguard Development Team",
+	"dependencies": {
+		"@prisma/adapter-pg": "7.7.0",
+		"@prisma/client": "7.7.0",
+		"dotenv": "17.4.2",
+		"pg": "8.20.0"
+	},
+	"devDependencies": {
+		"@types/node": "25.6.0",
+		"@types/pg": "8.20.0",
+		"prisma": "7.7.0",
+		"rimraf": "6.1.3",
+		"tsx": "4.21.0",
+		"typescript": "6.0.2"
+	},
+	"exports": {
+		"./client": {
+			"import": "./dist/client.js",
+			"require": "./dist/client.js",
+			"types": "./dist/client.d.ts"
+		}
+	},
+	"license": "MIT",
+	"name": "@vanguard/prisma",
+	"scripts": {
+		"build": "tsc --project tsconfig.json",
+		"prebuild": "rimraf dist && pnpm prisma:generate",
+		"prisma:deploy": "prisma migrate deploy",
+		"prisma:format": "prisma format",
+		"prisma:generate": "prisma generate",
+		"prisma:migrate:dev": "prisma migrate dev",
+		"prisma:migrate:reset": "prisma migrate reset"
+	},
+	"type": "module",
+	"version": "0.1.0"
+}

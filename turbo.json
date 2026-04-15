@@ -12,7 +12,6 @@
 				"$TURBO_DEFAULT$"
 			],
 			"outputs": [
-				".next/**",
 				"build/**",
 				"dist/**"
 			]
