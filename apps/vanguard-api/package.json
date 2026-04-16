@@ -12,7 +12,7 @@
 		"@nestjs/common": "11.1.18",
 		"@nestjs/core": "11.1.19",
 		"@nestjs/mongoose": "11.0.4",
-		"@nestjs/platform-fastify": "11.1.18",
+		"@nestjs/platform-fastify": "11.1.19",
 		"@vanguard/prisma": "workspace:*",
 		"cache-manager": "7.2.8",
 		"discord-api-types": "0.38.45",
