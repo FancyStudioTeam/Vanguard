@@ -23,7 +23,7 @@
 		"tslog": "4.10.2"
 	},
 	"devDependencies": {
-		"@nestjs/cli": "11.0.19",
+		"@nestjs/cli": "11.0.21",
 		"@types/node": "25.6.0",
 		"cross-env": "10.1.0",
 		"rimraf": "6.1.3",
