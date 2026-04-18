@@ -15,15 +15,15 @@
 		"@nestjs/platform-fastify": "11.1.19",
 		"@vanguard/prisma": "workspace:*",
 		"cache-manager": "7.2.8",
-		"discord-api-types": "0.38.45",
-		"fastify": "5.8.4",
+		"discord-api-types": "0.38.47",
+		"fastify": "5.8.5",
 		"mongoose": "9.4.1",
 		"rxjs": "7.8.2",
 		"ts-pattern": "5.9.0",
 		"tslog": "4.10.2"
 	},
 	"devDependencies": {
-		"@nestjs/cli": "11.0.19",
+		"@nestjs/cli": "11.0.21",
 		"@types/node": "25.6.0",
 		"cross-env": "10.1.0",
 		"rimraf": "6.1.3",
