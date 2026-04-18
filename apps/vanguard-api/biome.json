@@ -6,9 +6,6 @@
 			"!!**/dist"
 		]
 	},
-	"formatter": {
-		"lineWidth": 100
-	},
 	"javascript": {
 		"parser": {
 			"unsafeParameterDecoratorsEnabled": true
