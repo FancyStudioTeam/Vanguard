@@ -1,8 +1,3 @@
-/*
- * biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: Biome
- * falsely reports unused private members when extracting them from 'this'.
- */
-
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import type { UserGuild } from '#lib/Types/Discord.js';
@@ -18,22 +13,20 @@ export class GuildsService {
 	) {}
 
 	public async getGuilds(userId: string, accessToken: string): Promise<UserGuild[]> {
-		const { USER_GUILDS_CACHE_TTL } = GuildsService;
-		const { cacheService, discordService } = this;
-
-		const cachedUserGuilds = await cacheService.get<UserGuild[]>(`user:guilds:${userId}`);
+		const cachedUserGuilds = await this.cacheService.get<UserGuild[]>(`user:guilds:${userId}`);
 
 		if (cachedUserGuilds) {
 			return cachedUserGuilds;
 		}
 
-		const userGuilds = await discordService.getCurrentUserGuilds(accessToken);
-		const userGuildsToCache = await cacheService.set<UserGuild[]>(
+		const userGuilds = await this.discordService.getCurrentUserGuilds(accessToken);
+
+		await this.cacheService.set<UserGuild[]>(
 			`user:guilds:${userId}`,
 			userGuilds,
-			USER_GUILDS_CACHE_TTL,
+			GuildsService.USER_GUILDS_CACHE_TTL,
 		);
 
-		return userGuildsToCache;
+		return userGuilds;
 	}
 }

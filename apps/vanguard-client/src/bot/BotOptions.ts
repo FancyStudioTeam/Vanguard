@@ -1,13 +1,6 @@
 import { platform } from 'node:process';
-import {
-	ActivityTypes,
-	type CreateGatewayManagerOptions,
-} from '@discordeno/bot';
-import {
-	DISCORD_GATEWAY_INTENTS,
-	DISCORD_TOKEN,
-	VERSION,
-} from '#lib/Constants.js';
+import { ActivityTypes, type CreateGatewayManagerOptions } from '@discordeno/bot';
+import { DISCORD_GATEWAY_INTENTS, DISCORD_TOKEN, VERSION } from '#lib/Constants.js';
 import {
 	DESIRED_GUILD_PROPERTIES,
 	DESIRED_INTERACTION_PROPERTIES,

@@ -58,7 +58,9 @@ export class DiscordParserService {
 
 	public parseUserGuilds(response: RESTGetAPICurrentUserGuildsResult): UserGuild[] {
 		return response
-			.filter(({ permissions }) => hasPermission(permissions, PermissionFlagsBits.ManageGuild))
+			.filter(({ permissions }) =>
+				hasPermission(permissions, PermissionFlagsBits.ManageGuild),
+			)
 			.map(this.parseUserGuild);
 	}
 }

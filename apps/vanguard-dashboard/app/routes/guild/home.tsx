@@ -16,9 +16,5 @@ export default function ({ loaderData }: Route.ComponentProps) {
 	const { user } = loaderData;
 	const { globalName, username } = user;
 
-	return (
-		<h1 className='font-bold text-xl'>
-			Welcome back, {globalName ?? username}!
-		</h1>
-	);
+	return <h1 className='font-bold text-xl'>Welcome back, {globalName ?? username}!</h1>;
 }

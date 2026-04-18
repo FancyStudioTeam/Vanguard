@@ -28,10 +28,7 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 export function AvatarImage({ className, ...props }: AvatarImageProps) {
 	return (
 		<AvatarPrimitive.Image
-			className={classNames(
-				'aspect-square size-10 rounded-md',
-				className,
-			)}
+			className={classNames('aspect-square size-10 rounded-md', className)}
 			{...props}
 		/>
 	);

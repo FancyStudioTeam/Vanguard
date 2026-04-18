@@ -4,10 +4,7 @@ import { classNames } from '#utils/Tailwind/classNames.ts';
 import { VanguardLogo } from './VanguardLogo.tsx';
 import { VanguardSymbol } from './VanguardSymbol.tsx';
 
-export function VanguardCombinationMark({
-	className,
-	...props
-}: VanguardCombinationMarksProps) {
+export function VanguardCombinationMark({ className, ...props }: VanguardCombinationMarksProps) {
 	return (
 		<Link
 			aria-label='Vanguard Home'
@@ -25,7 +22,4 @@ export function VanguardCombinationMark({
 	);
 }
 
-export type VanguardCombinationMarksProps = Omit<
-	ComponentProps<typeof Link>,
-	'to'
->;
+export type VanguardCombinationMarksProps = Omit<ComponentProps<typeof Link>, 'to'>;

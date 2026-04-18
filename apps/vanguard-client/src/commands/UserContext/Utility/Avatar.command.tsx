@@ -4,12 +4,7 @@ import {
 	defaultAvatarUrl,
 	MessageFlags,
 } from '@discordeno/bot';
-import {
-	Container,
-	MediaGallery,
-	MediaGalleryItem,
-	UnfurledMediaItem,
-} from 'ddenox/components';
+import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from 'ddenox/components';
 import { Declare, UserContextCommandHandler } from 'ddenox/handlers';
 import type { User } from '#lib/InferredTypes.js';
 
@@ -21,8 +16,7 @@ export default class AvatarCommand extends UserContextCommandHandler {
 		const targetUser = this.getTargetUser();
 		const targetUserAvatarUrl = this.getUserAvatarUrl(targetUser);
 
-		const containerComponent =
-			this.createContainerComponent(targetUserAvatarUrl);
+		const containerComponent = this.createContainerComponent(targetUserAvatarUrl);
 
 		await this.createInteractionMessage({
 			components: [

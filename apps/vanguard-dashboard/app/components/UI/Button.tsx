@@ -7,8 +7,7 @@ export const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default:
-					'bg-neutral-50 text-neutral-950 hover:bg-neutral-50/75',
+				default: 'bg-neutral-50 text-neutral-950 hover:bg-neutral-50/75',
 				ghost: 'bg-transparent hover:bg-neutral-800/75',
 				secondary: 'bg-neutral-800 hover:bg-neutral-800/75',
 			},
@@ -16,11 +15,7 @@ export const buttonVariants = cva(
 	},
 );
 
-export function Button({
-	className,
-	variant = 'default',
-	...props
-}: ButtonProps) {
+export function Button({ className, variant = 'default', ...props }: ButtonProps) {
 	return (
 		<ButtonPrimitive
 			className={buttonVariants({
@@ -32,5 +27,4 @@ export function Button({
 	);
 }
 
-export type ButtonProps = ButtonPrimitive.Props &
-	VariantProps<typeof buttonVariants>;
+export type ButtonProps = ButtonPrimitive.Props & VariantProps<typeof buttonVariants>;

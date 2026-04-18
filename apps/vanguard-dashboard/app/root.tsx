@@ -59,14 +59,10 @@ export function ErrorBoundary() {
 			{match(error)
 				.returnType<ReactNode>()
 				.when(isRouteErrorResponse, ({ statusText }) => (
-					<h1 className='text-wrap font-bold text-5xl'>
-						{statusText}
-					</h1>
+					<h1 className='text-wrap font-bold text-5xl'>{statusText}</h1>
 				))
 				.otherwise(() => (
-					<h1 className='text-wrap font-bold text-5xl'>
-						Unknown Error
-					</h1>
+					<h1 className='text-wrap font-bold text-5xl'>Unknown Error</h1>
 				))}
 		</main>
 	);

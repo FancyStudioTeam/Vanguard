@@ -4,10 +4,7 @@ import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
 import type { Guild } from '#server/lib/Types/API.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getGuild(
-	request: Request,
-	guildId: string,
-): Promise<Guild> {
+export async function getGuild(request: Request, guildId: string): Promise<Guild> {
 	return await match(await createRequest(request, guildId))
 		.returnType<Promise<Guild>>()
 		.with(
@@ -29,10 +26,7 @@ export async function getGuild(
 		});
 }
 
-async function createRequest(
-	request: Request,
-	guildId: string,
-): Promise<Response> {
+async function createRequest(request: Request, guildId: string): Promise<Response> {
 	const cookie = getCookieHeader(request);
 	const response = await fetch(`${BASE_API_URL}/api/guilds/${guildId}`, {
 		headers: {

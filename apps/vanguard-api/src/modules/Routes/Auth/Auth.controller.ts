@@ -27,7 +27,10 @@ export class AuthController {
 
 	@Get('callback')
 	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
-	public async handleCallback(@Query('code') code: string | undefined, @Session() fastifySession: FastifySession) {
+	public async handleCallback(
+		@Query('code') code: string | undefined,
+		@Session() fastifySession: FastifySession,
+	) {
 		const { discordService, encryptionService, sessionsService } = this;
 
 		if (!code) {

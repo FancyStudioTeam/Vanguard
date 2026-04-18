@@ -7,7 +7,7 @@
 		]
 	},
 	"formatter": {
-		"lineWidth": 120
+		"lineWidth": 100
 	},
 	"javascript": {
 		"parser": {

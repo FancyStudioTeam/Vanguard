@@ -2,11 +2,7 @@ import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
 import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
 import type { UserGuild } from '#server/lib/Types/API.ts';
 
-export function GuildSelectorCardFooter({
-	icon,
-	id,
-	name,
-}: GuildSelectorCardFooterProps) {
+export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFooterProps) {
 	return (
 		<footer className='flex h-25 items-center gap-4 p-6'>
 			<Avatar className='bg-neutral-900'>
@@ -35,7 +31,4 @@ export function GuildSelectorCardFooter({
 	);
 }
 
-export type GuildSelectorCardFooterProps = Pick<
-	UserGuild,
-	'icon' | 'id' | 'name'
->;
+export type GuildSelectorCardFooterProps = Pick<UserGuild, 'icon' | 'id' | 'name'>;
