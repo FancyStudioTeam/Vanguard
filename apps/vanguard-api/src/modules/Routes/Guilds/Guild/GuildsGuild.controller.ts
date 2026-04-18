@@ -8,14 +8,17 @@ import { hasPermission } from '#utils/Discord/hasPermission.js';
 import { createGuildInviteUrl } from '#utils/URL/createGuildInviteUrl.js';
 
 @Controller('guilds/:guildId')
-export class GuildsGuildController {
+export class GuildController {
 	public constructor(
 		@Inject(DiscordService) private readonly discordService: DiscordService,
 		@Inject(SessionsService) private readonly sessionsService: SessionsService,
 	) {}
 
 	@Get()
-	public async handleIndex(@Param('guildId') guildId: string, @Session() fastifySession: FastifySession) {
+	public async handleIndex(
+		@Param('guildId') guildId: string,
+		@Session() fastifySession: FastifySession,
+	) {
 		const sessionId = fastifySession.get('sessionId');
 		const sessionUserId = fastifySession.get('sessionUserId');
 

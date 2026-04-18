@@ -2,7 +2,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { DiscordModule } from '#modules/Utils/Discord/Discord.module.js';
 import { SessionsModule } from '#modules/Utils/Sessions/Sessions.module.js';
-import { GuildsGuildModule } from './Guild/GuildsGuild.module.js';
+import { GuildModule } from './Guild/GuildsGuild.module.js';
 import { GuildsController } from './Guilds.controller.js';
 import { GuildsService } from './Guilds.service.js';
 
@@ -13,7 +13,7 @@ import { GuildsService } from './Guilds.service.js';
 	imports: [
 		CacheModule.register(),
 		DiscordModule,
-		GuildsGuildModule,
+		GuildModule,
 		SessionsModule,
 	],
 	providers: [
