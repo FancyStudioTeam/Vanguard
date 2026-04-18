@@ -30,8 +30,7 @@
 		"typescript": "6.0.2"
 	},
 	"imports": {
-		"#filters/*": "./dist/filters/*",
-		"#interceptors/*": "./dist/interceptors/*",
+		"#common/*": "./dist/common/*",
 		"#lib/*": "./dist/lib/*",
 		"#modules/*": "./dist/modules/*",
 		"#schemas/*": "./dist/schemas/*",

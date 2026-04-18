@@ -2,11 +2,8 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {
-			"#filters/*": [
-				"./src/filters/*"
-			],
-			"#interceptors/*": [
-				"./src/interceptors/*"
+			"#common/*": [
+				"./src/common/*"
 			],
 			"#lib/*": [
 				"./src/lib/*"
