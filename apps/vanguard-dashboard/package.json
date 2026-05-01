@@ -1,7 +1,7 @@
 {
 	"author": "Vanguard Development Team",
 	"dependencies": {
-		"@base-ui/react": "1.4.0",
+		"@base-ui/react": "1.4.1",
 		"@phosphor-icons/react": "2.1.10",
 		"@react-router/node": "7.14.0",
 		"@react-router/serve": "7.14.2",
