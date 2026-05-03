@@ -4,7 +4,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.4.12",
 		"@commitlint/cli": "20.5.3",
-		"@commitlint/config-conventional": "20.5.0",
+		"@commitlint/config-conventional": "20.5.3",
 		"@commitlint/types": "20.5.0",
 		"husky": "9.1.7",
 		"lint-staged": "16.4.0",
