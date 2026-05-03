@@ -155,8 +155,8 @@ importers:
         specifier: 2.1.10
         version: 2.1.10(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@react-router/node':
-        specifier: 7.14.0
-        version: 7.14.0(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
+        specifier: 7.14.2
+        version: 7.14.2(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
       '@react-router/serve':
         specifier: 7.14.2
         version: 7.14.2(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
@@ -1319,16 +1319,6 @@ packages:
       express: ^4.17.1 || ^5
       react-router: 7.14.2
       typescript: ^5.1.0 || ^6.0.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@react-router/node@7.14.0':
-    resolution: {integrity: sha512-ZxJJLE4PX29+cHLacH3pmCHMCJQz/1dpEgFQtm8Pst2IP5GI6897rShYylLZbJ7jRBJSkskHn+opSEh+o6mmOA==}
-    engines: {node: '>=20.0.0'}
-    peerDependencies:
-      react-router: 7.14.0
-      typescript: ^5.1.0
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -5284,13 +5274,6 @@ snapshots:
     dependencies:
       '@react-router/node': 7.14.2(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
       express: 4.22.1
-      react-router: 7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
-    optionalDependencies:
-      typescript: 6.0.3
-
-  '@react-router/node@7.14.0(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
-    dependencies:
-      '@mjackson/node-fetch-server': 0.2.0
       react-router: 7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
     optionalDependencies:
       typescript: 6.0.3
