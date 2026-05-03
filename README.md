@@ -1,5 +1,5 @@
 <div align="center">
-	<img alt="Logo of Vanguard" src="./assets/Logo.avif" height="250" width="250" />
+	<img alt="Logo of Vanguard" src="./assets/Logo.avif" height="175" width="175" />
 	<h1>Vanguard</h1>
 	<p>Simplicity without compromise.</p>
 </div>
