@@ -21,7 +21,7 @@
 		"#lib/*": "./dist/lib/*",
 		"#utils/*": "./dist/utils/*"
 	},
-	"license": "MIT",
+	"license": "AGPL-3.0-only",
 	"main": "dist/index.js",
 	"name": "vanguard-client",
 	"packageManager": "pnpm@10.0.0",

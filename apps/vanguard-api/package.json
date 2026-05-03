@@ -36,7 +36,7 @@
 		"#schemas/*": "./dist/schemas/*",
 		"#utils/*": "./dist/utils/*"
 	},
-	"license": "MIT",
+	"license": "AGPL-3.0-only",
 	"main": "dist/index.js",
 	"name": "vanguard-api",
 	"packageManager": "pnpm@10.0.0",
