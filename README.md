@@ -1,8 +1,12 @@
-# 🦉 Vanguard
+<div align="center">
+	<img alt="Logo of Vanguard" src="./assets/Logo.avif" height="250" width="500" />
+	<h1>Vanguard</h1>
+	<p>Simplicity without compromise.</p>
+</div>
 
-Simplicity without compromise.
+---
 
-## 📄 License
+## License
 
 **[Vanguard][VanguardRepositoryUrl]** © 2026 by **[FancyStudio][FancyStudioProfileUrl]** is licensed under the **[GNU Affero General Public License][LicenseUrl]**.
 
