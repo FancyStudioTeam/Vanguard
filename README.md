@@ -4,8 +4,8 @@ Simplicity without compromise.
 
 ## 📄 License
 
-**[Vanguard][VanguardRepositoryUrl]** © 2026 by **[FancyStudio][FancyStudioProfileUrl]** is licensed under the **[MIT License][MitLicenseUrl]**.
+**[Vanguard][VanguardRepositoryUrl]** © 2026 by **[FancyStudio][FancyStudioProfileUrl]** is licensed under the **[GNU Affero General Public License][LicenseUrl]**.
 
 [FancyStudioProfileUrl]: https://github.com/FancyStudioTeam
-[MitLicenseUrl]: https://opensource.org/license/mit
+[LicenseUrl]: https://opensource.org/license/agpl-3-0
 [VanguardRepositoryUrl]: https://github.com/FancyStudioTeam/Vanguard
