@@ -191,6 +191,9 @@ export class DiscordService {
 
 		const accessResult = (await requestManager.post(requestEndpoint, {
 			body: requestBody,
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
 			passThroughBody: true,
 		})) as RESTPostOAuth2AccessTokenResult;
 
