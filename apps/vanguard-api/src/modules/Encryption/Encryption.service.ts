@@ -9,15 +9,17 @@ export class EncryptionService {
 	private static ENCRYPTION_SECRET = getEnvVariable('ENCRYPTION_SECRET');
 
 	public decrypt(encryptedData: string): string {
-		const { ENCRYPTION_ALGORITHM, ENCRYPTION_SECRET } = EncryptionService;
-
 		const [ivHex, authTagHext, encryptedHex] = encryptedData.split(':');
 
 		const iv = Buffer.from(ivHex, 'hex');
 		const authTag = Buffer.from(authTagHext, 'hex');
 		const encrypted = Buffer.from(encryptedHex, 'hex');
 
-		const decipher = createDecipheriv(ENCRYPTION_ALGORITHM, ENCRYPTION_SECRET, iv);
+		const decipher = createDecipheriv(
+			EncryptionService.ENCRYPTION_ALGORITHM,
+			EncryptionService.ENCRYPTION_SECRET,
+			iv,
+		);
 
 		decipher.setAuthTag(authTag);
 

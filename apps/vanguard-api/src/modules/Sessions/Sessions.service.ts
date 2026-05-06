@@ -1,8 +1,3 @@
-/*
- * biome-ignore-all lint/correctness/noUnusedPrivateClassMembers: Biome
- * falsely reports unused private members when extracting them from 'this'.
- */
-
 import { randomBytes } from 'node:crypto';
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -21,15 +16,11 @@ export class SessionsService {
 	) {}
 
 	public async createDatabaseSession(options: CreateSessionOptions): Promise<Session> {
-		const { sessionModel } = this;
-
-		return await sessionModel.create(options);
+		return await this.sessionModel.create(options);
 	}
 
 	public generateSessionId(): string {
-		const { SESSION_ID_BYTES_LENGTH } = SessionsService;
-
-		const sessionIdBytes = randomBytes(SESSION_ID_BYTES_LENGTH);
+		const sessionIdBytes = randomBytes(SessionsService.SESSION_ID_BYTES_LENGTH);
 		const sessionId = sessionIdBytes.toString('hex');
 
 		return sessionId;
@@ -43,17 +34,12 @@ export class SessionsService {
 		}
 
 		const { accessToken } = session;
-		const { encryptionService } = this;
 
-		const decryptedAccessToken = encryptionService.decrypt(accessToken);
-
-		return decryptedAccessToken;
+		return this.encryptionService.decrypt(accessToken);
 	}
 
 	public async getDatabaseSession(sessionId: string): Promise<Session | null> {
-		const { sessionModel } = this;
-
-		return await sessionModel.findOne({
+		return await this.sessionModel.findOne({
 			sessionId,
 		});
 	}
