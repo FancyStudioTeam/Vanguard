@@ -1,6 +1,7 @@
 import './env.js';
 
 import { env } from 'node:process';
+
 import FastifyCookie from '@fastify/cookie';
 import FastifySecureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session';
 import type { NestApplicationOptions } from '@nestjs/common';
