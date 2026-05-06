@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { HttpExceptionFilter } from '#common/Filters/HttpExceptionFilter.js';
@@ -12,11 +12,24 @@ import { UserModule } from './User/User.module.js';
 @Module({
 	imports: [
 		AuthModule,
-		GuildsModule,
 		MongooseModule.forRoot(MONGO_DB_CONNECTION_URL, {
 			dbName: 'sessions',
 		}),
-		UserModule,
+		RouterModule.register([
+			{
+				module: GuildsModule,
+				path: 'guilds',
+			},
+			{
+				children: [
+					{
+						module: UserModule,
+						path: ':id',
+					},
+				],
+				path: 'users',
+			},
+		]),
 	],
 	providers: [
 		{
