@@ -14,7 +14,7 @@ export class UserController {
 	) {}
 
 	@Get()
-	public async getCurrentUser(@SessionId() sessionId: string) {
+	protected async getCurrentUser(@SessionId() sessionId: string) {
 		const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
 		const currentUser = await this.discordService.getCurrentUser(currentUserAccessToken);
 
