@@ -9,7 +9,7 @@ import { DiscordUtilsService } from '#modules/DiscordUtils/DiscordUtils.service.
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createGuildInviteUrl } from '#utils/URL/createGuildInviteUrl.js';
 
-@Controller(':guildId')
+@Controller()
 export class GuildController {
 	public constructor(
 		@Inject(DiscordService) private readonly discordService: DiscordService,

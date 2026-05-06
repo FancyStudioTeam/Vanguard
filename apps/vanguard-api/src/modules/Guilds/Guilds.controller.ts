@@ -6,7 +6,7 @@ import { SessionGuard } from '#common/Guards/SessionGuard.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { GuildsService } from './Guilds.service.js';
 
-@Controller('guilds')
+@Controller()
 @UseGuards(SessionGuard)
 export class GuildsController {
 	public constructor(

@@ -5,7 +5,7 @@ import { SessionGuard } from '#common/Guards/SessionGuard.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 
-@Controller('users/@me')
+@Controller()
 @UseGuards(SessionGuard)
 export class UserController {
 	public constructor(

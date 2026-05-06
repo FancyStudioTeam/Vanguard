@@ -13,6 +13,8 @@ import { UserModule } from './User/User.module.js';
 @Module({
 	imports: [
 		AuthModule,
+		GuildModule,
+		GuildsModule,
 		MongooseModule.forRoot(MONGO_DB_CONNECTION_URL, {
 			dbName: 'sessions',
 		}),
@@ -37,6 +39,7 @@ import { UserModule } from './User/User.module.js';
 				path: 'users',
 			},
 		]),
+		UserModule,
 	],
 	providers: [
 		{
