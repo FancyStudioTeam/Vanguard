@@ -18,7 +18,7 @@ export class AuthController {
 
 	@Get('callback')
 	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
-	public async exchangeAuthorizationCode(@Query('code') code: string | undefined, @Session() fastifySession: FastifySession) {
+	protected async exchangeAuthorizationCode(@Query('code') code: string | undefined, @Session() fastifySession: FastifySession) {
 		if (!code) {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
@@ -48,5 +48,5 @@ export class AuthController {
 	 * biome-ignore lint/suspicious/noEmptyBlockStatements: This method is
 	 * already handled by decorators.
 	 */
-	public redirectToSignIn() {}
+	protected redirectToSignIn() {}
 }
