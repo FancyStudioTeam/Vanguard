@@ -6,8 +6,8 @@ import { HttpExceptionFilter } from '#common/Filters/HttpExceptionFilter.js';
 import { LoggerInterceptor } from '#common/Interceptors/LoggerInterceptor.js';
 import { MONGO_DB_CONNECTION_URL } from '#lib/Constants/MongoDB.js';
 import { AuthModule } from './Auth/Auth.module.js';
-import { GuildsModule } from './Routes/Guilds/Guilds.module.js';
-import { UsersModule } from './Routes/Users/Users.module.js';
+import { GuildsModule } from './Guilds/Guilds.module.js';
+import { UserModule } from './User/User.module.js';
 
 @Module({
 	imports: [
@@ -16,7 +16,7 @@ import { UsersModule } from './Routes/Users/Users.module.js';
 		MongooseModule.forRoot(MONGO_DB_CONNECTION_URL, {
 			dbName: 'sessions',
 		}),
-		UsersModule,
+		UserModule,
 	],
 	providers: [
 		{
