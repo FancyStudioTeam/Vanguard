@@ -1,7 +1,7 @@
 import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 
-import { DiscordParserModule } from '#modules/DiscordParser/DiscordParser.module.js';
+import { DiscordUtilsModule } from '#modules/DiscordUtils/DiscordUtils.module.js';
 import { DiscordService } from './Discord.service.js';
 
 @Module({
@@ -10,7 +10,7 @@ import { DiscordService } from './Discord.service.js';
 	],
 	imports: [
 		CacheModule.register(),
-		DiscordParserModule,
+		DiscordUtilsModule,
 	],
 	providers: [
 		DiscordService,

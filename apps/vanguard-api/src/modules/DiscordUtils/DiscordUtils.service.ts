@@ -9,10 +9,19 @@ import {
 import { Injectable } from '@nestjs/common';
 
 import type { Guild, User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
-import { hasPermission } from '#utils/Discord/hasPermission.js';
 
 @Injectable()
-export class DiscordParserService {
+export class DiscordUtilsService {
+	/**
+	 * @see https://docs.discord.com/developers/topics/permissions#permission-overwrites
+	 */
+	public hasPermission(userPermissions: string, permission: bigint): boolean {
+		return (BigInt(userPermissions) & permission) === permission;
+	}
+
+	/**
+	 * @see https://docs.discord.com/developers/resources/guild#guild-object
+	 */
 	public parseGuild(response: RESTGetAPIGuildResult): Guild {
 		const { banner, icon, id, name, owner_id } = response;
 
@@ -25,6 +34,9 @@ export class DiscordParserService {
 		};
 	}
 
+	/**
+	 * @see https://docs.discord.com/developers/resources/user#user-object
+	 */
 	public parseUser(response: RESTGetAPIUserResult): User {
 		const { avatar, global_name, id, username } = response;
 
@@ -36,6 +48,9 @@ export class DiscordParserService {
 		};
 	}
 
+	/**
+	 * @see https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-access-token-response
+	 */
 	public parseUserAccessResult(response: RESTPostOAuth2AccessTokenResult): UserAccessResult {
 		const { access_token, refresh_token } = response;
 
@@ -45,6 +60,9 @@ export class DiscordParserService {
 		};
 	}
 
+	/**
+	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guilds-example-partial-guild
+	 */
 	public parseUserGuild(response: RESTAPIPartialCurrentUserGuild): UserGuild {
 		const { banner, icon, id, name, permissions } = response;
 
@@ -57,7 +75,12 @@ export class DiscordParserService {
 		};
 	}
 
+	/**
+	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guilds-example-partial-guild
+	 */
 	public parseUserGuilds(response: RESTGetAPICurrentUserGuildsResult): UserGuild[] {
-		return response.filter(({ permissions }) => hasPermission(permissions, PermissionFlagsBits.ManageGuild)).map(this.parseUserGuild);
+		return response
+			.filter(({ permissions }) => this.hasPermission(permissions, PermissionFlagsBits.ManageGuild))
+			.map(this.parseUserGuild);
 	}
 }

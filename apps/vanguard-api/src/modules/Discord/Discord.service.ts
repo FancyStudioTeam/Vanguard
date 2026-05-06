@@ -14,7 +14,7 @@ import { CLIENT_ID, CLIENT_SECRET, CLIENT_TOKEN } from '#lib/Constants/Client.js
 import { UNABLE_TO_GET_USER_INFORMATION_RESPONSE } from '#lib/Responses/Auth.js';
 import { INTERNAL_SERVER_ERROR_RESPONSE, NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
 import type { Guild, User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
-import { DiscordParserService } from '#modules/DiscordParser/DiscordParser.service.js';
+import { DiscordUtilsService } from '#modules/DiscordUtils/DiscordUtils.service.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 const guildCacheKey = (guildId: string): string => `guilds:${guildId}`;
@@ -30,7 +30,7 @@ export class DiscordService {
 
 	public constructor(
 		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
-		@Inject(DiscordParserService) private readonly discordParserService: DiscordParserService,
+		@Inject(DiscordUtilsService) private readonly discordUtilsService: DiscordUtilsService,
 	) {}
 
 	private createRestManager(): REST {
@@ -86,7 +86,7 @@ export class DiscordService {
 
 		try {
 			const currentUser = (await requestManager.get(requestEndpoint)) as RESTGetAPICurrentUserResult;
-			const currentUserParsed = this.discordParserService.parseUser(currentUser);
+			const currentUserParsed = this.discordUtilsService.parseUser(currentUser);
 
 			return currentUserParsed;
 		} catch {
@@ -102,7 +102,7 @@ export class DiscordService {
 		const requestEndpoint = Routes.userGuilds();
 
 		const currentUserGuilds = (await requestManager.get(requestEndpoint).catch(() => [])) as RESTGetAPICurrentUserGuildsResult;
-		const currentUserGuildsParsed = this.discordParserService.parseUserGuilds(currentUserGuilds);
+		const currentUserGuildsParsed = this.discordUtilsService.parseUserGuilds(currentUserGuilds);
 
 		return currentUserGuildsParsed;
 	}
@@ -137,7 +137,7 @@ export class DiscordService {
 		try {
 			const guild = (await requestManager.get(requestEndpoint)) as RESTGetAPIGuildResult;
 
-			const guildParsed = this.discordParserService.parseGuild(guild);
+			const guildParsed = this.discordUtilsService.parseGuild(guild);
 			const guildCached = await this.cacheService.set<GuildValueWithObject>(guildCacheKey, guildParsed, guildCacheTtl);
 
 			return guildCached;
@@ -194,7 +194,7 @@ export class DiscordService {
 			passThroughBody: true,
 		})) as RESTPostOAuth2AccessTokenResult;
 
-		return this.discordParserService.parseUserAccessResult(accessResult);
+		return this.discordUtilsService.parseUserAccessResult(accessResult);
 	}
 }
 
