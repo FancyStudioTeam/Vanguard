@@ -10,7 +10,7 @@ import { EncryptionService } from '../Encryption/Encryption.service.js';
 
 @Injectable()
 export class SessionsService {
-	static SESSION_ID_BYTES_LENGTH = 32 as const;
+	private static SESSION_ID_BYTES_LENGTH = 32 as const;
 
 	public constructor(
 		@Inject(EncryptionService) private readonly encryptionService: EncryptionService,

@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { HttpExceptionFilter } from '#common/Filters/HttpExceptionFilter.js';
 import { LoggerInterceptor } from '#common/Interceptors/LoggerInterceptor.js';
 import { MONGO_DB_CONNECTION_URL } from '#lib/Constants/MongoDB.js';
-import { AuthModule } from './Routes/Auth/Auth.module.js';
+import { AuthModule } from './Auth/Auth.module.js';
 import { GuildsModule } from './Routes/Guilds/Guilds.module.js';
 import { UsersModule } from './Routes/Users/Users.module.js';
 
