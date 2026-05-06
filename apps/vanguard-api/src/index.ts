@@ -12,15 +12,17 @@ import { COOKIE_SALT, COOKIE_SECRET, COOKIE_SESSION_DATA_MAX_AGE, COOKIE_SESSION
 import { logger } from '#lib/Logger.js';
 import { AppModule } from '#modules/App.module.js';
 
-const { HOST } = env;
+const { HOST, PORT } = env;
 
-const APP_HOST = HOST;
-const APP_PORT = 3001;
+const APP_DEFAULT_PORT = 3_001;
+const APP_DEFAULT_HOST = 'localhost';
 
-const APP_ADAPTER = new FastifyAdapter({
-	trustProxy: '127.0.0.1',
-});
+const APP_HOST = HOST ?? APP_DEFAULT_HOST;
+const APP_PORT = PORT ?? APP_DEFAULT_PORT;
+
+const APP_ADAPTER = new FastifyAdapter();
 const APP_MODULE = AppModule;
+
 const APP_OPTIONS: NestApplicationOptions = {
 	logger: [
 		'error',
@@ -49,14 +51,11 @@ app.setGlobalPrefix('api');
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT, APP_HOST ?? '0.0.0.0').then((data) => {
-	let address = data.address();
+await app.listen(APP_PORT, APP_HOST).then(async () => logger.info(`Listening on address '${await app.getUrl()}'`));
 
-	if (typeof address === 'object' && address !== null) {
-		const { address: host, port } = address;
-
-		address = `http://${host}:${port}`;
+declare module 'fastify' {
+	interface FastifyRequest {
+		sessionId: string;
+		sessionUserId: string;
 	}
-
-	logger.info(`Listening on address '${address}'`);
-});
+}
