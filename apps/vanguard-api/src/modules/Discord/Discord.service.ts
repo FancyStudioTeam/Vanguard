@@ -146,6 +146,9 @@ export class DiscordService {
 		}
 	}
 
+	/**
+	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guild-member
+	 */
 	public async getGuildMemberPermissions(guildId: string, userId: string, accessToken: string): Promise<string> {
 		const guildMemberPermissionsCacheKey = DiscordService.GUILD_MEMBER_PERMISSIONS_CACHE_KEY(guildId, userId);
 		const guildMemberPermissionsCacheTtl = DiscordService.GUILD_MEMBER_PERMISSIONS_CACHE_TTL;
@@ -177,6 +180,9 @@ export class DiscordService {
 		}
 	}
 
+	/**
+	 * @see https://docs.discord.com/developers/topics/oauth2#authorization-code-grant
+	 */
 	public async getUserAccess(code: string): Promise<UserAccessResult> {
 		const requestManager = this.createRestManager();
 		const requestEndpoint = Routes.oauth2TokenExchange();
