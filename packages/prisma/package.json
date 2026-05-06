@@ -26,9 +26,9 @@
 	"scripts": {
 		"build": "tsc --project tsconfig.json",
 		"prebuild": "rimraf dist && pnpm prisma:generate",
-		"prisma:deploy": "prisma migrate deploy",
 		"prisma:format": "prisma format",
 		"prisma:generate": "prisma generate",
+		"prisma:migrate:deploy": "prisma migrate deploy",
 		"prisma:migrate:dev": "prisma migrate dev",
 		"prisma:migrate:reset": "prisma migrate reset"
 	},
