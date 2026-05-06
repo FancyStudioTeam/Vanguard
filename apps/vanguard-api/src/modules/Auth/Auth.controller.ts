@@ -3,15 +3,15 @@ import { Controller, Get, HttpStatus, Inject, Query, Redirect, Session } from '@
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
+import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
-import { AuthService } from './Auth.service.js';
 
 @Controller('auth')
 export class AuthController {
 	public constructor(
-		@Inject(AuthService) private readonly authService: AuthService,
+		@Inject(DiscordService) private readonly discordService: DiscordService,
 		@Inject(EncryptionService) private readonly encryptionService: EncryptionService,
 		@Inject(SessionsService) private readonly sessionsService: SessionsService,
 	) {}
@@ -23,8 +23,8 @@ export class AuthController {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
 
-		const { accessToken: userAccessToken, refreshToken: userRefreshToken } = await this.authService.getUserAccess(code);
-		const { id: userId } = await this.authService.getCurrentUser(userAccessToken);
+		const { accessToken: userAccessToken, refreshToken: userRefreshToken } = await this.discordService.getUserAccess(code);
+		const { id: userId } = await this.discordService.getCurrentUser(userAccessToken);
 
 		const sessionId = this.sessionsService.generateSessionId();
 
