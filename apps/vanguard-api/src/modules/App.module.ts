@@ -6,6 +6,7 @@ import { HttpExceptionFilter } from '#common/Filters/HttpExceptionFilter.js';
 import { LoggerInterceptor } from '#common/Interceptors/LoggerInterceptor.js';
 import { MONGO_DB_CONNECTION_URL } from '#lib/Constants/MongoDB.js';
 import { AuthModule } from './Auth/Auth.module.js';
+import { GuildModule } from './Guild/Guild.module.js';
 import { GuildsModule } from './Guilds/Guilds.module.js';
 import { UserModule } from './User/User.module.js';
 
@@ -17,6 +18,12 @@ import { UserModule } from './User/User.module.js';
 		}),
 		RouterModule.register([
 			{
+				children: [
+					{
+						module: GuildModule,
+						path: ':guildId',
+					},
+				],
 				module: GuildsModule,
 				path: 'guilds',
 			},
@@ -24,7 +31,7 @@ import { UserModule } from './User/User.module.js';
 				children: [
 					{
 						module: UserModule,
-						path: ':id',
+						path: '@me',
 					},
 				],
 				path: 'users',
