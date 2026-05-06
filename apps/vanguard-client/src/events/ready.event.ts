@@ -1,4 +1,5 @@
 import { defineEventListener } from 'ddenox/handlers';
+
 import { logger } from '#lib/Logger.js';
 
 export default defineEventListener({

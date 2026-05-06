@@ -1,5 +1,6 @@
 import { Controller, Get, HttpStatus, Inject, Param, Redirect, Session } from '@nestjs/common';
 import { PermissionFlagsBits } from 'discord-api-types/v10';
+
 import { UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Utils/Discord/Discord.service.js';

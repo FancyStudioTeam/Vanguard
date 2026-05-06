@@ -1,5 +1,6 @@
 import { API } from '@discordjs/core/http-only';
 import { REST } from '@discordjs/rest';
+
 import { CLIENT_TOKEN } from './Constants/Client.js';
 
 export const rest = new REST({

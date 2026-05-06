@@ -7,6 +7,7 @@ import {
 	type RESTPostOAuth2AccessTokenResult,
 } from '@discordjs/core';
 import { Injectable } from '@nestjs/common';
+
 import type { Guild, User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
 import { hasPermission } from '#utils/Discord/hasPermission.js';
 

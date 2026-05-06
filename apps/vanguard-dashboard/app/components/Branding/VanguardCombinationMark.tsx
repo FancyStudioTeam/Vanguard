@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react';
 import { Link } from 'react-router';
+
 import { classNames } from '#utils/Tailwind/classNames.ts';
 import { VanguardLogo } from './VanguardLogo.tsx';
 import { VanguardSymbol } from './VanguardSymbol.tsx';

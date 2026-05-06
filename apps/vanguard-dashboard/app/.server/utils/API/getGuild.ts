@@ -1,5 +1,6 @@
 import { redirect } from 'react-router';
 import { match } from 'ts-pattern';
+
 import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
 import type { Guild } from '#server/lib/Types/API.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';

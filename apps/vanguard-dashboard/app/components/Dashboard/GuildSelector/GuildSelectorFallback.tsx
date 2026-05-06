@@ -1,4 +1,5 @@
 import { InfoIcon } from '@phosphor-icons/react';
+
 import { Alert, AlertDescription } from '#components/UI/Alert.tsx';
 
 export function GuildSelectorFallback() {

@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+
 import type { UserGuild } from '#server/lib/Types/API.ts';
 import { GuildSelectorCardFooter } from './GuildSelectorCardFooter.tsx';
 import { GuildSelectorCardHeader } from './GuildSelectorCardHeader.tsx';

@@ -4,6 +4,7 @@
  */
 
 import { Controller, Get, Inject, Session } from '@nestjs/common';
+
 import { UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
 import { SessionsService } from '#modules/Utils/Sessions/Sessions.service.js';

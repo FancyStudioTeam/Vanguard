@@ -1,4 +1,5 @@
 import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
+
 import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
 import type { Guild } from '#server/lib/Types/API.ts';
 

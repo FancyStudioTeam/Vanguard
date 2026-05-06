@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Await } from 'react-router';
+
 import { GuildSelector } from '#components/Dashboard/GuildSelector/GuildSelector.tsx';
 import { GuildSelectorFallback } from '#components/Dashboard/GuildSelector/GuildSelectorFallback.tsx';
 import { getUser } from '#server/utils/API/getUser.ts';

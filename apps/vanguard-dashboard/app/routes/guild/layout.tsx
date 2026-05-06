@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router';
+
 import { Sidebar } from '#components/Layout/Sidebar/Sidebar.tsx';
 import { guildContext } from '#context/GuildContext.ts';
 import { userContext } from '#context/UserContext.ts';

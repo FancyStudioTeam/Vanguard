@@ -1,4 +1,5 @@
 import { GatewayIntents } from '@discordeno/bot';
+
 import { getEnvVariable } from '#utils/getEnvVariable.js';
 import { getPackageVersion } from '#utils/getPackageVersion.js';
 

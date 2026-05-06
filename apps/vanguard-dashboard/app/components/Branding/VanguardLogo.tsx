@@ -1,4 +1,5 @@
 import type { HTMLProps } from 'react';
+
 import { classNames } from '#utils/Tailwind/classNames.ts';
 
 export function VanguardLogo({ className, ...props }: VanguardLogoProps) {

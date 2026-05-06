@@ -1,5 +1,6 @@
 import { GridFourIcon } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+
 import { buttonVariants } from '#components/UI/Button.tsx';
 
 export function NavbarButton() {

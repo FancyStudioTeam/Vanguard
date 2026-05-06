@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 import { classNames } from '#utils/Tailwind/classNames.ts';
 
 export function VanguardSymbol({ className, ...props }: VanguardSymbolProps) {

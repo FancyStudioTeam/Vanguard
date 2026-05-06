@@ -4,6 +4,7 @@ import './tailwind.css';
 import type { ReactNode } from 'react';
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from 'react-router';
 import { match } from 'ts-pattern';
+
 import { Navbar } from '#components/Layout/Navbar/Navbar.tsx';
 
 // biome-ignore lint/style/useComponentExportOnlyModules: (x)

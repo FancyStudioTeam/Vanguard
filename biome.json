@@ -12,7 +12,18 @@
 								":NODE:",
 								":BUN:"
 							],
-							":BLANK_LINE:"
+							":BLANK_LINE:",
+							[
+								":PACKAGE:",
+								"!@vanguard/**"
+							],
+							":BLANK_LINE:",
+							"@vanguard/**",
+							":BLANK_LINE:",
+							[
+								":ALIAS:",
+								":PATH:"
+							]
 						]
 					}
 				},

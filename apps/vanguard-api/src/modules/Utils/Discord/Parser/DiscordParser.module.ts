@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+
 import { DiscordParserService } from './DiscordParser.service.js';
 
 @Module({

@@ -1,4 +1,5 @@
 import { type HttpException, HttpStatus } from '@nestjs/common';
+
 import { buildHttpException } from '#utils/Exceptions/buildHttpException.js';
 
 export const UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE = (): HttpException =>

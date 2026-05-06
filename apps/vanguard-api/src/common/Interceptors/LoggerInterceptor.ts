@@ -3,6 +3,7 @@ import type { FastifyReply } from 'fastify/types/reply.js';
 import type { FastifyRequest } from 'fastify/types/request.js';
 // biome-ignore lint/suspicious/noDeprecatedImports: (x)
 import { type Observable, tap } from 'rxjs';
+
 import { logger } from '#lib/Logger.js';
 
 @Injectable()

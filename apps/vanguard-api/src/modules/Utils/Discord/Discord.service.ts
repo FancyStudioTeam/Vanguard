@@ -9,6 +9,7 @@ import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { Routes } from 'discord-api-types/v9';
 import type { APIGuildMember } from 'discord-api-types/v10';
+
 import { CLIENT_ID, CLIENT_SECRET } from '#lib/Constants/Client.js';
 import { api } from '#lib/REST.js';
 import { GUILD_NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';

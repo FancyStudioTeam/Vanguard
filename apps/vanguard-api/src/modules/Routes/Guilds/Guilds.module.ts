@@ -1,5 +1,6 @@
 import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
+
 import { DiscordModule } from '#modules/Utils/Discord/Discord.module.js';
 import { SessionsModule } from '#modules/Utils/Sessions/Sessions.module.js';
 import { GuildModule } from './Guild/GuildsGuild.module.js';
