@@ -107,20 +107,11 @@ export class DiscordService {
 		}
 	}
 
-	public async getGuildMemberPermissions(
-		accessToken: string,
-		guildId: string,
-		userId: string,
-	): Promise<string> {
-		const guildMemberPermissionsCacheKey = DiscordService.GUILD_MEMBER_PERMISSIONS_CACHE_KEY(
-			guildId,
-			userId,
-		);
+	public async getGuildMemberPermissions(accessToken: string, guildId: string, userId: string): Promise<string> {
+		const guildMemberPermissionsCacheKey = DiscordService.GUILD_MEMBER_PERMISSIONS_CACHE_KEY(guildId, userId);
 		const guildMemberPermissionsCacheTttl = DiscordService.GUILD_MEMBER_PERMISSIONS_CACHE_TTL;
 
-		const cachedGuildMemberPermissions = await this.cacheService.get<string>(
-			guildMemberPermissionsCacheKey,
-		);
+		const cachedGuildMemberPermissions = await this.cacheService.get<string>(guildMemberPermissionsCacheKey);
 
 		/*
 		 * The cached value may be '0', a falsy value in JavaScript.
@@ -135,21 +126,11 @@ export class DiscordService {
 			rest.options.authPrefix = 'Bearer';
 			rest.setToken(accessToken);
 
-			const { permissions } = (await rest.get(
-				Routes.userGuildMember(guildId),
-			)) as APIGuildMemberWithPermissions;
+			const { permissions } = (await rest.get(Routes.userGuildMember(guildId))) as APIGuildMemberWithPermissions;
 
-			return await this.cacheService.set<string>(
-				guildMemberPermissionsCacheKey,
-				permissions,
-				guildMemberPermissionsCacheTttl,
-			);
+			return await this.cacheService.set<string>(guildMemberPermissionsCacheKey, permissions, guildMemberPermissionsCacheTttl);
 		} catch {
-			return await this.cacheService.set<'0'>(
-				guildMemberPermissionsCacheKey,
-				'0',
-				guildMemberPermissionsCacheTttl,
-			);
+			return await this.cacheService.set<'0'>(guildMemberPermissionsCacheKey, '0', guildMemberPermissionsCacheTttl);
 		}
 	}
 }

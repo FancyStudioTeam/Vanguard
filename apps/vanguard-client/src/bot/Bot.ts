@@ -1,16 +1,7 @@
 import { createBot } from '@discordeno/bot';
-import {
-	createEnhancedBot,
-	type ParseDesiredProperties,
-	type ParseDesiredPropertiesBehavior,
-} from 'ddenox';
+import { createEnhancedBot, type ParseDesiredProperties, type ParseDesiredPropertiesBehavior } from 'ddenox';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
-import {
-	BOT_DESIRED_PROPERTIES,
-	BOT_GATEWAY_MANAGER,
-	BOT_INTENTS,
-	BOT_TOKEN,
-} from './BotOptions.js';
+import { BOT_DESIRED_PROPERTIES, BOT_GATEWAY_MANAGER, BOT_INTENTS, BOT_TOKEN } from './BotOptions.js';
 import type { Bot } from './BotTypes.js';
 
 export const discordenoBot = createBot({

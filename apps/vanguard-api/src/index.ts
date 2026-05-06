@@ -6,12 +6,7 @@ import FastifySecureSession, { type SecureSessionPluginOptions } from '@fastify/
 import type { NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
-import {
-	COOKIE_SALT,
-	COOKIE_SECRET,
-	COOKIE_SESSION_DATA_MAX_AGE,
-	COOKIE_SESSION_DATA_NAME,
-} from '#lib/Constants/Cookies.js';
+import { COOKIE_SALT, COOKIE_SECRET, COOKIE_SESSION_DATA_MAX_AGE, COOKIE_SESSION_DATA_NAME } from '#lib/Constants/Cookies.js';
 import { logger } from '#lib/Logger.js';
 import { AppModule } from '#modules/App.module.js';
 

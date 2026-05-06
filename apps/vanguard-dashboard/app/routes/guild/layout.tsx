@@ -6,11 +6,7 @@ import { getGuild } from '#server/utils/API/getGuild.ts';
 import { getUser } from '#server/utils/API/getUser.ts';
 import type { Route } from './+types/layout';
 
-async function authMiddleware({
-	context,
-	params,
-	request,
-}: Parameters<Route.MiddlewareFunction>[0]) {
+async function authMiddleware({ context, params, request }: Parameters<Route.MiddlewareFunction>[0]) {
 	const { guildId } = params;
 
 	const user = await getUser(request);

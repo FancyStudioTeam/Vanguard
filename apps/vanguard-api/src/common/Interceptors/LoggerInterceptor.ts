@@ -1,9 +1,4 @@
-import {
-	type CallHandler,
-	type ExecutionContext,
-	Injectable,
-	type NestInterceptor,
-} from '@nestjs/common';
+import { type CallHandler, type ExecutionContext, Injectable, type NestInterceptor } from '@nestjs/common';
 import type { FastifyReply } from 'fastify/types/reply.js';
 import type { FastifyRequest } from 'fastify/types/request.js';
 // biome-ignore lint/suspicious/noDeprecatedImports: (x)

@@ -22,8 +22,7 @@ const LOGGER_BASE_FORMAT = combine(
 	})(),
 );
 const LOGGER_MESSAGE_FORMAT = printf(
-	({ level, memoryUsage, message, timestamp }) =>
-		`[Memory Usage: ${memoryUsage}] [${timestamp}] ${level} ${message}`,
+	({ level, memoryUsage, message, timestamp }) => `[Memory Usage: ${memoryUsage}] [${timestamp}] ${level} ${message}`,
 );
 
 const LOGGER_LEVEL_COLORS: Record<LoggerLevels, string> = {

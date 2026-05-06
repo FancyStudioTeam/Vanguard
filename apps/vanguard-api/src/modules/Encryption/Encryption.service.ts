@@ -15,11 +15,7 @@ export class EncryptionService {
 		const authTag = Buffer.from(authTagHext, 'hex');
 		const encrypted = Buffer.from(encryptedHex, 'hex');
 
-		const decipher = createDecipheriv(
-			EncryptionService.ENCRYPTION_ALGORITHM,
-			EncryptionService.ENCRYPTION_SECRET,
-			iv,
-		);
+		const decipher = createDecipheriv(EncryptionService.ENCRYPTION_ALGORITHM, EncryptionService.ENCRYPTION_SECRET, iv);
 
 		decipher.setAuthTag(authTag);
 
@@ -35,11 +31,7 @@ export class EncryptionService {
 
 	public encrypt(plainData: string): string {
 		const ivBytes = randomBytes(EncryptionService.ENCRYPTION_IV_LENGTH);
-		const cipher = createCipheriv(
-			EncryptionService.ENCRYPTION_ALGORITHM,
-			EncryptionService.ENCRYPTION_SECRET,
-			ivBytes,
-		);
+		const cipher = createCipheriv(EncryptionService.ENCRYPTION_ALGORITHM, EncryptionService.ENCRYPTION_SECRET, ivBytes);
 
 		const encryptedBuffer = Buffer.concat([
 			cipher.update(plainData, 'utf-8'),

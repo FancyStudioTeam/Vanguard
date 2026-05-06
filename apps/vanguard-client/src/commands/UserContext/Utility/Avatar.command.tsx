@@ -1,9 +1,4 @@
-import {
-	avatarUrl,
-	type ContainerComponent,
-	defaultAvatarUrl,
-	MessageFlags,
-} from '@discordeno/bot';
+import { avatarUrl, type ContainerComponent, defaultAvatarUrl, MessageFlags } from '@discordeno/bot';
 import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from 'ddenox/components';
 import { Declare, UserContextCommandHandler } from 'ddenox/handlers';
 import type { User } from '#lib/InferredTypes.js';

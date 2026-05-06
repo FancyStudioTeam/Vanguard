@@ -15,10 +15,7 @@ export class GuildController {
 	) {}
 
 	@Get()
-	public async handleIndex(
-		@Param('guildId') guildId: string,
-		@Session() fastifySession: FastifySession,
-	) {
+	public async handleIndex(@Param('guildId') guildId: string, @Session() fastifySession: FastifySession) {
 		const sessionId = fastifySession.get('sessionId');
 		const sessionUserId = fastifySession.get('sessionUserId');
 
@@ -27,11 +24,7 @@ export class GuildController {
 		}
 
 		const userAccessToken = await this.sessionsService.getAccessToken(sessionId);
-		const userPermissions = await this.discordService.getGuildMemberPermissions(
-			userAccessToken,
-			guildId,
-			sessionUserId,
-		);
+		const userPermissions = await this.discordService.getGuildMemberPermissions(userAccessToken, guildId, sessionUserId);
 
 		if (!hasPermission(userPermissions, PermissionFlagsBits.ManageGuild)) {
 			throw UNAUTHORIZED_RESPONSE();

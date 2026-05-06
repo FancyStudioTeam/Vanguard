@@ -8,10 +8,7 @@ export function VanguardCombinationMark({ className, ...props }: VanguardCombina
 	return (
 		<Link
 			aria-label='Vanguard Home'
-			className={classNames(
-				'flex select-none items-center gap-2 transition-opacity hover:opacity-75',
-				className,
-			)}
+			className={classNames('flex select-none items-center gap-2 transition-opacity hover:opacity-75', className)}
 			to='/'
 			viewTransition={true}
 			{...props}

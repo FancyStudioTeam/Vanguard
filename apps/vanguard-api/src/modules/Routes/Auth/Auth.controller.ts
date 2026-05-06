@@ -5,10 +5,7 @@
 
 import { Controller, Get, HttpStatus, Inject, Query, Redirect, Session } from '@nestjs/common';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
-import {
-	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
-	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
-} from '#lib/Responses/Auth.js';
+import { UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE, UNABLE_TO_GET_USER_INFORMATION_RESPONSE } from '#lib/Responses/Auth.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
 import type { User, UserAccessResult } from '#lib/Types/Discord.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
@@ -27,10 +24,7 @@ export class AuthController {
 
 	@Get('callback')
 	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
-	public async handleCallback(
-		@Query('code') code: string | undefined,
-		@Session() fastifySession: FastifySession,
-	) {
+	public async handleCallback(@Query('code') code: string | undefined, @Session() fastifySession: FastifySession) {
 		const { discordService, encryptionService, sessionsService } = this;
 
 		if (!code) {

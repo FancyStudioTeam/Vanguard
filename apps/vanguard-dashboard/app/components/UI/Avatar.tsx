@@ -4,10 +4,7 @@ import { classNames } from '#utils/Tailwind/classNames.ts';
 export function Avatar({ className, ...props }: AvatarProps) {
 	return (
 		<AvatarPrimitive.Root
-			className={classNames(
-				'shrink-0 select-none overflow-hidden rounded-md bg-neutral-800',
-				className,
-			)}
+			className={classNames('shrink-0 select-none overflow-hidden rounded-md bg-neutral-800', className)}
 			{...props}
 		/>
 	);
@@ -16,10 +13,7 @@ export function Avatar({ className, ...props }: AvatarProps) {
 export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 	return (
 		<AvatarPrimitive.Fallback
-			className={classNames(
-				'flex size-10 items-center justify-center rounded-md text-sm',
-				className,
-			)}
+			className={classNames('flex size-10 items-center justify-center rounded-md text-sm', className)}
 			{...props}
 		/>
 	);

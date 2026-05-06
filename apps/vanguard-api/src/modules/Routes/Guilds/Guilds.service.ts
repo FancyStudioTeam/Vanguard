@@ -21,11 +21,7 @@ export class GuildsService {
 
 		const userGuilds = await this.discordService.getCurrentUserGuilds(accessToken);
 
-		await this.cacheService.set<UserGuild[]>(
-			`user:guilds:${userId}`,
-			userGuilds,
-			GuildsService.USER_GUILDS_CACHE_TTL,
-		);
+		await this.cacheService.set<UserGuild[]>(`user:guilds:${userId}`, userGuilds, GuildsService.USER_GUILDS_CACHE_TTL);
 
 		return userGuilds;
 	}
