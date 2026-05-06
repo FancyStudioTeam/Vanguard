@@ -1,21 +1,13 @@
 # Base
-FROM node:24-alpine AS base
-
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-
-RUN corepack enable pnpm
-
-# Build
-FROM base AS build
+FROM oven/bun AS base
 
 WORKDIR /vanguard-client
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
 COPY apps/vanguard-client ./apps/client
 
-RUN pnpm --filter vanguard-client install
-RUN pnpm --filter vanguard-client vanguard:build
+RUN bun --filter vanguard-client install
+RUN bun --filter vanguard-client vanguard:build
 
 # Runtime
 FROM base AS runtime
@@ -28,6 +20,6 @@ COPY --from=build /vanguard-client/apps/client/package.json ./
 
 ENV NODE_ENV=production
 
-RUN pnpm install
+RUN bun install
 
-CMD ["node", "--run", "vanguard:start"]
+CMD ["bun", "run", "vanguard:start"]

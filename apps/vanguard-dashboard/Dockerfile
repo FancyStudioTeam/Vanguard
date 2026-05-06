@@ -1,21 +1,13 @@
 # Base
-FROM node:24-alpine AS base
-
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-
-RUN corepack enable pnpm
-
-# Build
-FROM base AS build
+FROM oven/bun AS build
 
 WORKDIR /vanguard-dashboard
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
 COPY apps/vanguard-dashboard ./apps/dashboard
 
-RUN pnpm --filter vanguard-dashboard install
-RUN pnpm --filter vanguard-dashboard router:build
+RUN bun --filter vanguard-dashboard install
+RUN bun --filter vanguard-dashboard router:build
 
 # Runtime
 FROM base AS runtime
@@ -28,8 +20,8 @@ COPY --from=build /vanguard-dashboard/apps/dashboard/public ./public
 
 ENV NODE_ENV=production
 
-RUN pnpm install
+RUN bun install
 
 EXPOSE 3000
 
-CMD ["node", "--run", "router:start"]
+CMD ["bun", "run", "router:start"]
