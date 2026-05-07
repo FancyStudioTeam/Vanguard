@@ -1,15 +1,17 @@
-import { Controller, Get, HttpStatus, Inject, Param, Redirect } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Inject, Param, Redirect, UseGuards } from '@nestjs/common';
 import { PermissionFlagsBits } from 'discord-api-types/v10';
 
 import { SessionId } from '#common/Decorators/SessionId.js';
 import { SessionUserId } from '#common/Decorators/SessionUserId.js';
-import { UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
+import { SessionGuard } from '#common/Guards/SessionGuard.js';
+import { FORBIDDEN_RESPONSE } from '#lib/Responses/Shared.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { DiscordUtilsService } from '#modules/DiscordUtils/DiscordUtils.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createGuildInviteUrl } from '#utils/URL/createGuildInviteUrl.js';
 
 @Controller()
+@UseGuards(SessionGuard)
 export class GuildController {
 	public constructor(
 		@Inject(DiscordService) private readonly discordService: DiscordService,
@@ -23,7 +25,7 @@ export class GuildController {
 		const currentUserPermissions = await this.discordService.getGuildMemberPermissions(guildId, sessionUserId, currentUserAccessToken);
 
 		if (!this.discordUtilsService.hasPermission(currentUserPermissions, PermissionFlagsBits.ManageGuild)) {
-			throw UNAUTHORIZED_RESPONSE();
+			throw FORBIDDEN_RESPONSE();
 		}
 
 		return await this.discordService.getGuild(guildId);
