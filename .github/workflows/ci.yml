@@ -26,3 +26,5 @@ jobs:
 
             - name: Build Applications
               run: pnpm turbo:build
+              env:
+                  POSTGRE_SQL_DATABASE_URL: ${{ secrets.POSTGRE_SQL_DATABASE_URL }}

@@ -6,7 +6,7 @@
 				"^build"
 			],
 			"env": [
-				"DISCORD_TOKEN"
+				"POSTGRE_SQL_DATABASE_URL"
 			],
 			"inputs": [
 				"$TURBO_DEFAULT$"
