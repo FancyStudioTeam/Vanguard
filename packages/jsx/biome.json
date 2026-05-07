@@ -5,5 +5,13 @@
 		"includes": [
 			"!!**/dist"
 		]
+	},
+	"linter": {
+		"rules": {
+			"performance": {
+				"noBarrelFile": "off",
+				"noReExportAll": "off"
+			}
+		}
 	}
 }
