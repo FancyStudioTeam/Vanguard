@@ -30,14 +30,14 @@
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
 	"scripts": {
+		"build": "pnpm router:build",
 		"docker:build": "docker build --tag vanguard-dashboard --file Dockerfile ../../.",
 		"docker:run": "docker run -d -p 3101:3101 --env-file .env vanguard-dashboard",
 		"docker:run:sh": "docker run -it --rm vanguard-dashboard sh",
 		"router:build": "react-router build",
 		"router:dev": "react-router dev",
 		"router:start": "react-router-serve ./build/server/index.js",
-		"router:typecheck": "react-router typegen && tsc",
-		"turbo:build": "pnpm router:build"
+		"router:typecheck": "react-router typegen && tsc"
 	},
 	"type": "module",
 	"version": "0.1.0"

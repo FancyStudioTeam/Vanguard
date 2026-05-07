@@ -43,14 +43,14 @@
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
 	"scripts": {
+		"build": "pnpm nest:build",
 		"docker:build": "docker build --tag vanguard-api --file Dockerfile ../../.",
 		"docker:run": "docker run -d -p 3001:3001 --env-file .env vanguard-api",
 		"docker:run:sh": "docker run -it --rm vanguard-api sh",
 		"nest:build": "nest build",
 		"nest:dev": "cross-env HOST=127.0.0.1 NODE_ENV=development nest start --watch",
 		"nest:start": "cross-env HOST=0.0.0.0 NODE_ENV=production node dist/index.js",
-		"prebuild": "rimraf dist",
-		"turbo:build": "pnpm nest:build"
+		"prebuild": "rimraf dist"
 	},
 	"type": "module",
 	"version": "0.1.0"
