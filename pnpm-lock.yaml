@@ -77,6 +77,9 @@ importers:
       discord-api-types:
         specifier: 0.38.47
         version: 0.38.47
+      dotenv:
+        specifier: 17.4.2
+        version: 17.4.2
       fastify:
         specifier: 5.8.5
         version: 5.8.5

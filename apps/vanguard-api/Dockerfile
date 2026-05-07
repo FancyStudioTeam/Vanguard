@@ -1,28 +1,22 @@
-# Base
-FROM oven/bun AS base
+FROM oven/bun
 
-WORKDIR /vanguard-api
+WORKDIR /main
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
-COPY apps/vanguard-api ./apps/api
+COPY package.json pnpm-workspace.yaml tsconfig.base.json ./
 
-RUN bun --filter vanguard-api install
-RUN bun --filter vanguard-api nest:build
+COPY apps/vanguard-api apps/vanguard-api
+COPY packages/prisma packages/prisma
 
-# Runtime
-FROM base AS runtime
+RUN bun install
 
-WORKDIR /vanguard-api
+WORKDIR /main/apps/vanguard-api
 
-COPY --from=build /vanguard-api/apps/api/dist ./dist
-COPY --from=build /vanguard-api/apps/api/package.json ./
+RUN bun run nest:build
 
 ENV HOST=0.0.0.0
 ENV PORT=3001
 
 ENV NODE_ENV=production
-
-RUN bun install
 
 EXPOSE 3001
 

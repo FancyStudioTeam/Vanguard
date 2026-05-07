@@ -1,4 +1,6 @@
-import { env, loadEnvFile } from 'node:process';
+import { env } from 'node:process';
+
+import { configDotenv } from 'dotenv';
 
 const { NODE_ENV } = env;
 
@@ -10,5 +12,7 @@ const { NODE_ENV } = env;
  * it at runtime may fail.
  */
 if (NODE_ENV === 'development') {
-	loadEnvFile();
+	configDotenv({
+		quiet: true,
+	});
 }
