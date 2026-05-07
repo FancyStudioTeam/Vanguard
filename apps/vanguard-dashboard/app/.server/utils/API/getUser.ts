@@ -1,29 +1,36 @@
 import { redirect } from 'react-router';
-import { match } from 'ts-pattern';
 
+import { HttpStatus } from '#server/lib/Constants/HttpStatus.ts';
 import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
 import type { User } from '#server/lib/Types/API.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
 export async function getUser(request: Request): Promise<User> {
-	return await match(await createRequest(request))
-		.returnType<Promise<User>>()
-		.with(
-			{
-				ok: true,
-			},
-			async (response) => await response.json(),
-		)
-		.otherwise(() => {
-			throw redirect(`${BASE_API_URL}/api/auth/sign-in`);
-		});
+	const response = await createRequest(request);
+	const responseBody = await response.json();
+
+	const { ok, status } = response;
+
+	if (ok) {
+		return responseBody;
+	}
+
+	if (status === HttpStatus.Unauthorized) {
+		throw redirect(`${BASE_API_URL}/api/auth/sign-in`);
+	}
+
+	const { message } = responseBody;
+
+	throw redirect(`/?message=${message}`);
 }
 
 async function createRequest(request: Request): Promise<Response> {
-	const cookie = getCookieHeader(request);
-	const response = await fetch(`${BASE_API_URL}/api/users/@me`, {
+	const requestUrl = `${BASE_API_URL}/api/users/@me`;
+	const requestCookie = getCookieHeader(request);
+
+	const response = await fetch(requestUrl, {
 		headers: {
-			cookie,
+			cookie: requestCookie,
 		},
 	});
 
