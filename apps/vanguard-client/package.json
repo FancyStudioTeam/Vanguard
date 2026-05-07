@@ -7,6 +7,7 @@
 		"@vanguard/prisma": "workspace:*",
 		"chalk": "5.6.2",
 		"ddenox": "file:ddenox-0.1.0.tgz",
+		"dotenv": "17.4.2",
 		"mongodb": "7.2.0",
 		"winston": "3.19.0"
 	},
@@ -32,6 +33,7 @@
 		"ddenox:update": "pnpm add ./ddenox-0.1.0.tgz --force",
 		"docker:build": "docker build --tag vanguard-client --file Dockerfile ../../.",
 		"docker:run": "docker run -d --env-file .env vanguard-client",
+		"docker:run:sh": "docker run -it --rm vanguard-client sh",
 		"prebuild": "rimraf dist",
 		"turbo:build": "pnpm vanguard:build",
 		"vanguard:build": "tsc --project tsconfig.json",

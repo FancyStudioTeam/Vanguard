@@ -1,27 +1,23 @@
-# Base
-FROM oven/bun AS build
+FROM node:24-slim
 
-WORKDIR /vanguard-dashboard
+RUN corepack enable pnpm
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
-COPY apps/vanguard-dashboard ./apps/dashboard
+WORKDIR /main
 
-RUN bun --filter vanguard-dashboard install
-RUN bun --filter vanguard-dashboard router:build
+COPY package.json pnpm-workspace.yaml tsconfig.base.json ./
+COPY apps/vanguard-dashboard apps/vanguard-dashboard
 
-# Runtime
-FROM base AS runtime
+RUN pnpm install
 
-WORKDIR /vanguard-dashboard
+WORKDIR /main/apps/vanguard-dashboard
 
-COPY --from=build /vanguard-dashboard/apps/dashboard/build ./build
-COPY --from=build /vanguard-dashboard/apps/dashboard/package.json ./
-COPY --from=build /vanguard-dashboard/apps/dashboard/public ./public
+RUN pnpm run router:build
+
+ENV HOST=0.0.0.0
+ENV PORT=3101
 
 ENV NODE_ENV=production
 
-RUN bun install
-
 EXPOSE 3101
 
-CMD ["bun", "run", "router:start"]
+CMD ["pnpm", "run", "router:start"]

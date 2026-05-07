@@ -32,6 +32,7 @@
 	"scripts": {
 		"docker:build": "docker build --tag vanguard-dashboard --file Dockerfile ../../.",
 		"docker:run": "docker run -d -p 3101:3101 --env-file .env vanguard-dashboard",
+		"docker:run:sh": "docker run -it --rm vanguard-dashboard sh",
 		"router:build": "react-router build",
 		"router:dev": "react-router dev",
 		"router:start": "react-router-serve ./build/server/index.js",

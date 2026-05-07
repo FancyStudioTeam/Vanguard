@@ -132,6 +132,9 @@ importers:
       ddenox:
         specifier: file:ddenox-0.1.0.tgz
         version: file:apps/vanguard-client/ddenox-0.1.0.tgz
+      dotenv:
+        specifier: 17.4.2
+        version: 17.4.2
       mongodb:
         specifier: 7.2.0
         version: 7.2.0(socks@2.8.7)

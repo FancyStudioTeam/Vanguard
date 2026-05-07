@@ -1,25 +1,22 @@
-# Base
-FROM oven/bun AS base
+FROM node:24-slim
 
-WORKDIR /vanguard-client
+RUN corepack enable pnpm
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
-COPY apps/vanguard-client ./apps/client
+WORKDIR /main
 
-RUN bun --filter vanguard-client install
-RUN bun --filter vanguard-client vanguard:build
+COPY package.json pnpm-workspace.yaml tsconfig.base.json ./
 
-# Runtime
-FROM base AS runtime
+COPY apps/vanguard-client apps/vanguard-client
 
-WORKDIR /vanguard-client
+COPY packages/discord-jsx packages/discord-jsx
+COPY packages/prisma packages/prisma
 
-COPY --from=build /vanguard-client/apps/client/ddenox-0.1.0.tgz ./
-COPY --from=build /vanguard-client/apps/client/dist ./dist
-COPY --from=build /vanguard-client/apps/client/package.json ./
+RUN pnpm install
+
+WORKDIR /main/apps/vanguard-client
+
+RUN pnpm run vanguard:build
 
 ENV NODE_ENV=production
 
-RUN bun install
-
-CMD ["bun", "run", "vanguard:start"]
+CMD ["pnpm", "run", "vanguard:start"]
