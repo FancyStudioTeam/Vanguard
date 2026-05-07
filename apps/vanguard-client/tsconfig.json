@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"jsx": "react-jsx",
-		"jsxImportSource": "ddenox",
+		"jsxImportSource": "@vanguard/discord-jsx",
 		"outDir": "dist",
 		"paths": {
 			"#bot/*": [
