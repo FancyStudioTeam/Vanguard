@@ -11,7 +11,6 @@ export function GuildSelectorCard(props: GuildSelectorCardProps) {
 		<Link
 			className='flex flex-col divide-y-2 divide-neutral-800 overflow-hidden rounded-xl border-2 border-neutral-800 bg-neutral-900 transition-colors hover:bg-neutral-800/75'
 			to={`/dashboard/${id}`}
-			viewTransition={true}
 		>
 			<GuildSelectorCardHeader {...props} />
 			<GuildSelectorCardFooter {...props} />

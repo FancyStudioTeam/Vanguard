@@ -11,7 +11,6 @@ export function NavbarButton() {
 				variant: 'secondary',
 			})}
 			to={'/dashboard'}
-			viewTransition={true}
 		>
 			<GridFourIcon
 				className='size-5 shrink-0'
