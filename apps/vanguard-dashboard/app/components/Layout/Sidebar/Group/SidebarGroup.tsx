@@ -5,7 +5,7 @@ import { SidebarGroupItem, type SidebarGroupItemProps as SidebarGroupItemsInterf
 
 export function SidebarGroup({ category, items }: SidebarGroupProps) {
 	return (
-		<Collapsible open={true}>
+		<Collapsible defaultOpen={true}>
 			<CollapsibleTrigger className='font-bold text-xs uppercase hover:bg-neutral-800'>
 				<span className='truncate'>{category}</span>
 				<CaretUpDownIcon

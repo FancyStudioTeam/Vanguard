@@ -1,4 +1,4 @@
-import { TicketIcon } from '@phosphor-icons/react/dist/ssr';
+import { GridFourIcon, TicketIcon } from '@phosphor-icons/react/dist/ssr';
 
 import { SidebarGroup, type SidebarGroupProps as SidebarGroupInterface } from './SidebarGroup.tsx';
 
@@ -6,6 +6,11 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 	{
 		category: 'Management',
 		items: [
+			{
+				href: `/dashboard/${guildId}`,
+				icon: GridFourIcon,
+				name: 'Dashboard',
+			},
 			{
 				href: `/dashboard/${guildId}/tickets`,
 				icon: TicketIcon,
