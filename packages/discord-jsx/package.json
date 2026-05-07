@@ -27,6 +27,7 @@
 	},
 	"license": "AGPL-3.0-only",
 	"name": "@vanguard/discord-jsx",
+	"private": true,
 	"scripts": {
 		"build": "tsc --project tsconfig.json",
 		"prebuild": "rimraf dist"

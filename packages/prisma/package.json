@@ -23,6 +23,7 @@
 	},
 	"license": "AGPL-3.0-only",
 	"name": "@vanguard/prisma",
+	"private": true,
 	"scripts": {
 		"build": "tsc --project tsconfig.json",
 		"prebuild": "rimraf dist && pnpm prisma:generate",
