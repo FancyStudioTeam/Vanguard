@@ -6,7 +6,7 @@ import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 
 @Controller()
-@UseGuards(SessionGuard)
+@UseGuards(SessionGuard(false))
 export class UserController {
 	public constructor(
 		@Inject(DiscordService) private readonly discordService: DiscordService,

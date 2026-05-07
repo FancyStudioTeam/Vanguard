@@ -1,27 +1,61 @@
-import { type CanActivate, type ExecutionContext, Injectable } from '@nestjs/common';
+import { type CanActivate, type ExecutionContext, Inject, Injectable, mixin, type Type } from '@nestjs/common';
+import { PermissionFlagsBits } from 'discord-api-types/v10';
 import type { FastifyRequest } from 'fastify';
 
-import { UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
+import { FORBIDDEN_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
+import { DiscordService } from '#modules/Discord/Discord.service.js';
+import { DiscordUtilsService } from '#modules/DiscordUtils/DiscordUtils.service.js';
+import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 
-@Injectable()
-export class SessionGuard implements CanActivate {
-	public canActivate(context: ExecutionContext): boolean {
-		const httpContext = context.switchToHttp();
+export function SessionGuard(withPermissions: boolean = false): Type<CanActivate> {
+	@Injectable()
+	class SessionGuardMixin implements CanActivate {
+		public constructor(
+			@Inject(DiscordService) private readonly discordService: DiscordService,
+			@Inject(DiscordUtilsService) private readonly discordUtilsService: DiscordUtilsService,
+			@Inject(SessionsService) private readonly sessionsService: SessionsService,
+		) {}
 
-		const fastifyRequest = httpContext.getRequest<FastifyRequest>();
-		const fastifySession = fastifyRequest.session as FastifySession;
+		public async canActivate(context: ExecutionContext): Promise<boolean> {
+			const httpContext = context.switchToHttp();
 
-		const sessionId = fastifySession.get('sessionId');
-		const sessionUserId = fastifySession.get('sessionUserId');
+			const fastifyRequest = httpContext.getRequest<FastifyRequest>();
+			const fastifySession = fastifyRequest.session as FastifySession;
 
-		if (!(sessionId && sessionUserId)) {
-			throw UNAUTHORIZED_RESPONSE();
+			const sessionId = fastifySession.get('sessionId');
+			const sessionUserId = fastifySession.get('sessionUserId');
+
+			if (!(sessionId && sessionUserId)) {
+				throw UNAUTHORIZED_RESPONSE();
+			}
+
+			if (withPermissions) {
+				const fastifyParams: object = fastifyRequest.params ?? {};
+				const fastifyGuildId = Reflect.get(fastifyParams, 'guildId');
+
+				if (!fastifyGuildId) {
+					throw FORBIDDEN_RESPONSE();
+				}
+
+				const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
+				const currentUserPermissions = await this.discordService.getGuildMemberPermissions(
+					fastifyGuildId,
+					sessionUserId,
+					currentUserAccessToken,
+				);
+
+				if (!this.discordUtilsService.hasPermission(currentUserPermissions, PermissionFlagsBits.ManageGuild)) {
+					throw FORBIDDEN_RESPONSE();
+				}
+			}
+
+			fastifyRequest.sessionId = sessionId;
+			fastifyRequest.sessionUserId = sessionUserId;
+
+			return true;
 		}
-
-		fastifyRequest.sessionId = sessionId;
-		fastifyRequest.sessionUserId = sessionUserId;
-
-		return true;
 	}
+
+	return mixin(SessionGuardMixin);
 }
