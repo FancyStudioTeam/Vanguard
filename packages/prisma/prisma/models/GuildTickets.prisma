@@ -1,7 +1,7 @@
 model GuildTicketsConfig {
   createdAt DateTime           @default(now())
   enabled   Boolean            @default(true)
-  id        String             @id @unique @db.VarChar(19)
+  guildId   String             @id @unique @db.VarChar(19)
   panels    GuildTicketPanel[]
   updatedAt DateTime           @updatedAt
 }
@@ -9,11 +9,11 @@ model GuildTicketsConfig {
 model GuildTicketPanel {
   channelId       String               @db.VarChar(19)
   channelParentId String?              @db.VarChar(19)
-  config          GuildTicketsConfig   @relation(fields: [guildId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  config          GuildTicketsConfig   @relation(fields: [guildId], references: [guildId], onDelete: Cascade, onUpdate: Cascade)
   createdAt       DateTime             @default(now())
   enabled         Boolean              @default(true)
-  id              String               @id @unique @db.VarChar(19)
   guildId         String               @db.VarChar(19)
+  panelId         String               @id @unique @db.VarChar(19)
   title           String               @db.VarChar(50)
   type            GuildTicketPanelType @default(Text)
   updatedAt       DateTime             @updatedAt
