@@ -22,6 +22,6 @@ ENV NODE_ENV=production
 
 RUN bun install
 
-EXPOSE 3000
+EXPOSE 3101
 
 CMD ["bun", "run", "router:start"]

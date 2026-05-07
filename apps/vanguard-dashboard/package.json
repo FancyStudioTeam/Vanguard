@@ -31,7 +31,7 @@
 	"private": true,
 	"scripts": {
 		"docker:build": "docker build --tag vanguard-dashboard --file Dockerfile ../../.",
-		"docker:run": "docker run -d -p 3000:3000 --env-file .env vanguard-dashboard",
+		"docker:run": "docker run -d -p 3101:3101 --env-file .env vanguard-dashboard",
 		"router:build": "react-router build",
 		"router:dev": "react-router dev",
 		"router:start": "react-router-serve ./build/server/index.js",
