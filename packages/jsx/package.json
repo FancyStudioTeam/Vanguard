@@ -1,0 +1,36 @@
+{
+	"author": "Vanguard Development Team",
+	"dependencies": {
+		"@discordeno/bot": "22.0.1-next.9eb5642"
+	},
+	"devDependencies": {
+		"@types/node": "25.6.0",
+		"rimraf": "6.1.3",
+		"typescript": "6.0.3"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./jsx-runtime": {
+			"import": "./dist/jsx-runtime.js",
+			"require": "./dist/jsx-runtime.js",
+			"types": "./dist/jsx-runtime.d.ts"
+		}
+	},
+	"imports": {
+		"#interactive/*": "./dist/interactive/*",
+		"#layout/*": "./dist/layout/*",
+		"#utils/*": "./dist/utils/*"
+	},
+	"license": "AGPL-3.0-only",
+	"name": "@vanguard/jsx",
+	"scripts": {
+		"build": "tsc --project tsconfig.json",
+		"prebuild": "rimraf dist"
+	},
+	"type": "module",
+	"version": "0.1.0"
+}

@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "./src",
+		"outDir": "dist",
+		"paths": {
+			"#interactive/*": [
+				"./src/interactive/*"
+			],
+			"#layout/*": [
+				"./src/layout/*"
+			],
+			"#utils/*": [
+				"./src/utils/*"
+			]
+		},
+		"rootDir": "src",
+		"types": [
+			"node"
+		]
+	},
+	"exclude": [
+		"prisma.config.ts"
+	],
+	"extends": "../../tsconfig.base.json"
+}
