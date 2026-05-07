@@ -4,12 +4,13 @@ RUN corepack enable pnpm
 
 WORKDIR /main
 
-COPY package.json pnpm-workspace.yaml tsconfig.base.json ./
+COPY package.json pnpm-workspace.yaml tsconfig.base.json turbo.json ./
 
 COPY apps/vanguard-api apps/vanguard-api
 COPY packages/prisma packages/prisma
 
 RUN pnpm install
+RUN pnpm run turbo:build
 
 WORKDIR /main/apps/vanguard-api
 
