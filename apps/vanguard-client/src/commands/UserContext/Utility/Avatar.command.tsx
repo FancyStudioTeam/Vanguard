@@ -1,4 +1,4 @@
-import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from '@vanguard/jsx';
+import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from '@vanguard/discord-jsx';
 
 import { avatarUrl, type ContainerComponent, defaultAvatarUrl, MessageFlags } from '@discordeno/bot';
 import { Declare, UserContextCommandHandler } from 'ddenox/handlers';

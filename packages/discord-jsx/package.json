@@ -26,7 +26,7 @@
 		"#utils/*": "./dist/utils/*"
 	},
 	"license": "AGPL-3.0-only",
-	"name": "@vanguard/jsx",
+	"name": "@vanguard/discord-jsx",
 	"scripts": {
 		"build": "tsc --project tsconfig.json",
 		"prebuild": "rimraf dist"
