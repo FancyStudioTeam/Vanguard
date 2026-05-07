@@ -1,5 +1,5 @@
 {
-	"author": "Vanguard Development Team",
+	"author": "Vanguard Working Group",
 	"description": "Simplicity without compromise",
 	"devDependencies": {
 		"@biomejs/biome": "2.4.14",

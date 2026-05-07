@@ -1,5 +1,5 @@
 {
-	"author": "Vanguard Development Team",
+	"author": "Vanguard Working Group",
 	"dependencies": {
 		"@discordeno/rest": "21.0.0",
 		"@discordeno/types": "21.0.0",

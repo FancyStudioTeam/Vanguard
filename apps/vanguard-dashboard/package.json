@@ -1,5 +1,5 @@
 {
-	"author": "Vanguard Development Team",
+	"author": "Vanguard Working Group",
 	"dependencies": {
 		"@base-ui/react": "1.4.1",
 		"@phosphor-icons/react": "2.1.10",
