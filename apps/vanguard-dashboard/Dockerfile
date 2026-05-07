@@ -8,10 +8,9 @@ COPY package.json pnpm-workspace.yaml tsconfig.base.json ./
 COPY apps/vanguard-dashboard apps/vanguard-dashboard
 
 RUN pnpm install
+RUN pnpm run turbo:build
 
 WORKDIR /main/apps/vanguard-dashboard
-
-RUN pnpm run router:build
 
 ENV HOST=0.0.0.0
 ENV PORT=3101

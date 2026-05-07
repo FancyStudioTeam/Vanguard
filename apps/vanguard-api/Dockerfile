@@ -14,8 +14,6 @@ RUN pnpm run turbo:build
 
 WORKDIR /main/apps/vanguard-api
 
-RUN pnpm run nest:build
-
 ENV HOST=0.0.0.0
 ENV PORT=3001
 

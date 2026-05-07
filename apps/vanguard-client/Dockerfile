@@ -16,8 +16,6 @@ RUN pnpm run turbo:build
 
 WORKDIR /main/apps/vanguard-client
 
-RUN pnpm run vanguard:build
-
 ENV NODE_ENV=production
 
 CMD ["pnpm", "run", "vanguard:start"]
