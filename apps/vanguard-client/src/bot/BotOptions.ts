@@ -2,7 +2,7 @@ import { platform } from 'node:process';
 
 import { ActivityTypes, type CreateGatewayManagerOptions } from '@discordeno/bot';
 
-import { CLIENT_GATEWAY_INTENTS, CLIENT_TOKEN, VERSION } from '#lib/Constants.js';
+import { CLIENT_GATEWAY_INTENTS, CLIENT_TOKEN } from '#lib/Constants.js';
 import {
 	DESIRED_GUILD_PROPERTIES,
 	DESIRED_INTERACTION_PROPERTIES,
@@ -30,7 +30,7 @@ export const BOT_GATEWAY_MANAGER = {
 		activities: [
 			{
 				name: '-',
-				state: `🟢 v${VERSION} | 🌹 vanguard.fancystudio.xyz`,
+				state: '🌹 vanguard.fancystudio.xyz',
 				type: ActivityTypes.Custom,
 			},
 		],
