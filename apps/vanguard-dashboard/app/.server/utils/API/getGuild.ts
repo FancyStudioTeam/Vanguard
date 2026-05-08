@@ -19,9 +19,9 @@ export async function getGuild(request: Request, guildId: string): Promise<Guild
 		throw redirect(`${BASE_API_URL}/api/guilds/${guildId}/invite`);
 	}
 
-	const { message } = responseBody;
+	const { code, message } = responseBody;
 
-	throw redirect(`/?message=${message}`);
+	throw redirect(`/?message=${code ?? message}`);
 }
 
 async function createRequest(request: Request, guildId: string): Promise<Response> {

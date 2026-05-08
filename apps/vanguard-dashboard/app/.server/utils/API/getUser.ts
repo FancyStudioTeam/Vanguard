@@ -19,9 +19,9 @@ export async function getUser(request: Request): Promise<User> {
 		throw redirect(`${BASE_API_URL}/api/auth/sign-in`);
 	}
 
-	const { message } = responseBody;
+	const { code, message } = responseBody;
 
-	throw redirect(`/?message=${message}`);
+	throw redirect(`/?message=${code ?? message}`);
 }
 
 async function createRequest(request: Request): Promise<Response> {

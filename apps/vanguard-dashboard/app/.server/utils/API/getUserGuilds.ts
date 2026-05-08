@@ -1,3 +1,6 @@
+import { redirect } from 'react-router';
+
+import { HttpStatus } from '#server/lib/Constants/HttpStatus.ts';
 import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
 import type { UserGuild } from '#server/lib/Types/API.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
@@ -6,13 +9,19 @@ export async function getUserGuilds(request: Request): Promise<UserGuild[]> {
 	const response = await createRequest(request);
 	const responseBody = await response.json();
 
-	const { ok } = response;
+	const { ok, status } = response;
 
 	if (ok) {
 		return responseBody;
 	}
 
-	return [];
+	if (status === HttpStatus.Unauthorized) {
+		throw redirect(`${BASE_API_URL}/api/auth/sign-in`);
+	}
+
+	const { code, message } = responseBody;
+
+	throw redirect(`/?message=${code ?? message}`);
 }
 
 async function createRequest(request: Request): Promise<Response> {
