@@ -38,7 +38,6 @@
 		"#utils/*": "./dist/utils/*"
 	},
 	"license": "AGPL-3.0-only",
-	"main": "dist/index.js",
 	"name": "vanguard-api",
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
