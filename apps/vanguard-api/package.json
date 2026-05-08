@@ -25,7 +25,7 @@
 	},
 	"devDependencies": {
 		"@nestjs/cli": "11.0.21",
-		"@types/node": "25.6.0",
+		"@types/node": "25.6.2",
 		"cross-env": "10.1.0",
 		"rimraf": "6.1.3",
 		"typescript": "6.0.3"
@@ -38,7 +38,6 @@
 		"#utils/*": "./dist/utils/*"
 	},
 	"license": "AGPL-3.0-only",
-	"main": "dist/index.js",
 	"name": "vanguard-api",
 	"packageManager": "pnpm@10.0.0",
 	"private": true,
