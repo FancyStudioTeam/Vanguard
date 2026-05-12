@@ -2,7 +2,7 @@
 	"author": "Vanguard Working Group",
 	"description": "Simplicity without compromise",
 	"devDependencies": {
-		"@biomejs/biome": "2.4.14",
+		"@biomejs/biome": "2.4.15",
 		"@commitlint/cli": "21.0.0",
 		"@commitlint/config-conventional": "20.5.3",
 		"@commitlint/types": "21.0.0",
