@@ -1,4 +1,4 @@
-import type { Bot as InferredBot } from '@vanguard/discord-desired-properties/inferred-types';
+import type { Bot as InferredBot } from '@vanguard/discord-config/inferred-types';
 
 export type Bot = InferredBot;
 
