@@ -1,15 +1,16 @@
 import { platform } from 'node:process';
 
-import { ActivityTypes, type CreateGatewayManagerOptions } from '@discordeno/bot';
-
-import { CLIENT_GATEWAY_INTENTS, CLIENT_TOKEN } from '#lib/Constants.js';
 import {
 	DESIRED_GUILD_PROPERTIES,
 	DESIRED_INTERACTION_PROPERTIES,
 	DESIRED_MESSAGE_PROPERTIES,
 	DESIRED_USER_PROPERTIES,
 	type DesiredProperties,
-} from './BotDesiredProperties.js';
+} from '@vanguard/discord-desired-properties';
+
+import { ActivityTypes, type CreateGatewayManagerOptions } from '@discordeno/bot';
+
+import { CLIENT_GATEWAY_INTENTS, CLIENT_TOKEN } from '#lib/Constants.js';
 
 export const BOT_DESIRED_PROPERTIES = {
 	guild: DESIRED_GUILD_PROPERTIES,
