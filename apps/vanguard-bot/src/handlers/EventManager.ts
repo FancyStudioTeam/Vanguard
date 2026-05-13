@@ -12,10 +12,6 @@ import { Collection } from '@discordeno/bot';
 import type { Bot } from '#bot/BotTypes.js';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
 
-const EVENTS_PATTERNS = [
-	'**/*.event.{js,jsx,ts,tsx}',
-];
-
 export class EventManager {
 	private readonly bot: Bot;
 	private readonly events: Collection<string, EventListenerFunction[]>;
@@ -24,6 +20,10 @@ export class EventManager {
 		this.bot = bot;
 		this.events = new Collection();
 	}
+
+	private static EVENT_FILE_PATTERNS = [
+		'**/*.event.{js,jsx,ts,tsx}',
+	] as const;
 
 	private createEventFileImportUrl(name: string, parentPath: string): string {
 		const eventFilePath = join(parentPath, name);
@@ -34,22 +34,22 @@ export class EventManager {
 		return `${eventFilePathUrlHref}?update=${Date.now()}`;
 	}
 
-	private async findEventFiles(): Promise<Dirent[]> {
-		const eventsFolderPath = this.createEventsFolderPath();
-
-		const eventFileDirentsIterator = glob(EVENTS_PATTERNS, {
-			cwd: eventsFolderPath,
-			withFileTypes: true,
-		});
-		const eventFileDirentsArray = await Array.fromAsync(eventFileDirentsIterator);
-
-		return eventFileDirentsArray;
-	}
-
 	private createEventsFolderPath(): string {
 		const root = isProductionEnvironment() ? 'dist' : 'src';
 
 		return join(cwd(), root, 'events');
+	}
+
+	private async findEventFiles(): Promise<Dirent[]> {
+		const eventsFolderPath = this.createEventsFolderPath();
+		const eventFileDirentsIterator = glob(EventManager.EVENT_FILE_PATTERNS, {
+			cwd: eventsFolderPath,
+			withFileTypes: true,
+		});
+
+		const eventFileDirentsArray = await Array.fromAsync(eventFileDirentsIterator);
+
+		return eventFileDirentsArray;
 	}
 
 	private async handleEventFileImport(dirent: Dirent): Promise<void> {
