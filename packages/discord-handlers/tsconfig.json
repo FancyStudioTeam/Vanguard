@@ -3,11 +3,14 @@
 		"declaration": true,
 		"outDir": "dist",
 		"paths": {
+			"#base/*": [
+				"./src/base/*"
+			],
+			"#commands/*": [
+				"./src/commands/*"
+			],
 			"#events/*": [
 				"./src/events/*"
-			],
-			"#types/*": [
-				"./src/types/*"
 			]
 		},
 		"rootDir": "src",

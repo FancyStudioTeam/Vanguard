@@ -17,8 +17,9 @@
 		}
 	},
 	"imports": {
-		"#events/*": "./dist/events/*",
-		"#types/*": "./dist/types/*"
+		"#base/*": "./dist/base/*",
+		"#commands/*": "./dist/commands/*",
+		"#events/*": "./dist/events/*"
 	},
 	"license": "AGPL-3.0-only",
 	"name": "@vanguard/discord-handlers",
