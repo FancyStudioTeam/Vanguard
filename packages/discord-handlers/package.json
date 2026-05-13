@@ -10,6 +10,11 @@
 		"typescript": "6.0.3"
 	},
 	"exports": {
+		"./base": {
+			"import": "./dist/base/index.js",
+			"require": "./dist/base/index.js",
+			"types": "./dist/base/index.d.ts"
+		},
 		"./events": {
 			"import": "./dist/events/index.js",
 			"require": "./dist/events/index.js",

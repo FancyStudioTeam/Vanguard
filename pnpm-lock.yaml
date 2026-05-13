@@ -122,7 +122,7 @@ importers:
         version: 0.6.2
       '@vanguard/discord-config':
         specifier: workspace:*
-        version: link:../../packages/discord-desired-properties
+        version: link:../../packages/discord-config
       '@vanguard/discord-handlers':
         specifier: workspace:*
         version: link:../../packages/discord-handlers
@@ -228,7 +228,7 @@ importers:
         specifier: 8.0.12
         version: 8.0.12(@types/node@25.7.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.47.1)(tsx@4.21.0)(yaml@2.9.0)
 
-  packages/discord-desired-properties:
+  packages/discord-config:
     dependencies:
       '@discordeno/bot':
         specifier: 22.0.1-next.9eb5642
@@ -251,7 +251,7 @@ importers:
         version: 22.0.1-next.9eb5642
       '@vanguard/discord-config':
         specifier: workspace:*
-        version: link:../discord-desired-properties
+        version: link:../discord-config
     devDependencies:
       '@types/node':
         specifier: 25.7.0
