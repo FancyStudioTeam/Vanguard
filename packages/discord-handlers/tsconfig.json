@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"outDir": "dist",
+		"paths": {
+			"#events/*": [
+				"./src/events/*"
+			],
+			"#types/*": [
+				"./src/types/*"
+			]
+		},
+		"rootDir": "src",
+		"types": [
+			"node"
+		]
+	},
+	"extends": "../../tsconfig.base.json"
+}

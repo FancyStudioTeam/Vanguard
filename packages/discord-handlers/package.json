@@ -1,0 +1,33 @@
+{
+	"author": "Vanguard Working Group",
+	"dependencies": {
+		"@discordeno/bot": "22.0.1-next.9eb5642",
+		"@vanguard/discord-desired-properties": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/node": "25.7.0",
+		"rimraf": "6.1.3",
+		"typescript": "6.0.3"
+	},
+	"exports": {
+		"./events": {
+			"import": "./dist/events/index.js",
+			"require": "./dist/events/index.js",
+			"types": "./dist/events/index.d.ts"
+		}
+	},
+	"imports": {
+		"#events/*": "./dist/events/*",
+		"#types/*": "./dist/types/*"
+	},
+	"license": "AGPL-3.0-only",
+	"name": "@vanguard/discord-handlers",
+	"packageManager": "pnpm@11.0.0",
+	"private": true,
+	"scripts": {
+		"build": "tsc --project tsconfig.json",
+		"prebuild": "rimraf dist"
+	},
+	"type": "module",
+	"version": "0.1.0"
+}
