@@ -4,10 +4,11 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { pathToFileURL } from 'node:url';
 
+import type { Interaction } from '@vanguard/discord-config/inferred-types';
 import type { MessageContextHandler, UserContextHandler } from '@vanguard/discord-handlers/commands';
 import type { DeclarableCommandConstructor } from '@vanguard/discord-handlers/decorators';
 
-import { type ApplicationCommandTypes, Collection, type CreateApplicationCommand, type InteractionData } from '@discordeno/bot';
+import { type ApplicationCommandTypes, Collection, type CreateApplicationCommand } from '@discordeno/bot';
 
 import type { Bot } from '#bot/BotTypes.js';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
@@ -27,11 +28,12 @@ export class CommandManager {
 		'**/*.command.{js,jsx,ts,tsx}',
 	] as const;
 
-	public static getCommandsCollectionKey(interactionData: InteractionData): CommandsCollectionKey {
-		const { name, type } = interactionData;
+	private static getCommandsCollectionKey(interaction: Interaction): CommandsCollectionKey {
+		const { data } = interaction;
+		const { name, type } = data ?? {};
 
-		if (!type) {
-			throw new TypeError('Cannot retreive the interaction command type');
+		if (!(name && type)) {
+			throw new TypeError('Cannot retreive the interaction command name and type');
 		}
 
 		return `name:${name}/type:${type}`;
@@ -65,9 +67,8 @@ export class CommandManager {
 	}
 
 	private getCommandHandlerOptions(declarableCommandHandler: DeclarableCommandHandler): CreateApplicationCommand {
-		const options = declarableCommandHandler.toOptions();
-
-		const { type } = declarableCommandHandler;
+		const type = declarableCommandHandler.getApplicationCommandType();
+		const options = declarableCommandHandler.getApplicationCommandOptions();
 
 		const { commands } = this;
 		const { name } = options;
@@ -77,8 +78,8 @@ export class CommandManager {
 		return options;
 	}
 
-	private async handleCommandFileImport({ name, parentPath }: Dirent): Promise<void> {
-		const { applicationCommands } = this;
+	private async handleCommandFileImport(dirent: Dirent): Promise<void> {
+		const { name, parentPath } = dirent;
 
 		const commandFilePathUrlHref = this.createCommandFileImportUrl(name, parentPath);
 		const commandFileImportData = (await import(commandFilePathUrlHref)) as CommandFileImportData;
@@ -88,13 +89,17 @@ export class CommandManager {
 		const commandHandler = new CommandHandlerConstructor();
 		const commandHandlerOptions = this.getCommandHandlerOptions(commandHandler);
 
-		applicationCommands.push(commandHandlerOptions);
+		this.applicationCommands.push(commandHandlerOptions);
 	}
 
 	private async registerCommandsToBot(): Promise<void> {
 		const { helpers } = this.bot;
 
 		await helpers.upsertGlobalApplicationCommands(this.applicationCommands);
+	}
+
+	public getCommandFromInteraction(interaction: Interaction): CommandsCollectionValue | undefined {
+		return this.commands.get(CommandManager.getCommandsCollectionKey(interaction));
 	}
 
 	public async register(): Promise<void> {

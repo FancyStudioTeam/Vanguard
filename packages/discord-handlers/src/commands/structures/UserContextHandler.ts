@@ -12,7 +12,6 @@ import {
 
 export abstract class UserContextHandler extends HandlerBase {
 	public declare readonly declare: UserContextHandlerDeclareOptions;
-	public declare readonly type = ApplicationCommandTypes.User;
 
 	public abstract run(): unknown;
 
@@ -39,11 +38,15 @@ export abstract class UserContextHandler extends HandlerBase {
 		return user;
 	}
 
-	public toOptions(): CreateApplicationCommand {
+	public getApplicationCommandOptions(): CreateApplicationCommand {
 		return {
 			...this.declare,
 			type: ApplicationCommandTypes.User,
 		};
+	}
+
+	public getApplicationCommandType(): ApplicationCommandTypes.User {
+		return ApplicationCommandTypes.User;
 	}
 }
 

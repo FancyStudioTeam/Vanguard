@@ -12,7 +12,6 @@ import {
 
 export abstract class MessageContextHandler extends HandlerBase {
 	public declare readonly declare: MessageContextHandlerDeclareOptions;
-	public declare readonly type = ApplicationCommandTypes.Message;
 
 	public abstract run(): unknown;
 
@@ -39,11 +38,15 @@ export abstract class MessageContextHandler extends HandlerBase {
 		return message;
 	}
 
-	public toOptions(): CreateApplicationCommand {
+	public getApplicationCommandOptions(): CreateApplicationCommand {
 		return {
 			...this.declare,
 			type: ApplicationCommandTypes.Message,
 		};
+	}
+
+	public getApplicationCommandType(): ApplicationCommandTypes.Message {
+		return ApplicationCommandTypes.Message;
 	}
 }
 
