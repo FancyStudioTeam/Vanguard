@@ -13,7 +13,4 @@ export const discordenoBot = createBot({
 
 export const bot = discordenoBot as Bot;
 
-bot.commandManager.register();
-bot.eventManager.register();
-
 bot.start();
