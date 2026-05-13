@@ -3,31 +3,10 @@ import { PrismaAdapter, PrismaClient } from '@vanguard/prisma';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class PrismaService {
-	private readonly prisma: PrismaClient;
-
+export class PrismaService extends PrismaClient {
 	public constructor() {
-		this.prisma = new PrismaClient({
+		super({
 			adapter: PrismaAdapter,
-		});
-	}
-
-	public async createGuildTicketsConfig(guildId: string) {
-		return await this.prisma.guildTicketsConfig.create({
-			data: {
-				guildId,
-			},
-		});
-	}
-
-	public async getGuildTicketsConfig(guildId: string) {
-		return await this.prisma.guildTicketsConfig.findUnique({
-			select: {
-				panels: true,
-			},
-			where: {
-				guildId,
-			},
 		});
 	}
 }
