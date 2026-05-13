@@ -1,4 +1,4 @@
-import type { BotEventNames } from '@vanguard/discord-desired-properties/inferred-types';
+import type { BotEventNames } from '@vanguard/discord-config/inferred-types';
 
 import type { EventListener } from '#events/types/Event.js';
 

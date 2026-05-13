@@ -1,4 +1,4 @@
-import type { BotEventNames, BotEvents } from '@vanguard/discord-desired-properties/inferred-types';
+import type { BotEventNames, BotEvents } from '@vanguard/discord-config/inferred-types';
 
 export interface EventListener<Name extends BotEventNames> {
 	data: EventListenerData<Name>;
@@ -9,7 +9,5 @@ export interface EventListenerData<Name extends BotEventNames> {
 	name: Name;
 }
 
-export type EventListenerRunMethod<Name extends BotEventNames> = (
-	// @ts-expect-error
-	...data: Parameters<BotEvents[Name]>
-) => unknown;
+// @ts-expect-error
+export type EventListenerRunMethod<Name extends BotEventNames> = (...data: Parameters<BotEvents[Name]>) => unknown;
