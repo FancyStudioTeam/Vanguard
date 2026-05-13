@@ -35,9 +35,7 @@ export class EventManager {
 	}
 
 	private createEventsFolderPath(): string {
-		const root = isProductionEnvironment() ? 'dist' : 'src';
-
-		return join(cwd(), root, 'events');
+		return join(cwd(), isProductionEnvironment() ? 'dist' : 'src', 'events');
 	}
 
 	private async findEventFiles(): Promise<Dirent[]> {
@@ -69,11 +67,9 @@ export class EventManager {
 	}
 
 	private registerEventsToBot(): void {
-		const { events } = this.bot;
-
 		for (const [eventName, eventFunctions] of this.events.entries()) {
 			// @ts-expect-error
-			events[eventName] = (...data) => {
+			this.bot.events[eventName] = (...data) => {
 				for (const eventFunction of eventFunctions) {
 					eventFunction(...data);
 				}

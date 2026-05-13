@@ -49,9 +49,7 @@ export class CommandManager {
 	}
 
 	private createCommandsFolderPath(): string {
-		const root = isProductionEnvironment() ? 'dist' : 'src';
-
-		return join(cwd(), root, 'commands');
+		return join(cwd(), isProductionEnvironment() ? 'dist' : 'src', 'commands');
 	}
 
 	private async findCommandFiles(): Promise<Dirent[]> {
@@ -93,9 +91,7 @@ export class CommandManager {
 	}
 
 	private async registerCommandsToBot(): Promise<void> {
-		const { helpers } = this.bot;
-
-		await helpers.upsertGlobalApplicationCommands(this.applicationCommands);
+		await this.bot.helpers.upsertGlobalApplicationCommands(this.applicationCommands);
 	}
 
 	public getCommandFromInteraction(interaction: Interaction): CommandsCollectionValue | undefined {
