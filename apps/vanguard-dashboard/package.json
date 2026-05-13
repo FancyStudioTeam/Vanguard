@@ -27,7 +27,7 @@
 	},
 	"license": "AGPL-3.0-only",
 	"name": "vanguard-dashboard",
-	"packageManager": "pnpm@10.0.0",
+	"packageManager": "pnpm@11.0.0",
 	"private": true,
 	"scripts": {
 		"build": "pnpm router:build",
