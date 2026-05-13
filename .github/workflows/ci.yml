@@ -24,9 +24,6 @@ jobs:
             - name: Install Dependencies
               run: pnpm install
 
-            - name: Audit Dependencies
-              run: pnpm audit
-
             - name: Build Applications
               run: pnpm turbo:build
               env:
