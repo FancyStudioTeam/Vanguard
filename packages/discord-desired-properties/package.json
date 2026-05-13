@@ -13,20 +13,13 @@
 			"import": "./dist/index.js",
 			"require": "./dist/index.js",
 			"types": "./dist/index.d.ts"
-		},
-		"./jsx-runtime": {
-			"import": "./dist/jsx-runtime.js",
-			"require": "./dist/jsx-runtime.js",
-			"types": "./dist/jsx-runtime.d.ts"
 		}
 	},
 	"imports": {
-		"#interactive/*": "./dist/interactive/*",
-		"#layout/*": "./dist/layout/*",
-		"#utils/*": "./dist/utils/*"
+		"#interactive/*": "./dist/interactive/*"
 	},
 	"license": "AGPL-3.0-only",
-	"name": "@vanguard/discord-jsx",
+	"name": "@vanguard/discord-desired-properties",
 	"packageManager": "pnpm@11.0.0",
 	"private": true,
 	"scripts": {
