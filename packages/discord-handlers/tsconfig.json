@@ -9,8 +9,14 @@
 			"#commands/*": [
 				"./src/commands/*"
 			],
+			"#decorators/*": [
+				"./src/decorators/*"
+			],
 			"#events/*": [
 				"./src/events/*"
+			],
+			"#messages/*": [
+				"./src/messages/*"
 			]
 		},
 		"rootDir": "src",
