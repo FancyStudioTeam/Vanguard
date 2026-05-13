@@ -15,10 +15,10 @@
 		"typescript": "6.0.3"
 	},
 	"exports": {
-		"./client": {
-			"import": "./dist/client.js",
-			"require": "./dist/client.js",
-			"types": "./dist/client.d.ts"
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"types": "./dist/index.d.ts"
 		}
 	},
 	"license": "AGPL-3.0-only",
