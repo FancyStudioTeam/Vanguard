@@ -1,14 +1,15 @@
+import { UserContextHandler } from '@vanguard/discord-handlers/commands';
+import { Declare } from '@vanguard/discord-handlers/decorators';
 import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from '@vanguard/discord-jsx';
 
 import { avatarUrl, type ContainerComponent, defaultAvatarUrl, MessageFlags } from '@discordeno/bot';
-import { Declare, UserContextCommandHandler } from 'ddenox/handlers';
 
 import type { User } from '#lib/InferredTypes.js';
 
 @Declare({
 	name: 'Avatar',
 })
-export default class AvatarCommand extends UserContextCommandHandler {
+export default class AvatarCommand extends UserContextHandler {
 	public async run() {
 		const targetUser = this.getTargetUser();
 		const targetUserAvatarUrl = this.getUserAvatarUrl(targetUser);

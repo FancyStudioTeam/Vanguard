@@ -1,4 +1,4 @@
-import { defineEventListener } from 'ddenox/handlers';
+import { defineEventListener } from '@vanguard/discord-handlers/events';
 
 import { logger } from '#lib/Logger.js';
 
