@@ -4,6 +4,7 @@ import {
 	DESIRED_GUILD_PROPERTIES,
 	DESIRED_INTERACTION_PROPERTIES,
 	DESIRED_MESSAGE_PROPERTIES,
+	DESIRED_PROPERTIES_BEHAVIOR,
 	DESIRED_USER_PROPERTIES,
 	type DesiredProperties,
 } from '@vanguard/discord-desired-properties';
@@ -18,6 +19,8 @@ export const BOT_DESIRED_PROPERTIES = {
 	message: DESIRED_MESSAGE_PROPERTIES,
 	user: DESIRED_USER_PROPERTIES,
 } satisfies BotDesiredProperties;
+
+export const BOT_DESIRED_PROPERTIES_BEHAVIOR = DESIRED_PROPERTIES_BEHAVIOR;
 
 export const BOT_GATEWAY_MANAGER_PROPERTIES = {
 	browser: 'Discord Android',

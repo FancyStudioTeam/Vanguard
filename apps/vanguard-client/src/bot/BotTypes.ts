@@ -1,6 +1,6 @@
-import type { enhancedBot } from './Bot.js';
+import type { discordenoBot } from './Bot.js';
 
-export type Bot = typeof enhancedBot;
+export type Bot = typeof discordenoBot;
 
 export type BotEventNames = keyof BotEvents;
 export type BotEvents = Bot['events'];

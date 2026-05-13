@@ -1,4 +1,6 @@
-import type { RecursivePartial, TransformersDesiredProperties } from '@discordeno/bot';
+import { DesiredPropertiesBehavior, type RecursivePartial, type TransformersDesiredProperties } from '@discordeno/bot';
+
+export const DESIRED_PROPERTIES_BEHAVIOR = DesiredPropertiesBehavior.RemoveKey;
 
 export const DESIRED_GUILD_PROPERTIES = {
 	icon: true,

@@ -15,9 +15,6 @@
 			"types": "./dist/index.d.ts"
 		}
 	},
-	"imports": {
-		"#interactive/*": "./dist/interactive/*"
-	},
 	"license": "AGPL-3.0-only",
 	"name": "@vanguard/discord-desired-properties",
 	"packageManager": "pnpm@11.0.0",
