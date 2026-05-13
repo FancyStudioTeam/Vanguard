@@ -48,9 +48,7 @@ const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADA
 app.enableCors();
 app.setGlobalPrefix('api');
 
-// @ts-expect-error
 await app.register(FastifyCookie);
-// @ts-expect-error
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
 await app.listen(APP_PORT, APP_HOST).then(async () => logger.info(`Listening on address '${await app.getUrl()}'`));
