@@ -1,6 +1,6 @@
 import type { CompleteDesiredProperties, Bot as DiscordenoBot } from '@discordeno/bot';
 
-import type { DESIRED_PROPERTIES, DESIRED_PROPERTIES_BEHAVIOR } from './config.js';
+import type { DESIRED_PROPERTIES, DESIRED_PROPERTIES_BEHAVIOR } from './desiredProperties.js';
 
 export type Bot = DiscordenoBot<CompleteDesiredProperties<typeof DESIRED_PROPERTIES>, typeof DESIRED_PROPERTIES_BEHAVIOR>;
 

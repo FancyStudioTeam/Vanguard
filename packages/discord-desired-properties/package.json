@@ -9,10 +9,10 @@
 		"typescript": "6.0.3"
 	},
 	"exports": {
-		"./config": {
-			"import": "./dist/config.js",
-			"require": "./dist/config.js",
-			"types": "./dist/config.d.ts"
+		"./desired-properties": {
+			"import": "./dist/desiredProperties.js",
+			"require": "./dist/desiredProperties.js",
+			"types": "./dist/desiredProperties.d.ts"
 		},
 		"./inferred-types": {
 			"import": "./dist/inferredTypes.js",
@@ -21,7 +21,7 @@
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"name": "@vanguard/discord-desired-properties",
+	"name": "@vanguard/discord-config",
 	"packageManager": "pnpm@11.0.0",
 	"private": true,
 	"scripts": {

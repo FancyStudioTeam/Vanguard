@@ -120,7 +120,7 @@ importers:
       '@discordjs/formatters':
         specifier: 0.6.2
         version: 0.6.2
-      '@vanguard/discord-desired-properties':
+      '@vanguard/discord-config':
         specifier: workspace:*
         version: link:../../packages/discord-desired-properties
       '@vanguard/discord-handlers':
@@ -249,7 +249,7 @@ importers:
       '@discordeno/bot':
         specifier: 22.0.1-next.9eb5642
         version: 22.0.1-next.9eb5642
-      '@vanguard/discord-desired-properties':
+      '@vanguard/discord-config':
         specifier: workspace:*
         version: link:../discord-desired-properties
     devDependencies:

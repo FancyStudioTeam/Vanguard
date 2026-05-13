@@ -2,7 +2,7 @@
 	"author": "Vanguard Working Group",
 	"dependencies": {
 		"@discordeno/bot": "22.0.1-next.9eb5642",
-		"@vanguard/discord-desired-properties": "workspace:*"
+		"@vanguard/discord-config": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/node": "25.7.0",
