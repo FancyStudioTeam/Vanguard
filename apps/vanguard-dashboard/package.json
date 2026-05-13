@@ -23,7 +23,7 @@
 		"tailwind-animations": "1.0.1",
 		"tailwindcss": "4.2.4",
 		"typescript": "6.0.3",
-		"vite": "8.0.10"
+		"vite": "8.0.12"
 	},
 	"license": "AGPL-3.0-only",
 	"name": "vanguard-dashboard",
