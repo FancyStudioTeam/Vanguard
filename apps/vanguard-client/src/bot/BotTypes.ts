@@ -1,6 +1,6 @@
-import type { discordenoBot } from './Bot.js';
+import type { Bot as InferredBot } from '@vanguard/discord-desired-properties/inferred-types';
 
-export type Bot = typeof discordenoBot;
+export type Bot = InferredBot;
 
 export type BotEventNames = keyof BotEvents;
 export type BotEvents = Bot['events'];

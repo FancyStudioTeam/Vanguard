@@ -9,10 +9,15 @@
 		"typescript": "6.0.3"
 	},
 	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js",
-			"types": "./dist/index.d.ts"
+		"./config": {
+			"import": "./dist/config.js",
+			"require": "./dist/config.js",
+			"types": "./dist/config.d.ts"
+		},
+		"./inferred-types": {
+			"import": "./dist/inferredTypes.js",
+			"require": "./dist/inferredTypes.js",
+			"types": "./dist/inferredTypes.d.ts"
 		}
 	},
 	"license": "AGPL-3.0-only",
