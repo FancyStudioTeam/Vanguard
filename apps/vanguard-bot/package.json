@@ -37,7 +37,7 @@
 		"docker:run:sh": "docker run -it --rm vanguard-client sh",
 		"prebuild": "rimraf dist",
 		"vanguard:build": "tsc --project tsconfig.json",
-		"vanguard:dev": "cross-env NODE_ENV=development tsx src/index.ts",
+		"vanguard:dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
 		"vanguard:start": "cross-env NODE_ENV=production node dist/index.js"
 	},
 	"type": "module",

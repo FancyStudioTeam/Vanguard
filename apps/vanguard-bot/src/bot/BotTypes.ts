@@ -1,6 +1,10 @@
 import type { Bot as InferredBot } from '@vanguard/discord-config/inferred-types';
 
-export type Bot = InferredBot;
+import type { EventManager } from '#handlers/EventManager.js';
+
+export interface Bot extends InferredBot {
+	eventManager: EventManager;
+}
 
 export type BotEventNames = keyof BotEvents;
 export type BotEvents = Bot['events'];
