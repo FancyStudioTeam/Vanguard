@@ -6,7 +6,7 @@ WORKDIR /main
 
 COPY package.json pnpm-workspace.yaml tsconfig.base.json turbo.json ./
 
-COPY apps/vanguard-client apps/vanguard-client
+COPY apps/vanguard-bot apps/vanguard-bot
 
 COPY packages/discord-config packages/discord-config
 COPY packages/discord-handlers packages/discord-handlers
@@ -17,7 +17,7 @@ COPY packages/prisma packages/prisma
 RUN pnpm install
 RUN pnpm run turbo:build
 
-WORKDIR /main/apps/vanguard-client
+WORKDIR /main/apps/vanguard-bot
 
 ENV NODE_ENV=production
 
