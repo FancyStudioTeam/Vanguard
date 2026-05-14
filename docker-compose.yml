@@ -8,12 +8,12 @@ services:
         ports:
             - "3001:3001"
 
-    client:
+    bot:
         build:
             context: .
-            dockerfile: ./apps/vanguard-client/Dockerfile
+            dockerfile: ./apps/vanguard-bot/Dockerfile
         env_file:
-            - ./apps/vanguard-client/.env
+            - ./apps/vanguard-bot/.env
 
     dashboard:
         build:
