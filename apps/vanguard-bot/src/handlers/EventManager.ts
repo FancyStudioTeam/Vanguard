@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { pathToFileURL } from 'node:url';
 
-import type { BotEventNames } from '@vanguard/discord-config/inferred-types';
+import type { BotEventNames } from '@vanguard/discord-config/inferred-bot-types';
 import type { EventListener } from '@vanguard/discord-handlers/events';
 
 import { Collection } from '@discordeno/bot';

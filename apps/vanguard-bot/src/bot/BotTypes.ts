@@ -1,4 +1,4 @@
-import type { Bot as InferredBot } from '@vanguard/discord-config/inferred-types';
+import type { Bot as InferredBot } from '@vanguard/discord-config/inferred-bot-types';
 
 import type { CommandManager } from '#handlers/ComandManager.js';
 import type { EventManager } from '#handlers/EventManager.js';

@@ -14,6 +14,11 @@
 			"require": "./dist/desiredProperties.js",
 			"types": "./dist/desiredProperties.d.ts"
 		},
+		"./inferred-bot-types": {
+			"import": "./dist/inferredBotTypes.js",
+			"require": "./dist/inferredBotTypes.js",
+			"types": "./dist/inferredBotTypes.d.ts"
+		},
 		"./inferred-types": {
 			"import": "./dist/inferredTypes.js",
 			"require": "./dist/inferredTypes.js",

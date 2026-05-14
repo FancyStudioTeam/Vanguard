@@ -1,4 +1,4 @@
-import type { BotEventNames, BotEvents } from '@vanguard/discord-config/inferred-types';
+import type { BotEventNames, BotEvents } from '@vanguard/discord-config/inferred-bot-types';
 
 export interface EventListener<Name extends BotEventNames> {
 	data: EventListenerData<Name>;

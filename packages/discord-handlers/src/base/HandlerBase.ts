@@ -1,4 +1,5 @@
-import type { Bot, Interaction, Message } from '@vanguard/discord-config/inferred-types';
+import type { Bot } from '@vanguard/discord-config/inferred-bot-types';
+import type { Interaction, Message } from '@vanguard/discord-config/inferred-types';
 
 import { type InteractionCallbackData, InteractionResponseTypes } from '@discordeno/bot';
 
