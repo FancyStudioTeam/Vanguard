@@ -95,7 +95,10 @@ export class CommandManager {
 	}
 
 	public getCommandFromInteraction(interaction: Interaction): CommandsCollectionValue | undefined {
-		return this.commands.get(CommandManager.getCommandsCollectionKey(interaction));
+		const commandsCollectionKey = CommandManager.getCommandsCollectionKey(interaction);
+		const commandHandler = this.commands.get(commandsCollectionKey);
+
+		return commandHandler;
 	}
 
 	public async register(): Promise<void> {
