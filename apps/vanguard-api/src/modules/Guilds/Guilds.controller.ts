@@ -7,7 +7,7 @@ import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { GuildsService } from './Guilds.service.js';
 
 @Controller()
-@UseGuards(SessionGuard)
+@UseGuards(SessionGuard(false))
 export class GuildsController {
 	public constructor(
 		@Inject(GuildsService) private readonly guildsService: GuildsService,
