@@ -10,7 +10,7 @@ import { avatarUrl, type ContainerComponent, defaultAvatarUrl, MessageFlags } fr
 })
 export default class AvatarCommand extends UserContextHandler {
 	public async run() {
-		const targetUser = this.getTargetUser();
+		const targetUser = super.getTargetUser();
 		const targetUserAvatarUrl = this.getUserAvatarUrl(targetUser);
 
 		const containerComponent = this.createContainerComponent(targetUserAvatarUrl);
