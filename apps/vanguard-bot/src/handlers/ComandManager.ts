@@ -5,7 +5,7 @@ import { cwd } from 'node:process';
 import { pathToFileURL } from 'node:url';
 
 import type { Interaction } from '@vanguard/discord-config/inferred-types';
-import type { MessageContextHandler, UserContextHandler } from '@vanguard/discord-handlers/commands';
+import type { ChatInputHandler, MessageContextHandler, UserContextHandler } from '@vanguard/discord-handlers/commands';
 import type { DeclarableCommandConstructor } from '@vanguard/discord-handlers/decorators';
 
 import { type ApplicationCommandTypes, Collection, type CreateApplicationCommand } from '@discordeno/bot';
@@ -118,4 +118,4 @@ interface CommandFileImportData {
 type CommandsCollectionKey = `name:${string}/type:${ApplicationCommandTypes}`;
 type CommandsCollectionValue = DeclarableCommandHandler;
 
-type DeclarableCommandHandler = MessageContextHandler | UserContextHandler;
+type DeclarableCommandHandler = ChatInputHandler | MessageContextHandler | UserContextHandler;
