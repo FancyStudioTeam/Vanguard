@@ -1,9 +1,9 @@
 import type { Message } from '@vanguard/discord-config/inferred-types';
 
 import { ApplicationCommandTypes, type CreateApplicationCommand, type InteractionData } from '@discordeno/bot';
+import type { Class } from 'utility-types';
 
 import { HandlerBase } from '#base/HandlerBase.js';
-import type { Constructor } from '#commands/types/Constructor.js';
 import {
 	CANNOT_RETREIVE_TARGET,
 	CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID,
@@ -50,7 +50,7 @@ export abstract class MessageContextHandler extends HandlerBase {
 	}
 }
 
-export type MessageContextHandlerConstructor = Constructor<MessageContextHandler>;
+export type MessageContextHandlerConstructor = Class<MessageContextHandler>;
 export type MessageContextHandlerDeclareOptions = Pick<
 	CreateApplicationCommand,
 	'contexts' | 'defaultMemberPermissions' | 'integrationTypes' | 'name' | 'nameLocalizations' | 'nsfw'

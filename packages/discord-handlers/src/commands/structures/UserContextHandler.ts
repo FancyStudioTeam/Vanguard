@@ -1,9 +1,9 @@
 import type { User } from '@vanguard/discord-config/inferred-types';
 
 import { ApplicationCommandTypes, type CreateApplicationCommand } from '@discordeno/bot';
+import type { Class } from 'utility-types';
 
 import { HandlerBase } from '#base/HandlerBase.js';
-import type { Constructor } from '#commands/types/Constructor.js';
 import {
 	CANNOT_RETREIVE_TARGET,
 	CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID,
@@ -50,7 +50,7 @@ export abstract class UserContextHandler extends HandlerBase {
 	}
 }
 
-export type UserContextHandlerConstructor = Constructor<UserContextHandler>;
+export type UserContextHandlerConstructor = Class<UserContextHandler>;
 export type UserContextHandlerDeclareOptions = Pick<
 	CreateApplicationCommand,
 	'contexts' | 'defaultMemberPermissions' | 'integrationTypes' | 'name' | 'nameLocalizations' | 'nsfw'
