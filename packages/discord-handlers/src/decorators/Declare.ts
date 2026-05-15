@@ -1,4 +1,6 @@
 import type {
+	ChatInputHandlerConstructor,
+	ChatInputHandlerDeclareOptions,
 	MessageContextHandlerConstructor,
 	MessageContextHandlerDeclareOptions,
 	UserContextHandlerConstructor,
@@ -22,12 +24,14 @@ export function Declare<Target extends DeclarableConstructor>(options: DeclareOp
 	};
 }
 
-export type DeclarableCommandConstructor = MessageContextHandlerConstructor | UserContextHandlerConstructor;
+export type DeclarableCommandConstructor = ChatInputHandlerConstructor | MessageContextHandlerConstructor | UserContextHandlerConstructor;
 
 export type DeclarableConstructor = DeclarableCommandConstructor;
 
-export type DeclareOptions<Target extends DeclarableConstructor> = Target extends MessageContextHandlerConstructor
-	? MessageContextHandlerDeclareOptions
-	: Target extends UserContextHandlerConstructor
-		? UserContextHandlerDeclareOptions
-		: never;
+export type DeclareOptions<Target extends DeclarableConstructor> = Target extends ChatInputHandlerConstructor
+	? ChatInputHandlerDeclareOptions
+	: Target extends MessageContextHandlerConstructor
+		? MessageContextHandlerDeclareOptions
+		: Target extends UserContextHandlerConstructor
+			? UserContextHandlerDeclareOptions
+			: never;
