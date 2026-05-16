@@ -1,7 +1,3 @@
-import { Logger } from 'tslog';
+import { Logger } from '@vanguard/logger';
 
-export const logger = new Logger({
-	hideLogPositionForProduction: true,
-	prettyLogTimeZone: 'UTC',
-	type: 'pretty',
-});
+export const logger = new Logger();

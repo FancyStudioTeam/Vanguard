@@ -6,11 +6,10 @@
 		"@vanguard/discord-config": "workspace:*",
 		"@vanguard/discord-handlers": "workspace:*",
 		"@vanguard/discord-jsx": "workspace:*",
+		"@vanguard/logger": "workspace:*",
 		"@vanguard/prisma": "workspace:*",
 		"chalk": "5.6.2",
-		"dotenv": "17.4.2",
-		"mongodb": "7.2.0",
-		"winston": "3.19.0"
+		"dotenv": "17.4.2"
 	},
 	"devDependencies": {
 		"@types/node": "25.7.0",
