@@ -2,7 +2,7 @@
 
 import type { APIGuild, APIUser, APIUserGuild } from '#interfaces/discord.js';
 
-export type RESTGetAPIGuild = APIGuild;
+export type RESTGetAPIGuildResponse = APIGuild;
 
-export type RESTGetAPIUser = APIUser;
-export type RESTGetAPIUserGuilds = APIUserGuild[];
+export type RESTGetAPIUserGuildsResponse = APIUserGuild[];
+export type RESTGetAPIUserResponse = APIUser;
