@@ -1,7 +1,9 @@
+import type { APIUserGuild } from '@vanguard/api-types/interfaces';
+
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
+import type { RESTAPIPartialCurrentUserGuild as DiscordApiUserGuild } from 'discord-api-types/v10';
 
-import type { UserGuild } from '#lib/Types/Discord.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 
 const userGuildsCacheKey = (userId: string): string => `user:${userId}/guilds`;
@@ -16,19 +18,39 @@ export class GuildsService {
 		@Inject(DiscordService) private readonly discordService: DiscordService,
 	) {}
 
-	public async getGuilds(userId: string, accessToken: string): Promise<UserGuild[]> {
+	public async getCurrentUserGuilds(userId: string, accessToken: string): Promise<APIUserGuild[]> {
 		const userGuildsCacheKey = GuildsService.USER_GUILDS_CACHE_KEY(userId);
 		const userGuildsCacheTtl = GuildsService.USER_GUILDS_CACHE_TTL;
 
-		const cachedUserGuilds = await this.cacheService.get<UserGuild[]>(userGuildsCacheKey);
+		const cachedUserGuilds = await this.cacheService.get<APIUserGuild[]>(userGuildsCacheKey);
 
 		if (cachedUserGuilds) {
 			return cachedUserGuilds;
 		}
 
 		const currentUserGuilds = await this.discordService.getCurrentUserGuilds(accessToken);
-		const currentUserGuildsCached = await this.cacheService.set<UserGuild[]>(userGuildsCacheKey, currentUserGuilds, userGuildsCacheTtl);
+		const currentUserGuildsParsed = this.parseUserGuilds(currentUserGuilds);
+
+		const currentUserGuildsCached = await this.cacheService.set<APIUserGuild[]>(
+			userGuildsCacheKey,
+			currentUserGuildsParsed,
+			userGuildsCacheTtl,
+		);
 
 		return currentUserGuildsCached;
+	}
+
+	public parseUserGuild({ banner, icon, id, name, permissions }: DiscordApiUserGuild): APIUserGuild {
+		return {
+			banner,
+			icon,
+			id,
+			name,
+			permissions,
+		};
+	}
+
+	public parseUserGuilds(apiUserGuilds: DiscordApiUserGuild[]): APIUserGuild[] {
+		return apiUserGuilds.map(this.parseUserGuild);
 	}
 }

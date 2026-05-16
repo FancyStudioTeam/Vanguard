@@ -1,3 +1,5 @@
+import type { RESTGetAPIUserGuildsResponse } from '@vanguard/api-types/rest';
+
 import { Controller, Get, Inject, UseGuards } from '@nestjs/common';
 
 import { SessionId } from '#common/Decorators/SessionId.js';
@@ -15,9 +17,12 @@ export class GuildsController {
 	) {}
 
 	@Get()
-	protected async getCurrentUserGuilds(@SessionId() sessionId: string, @SessionUserId() sessionUserId: string) {
+	protected async getCurrentUserGuilds(
+		@SessionId() sessionId: string,
+		@SessionUserId() sessionUserId: string,
+	): Promise<RESTGetAPIUserGuildsResponse> {
 		const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
-		const currentUserGuilds = await this.guildsService.getGuilds(sessionUserId, currentUserAccessToken);
+		const currentUserGuilds = await this.guildsService.getCurrentUserGuilds(sessionUserId, currentUserAccessToken);
 
 		return currentUserGuilds;
 	}

@@ -2,6 +2,7 @@ import { DiscordAPIError, REST } from '@discordjs/rest';
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import {
+	type APIGuild,
 	type RESTGetAPICurrentUserGuildsResult,
 	type RESTGetAPICurrentUserResult,
 	type RESTGetAPIGuildResult,
@@ -13,8 +14,6 @@ import {
 import { CLIENT_ID, CLIENT_SECRET, CLIENT_TOKEN } from '#lib/Constants/Client.js';
 import { UNABLE_TO_GET_USER_INFORMATION_RESPONSE } from '#lib/Responses/Auth.js';
 import { INTERNAL_SERVER_ERROR_RESPONSE, NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
-import type { Guild, User, UserAccessResult, UserGuild } from '#lib/Types/Discord.js';
-import { DiscordUtilsService } from '#modules/DiscordUtils/DiscordUtils.service.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 const guildCacheKey = (guildId: string): string => `guilds:${guildId}`;
@@ -28,10 +27,7 @@ export class DiscordService {
 	private static GUILD_MEMBER_PERMISSIONS_CACHE_KEY = guildMemberPermissionsCacheKey;
 	private static GUILD_MEMBER_PERMISSIONS_CACHE_TTL = 15_000 as const;
 
-	public constructor(
-		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
-		@Inject(DiscordUtilsService) private readonly discordUtilsService: DiscordUtilsService,
-	) {}
+	public constructor(@Inject(CACHE_MANAGER) private readonly cacheService: Cache) {}
 
 	private createRestManager(): REST {
 		return new REST().setToken(CLIENT_TOKEN);
@@ -80,15 +76,12 @@ export class DiscordService {
 	/**
 	 * @see https://docs.discord.com/developers/resources/user#get-current-user
 	 */
-	public async getCurrentUser(accessToken: string): Promise<User> {
+	public async getCurrentUser(accessToken: string): Promise<RESTGetAPICurrentUserResult> {
 		const requestManager = this.createRestManagerForBearer(accessToken);
 		const requestEndpoint = Routes.user('@me');
 
 		try {
-			const currentUser = (await requestManager.get(requestEndpoint)) as RESTGetAPICurrentUserResult;
-			const currentUserParsed = this.discordUtilsService.parseUser(currentUser);
-
-			return currentUserParsed;
+			return (await requestManager.get(requestEndpoint)) as RESTGetAPICurrentUserResult;
 		} catch {
 			throw UNABLE_TO_GET_USER_INFORMATION_RESPONSE();
 		}
@@ -97,20 +90,17 @@ export class DiscordService {
 	/**
 	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guilds
 	 */
-	public async getCurrentUserGuilds(accessToken: string): Promise<UserGuild[]> {
+	public async getCurrentUserGuilds(accessToken: string): Promise<RESTGetAPICurrentUserGuildsResult> {
 		const requestManager = this.createRestManagerForBearer(accessToken);
 		const requestEndpoint = Routes.userGuilds();
 
-		const currentUserGuilds = (await requestManager.get(requestEndpoint).catch(() => [])) as RESTGetAPICurrentUserGuildsResult;
-		const currentUserGuildsParsed = this.discordUtilsService.parseUserGuilds(currentUserGuilds);
-
-		return currentUserGuildsParsed;
+		return (await requestManager.get(requestEndpoint).catch(() => [])) as RESTGetAPICurrentUserGuildsResult;
 	}
 
 	/**
 	 * @see https://docs.discord.com/developers/resources/guild#get-guild
 	 */
-	public async getGuild(guildId: string): Promise<Guild> {
+	public async getGuild(guildId: string): Promise<RESTGetAPIGuildResult> {
 		const guildCacheKey = DiscordService.GUILD_CACHE_KEY(guildId);
 		const guildCacheTtl = DiscordService.GUILD_CACHE_TTL;
 
@@ -137,10 +127,7 @@ export class DiscordService {
 		try {
 			const guild = (await requestManager.get(requestEndpoint)) as RESTGetAPIGuildResult;
 
-			const guildParsed = this.discordUtilsService.parseGuild(guild);
-			const guildCached = await this.cacheService.set<GuildValueWithObject>(guildCacheKey, guildParsed, guildCacheTtl);
-
-			return guildCached;
+			return await this.cacheService.set<GuildValueWithObject>(guildCacheKey, guild, guildCacheTtl);
 		} catch (exception) {
 			return await this.handleGuildException(guildId, exception);
 		}
@@ -183,25 +170,23 @@ export class DiscordService {
 	/**
 	 * @see https://docs.discord.com/developers/topics/oauth2#authorization-code-grant
 	 */
-	public async getUserAccess(code: string): Promise<UserAccessResult> {
+	public async getUserAccess(code: string): Promise<RESTPostOAuth2AccessTokenResult> {
 		const requestManager = this.createRestManager();
 		const requestEndpoint = Routes.oauth2TokenExchange();
 
 		const requestBody = this.createRequestBodyForTokenExchange(code);
 
-		const accessResult = (await requestManager.post(requestEndpoint, {
+		return (await requestManager.post(requestEndpoint, {
 			body: requestBody,
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 			passThroughBody: true,
 		})) as RESTPostOAuth2AccessTokenResult;
-
-		return this.discordUtilsService.parseUserAccessResult(accessResult);
 	}
 }
 
 type GuildCachedValue = GuildValueWithObject | GuildValueWithStatus;
 
-type GuildValueWithObject = Guild;
+type GuildValueWithObject = APIGuild;
 type GuildValueWithStatus = 'not_found';

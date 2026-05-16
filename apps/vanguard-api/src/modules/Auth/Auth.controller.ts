@@ -23,7 +23,7 @@ export class AuthController {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
 
-		const { accessToken: userAccessToken, refreshToken: userRefreshToken } = await this.discordService.getUserAccess(code);
+		const { access_token: userAccessToken, refresh_token: userRefreshToken } = await this.discordService.getUserAccess(code);
 		const { id: userId } = await this.discordService.getCurrentUser(userAccessToken);
 
 		const sessionId = this.sessionsService.generateSessionId();
