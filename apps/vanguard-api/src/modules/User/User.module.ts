@@ -4,6 +4,7 @@ import { DiscordModule } from '#modules/Discord/Discord.module.js';
 import { DiscordUtilsModule } from '#modules/DiscordUtils/DiscordUtils.module.js';
 import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
 import { UserController } from './User.controller.js';
+import { UserService } from './User.service.js';
 
 @Module({
 	controllers: [
@@ -13,6 +14,9 @@ import { UserController } from './User.controller.js';
 		DiscordModule,
 		DiscordUtilsModule,
 		SessionsModule,
+	],
+	providers: [
+		UserService,
 	],
 })
 export class UserModule {}

@@ -1,4 +1,4 @@
-import type { RESTGetAPIUser } from '@vanguard/api-types/rest';
+import type { RESTGetAPIUserResponse } from '@vanguard/api-types/rest';
 
 import { redirect } from 'react-router';
 
@@ -6,7 +6,7 @@ import { HttpStatus } from '#server/lib/Constants/HttpStatus.ts';
 import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getUser(request: Request): Promise<RESTGetAPIUser> {
+export async function getUser(request: Request): Promise<RESTGetAPIUserResponse> {
 	const response = await createRequest(request);
 	const responseBody = await response.json();
 
