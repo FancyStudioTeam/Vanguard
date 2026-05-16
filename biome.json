@@ -100,7 +100,32 @@
 				"noUnusedTemplateLiteral": "error",
 				"useBlockStatements": "error",
 				"useImportType": "error",
-				"useNamingConvention": "error",
+				"useNamingConvention": {
+					"fix": "safe",
+					"level": "error",
+					"options": {
+						"conventions": [
+							{
+								"formats": [
+									"camelCase",
+									"snake_case"
+								],
+								"selector": {
+									"kind": "objectLiteralMember"
+								}
+							},
+							{
+								"formats": [
+									"camelCase",
+									"snake_case"
+								],
+								"selector": {
+									"kind": "typeMember"
+								}
+							}
+						]
+					}
+				},
 				"useNodejsImportProtocol": {
 					"fix": "safe",
 					"level": "error"

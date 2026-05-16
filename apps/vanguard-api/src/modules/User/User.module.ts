@@ -10,6 +10,9 @@ import { UserService } from './User.service.js';
 	controllers: [
 		UserController,
 	],
+	exports: [
+		UserService,
+	],
 	imports: [
 		DiscordModule,
 		DiscordUtilsModule,

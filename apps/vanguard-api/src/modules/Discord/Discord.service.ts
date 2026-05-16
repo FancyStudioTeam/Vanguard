@@ -1,3 +1,5 @@
+import type { APIUser } from '@vanguard/api-types/interfaces';
+
 import { DiscordAPIError, REST } from '@discordjs/rest';
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
@@ -14,6 +16,7 @@ import {
 import { CLIENT_ID, CLIENT_SECRET, CLIENT_TOKEN } from '#lib/Constants/Client.js';
 import { UNABLE_TO_GET_USER_INFORMATION_RESPONSE } from '#lib/Responses/Auth.js';
 import { INTERNAL_SERVER_ERROR_RESPONSE, NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
+import { UserService } from '#modules/User/User.service.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 const guildCacheKey = (guildId: string): string => `guilds:${guildId}`;
@@ -27,7 +30,10 @@ export class DiscordService {
 	private static GUILD_MEMBER_PERMISSIONS_CACHE_KEY = guildMemberPermissionsCacheKey;
 	private static GUILD_MEMBER_PERMISSIONS_CACHE_TTL = 15_000 as const;
 
-	public constructor(@Inject(CACHE_MANAGER) private readonly cacheService: Cache) {}
+	public constructor(
+		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
+		@Inject(UserService) private readonly userService: UserService,
+	) {}
 
 	private createRestManager(): REST {
 		return new REST().setToken(CLIENT_TOKEN);
@@ -76,12 +82,15 @@ export class DiscordService {
 	/**
 	 * @see https://docs.discord.com/developers/resources/user#get-current-user
 	 */
-	public async getCurrentUser(accessToken: string): Promise<RESTGetAPICurrentUserResult> {
+	public async getCurrentUser(accessToken: string): Promise<APIUser> {
 		const requestManager = this.createRestManagerForBearer(accessToken);
 		const requestEndpoint = Routes.user('@me');
 
 		try {
-			return (await requestManager.get(requestEndpoint)) as RESTGetAPICurrentUserResult;
+			const currentUser = (await requestManager.get(requestEndpoint)) as RESTGetAPICurrentUserResult;
+			const currentUserParsed = this.userService.parseDiscordUser(currentUser);
+
+			return currentUserParsed;
 		} catch {
 			throw UNABLE_TO_GET_USER_INFORMATION_RESPONSE();
 		}
