@@ -1,0 +1,34 @@
+{
+	"author": "Vanguard Working Group",
+	"devDependencies": {
+		"@types/node": "25.7.0",
+		"rimraf": "6.1.3",
+		"typescript": "6.0.3"
+	},
+	"exports": {
+		"./interfaces": {
+			"import": "./dist/interfaces/index.js",
+			"require": "./dist/interfaces/index.js",
+			"types": "./dist/interfaces/index.d.ts"
+		},
+		"./rest": {
+			"import": "./dist/rest/index.js",
+			"require": "./dist/rest/index.js",
+			"types": "./dist/rest/index.d.ts"
+		}
+	},
+	"imports": {
+		"#interfaces/*": "./dist/interfaces/*",
+		"#rest/*": "./dist/rest/*"
+	},
+	"license": "AGPL-3.0-only",
+	"name": "@vanguard/api-types",
+	"packageManager": "pnpm@11.0.0",
+	"private": true,
+	"scripts": {
+		"build": "tsc --project tsconfig.json",
+		"prebuild": "rimraf dist"
+	},
+	"type": "module",
+	"version": "0.1.0"
+}
