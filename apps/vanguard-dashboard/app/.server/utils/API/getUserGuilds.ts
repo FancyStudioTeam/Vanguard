@@ -1,11 +1,12 @@
+import type { RESTGetAPIUserGuilds } from '@vanguard/api-types/rest';
+
 import { redirect } from 'react-router';
 
 import { HttpStatus } from '#server/lib/Constants/HttpStatus.ts';
 import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
-import type { UserGuild } from '#server/lib/Types/API.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getUserGuilds(request: Request): Promise<UserGuild[]> {
+export async function getUserGuilds(request: Request): Promise<RESTGetAPIUserGuilds> {
 	const response = await createRequest(request);
 	const responseBody = await response.json();
 
