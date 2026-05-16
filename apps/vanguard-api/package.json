@@ -13,6 +13,7 @@
 		"@nestjs/core": "11.1.20",
 		"@nestjs/mongoose": "11.0.4",
 		"@nestjs/platform-fastify": "11.1.20",
+		"@vanguard/api-types": "workspace:*",
 		"@vanguard/logger": "workspace:*",
 		"@vanguard/prisma": "workspace:*",
 		"cache-manager": "7.2.8",
