@@ -9,7 +9,7 @@ export default [
 		index('routes/Guild/GuildHomePage.tsx'),
 
 		route('tickets', 'routes/Guild/routes/Tickets/TicketsLayout.tsx', [
-			index('routes/guild/routes/Tickets/TicketsPage.tsx'),
+			index('routes/Guild/routes/Tickets/TicketsPage.tsx'),
 		]),
 	]),
 ] satisfies RouteConfig;
