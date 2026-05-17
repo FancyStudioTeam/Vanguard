@@ -1,4 +1,4 @@
-import type { UserGuild } from '#server/lib/Types/API.ts';
+import type { APIUserGuild } from '@vanguard/api-types/interfaces';
 
 export function GuildSelectorCardHeader({ banner, id }: GuildSelectorCardHeaderProps) {
 	if (!banner) {
@@ -15,4 +15,4 @@ export function GuildSelectorCardHeader({ banner, id }: GuildSelectorCardHeaderP
 	);
 }
 
-export type GuildSelectorCardHeaderProps = Pick<UserGuild, 'banner' | 'id'>;
+export type GuildSelectorCardHeaderProps = Pick<APIUserGuild, 'banner' | 'id'>;

@@ -1,7 +1,8 @@
+import type { APIUserGuild } from '@vanguard/api-types/interfaces';
+
 import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
-import type { UserGuild } from '#server/lib/Types/API.ts';
 
 export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFooterProps) {
 	return (
@@ -32,4 +33,4 @@ export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFoo
 	);
 }
 
-export type GuildSelectorCardFooterProps = Pick<UserGuild, 'icon' | 'id' | 'name'>;
+export type GuildSelectorCardFooterProps = Pick<APIUserGuild, 'icon' | 'id' | 'name'>;

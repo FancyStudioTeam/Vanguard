@@ -1,4 +1,5 @@
-import type { UserGuild } from '#server/lib/Types/API.ts';
+import type { APIUserGuild } from '@vanguard/api-types/interfaces';
+
 import { GuildSelectorCardFooter } from './GuildSelectorCardFooter.tsx';
 import { GuildSelectorCardHeader } from './GuildSelectorCardHeader.tsx';
 
@@ -16,4 +17,4 @@ export function GuildSelectorCard(props: GuildSelectorCardProps) {
 	);
 }
 
-export type GuildSelectorCardProps = UserGuild;
+export type GuildSelectorCardProps = APIUserGuild;
