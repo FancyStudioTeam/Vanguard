@@ -1,10 +1,9 @@
-import type { APIUser } from '@vanguard/api-types/interfaces';
+import type { APIGuild, APIUser, APIUserGuild } from '@vanguard/api-types/interfaces';
 
 import { DiscordAPIError, REST } from '@discordjs/rest';
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import {
-	type APIGuild,
 	type RESTGetAPICurrentUserGuildsResult,
 	type RESTGetAPICurrentUserResult,
 	type RESTGetAPIGuildResult,
@@ -16,11 +15,13 @@ import {
 import { CLIENT_ID, CLIENT_SECRET, CLIENT_TOKEN } from '#lib/Constants/Client.js';
 import { UNABLE_TO_GET_USER_INFORMATION_RESPONSE } from '#lib/Responses/Auth.js';
 import { INTERNAL_SERVER_ERROR_RESPONSE, NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
-import { UserService } from '#modules/User/User.service.js';
+import { ParserService } from '#modules/Parser/Parser.service.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 const guildCacheKey = (guildId: string): string => `guilds:${guildId}`;
 const guildMemberPermissionsCacheKey = (guildId: string, userId: string): string => `guilds:${guildId}/members:${userId}/permissions`;
+
+const userGuildsCacheKey = (userId: string): string => `user:${userId}/guilds`;
 
 @Injectable()
 export class DiscordService {
@@ -30,9 +31,12 @@ export class DiscordService {
 	private static GUILD_MEMBER_PERMISSIONS_CACHE_KEY = guildMemberPermissionsCacheKey;
 	private static GUILD_MEMBER_PERMISSIONS_CACHE_TTL = 15_000 as const;
 
+	private static USER_GUILDS_CACHE_KEY = userGuildsCacheKey;
+	private static USER_GUILDS_CACHE_TTL = 10_000 as const;
+
 	public constructor(
 		@Inject(CACHE_MANAGER) private readonly cacheService: Cache,
-		@Inject(UserService) private readonly userService: UserService,
+		@Inject(ParserService) private readonly parserService: ParserService,
 	) {}
 
 	private createRestManager(): REST {
@@ -88,7 +92,7 @@ export class DiscordService {
 
 		try {
 			const currentUser = (await requestManager.get(requestEndpoint)) as RESTGetAPICurrentUserResult;
-			const currentUserParsed = this.userService.parseDiscordUser(currentUser);
+			const currentUserParsed = this.parserService.parseDiscordUser(currentUser);
 
 			return currentUserParsed;
 		} catch {
@@ -99,17 +103,35 @@ export class DiscordService {
 	/**
 	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guilds
 	 */
-	public async getCurrentUserGuilds(accessToken: string): Promise<RESTGetAPICurrentUserGuildsResult> {
+	public async getCurrentUserGuilds(userId: string, accessToken: string): Promise<APIUserGuild[]> {
+		const userGuildsCacheKey = DiscordService.USER_GUILDS_CACHE_KEY(userId);
+		const userGuildsCacheTtl = DiscordService.USER_GUILDS_CACHE_TTL;
+
+		const cachedUserGuilds = await this.cacheService.get<UserGuildsCachedValue>(userGuildsCacheKey);
+
+		if (cachedUserGuilds) {
+			return cachedUserGuilds;
+		}
+
 		const requestManager = this.createRestManagerForBearer(accessToken);
 		const requestEndpoint = Routes.userGuilds();
 
-		return (await requestManager.get(requestEndpoint).catch(() => [])) as RESTGetAPICurrentUserGuildsResult;
+		const currentUserGuilds = (await requestManager.get(requestEndpoint).catch(() => [])) as RESTGetAPICurrentUserGuildsResult;
+
+		const currentUserGuildsParsed = this.parserService.parseDiscordUserGuilds(currentUserGuilds);
+		const currentUserGuildsCached = await this.cacheService.set<UserGuildsCachedValue>(
+			userGuildsCacheKey,
+			currentUserGuildsParsed,
+			userGuildsCacheTtl,
+		);
+
+		return currentUserGuildsCached;
 	}
 
 	/**
 	 * @see https://docs.discord.com/developers/resources/guild#get-guild
 	 */
-	public async getGuild(guildId: string): Promise<RESTGetAPIGuildResult> {
+	public async getGuild(guildId: string): Promise<APIGuild> {
 		const guildCacheKey = DiscordService.GUILD_CACHE_KEY(guildId);
 		const guildCacheTtl = DiscordService.GUILD_CACHE_TTL;
 
@@ -136,7 +158,10 @@ export class DiscordService {
 		try {
 			const guild = (await requestManager.get(requestEndpoint)) as RESTGetAPIGuildResult;
 
-			return await this.cacheService.set<GuildValueWithObject>(guildCacheKey, guild, guildCacheTtl);
+			const guildParsed = this.parserService.parseDiscordGuild(guild);
+			const guildCached = await this.cacheService.set<GuildValueWithObject>(guildCacheKey, guildParsed, guildCacheTtl);
+
+			return guildCached;
 		} catch (exception) {
 			return await this.handleGuildException(guildId, exception);
 		}
@@ -199,3 +224,5 @@ type GuildCachedValue = GuildValueWithObject | GuildValueWithStatus;
 
 type GuildValueWithObject = APIGuild;
 type GuildValueWithStatus = 'not_found';
+
+type UserGuildsCachedValue = APIUserGuild[];
