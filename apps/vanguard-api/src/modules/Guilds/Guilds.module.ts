@@ -3,7 +3,6 @@ import { Module } from '@nestjs/common';
 import { RouterModule } from '@nestjs/core';
 
 import { DiscordModule } from '#modules/Discord/Discord.module.js';
-import { DiscordUtilsModule } from '#modules/DiscordUtils/DiscordUtils.module.js';
 import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
 import { GuildModule } from './Guild/Guild.module.js';
 import { TicketsModule } from './Guild/Tickets/Tickets.module.js';
@@ -16,7 +15,6 @@ import { GuildsController } from './Guilds.controller.js';
 	imports: [
 		CacheModule.register(),
 		DiscordModule,
-		DiscordUtilsModule,
 		GuildModule,
 		RouterModule.register([
 			{

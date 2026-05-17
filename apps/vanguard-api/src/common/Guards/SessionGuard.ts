@@ -5,15 +5,14 @@ import type { FastifyRequest } from 'fastify';
 import { FORBIDDEN_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
-import { DiscordUtilsService } from '#modules/DiscordUtils/DiscordUtils.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
+import { hasPermission } from '#utils/Discord/hasPermission.js';
 
 export function SessionGuard(withPermissions: boolean = false): Type<CanActivate> {
 	@Injectable()
 	class SessionGuardMixin implements CanActivate {
 		public constructor(
 			@Inject(DiscordService) private readonly discordService: DiscordService,
-			@Inject(DiscordUtilsService) private readonly discordUtilsService: DiscordUtilsService,
 			@Inject(SessionsService) private readonly sessionsService: SessionsService,
 		) {}
 
@@ -45,7 +44,7 @@ export function SessionGuard(withPermissions: boolean = false): Type<CanActivate
 					currentUserAccessToken,
 				);
 
-				if (!this.discordUtilsService.hasPermission(currentUserPermissions, PermissionFlagsBits.ManageGuild)) {
+				if (!hasPermission(currentUserPermissions, PermissionFlagsBits.ManageGuild)) {
 					throw FORBIDDEN_RESPONSE();
 				}
 			}
