@@ -4,10 +4,9 @@ import { getUserGuilds } from '#server/utils/API/getUserGuilds.ts';
 import type { Route } from './+types/dashboard';
 
 export async function loader({ request }: Route.LoaderArgs) {
-	await getUser(request);
-
 	return {
 		guilds: await getUserGuilds(request),
+		user: await getUser(request),
 	};
 }
 
