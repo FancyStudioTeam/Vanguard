@@ -4,7 +4,7 @@
 		"tslog": "4.10.2"
 	},
 	"devDependencies": {
-		"@types/node": "25.7.0",
+		"@types/node": "25.8.0",
 		"rimraf": "6.1.3",
 		"typescript": "6.0.3"
 	},
