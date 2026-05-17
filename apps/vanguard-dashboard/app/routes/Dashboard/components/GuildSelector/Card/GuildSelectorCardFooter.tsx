@@ -7,12 +7,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
 export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFooterProps) {
 	return (
 		<footer className='flex h-25 items-center gap-4 p-6'>
-			<Avatar className='bg-neutral-900'>
+			<Avatar>
 				<AvatarImage
-					className='size-15 border-2 border-neutral-800'
+					className='size-15'
 					src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512&animated=true`}
 				/>
-				<AvatarFallback className='size-15 border-2 border-neutral-800'>
+				<AvatarFallback className='size-15'>
 					<ImageIcon
 						className='size-10 shrink-0'
 						weight='fill'
