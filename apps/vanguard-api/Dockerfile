@@ -9,8 +9,8 @@ COPY package.json pnpm-workspace.yaml tsconfig.base.json turbo.json ./
 COPY apps/vanguard-api apps/vanguard-api
 
 COPY packages/api-types packages/api-types
-COPY packages/prisma packages/prisma
 COPY packages/logger packages/logger
+COPY packages/prisma packages/prisma
 
 RUN pnpm install
 RUN pnpm run turbo:build
