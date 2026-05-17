@@ -9,7 +9,7 @@
 		"@fastify/cookie": "11.0.2",
 		"@fastify/secure-session": "8.3.0",
 		"@nestjs/cache-manager": "3.1.2",
-		"@nestjs/common": "11.1.20",
+		"@nestjs/common": "11.1.21",
 		"@nestjs/core": "11.1.20",
 		"@nestjs/mongoose": "11.0.4",
 		"@nestjs/platform-fastify": "11.1.21",
