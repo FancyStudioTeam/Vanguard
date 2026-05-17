@@ -1,6 +1,6 @@
 import { GuildContext } from '#context/GuildContext.ts';
 import { UserContext } from '#context/UserContext.ts';
-import type { Route } from './+types/home';
+import type { Route } from './+types/GuildHomePage';
 
 export function loader({ context }: Route.LoaderArgs) {
 	const user = context.get(UserContext);

@@ -5,11 +5,11 @@ export default [
 
 	route('dashboard', 'routes/Dashboard/DashboardPage.tsx'),
 
-	route('dashboard/:guildId', 'routes/guild/layout.tsx', [
-		index('routes/guild/home.tsx'),
+	route('dashboard/:guildId', 'routes/Guild/GuildLayout.tsx', [
+		index('routes/Guild/GuildHomePage.tsx'),
 
-		route('tickets', 'routes/guild/tickets/layout.tsx', [
-			index('routes/guild/tickets/index.tsx'),
+		route('tickets', 'routes/Guild/routes/Tickets/TicketsLayout.tsx', [
+			index('routes/guild/routes/Tickets/TicketsPage.tsx'),
 		]),
 	]),
 ] satisfies RouteConfig;
