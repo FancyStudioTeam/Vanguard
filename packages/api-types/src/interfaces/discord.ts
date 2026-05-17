@@ -1,7 +1,4 @@
-/*
- * biome-ignore-all lint/style/useNamingConvention: REST API properties are
- * parsed using snake case.
- */
+// biome-ignore-all lint/style/useNamingConvention: (x)
 
 export interface APIGuild {
 	banner: string | null;
