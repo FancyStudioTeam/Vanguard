@@ -1,10 +1,10 @@
-import { guildContext } from '#context/GuildContext.ts';
-import { userContext } from '#context/UserContext.ts';
+import { GuildContext } from '#context/GuildContext.ts';
+import { UserContext } from '#context/UserContext.ts';
 import type { Route } from './+types/home';
 
 export function loader({ context }: Route.LoaderArgs) {
-	const guild = context.get(guildContext);
-	const user = context.get(userContext);
+	const user = context.get(UserContext);
+	const guild = context.get(GuildContext);
 
 	return {
 		guild,

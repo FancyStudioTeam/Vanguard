@@ -1,7 +1,8 @@
+import type { APIGuild } from '@vanguard/api-types/interfaces';
+
 import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
-import type { Guild } from '#server/lib/Types/API.ts';
 
 export function SidebarHeader({ icon, id, name }: SidebarHeaderProps) {
 	return (
@@ -32,4 +33,4 @@ export function SidebarHeader({ icon, id, name }: SidebarHeaderProps) {
 	);
 }
 
-export type SidebarHeaderProps = Pick<Guild, 'icon' | 'id' | 'name'>;
+export type SidebarHeaderProps = Pick<APIGuild, 'icon' | 'id' | 'name'>;
