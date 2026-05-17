@@ -2,6 +2,6 @@
 
 import type { APIGuildTicketPanel, APIGuildTicketsConfiguration } from '#interfaces/tickets.js';
 
-export type RESTGetAPIGuildTicketsConfiguration = APIGuildTicketsConfiguration;
+export type RESTGetAPIGuildTicketsConfigurationResponse = APIGuildTicketsConfiguration;
 
-export type RESTPostAPIGuildTicketPanel = APIGuildTicketPanel;
+export type RESTPostAPIGuildTicketPanelResponse = APIGuildTicketPanel;
