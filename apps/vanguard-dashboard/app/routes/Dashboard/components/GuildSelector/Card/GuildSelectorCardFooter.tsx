@@ -10,7 +10,7 @@ export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFoo
 			<Avatar className='bg-neutral-900'>
 				<AvatarImage
 					className='size-15 border-2 border-neutral-800'
-					src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512`}
+					src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512&animated=true`}
 				/>
 				<AvatarFallback className='size-15 border-2 border-neutral-800'>
 					<ImageIcon

@@ -1,9 +1,9 @@
 import { index, type RouteConfig, route } from '@react-router/dev/routes';
 
 export default [
-	index('routes/HomePage.tsx'),
+	index('routes/Home/HomePage.tsx'),
 
-	route('dashboard', 'routes/dashboard.tsx'),
+	route('dashboard', 'routes/Dashboard/DashboardPage.tsx'),
 
 	route('dashboard/:guildId', 'routes/guild/layout.tsx', [
 		index('routes/guild/home.tsx'),

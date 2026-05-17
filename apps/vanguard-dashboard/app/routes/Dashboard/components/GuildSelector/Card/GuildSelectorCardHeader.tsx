@@ -9,7 +9,7 @@ export function GuildSelectorCardHeader({ banner, id }: GuildSelectorCardHeaderP
 		<header
 			className='h-25 w-full bg-center bg-cover bg-no-repeat'
 			style={{
-				backgroundImage: `url(https://cdn.discordapp.com/banners/${id}/${banner}.webp?size=512)`,
+				backgroundImage: `url(https://cdn.discordapp.com/banners/${id}/${banner}.webp?size=512&animated=true)`,
 			}}
 		/>
 	);
