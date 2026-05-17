@@ -120,7 +120,7 @@
 									"snake_case"
 								],
 								"selector": {
-									"kind": "typeMember"
+									"kind": "typeProperty"
 								}
 							}
 						]
