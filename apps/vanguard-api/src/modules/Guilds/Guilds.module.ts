@@ -17,6 +17,7 @@ import { GuildsController } from './Guilds.controller.js';
 		CacheModule.register(),
 		DiscordModule,
 		DiscordUtilsModule,
+		GuildModule,
 		RouterModule.register([
 			{
 				children: [
