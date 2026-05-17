@@ -45,10 +45,10 @@ export class ParserService {
 
 	public parseGuildTicketPanel({ channelId, channelParentId, enabled, panelId, title, type }: GuildTicketPanel): APIGuildTicketPanel {
 		return {
-			channelId,
-			channelParentId,
+			channel_id: channelId,
+			channel_parent_id: channelParentId,
 			enabled,
-			panelId,
+			panel_id: panelId,
 			title,
 			type,
 		};

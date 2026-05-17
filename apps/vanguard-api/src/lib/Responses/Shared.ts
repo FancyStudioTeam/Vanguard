@@ -49,3 +49,21 @@ export const UNAUTHORIZED_RESPONSE = (): HttpException =>
 		},
 		statusCode: HttpStatus.UNAUTHORIZED,
 	});
+
+export const UNPROCESSABLE_ENTITY_RESPONSE = (): HttpException =>
+	buildHttpException({
+		data: {
+			code: 'UNPROCESSABLE_ENTITY',
+			message: '422: Unprocessable Entity',
+		},
+		statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+	});
+
+export const ZOD_VALIDATION_ERROR_RESPONSE = (zodIssueMessage: string): HttpException =>
+	buildHttpException({
+		data: {
+			code: 'ZOD_VALIDATION_ERROR',
+			message: zodIssueMessage,
+		},
+		statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+	});

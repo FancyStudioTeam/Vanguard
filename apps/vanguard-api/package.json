@@ -13,6 +13,7 @@
 		"@nestjs/core": "11.1.20",
 		"@nestjs/mongoose": "11.0.4",
 		"@nestjs/platform-fastify": "11.1.21",
+		"@sapphire/snowflake": "3.5.5",
 		"@vanguard/api-types": "workspace:*",
 		"@vanguard/logger": "workspace:*",
 		"@vanguard/prisma": "workspace:*",
@@ -22,7 +23,8 @@
 		"fastify": "5.8.5",
 		"mongoose": "9.6.2",
 		"rxjs": "7.8.2",
-		"ts-pattern": "5.9.0"
+		"ts-pattern": "5.9.0",
+		"zod": "4.4.3"
 	},
 	"devDependencies": {
 		"@nestjs/cli": "11.0.21",

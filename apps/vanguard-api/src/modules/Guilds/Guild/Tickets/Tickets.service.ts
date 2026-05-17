@@ -1,6 +1,7 @@
 import type { GuildTicketPanel, GuildTicketsConfiguration } from '@vanguard/prisma';
 
 import { Inject, Injectable } from '@nestjs/common';
+import { DiscordSnowflake } from '@sapphire/snowflake';
 
 import { PrismaService } from '#modules/Prisma/Prisma.service.js';
 
@@ -8,8 +9,28 @@ import { PrismaService } from '#modules/Prisma/Prisma.service.js';
 export class TicketsService {
 	public constructor(@Inject(PrismaService) private readonly prismaService: PrismaService) {}
 
-	public get guildTicketsConfig() {
+	public get guildTicketPanel() {
+		return this.prismaService.guildTicketPanel;
+	}
+
+	public get guildTicketsConfiguration() {
 		return this.prismaService.guildTicketsConfiguration;
+	}
+
+	public async createGuildTicketPanel(guildId: string, options: CreateGuildTicketPanelOptions): Promise<GuildTicketPanel> {
+		const { channelId, title } = options;
+
+		const panelIdBigInt = DiscordSnowflake.generate();
+		const panelId = panelIdBigInt.toString();
+
+		return await this.guildTicketPanel.create({
+			data: {
+				channelId,
+				guildId,
+				panelId,
+				title,
+			},
+		});
 	}
 
 	public async getGuildTicketsConfiguration(guildId: string): Promise<
@@ -17,7 +38,7 @@ export class TicketsService {
 			panels: GuildTicketPanel[];
 		}
 	> {
-		return await this.guildTicketsConfig.upsert({
+		return await this.guildTicketsConfiguration.upsert({
 			create: {
 				guildId,
 			},
@@ -30,4 +51,9 @@ export class TicketsService {
 			},
 		});
 	}
+}
+
+interface CreateGuildTicketPanelOptions {
+	channelId: string;
+	title: string;
 }
