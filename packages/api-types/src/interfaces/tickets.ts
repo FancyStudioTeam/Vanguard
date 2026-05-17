@@ -1,6 +1,6 @@
 // biome-ignore-all lint/style/useNamingConvention: (x)
 
-export interface APITicketPanel {
+export interface APIGuildTicketPanel {
 	channelId: string;
 	channelParentId: string | null;
 	enabled: boolean;
@@ -9,7 +9,7 @@ export interface APITicketPanel {
 	type: unknown;
 }
 
-export interface APITicketsConfiguration {
+export interface APIGuildTicketsConfiguration {
 	enabled: boolean;
-	panels: APITicketPanel[];
+	panels: APIGuildTicketPanel[];
 }

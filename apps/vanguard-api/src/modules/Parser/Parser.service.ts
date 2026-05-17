@@ -1,4 +1,5 @@
-import type { APIGuild, APIUser, APIUserGuild } from '@vanguard/api-types/interfaces';
+import type { APIGuild, APIGuildTicketPanel, APIGuildTicketsConfiguration, APIUser, APIUserGuild } from '@vanguard/api-types/interfaces';
+import type { GuildTicketPanel, GuildTicketsConfiguration } from '@vanguard/prisma';
 
 import { Injectable } from '@nestjs/common';
 import type {
@@ -9,9 +10,6 @@ import type {
 
 @Injectable()
 export class ParserService {
-	/**
-	 * @see https://docs.discord.com/developers/resources/guild#guild-object-guild-structure
-	 */
 	public parseDiscordGuild({ banner, icon, id, name, owner_id }: DiscordGuild): APIGuild {
 		return {
 			banner,
@@ -22,9 +20,6 @@ export class ParserService {
 		};
 	}
 
-	/**
-	 * @see https://docs.discord.com/developers/resources/user#user-object-user-structure
-	 */
 	public parseDiscordUser({ avatar, global_name, id, username }: DiscordUser): APIUser {
 		return {
 			avatar,
@@ -34,9 +29,6 @@ export class ParserService {
 		};
 	}
 
-	/**
-	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guilds-example-partial-guild
-	 */
 	public parseDiscordUserGuild({ banner, icon, id, name, permissions }: DiscordUserGuild): APIUserGuild {
 		return {
 			banner,
@@ -47,10 +39,34 @@ export class ParserService {
 		};
 	}
 
-	/**
-	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guilds-example-partial-guild
-	 */
 	public parseDiscordUserGuilds(discordUserGuilds: DiscordUserGuild[]): APIUserGuild[] {
 		return discordUserGuilds.map(this.parseDiscordUserGuild);
+	}
+
+	public parseGuildTicketPanel({ channelId, channelParentId, enabled, panelId, title, type }: GuildTicketPanel): APIGuildTicketPanel {
+		return {
+			channelId,
+			channelParentId,
+			enabled,
+			panelId,
+			title,
+			type,
+		};
+	}
+
+	public parseGuildTicketPanels(guildTicketPanels: GuildTicketPanel[]): APIGuildTicketPanel[] {
+		return guildTicketPanels.map(this.parseGuildTicketPanel);
+	}
+
+	public parseGuildTicketsConfiguration({
+		enabled,
+		panels,
+	}: GuildTicketsConfiguration & {
+		panels: GuildTicketPanel[];
+	}): APIGuildTicketsConfiguration {
+		return {
+			enabled,
+			panels: this.parseGuildTicketPanels(panels),
+		};
 	}
 }

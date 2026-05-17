@@ -1,22 +1,22 @@
-model GuildTicketsConfig {
+model GuildTicketPanel {
+  channelId       String                    @db.VarChar(19)
+  channelParentId String?                   @db.VarChar(19)
+  config          GuildTicketsConfiguration @relation(fields: [guildId], references: [guildId], onDelete: Cascade, onUpdate: Cascade)
+  createdAt       DateTime                  @default(now())
+  enabled         Boolean                   @default(true)
+  guildId         String                    @db.VarChar(19)
+  panelId         String                    @id @unique @db.VarChar(19)
+  title           String                    @db.VarChar(50)
+  type            GuildTicketPanelType      @default(Text)
+  updatedAt       DateTime                  @updatedAt
+}
+
+model GuildTicketsConfiguration {
   createdAt DateTime           @default(now())
   enabled   Boolean            @default(true)
   guildId   String             @id @unique @db.VarChar(19)
   panels    GuildTicketPanel[]
   updatedAt DateTime           @updatedAt
-}
-
-model GuildTicketPanel {
-  channelId       String               @db.VarChar(19)
-  channelParentId String?              @db.VarChar(19)
-  config          GuildTicketsConfig   @relation(fields: [guildId], references: [guildId], onDelete: Cascade, onUpdate: Cascade)
-  createdAt       DateTime             @default(now())
-  enabled         Boolean              @default(true)
-  guildId         String               @db.VarChar(19)
-  panelId         String               @id @unique @db.VarChar(19)
-  title           String               @db.VarChar(50)
-  type            GuildTicketPanelType @default(Text)
-  updatedAt       DateTime             @updatedAt
 }
 
 enum GuildTicketPanelType {
