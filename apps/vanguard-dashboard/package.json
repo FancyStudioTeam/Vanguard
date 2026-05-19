@@ -4,7 +4,7 @@
 		"@base-ui/react": "1.4.1",
 		"@phosphor-icons/react": "2.1.10",
 		"@react-router/node": "7.15.1",
-		"@react-router/serve": "7.15.0",
+		"@react-router/serve": "7.15.1",
 		"@vanguard/api-types": "workspace:*",
 		"class-variance-authority": "0.7.1",
 		"clsx": "2.1.1",
