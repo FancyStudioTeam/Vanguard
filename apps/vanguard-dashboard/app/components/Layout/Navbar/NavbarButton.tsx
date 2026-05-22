@@ -1,11 +1,11 @@
 import { GridFourIcon } from '@phosphor-icons/react';
 
-import { buttonVariants } from '#components/UI/Button.tsx';
+import { ButtonVariants } from '#components/UI/Button.tsx';
 
 export function NavbarButton() {
 	return (
 		<a
-			className={buttonVariants({
+			className={ButtonVariants({
 				className: 'max-w-50',
 				variant: 'secondary',
 			})}
