@@ -19,6 +19,7 @@
 		"@vanguard/prisma": "workspace:*",
 		"cache-manager": "7.2.8",
 		"discord-api-types": "0.38.47",
+		"discord.js": "14.26.4",
 		"dotenv": "17.4.2",
 		"fastify": "5.8.5",
 		"mongoose": "9.6.2",
