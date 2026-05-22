@@ -11,7 +11,6 @@ import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
 
 @Controller('auth')
-
 @BypassAuth()
 @BypassGuildPermissions()
 export class AuthController {

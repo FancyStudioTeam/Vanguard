@@ -25,7 +25,6 @@ export class GuildController {
 
 	@Get('invite')
 	@Redirect()
-
 	@BypassAuth()
 	@BypassGuildPermissions()
 	protected redirectToGuildInvite(@Param('guildId') guildId: string): Record<string, unknown> {

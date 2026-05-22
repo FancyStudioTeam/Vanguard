@@ -2,6 +2,7 @@ import type { RESTGetAPIUserGuildsResponse } from '@vanguard/api-types/rest';
 
 import { Controller, Get, Inject } from '@nestjs/common';
 
+import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
 import { SessionId } from '#common/Decorators/SessionId.js';
 import { SessionUserId } from '#common/Decorators/SessionUserId.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
@@ -9,6 +10,7 @@ import { ParserService } from '#modules/Parser/Parser.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 
 @Controller()
+@BypassGuildPermissions()
 export class GuildsController {
 	public constructor(
 		@Inject(DiscordService) private readonly discordService: DiscordService,
