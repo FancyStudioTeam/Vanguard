@@ -7,7 +7,6 @@ export function NavbarButton() {
 		<a
 			className={ButtonVariants({
 				className: 'max-w-50',
-				variant: 'secondary',
 			})}
 			href='/dashboard'
 		>
