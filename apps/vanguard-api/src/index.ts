@@ -9,6 +9,7 @@ import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
 
 import { COOKIE_SALT, COOKIE_SECRET, COOKIE_SESSION_DATA_MAX_AGE, COOKIE_SESSION_DATA_NAME } from '#lib/Constants/Cookies.js';
+import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import { logger } from '#lib/Logger.js';
 import { AppModule } from '#modules/App.module.js';
 
@@ -45,7 +46,19 @@ const SECURE_SESSION_OPTIONS: SecureSessionPluginOptions = {
 
 const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
 
-app.enableCors();
+app.enableCors({
+	credentials: true,
+	methods: [
+		'DELETE',
+		'GET',
+		'PATCH',
+		'POST',
+		'PUT',
+	],
+	origin: [
+		BASE_DASHBOARD_URL,
+	],
+});
 app.setGlobalPrefix('api');
 
 await app.register(FastifyCookie);
