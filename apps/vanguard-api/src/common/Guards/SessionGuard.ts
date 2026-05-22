@@ -2,19 +2,15 @@ import { type CanActivate, type ExecutionContext, Inject, Injectable, mixin, typ
 import { PermissionFlagsBits } from 'discord-api-types/v10';
 import type { FastifyRequest } from 'fastify';
 
-import { FORBIDDEN_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
+import { BAD_REQUEST_RESPONSE, FORBIDDEN_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
-import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { hasPermission } from '#utils/Discord/hasPermission.js';
 
 export function SessionGuard(withPermissions: boolean = false): Type<CanActivate> {
 	@Injectable()
 	class SessionGuardMixin implements CanActivate {
-		public constructor(
-			@Inject(DiscordService) private readonly discordService: DiscordService,
-			@Inject(SessionsService) private readonly sessionsService: SessionsService,
-		) {}
+		public constructor(@Inject(DiscordService) private readonly discordService: DiscordService) {}
 
 		public async canActivate(context: ExecutionContext): Promise<boolean> {
 			const httpContext = context.switchToHttp();
@@ -34,17 +30,15 @@ export function SessionGuard(withPermissions: boolean = false): Type<CanActivate
 				const fastifyGuildId = Reflect.get(fastifyParams, 'guildId');
 
 				if (!fastifyGuildId) {
-					throw FORBIDDEN_RESPONSE();
+					throw BAD_REQUEST_RESPONSE();
 				}
 
-				const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
-				const currentUserPermissions = await this.discordService.getGuildMemberPermissions(
-					fastifyGuildId,
-					sessionUserId,
-					currentUserAccessToken,
-				);
+				const guild = await this.discordService.getGuild(fastifyGuildId);
+				const guildMember = await this.discordService.getGuildMember(fastifyGuildId, sessionUserId);
 
-				if (!hasPermission(currentUserPermissions, PermissionFlagsBits.ManageGuild)) {
+				const permissions = this.discordService.permissionsOf(guild, guildMember);
+
+				if (!hasPermission(permissions, PermissionFlagsBits.ManageGuild)) {
 					throw FORBIDDEN_RESPONSE();
 				}
 			}

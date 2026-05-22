@@ -2,6 +2,15 @@ import { type HttpException, HttpStatus } from '@nestjs/common';
 
 import { buildHttpException } from '#utils/Exceptions/buildHttpException.js';
 
+export const BAD_REQUEST_RESPONSE = (): HttpException =>
+	buildHttpException({
+		data: {
+			code: 'BAD_REQUEST',
+			message: '400: Bad Request',
+		},
+		statusCode: HttpStatus.BAD_REQUEST,
+	});
+
 export const FORBIDDEN_RESPONSE = (): HttpException =>
 	buildHttpException({
 		data: {
