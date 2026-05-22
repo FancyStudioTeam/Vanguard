@@ -1,6 +1,6 @@
 import type { RESTGetAPIGuildTicketsConfigurationResponse, RESTPostAPIGuildTicketPanelResponse } from '@vanguard/api-types/rest';
 
-import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, Post } from '@nestjs/common';
 
 import { ZodValidationPipe } from '#common/Pipes/ZodValidation.pipe.js';
 import { ParserService } from '#modules/Parser/Parser.service.js';
@@ -28,6 +28,11 @@ export class TicketsController {
 		const ticketPanelParsed = this.parserService.parseGuildTicketPanel(ticketPanel);
 
 		return ticketPanelParsed;
+	}
+
+	@Delete('panels/:panelId')
+	protected async deleteGuildTicketPanel(@Param('guildId') guildId: string, @Param('panelId') panelId: string): Promise<unknown> {
+		return await this.ticketsService.deleteGuildTicketPanel(guildId, panelId);
 	}
 
 	@Get()

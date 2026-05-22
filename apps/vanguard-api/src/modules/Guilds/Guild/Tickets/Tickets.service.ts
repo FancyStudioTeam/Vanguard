@@ -33,6 +33,15 @@ export class TicketsService {
 		});
 	}
 
+	public async deleteGuildTicketPanel(guildId: string, panelId: string): Promise<GuildTicketPanel> {
+		return await this.guildTicketPanel.delete({
+			where: {
+				guildId,
+				panelId,
+			},
+		});
+	}
+
 	public async getGuildTicketsConfiguration(guildId: string): Promise<
 		GuildTicketsConfiguration & {
 			panels: GuildTicketPanel[];

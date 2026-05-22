@@ -26,8 +26,9 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 }
 
 export default function ({ loaderData }: Route.ComponentProps) {
-	const { ticketsConfiguration } = loaderData;
+	const { guild, ticketsConfiguration } = loaderData;
 	const { panels } = ticketsConfiguration;
+	const { id: guildId } = guild;
 
 	return (
 		<div className='flex flex-col gap-6'>
@@ -49,7 +50,10 @@ export default function ({ loaderData }: Route.ComponentProps) {
 					() => <PanelsEmptyState />,
 				)
 				.otherwise((panels) => (
-					<PanelsTable panels={panels} />
+					<PanelsTable
+						guildId={guildId}
+						panels={panels}
+					/>
 				))}
 		</div>
 	);
