@@ -17,6 +17,12 @@
 			"#context/*": [
 				"./app/context/*"
 			],
+			"#hooks/*": [
+				"./app/hooks/*"
+			],
+			"#lib/*": [
+				"./app/lib/*"
+			],
 			"#server/*": [
 				"./app/.server/*"
 			],
