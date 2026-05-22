@@ -2,8 +2,8 @@ import type { RESTGetAPIGuildTicketsConfigurationResponse } from '@vanguard/api-
 
 import { redirect } from 'react-router';
 
-import { HttpStatus } from '#server/lib/Constants/HttpStatus.ts';
-import { BASE_API_URL } from '#server/lib/Constants/Shared.ts';
+import { BASE_API_URL } from '#lib/Shared.ts';
+import { HttpStatus } from '#server/lib/HttpStatus.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
 export async function getTicketsConfiguration(guildId: string, request: Request): Promise<RESTGetAPIGuildTicketsConfigurationResponse> {
