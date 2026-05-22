@@ -1,11 +1,9 @@
-import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
-import { RouterModule } from '@nestjs/core';
 
 import { DiscordModule } from '#modules/Discord/Discord.module.js';
+import { ParserModule } from '#modules/Parser/Parser.module.js';
 import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
 import { GuildModule } from './Guild/Guild.module.js';
-import { TicketsModule } from './Guild/Tickets/Tickets.module.js';
 import { GuildsController } from './Guilds.controller.js';
 
 @Module({
@@ -13,26 +11,9 @@ import { GuildsController } from './Guilds.controller.js';
 		GuildsController,
 	],
 	imports: [
-		CacheModule.register(),
 		DiscordModule,
 		GuildModule,
-		RouterModule.register([
-			{
-				children: [
-					{
-						children: [
-							{
-								module: TicketsModule,
-								path: 'tickets',
-							},
-						],
-						module: GuildModule,
-						path: ':guildId',
-					},
-				],
-				path: 'guilds',
-			},
-		]),
+		ParserModule,
 		SessionsModule,
 	],
 })

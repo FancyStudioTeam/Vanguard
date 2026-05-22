@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { DiscordModule } from '#modules/Discord/Discord.module.js';
+import { ParserModule } from '#modules/Parser/Parser.module.js';
 import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
 import { GuildController } from './Guild.controller.js';
 import { TicketsModule } from './Tickets/Tickets.module.js';
@@ -13,6 +14,7 @@ import { TicketsModule } from './Tickets/Tickets.module.js';
 		DiscordModule,
 		SessionsModule,
 		TicketsModule,
+		ParserModule,
 	],
 })
 export class GuildModule {}

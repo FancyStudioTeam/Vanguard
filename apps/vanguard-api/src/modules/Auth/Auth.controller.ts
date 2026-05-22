@@ -1,5 +1,7 @@
 import { Controller, Get, HttpStatus, Inject, Query, Redirect, Session } from '@nestjs/common';
 
+import { BypassAuth } from '#common/Decorators/BypassAuth.js';
+import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
@@ -9,6 +11,9 @@ import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
 
 @Controller('auth')
+
+@BypassAuth()
+@BypassGuildPermissions()
 export class AuthController {
 	public constructor(
 		@Inject(DiscordService) private readonly discordService: DiscordService,

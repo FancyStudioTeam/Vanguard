@@ -296,7 +296,9 @@ export class DiscordService {
 		]);
 		const guildRolesMap = new Map<string, APIRole>(guildRolesMapIterator);
 
-		// The '@everyone' role always exists and shares the same ID as the guild.
+		/*
+		 * The '@everyone' role always exists and shares the same ID as the guild.
+		 */
 		const everyoneRole = guildRolesMap.get(guildId) as APIRole;
 		const everyoneRolePermissions = everyoneRole.permissions;
 
@@ -306,9 +308,9 @@ export class DiscordService {
 			const memberRole = guildRolesMap.get(guildMemberRoleId);
 			const memberRolePermissions = BigInt(memberRole?.permissions ?? 0);
 
-			/**
-			 * The 'Administrator' permission implicitly grants every permission, so we
-			 * can stop iterating once it is found.
+			/*
+			 * The 'Administrator' permission implicitly grants every permission,
+			 * so we can stop iterating once it is found.
 			 */
 			if (memberRolePermissions & PermissionFlagsBits.Administrator) {
 				permissions = DiscordService.ALL_PERMISSIONS;

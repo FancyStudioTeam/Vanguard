@@ -1,23 +1,33 @@
 import type { RESTGetAPIGuildResponse } from '@vanguard/api-types/rest';
 
-import { Controller, Get, HttpStatus, Inject, Param, Redirect, UseGuards } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Inject, Param, Redirect } from '@nestjs/common';
 
-import { SessionGuard } from '#common/Guards/SessionGuard.js';
+import { BypassAuth } from '#common/Decorators/BypassAuth.js';
+import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
+import { ParserService } from '#modules/Parser/Parser.service.js';
 import { createGuildInviteUrl } from '#utils/URL/createGuildInviteUrl.js';
 
 @Controller()
 export class GuildController {
-	public constructor(@Inject(DiscordService) private readonly discordService: DiscordService) {}
+	public constructor(
+		@Inject(DiscordService) private readonly discordService: DiscordService,
+		@Inject(ParserService) private readonly parserService: ParserService,
+	) {}
 
 	@Get()
-	@UseGuards(SessionGuard(true))
 	protected async getGuild(@Param('guildId') guildId: string): Promise<RESTGetAPIGuildResponse> {
-		return await this.discordService.getGuild(guildId);
+		const guild = await this.discordService.getGuild(guildId);
+		const guildParsed = this.parserService.parseDiscordGuild(guild);
+
+		return guildParsed;
 	}
 
 	@Get('invite')
 	@Redirect()
+
+	@BypassAuth()
+	@BypassGuildPermissions()
 	protected redirectToGuildInvite(@Param('guildId') guildId: string): Record<string, unknown> {
 		return {
 			statusCode: HttpStatus.FOUND,

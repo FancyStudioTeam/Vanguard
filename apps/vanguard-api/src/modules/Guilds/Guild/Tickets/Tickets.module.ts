@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
 
-import { DiscordModule } from '#modules/Discord/Discord.module.js';
 import { ParserModule } from '#modules/Parser/Parser.module.js';
 import { PrismaModule } from '#modules/Prisma/Prisma.module.js';
-import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
 import { TicketsController } from './Tickets.controller.js';
 import { TicketsService } from './Tickets.service.js';
 
@@ -12,10 +10,8 @@ import { TicketsService } from './Tickets.service.js';
 		TicketsController,
 	],
 	imports: [
-		DiscordModule,
 		ParserModule,
 		PrismaModule,
-		SessionsModule,
 	],
 	providers: [
 		TicketsService,

@@ -1,15 +1,13 @@
 import type { RESTGetAPIGuildTicketsConfigurationResponse, RESTPostAPIGuildTicketPanelResponse } from '@vanguard/api-types/rest';
 
-import { Body, Controller, Get, Inject, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
 
-import { SessionGuard } from '#common/Guards/SessionGuard.js';
 import { ZodValidationPipe } from '#common/Pipes/ZodValidation.pipe.js';
 import { ParserService } from '#modules/Parser/Parser.service.js';
 import { CreateGuildTicketPanelSchema, type CreateGuildTicketPanelSchemaDto } from './Schemas/CreateGuildTicketPanel.js';
 import { TicketsService } from './Tickets.service.js';
 
 @Controller()
-@UseGuards(SessionGuard(true))
 export class TicketsController {
 	public constructor(
 		@Inject(ParserService) private readonly parserService: ParserService,
