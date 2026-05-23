@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { MetaDescriptor } from 'react-router';
 import { match, P } from 'ts-pattern';
 
 import { getUser } from '#server/utils/API/getUser.ts';
@@ -6,6 +7,17 @@ import { getUserGuilds } from '#server/utils/API/getUserGuilds.ts';
 import type { Route } from './+types/DashboardPage';
 import { GuildSelector } from './components/GuildSelector/GuildSelector.tsx';
 import { GuildSelectorEmptyState } from './components/GuildSelector/GuildSelectorEmptyState.tsx';
+
+export function meta(): MetaDescriptor[] {
+	return [
+		{
+			title: 'Vanguard',
+		},
+		{
+			robots: 'noindex, nofollow',
+		},
+	];
+}
 
 export async function loader({ request }: Route.LoaderArgs) {
 	return {

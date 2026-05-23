@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router';
+import { type MetaDescriptor, Outlet } from 'react-router';
 
 import { Sidebar } from '#components/Layout/Sidebar/Sidebar.tsx';
 import { GuildContext } from '#context/GuildContext.ts';
@@ -6,6 +6,17 @@ import { UserContext } from '#context/UserContext.ts';
 import { getGuild } from '#server/utils/API/getGuild.ts';
 import { getUser } from '#server/utils/API/getUser.ts';
 import type { Route } from './+types/GuildLayout';
+
+export function meta(): MetaDescriptor[] {
+	return [
+		{
+			title: 'Vanguard',
+		},
+		{
+			robots: 'noindex, nofollow',
+		},
+	];
+}
 
 const authMiddleware: Route.MiddlewareFunction = async ({ context, params, request }) => {
 	const { guildId } = params;
