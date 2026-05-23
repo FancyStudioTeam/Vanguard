@@ -244,6 +244,10 @@ importers:
         version: 8.0.12(@types/node@25.8.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.9.0)
 
   packages/api-types:
+    dependencies:
+      '@vanguard/prisma':
+        specifier: workspace:*
+        version: link:../prisma
     devDependencies:
       '@types/node':
         specifier: 25.8.0
