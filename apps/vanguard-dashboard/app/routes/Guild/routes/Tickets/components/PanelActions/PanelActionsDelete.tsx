@@ -10,28 +10,33 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from '#components/UI/AlertDialog.tsx';
-import { BASE_API_URL } from '#lib/Shared.ts';
+import { ButtonVariants } from '#components/UI/Button.tsx';
+import { createRequestUrl } from '#utils/URL/createRequestEndpoint.ts';
 
 export function PanelActionsDelete({ guildId, panelId, revalidator }: PanelActionsDeleteProps) {
-	const deletePanel = (requestUrl: string) => {
-		fetch(requestUrl, {
-			credentials: 'include',
-			method: 'DELETE',
-		});
-	};
-
-	const { trigger } = useSwrMutation(`${BASE_API_URL}/api/guilds/${guildId}/tickets/panels/${panelId}`, deletePanel, {
-		onError: () => revalidator.revalidate(),
-		onSuccess: () => revalidator.revalidate(),
-	});
+	const { trigger: triggerTicketPanelDeletion } = useSwrMutation(
+		createRequestUrl(`guilds/${guildId}/tickets/panels/${panelId}`),
+		(requestUrl: string) => {
+			fetch(requestUrl, {
+				credentials: 'include',
+				method: 'DELETE',
+			});
+		},
+		{
+			onError: () => revalidator.revalidate(),
+			onSuccess: () => revalidator.revalidate(),
+		},
+	);
 
 	return (
 		<AlertDialog>
-			<AlertDialogTrigger className='rounded-md bg-neutral-800 p-2 text-rose-400 text-sm transition-colors hover:bg-neutral-800/75'>
-				<TrashIcon
-					className='size-5 shrink-0'
-					weight='fill'
-				/>
+			<AlertDialogTrigger
+				className={ButtonVariants({
+					className: 'text-rose-400',
+					size: 'icon',
+				})}
+			>
+				<TrashIcon weight='fill' />
 			</AlertDialogTrigger>
 			<AlertDialogContent>
 				<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -40,7 +45,7 @@ export function PanelActionsDelete({ guildId, panelId, revalidator }: PanelActio
 					<AlertDialogClose>Cancel</AlertDialogClose>
 					<AlertDialogClose
 						className='text-rose-400'
-						onClick={() => trigger()}
+						onClick={() => triggerTicketPanelDeletion()}
 					>
 						Delete Permanently
 					</AlertDialogClose>
