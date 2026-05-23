@@ -22,12 +22,11 @@ export const ButtonVariants = cva(
 	},
 );
 
-export function Button({ className, variant = 'primary', ...props }: ButtonProps) {
+export function Button({ className, ...props }: ButtonProps) {
 	return (
 		<ButtonPrimitive
 			className={ButtonVariants({
 				className,
-				variant,
 			})}
 			{...props}
 		/>
