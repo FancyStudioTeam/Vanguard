@@ -36,7 +36,7 @@ export function AlertDialogDescription({ className, ...props }: AlertDialogDescr
 export function AlertDialogTitle({ className, ...props }: AlertDialogTitleProps) {
 	return (
 		<AlertDialogPrimitive.Title
-			className={classNames('font-bold text-md')}
+			className={classNames('font-bold text-lg')}
 			{...props}
 		/>
 	);

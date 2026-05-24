@@ -42,7 +42,7 @@ export function DialogDescription({ className, ...props }: DialogDescriptionProp
 export function DialogTitle({ className, ...props }: DialogTitleProps) {
 	return (
 		<DialogPrimitive.Title
-			className={classNames('font-bold text-md')}
+			className={classNames('font-bold text-lg')}
 			{...props}
 		/>
 	);
