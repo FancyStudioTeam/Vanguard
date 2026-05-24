@@ -1,21 +1,13 @@
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
 
 import { classNames } from '#utils/Tailwind/classNames.ts';
-import { ButtonVariants } from './Button.tsx';
 
 export function AlertDialog({ ...props }: AlertDialogProps) {
 	return <AlertDialogPrimitive.Root {...props} />;
 }
 
-export function AlertDialogClose({ className, ...props }: AlertDialogCloseProps) {
-	return (
-		<AlertDialogPrimitive.Close
-			className={ButtonVariants({
-				className,
-			})}
-			{...props}
-		/>
-	);
+export function AlertDialogClose({ ...props }: AlertDialogCloseProps) {
+	return <AlertDialogPrimitive.Close {...props} />;
 }
 
 export function AlertDialogContent({ className, ...props }: AlertDialogContentProps) {
@@ -50,13 +42,8 @@ export function AlertDialogTitle({ className, ...props }: AlertDialogTitleProps)
 	);
 }
 
-export function AlertDialogTrigger({ className, ...props }: AlertDialogTriggerProps) {
-	return (
-		<AlertDialogPrimitive.Trigger
-			className={classNames('flex cursor-pointer items-center justify-center gap-2', className)}
-			{...props}
-		/>
-	);
+export function AlertDialogTrigger({ ...props }: AlertDialogTriggerProps) {
+	return <AlertDialogPrimitive.Trigger {...props} />;
 }
 
 export type AlertDialogCloseProps = AlertDialogPrimitive.Close.Props;
