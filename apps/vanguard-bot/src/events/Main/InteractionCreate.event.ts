@@ -1,3 +1,8 @@
+/*
+ * biome-ignore-all lint/complexity/useLiteralKeys: Private members can only
+ * be accessed through computed properties.
+ */
+
 import { defineEventListener } from '@vanguard/discord-handlers/events';
 
 import { InteractionTypes } from '@discordeno/bot';
@@ -22,10 +27,8 @@ export default defineEventListener({
 				const command = commandManager.getCommandFromInteraction(interaction);
 
 				if (command) {
-					// biome-ignore-start lint/complexity/useLiteralKeys: (x)
 					command['setBot'](bot);
 					command['setInteraction'](interaction);
-					// biome-ignore-end lint/complexity/useLiteralKeys: (x)
 
 					await command.run();
 				}
