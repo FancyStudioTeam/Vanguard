@@ -32,8 +32,8 @@ export function PanelActionsDelete({ guildId, panelId, revalidator }: PanelActio
 		<AlertDialog>
 			<AlertDialogTrigger
 				className={ButtonVariants({
-					className: 'text-rose-400',
 					size: 'icon',
+					variant: 'danger',
 				})}
 			>
 				<TrashIcon weight='fill' />
@@ -42,9 +42,11 @@ export function PanelActionsDelete({ guildId, panelId, revalidator }: PanelActio
 				<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
 				<AlertDialogDescription>This action cannot be undone and will permanently delete this panel.</AlertDialogDescription>
 				<footer className='flex items-center justify-end gap-2'>
-					<AlertDialogClose>Cancel</AlertDialogClose>
+					<AlertDialogClose className={ButtonVariants()}>Cancel</AlertDialogClose>
 					<AlertDialogClose
-						className='text-rose-400'
+						className={ButtonVariants({
+							variant: 'danger',
+						})}
 						onClick={() => triggerTicketPanelDeletion()}
 					>
 						Delete Permanently

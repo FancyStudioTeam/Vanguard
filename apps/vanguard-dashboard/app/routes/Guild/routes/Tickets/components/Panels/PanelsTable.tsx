@@ -14,28 +14,22 @@ export function PanelsTable({ guildId, panels }: PanelsTableProps) {
 				<thead className='border-neutral-800 border-b-2'>
 					<tr className='*:p-4 *:text-left *:text-neutral-400 *:text-xs *:uppercase'>
 						<th>Name</th>
-						<th>Type</th>
 						<th>Status</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-					{panels.map(({ enabled, title, type, panel_id: panelId }) => (
+					{panels.map(({ enabled, title, panel_id: panelId }) => (
 						<tr
-							className='border-neutral-800 not-last:border-b-2 *:px-4 *:py-2 *:text-md'
+							className='border-neutral-800 not-last:border-b-2 *:px-4 *:py-2 *:text-sm'
 							key={panelId}
 						>
 							<td>{title}</td>
 							<td>
-								<span className='rounded-full bg-neutral-800 px-2 py-1 font-bold text-neutral-400 text-xs uppercase'>
-									{String(type)}
-								</span>
-							</td>
-							<td>
 								<span
 									className={classNames(
 										'rounded-full bg-neutral-800 px-2 py-1 font-bold text-xs uppercase',
-										enabled ? 'text-emerald-500' : 'text-rose-500',
+										enabled ? 'text-emerald-400' : 'text-rose-400',
 									)}
 								>
 									{enabled ? 'Enabled' : 'Disabled'}
