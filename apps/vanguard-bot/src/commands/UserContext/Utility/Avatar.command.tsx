@@ -15,7 +15,7 @@ export default class AvatarCommand extends UserContextHandler {
 
 		const containerComponent = this.createContainerComponent(targetUserAvatarUrl);
 
-		await this.createInteractionMessage({
+		await super.createInteractionMessage({
 			components: [
 				containerComponent,
 			],
