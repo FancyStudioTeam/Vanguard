@@ -18,7 +18,7 @@
 		"@vanguard/logger": "workspace:*",
 		"@vanguard/prisma": "workspace:*",
 		"cache-manager": "7.2.8",
-		"discord-api-types": "0.38.47",
+		"discord-api-types": "0.38.48",
 		"discord.js": "14.26.4",
 		"dotenv": "17.4.2",
 		"fastify": "5.8.5",
