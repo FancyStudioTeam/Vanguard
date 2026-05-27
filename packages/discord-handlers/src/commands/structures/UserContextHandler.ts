@@ -4,11 +4,7 @@ import { ApplicationCommandTypes, type CreateApplicationCommand } from '@discord
 import type { Class } from 'utility-types';
 
 import { HandlerBase } from '#base/HandlerBase.js';
-import {
-	CANNOT_RETREIVE_TARGET,
-	CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID,
-	INTERACTION_CANNOT_BE_PROCESSED_WITHOUT_DATA,
-} from '#messages/Errors.js';
+import { CANNOT_RETREIVE_TARGET, CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID } from '#messages/Errors.js';
 
 export abstract class UserContextHandler extends HandlerBase {
 	public declare readonly declare: UserContextHandlerDeclareOptions;
@@ -17,25 +13,20 @@ export abstract class UserContextHandler extends HandlerBase {
 
 	public getTargetUser(): User {
 		const { data } = this.getInteraction();
-
-		if (!data) {
-			throw new TypeError(INTERACTION_CANNOT_BE_PROCESSED_WITHOUT_DATA);
-		}
-
-		const { resolved, targetId } = data;
+		const { resolved, targetId } = data ?? {};
 
 		if (!targetId) {
 			throw new TypeError(CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID);
 		}
 
-		const { users } = resolved ?? {};
-		const user = users?.get(targetId);
+		const resolvedUsers = resolved?.users;
+		const resolvedUser = resolvedUsers?.get(targetId);
 
-		if (!user) {
+		if (!resolvedUser) {
 			throw new TypeError(CANNOT_RETREIVE_TARGET);
 		}
 
-		return user;
+		return resolvedUser;
 	}
 
 	public getApplicationCommandOptions(): CreateApplicationCommand {

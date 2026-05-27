@@ -1,14 +1,10 @@
 import type { Message } from '@vanguard/discord-config/inferred-types';
 
-import { ApplicationCommandTypes, type CreateApplicationCommand, type InteractionData } from '@discordeno/bot';
+import { ApplicationCommandTypes, type CreateApplicationCommand } from '@discordeno/bot';
 import type { Class } from 'utility-types';
 
 import { HandlerBase } from '#base/HandlerBase.js';
-import {
-	CANNOT_RETREIVE_TARGET,
-	CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID,
-	INTERACTION_CANNOT_BE_PROCESSED_WITHOUT_DATA,
-} from '#messages/Errors.js';
+import { CANNOT_RETREIVE_TARGET, CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID } from '#messages/Errors.js';
 
 export abstract class MessageContextHandler extends HandlerBase {
 	public declare readonly declare: MessageContextHandlerDeclareOptions;
@@ -17,25 +13,20 @@ export abstract class MessageContextHandler extends HandlerBase {
 
 	public getTargetMessage(): Message {
 		const { data } = this.getInteraction();
-
-		if (!data) {
-			throw new TypeError(INTERACTION_CANNOT_BE_PROCESSED_WITHOUT_DATA);
-		}
-
-		const { resolved, targetId } = data as InteractionData;
+		const { resolved, targetId } = data ?? {};
 
 		if (!targetId) {
 			throw new TypeError(CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID);
 		}
 
-		const { messages } = resolved ?? {};
-		const message = messages?.get(targetId);
+		const resolvedMessages = resolved?.messages;
+		const resolvedMessage = resolvedMessages?.get(targetId);
 
-		if (!message) {
+		if (!resolvedMessage) {
 			throw new TypeError(CANNOT_RETREIVE_TARGET);
 		}
 
-		return message;
+		return resolvedMessage;
 	}
 
 	public getApplicationCommandOptions(): CreateApplicationCommand {
