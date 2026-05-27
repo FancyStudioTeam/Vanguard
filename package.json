@@ -8,7 +8,7 @@
 		"@commitlint/types": "21.0.1",
 		"husky": "9.1.7",
 		"lint-staged": "17.0.5",
-		"turbo": "2.9.14"
+		"turbo": "2.9.15"
 	},
 	"engines": {
 		"node": ">=22.18.0"
