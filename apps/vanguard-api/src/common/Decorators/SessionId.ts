@@ -5,6 +5,7 @@ export const SessionId = createParamDecorator((_: unknown, context: ExecutionCon
 	const httpContext = context.switchToHttp();
 
 	const fastifyRequest = httpContext.getRequest<FastifyRequest>();
+
 	const { sessionId } = fastifyRequest;
 
 	return sessionId;
