@@ -1,6 +1,7 @@
-import type { DiscordGuild, DiscordUser, DiscordUserGuild } from '#interfaces/discord.js';
+import type { DiscordGuild, DiscordGuildChannel, DiscordUser, DiscordUserGuild } from '#interfaces/discord.js';
 
-export type GetDiscordGuildResponse = DiscordGuild;
+export type GetDiscordGuild = DiscordGuild;
+export type GetDiscordGuildChannels = DiscordGuildChannel[];
 
-export type GetDiscordUserGuildsResponse = DiscordUserGuild[];
-export type GetDiscordUserResponse = DiscordUser;
+export type GetDiscordUser = DiscordUser;
+export type GetDiscordUserGuilds = DiscordUserGuild[];
