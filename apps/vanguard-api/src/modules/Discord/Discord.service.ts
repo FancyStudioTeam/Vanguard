@@ -9,6 +9,7 @@ import {
 	type APIUser,
 	PermissionFlagsBits,
 	type RESTAPIPartialCurrentUserGuild,
+	type RESTGetAPIChannelResult,
 	type RESTGetAPICurrentUserGuildsResult,
 	type RESTGetAPICurrentUserResult,
 	type RESTGetAPIGuildChannelsResult,
@@ -16,6 +17,7 @@ import {
 	type RESTGetAPIGuildResult,
 	type RESTGetAPIUserResult,
 	RESTJSONErrorCodes,
+	type RESTPostAPIChannelMessageJSONBody,
 	type RESTPostOAuth2AccessTokenResult,
 	Routes,
 } from 'discord-api-types/v10';
@@ -139,6 +141,29 @@ export class DiscordService {
 		}
 
 		throw INTERNAL_SERVER_ERROR_RESPONSE();
+	}
+
+	/**
+	 * @see https://docs.discord.com/developers/resources/message#create-message
+	 */
+	public async createMessage(
+		channelId: string,
+		body: RESTPostAPIChannelMessageJSONBody,
+	): Promise<void> {
+		await this.rest.post(Routes.channelMessages(channelId), {
+			body,
+		});
+	}
+
+	/**
+	 * @see https://docs.discord.com/developers/resources/channel#get-channel
+	 */
+	public async getChannel(channelId: string): Promise<RESTGetAPIChannelResult> {
+		const requestEndpoint = Routes.channel(channelId);
+
+		const channel = (await this.rest.get(requestEndpoint)) as RESTGetAPIChannelResult;
+
+		return channel;
 	}
 
 	/**

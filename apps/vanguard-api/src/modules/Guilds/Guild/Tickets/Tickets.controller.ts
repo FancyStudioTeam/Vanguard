@@ -4,9 +4,12 @@ import type {
 } from '@vanguard/api-contracts/rest';
 
 import { Body, Controller, Delete, Get, Inject, Param, Post } from '@nestjs/common';
+import { ButtonStyle, ChannelType, ComponentType, MessageFlags } from 'discord-api-types/v10';
 
 import { ZodValidationPipe } from '#common/Pipes/ZodValidation.pipe.js';
+import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { ParserService } from '#modules/Parser/Parser.service.js';
+import { InvalidTextChannelTypeException } from './Exceptions/InvalidTextChannelType.js';
 import {
 	CreateGuildTicketPanelSchema,
 	type CreateGuildTicketPanelSchemaDto,
@@ -16,6 +19,7 @@ import { TicketsService } from './Tickets.service.js';
 @Controller()
 export class TicketsController {
 	public constructor(
+		@Inject(DiscordService) private readonly discordService: DiscordService,
 		@Inject(ParserService) private readonly parserService: ParserService,
 		@Inject(TicketsService) private readonly ticketsService: TicketsService,
 	) {}
@@ -28,11 +32,48 @@ export class TicketsController {
 	): Promise<CreatePrismaGuildTicketPanel> {
 		const { channel_id: channelId, title } = createGuildTicketPanelData;
 
+		const { type } = await this.discordService.getChannel(channelId);
+
+		if (type !== ChannelType.GuildText) {
+			throw InvalidTextChannelTypeException();
+		}
+
 		const ticketPanel = await this.ticketsService.createGuildTicketPanel(guildId, {
 			channelId,
 			title,
 		});
 		const ticketPanelParsed = this.parserService.parseGuildTicketPanel(ticketPanel);
+
+		const ticketPanelId = ticketPanel.panelId;
+
+		await this.discordService.createMessage(channelId, {
+			components: [
+				{
+					components: [
+						{
+							content: '**Click the button below to create a ticket**',
+							type: ComponentType.TextDisplay,
+						},
+						{
+							type: ComponentType.Separator,
+						},
+						{
+							components: [
+								{
+									custom_id: `pannel:${ticketPanelId}`,
+									label: 'Create Ticket',
+									style: ButtonStyle.Secondary,
+									type: ComponentType.Button,
+								},
+							],
+							type: ComponentType.ActionRow,
+						},
+					],
+					type: ComponentType.Container,
+				},
+			],
+			flags: MessageFlags.IsComponentsV2,
+		});
 
 		return ticketPanelParsed;
 	}
