@@ -10,6 +10,7 @@ import type { EventListener } from '@vanguard/discord-handlers/events';
 import { Collection } from '@discordeno/bot';
 
 import type { Bot } from '#bot/BotTypes.js';
+import { logger } from '#lib/Logger.js';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
 
 export class EventManager {
@@ -53,17 +54,21 @@ export class EventManager {
 	private async handleEventFileImport(dirent: Dirent): Promise<void> {
 		const { name, parentPath } = dirent;
 
-		const eventFilePathUrlHref = this.createEventFileImportUrl(name, parentPath);
-		const eventFileImportData = (await import(eventFilePathUrlHref)) as EventFileImportData;
+		try {
+			const eventFilePathUrlHref = this.createEventFileImportUrl(name, parentPath);
+			const eventFileImportData = (await import(eventFilePathUrlHref)) as EventFileImportData;
 
-		const { default: eventListener } = eventFileImportData;
+			const { default: eventListener } = eventFileImportData;
 
-		const { data: eventData, run: eventRun } = eventListener;
-		const { name: eventName } = eventData;
+			const { data: eventData, run: eventRun } = eventListener;
+			const { name: eventName } = eventData;
 
-		const eventListeners = this.upsertEventListeners(eventName);
+			const eventListeners = this.upsertEventListeners(eventName);
 
-		eventListeners.push(eventRun as never);
+			eventListeners.push(eventRun as never);
+		} catch (error) {
+			logger.error(error);
+		}
 	}
 
 	private registerEventsToBot(): void {

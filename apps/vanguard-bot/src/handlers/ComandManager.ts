@@ -19,6 +19,7 @@ import {
 } from '@discordeno/bot';
 
 import type { Bot } from '#bot/BotTypes.js';
+import { logger } from '#lib/Logger.js';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
 
 export class CommandManager {
@@ -89,17 +90,21 @@ export class CommandManager {
 	private async handleCommandFileImport(dirent: Dirent): Promise<void> {
 		const { name, parentPath } = dirent;
 
-		const commandFilePathUrlHref = this.createCommandFileImportUrl(name, parentPath);
-		const commandFileImportData = (await import(
-			commandFilePathUrlHref
-		)) as CommandFileImportData;
+		try {
+			const commandFilePathUrlHref = this.createCommandFileImportUrl(name, parentPath);
+			const commandFileImportData = (await import(
+				commandFilePathUrlHref
+			)) as CommandFileImportData;
 
-		const { default: CommandHandlerConstructor } = commandFileImportData;
+			const { default: CommandHandlerConstructor } = commandFileImportData;
 
-		const commandHandler = new CommandHandlerConstructor();
-		const commandHandlerOptions = this.getCommandHandlerOptions(commandHandler);
+			const commandHandler = new CommandHandlerConstructor();
+			const commandHandlerOptions = this.getCommandHandlerOptions(commandHandler);
 
-		this.applicationCommands.push(commandHandlerOptions);
+			this.applicationCommands.push(commandHandlerOptions);
+		} catch (error) {
+			logger.error(error);
+		}
 	}
 
 	private async registerCommandsToBot(): Promise<void> {
