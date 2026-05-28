@@ -3,6 +3,7 @@ import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import {
 	type APIGuild,
+	type APIGuildChannel,
 	type APIGuildMember,
 	type APIRole,
 	type APIUser,
@@ -10,6 +11,7 @@ import {
 	type RESTAPIPartialCurrentUserGuild,
 	type RESTGetAPICurrentUserGuildsResult,
 	type RESTGetAPICurrentUserResult,
+	type RESTGetAPIGuildChannelsResult,
 	type RESTGetAPIGuildMemberResult,
 	type RESTGetAPIGuildResult,
 	type RESTGetAPIUserResult,
@@ -24,6 +26,8 @@ import { UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE, UNABLE_TO_GET_USER_INFO
 import { INTERNAL_SERVER_ERROR_RESPONSE, NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
+const channelsCacheKey = (guildId: string): string => `guilds:${guildId}/channels`;
+
 const guildCacheKey = (guildId: string): string => `guilds:${guildId}`;
 const guildMemberCacheKey = (guildId: string, userId: string): string => `guilds:${guildId}/users:${userId}`;
 
@@ -33,6 +37,9 @@ const userGuildsCacheKey = (userId: string): string => `users:${userId}/guilds`;
 @Injectable()
 export class DiscordService {
 	private static ALL_PERMISSIONS = Object.values(PermissionFlagsBits).reduce((accumulator, permission) => accumulator | permission, 0n);
+
+	private static CHANNELS_CACHE_KEY = channelsCacheKey;
+	private static CHANNELS_CACHE_TTL = 15_000 as const;
 
 	private static GUILD_CACHE_KEY = guildCacheKey;
 	private static GUILD_CACHE_TTL = 10_000 as const;
@@ -184,6 +191,27 @@ export class DiscordService {
 	}
 
 	/**
+	 * @see https://docs.discord.com/developers/resources/guild#get-guild-channels
+	 */
+	public async getGuildChannels(guildId: string): Promise<RESTGetAPIGuildChannelsResult> {
+		const channelsCacheKey = DiscordService.CHANNELS_CACHE_KEY(guildId);
+		const channelsCacheTtl = DiscordService.CHANNELS_CACHE_TTL;
+
+		const cachedChannels = await this.cacheService.get<ChannelsCachedValue>(channelsCacheKey);
+
+		if (cachedChannels !== undefined) {
+			return cachedChannels;
+		}
+
+		const requestEndpoint = Routes.guildChannels(guildId);
+
+		const channels = (await this.rest.get(requestEndpoint)) as RESTGetAPIGuildChannelsResult;
+		const channelsCached = await this.cacheService.set<ChannelsCachedValue>(channelsCacheKey, channels, channelsCacheTtl);
+
+		return channelsCached;
+	}
+
+	/**
 	 * @see https://docs.discord.com/developers/resources/guild#get-guild-member
 	 */
 	public async getGuildMember(guildId: string, userId: string): Promise<APIGuildMember> {
@@ -324,6 +352,8 @@ export class DiscordService {
 		return permissions;
 	}
 }
+
+type ChannelsCachedValue = APIGuildChannel[];
 
 type GuildCachedValue = GuildValueWithObject | GuildValueWithStatus;
 

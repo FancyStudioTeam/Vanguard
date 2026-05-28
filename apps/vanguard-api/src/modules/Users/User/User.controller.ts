@@ -1,4 +1,4 @@
-import type { RESTGetAPIUserResponse } from '@vanguard/api-types/rest';
+import type { GetDiscordUser } from '@vanguard/api-contracts/rest';
 
 import { Controller, Get, Inject } from '@nestjs/common';
 
@@ -18,7 +18,7 @@ export class UserController {
 	) {}
 
 	@Get()
-	protected async getCurrentUser(@SessionId() sessionId: string): Promise<RESTGetAPIUserResponse> {
+	protected async getCurrentUser(@SessionId() sessionId: string): Promise<GetDiscordUser> {
 		const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
 
 		const currentUser = await this.discordService.getCurrentUser(currentUserAccessToken);

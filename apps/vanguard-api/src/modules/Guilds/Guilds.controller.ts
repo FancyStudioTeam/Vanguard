@@ -1,4 +1,4 @@
-import type { RESTGetAPIUserGuildsResponse } from '@vanguard/api-types/rest';
+import type { GetDiscordUserGuilds } from '@vanguard/api-contracts/rest';
 
 import { Controller, Get, Inject } from '@nestjs/common';
 
@@ -22,7 +22,7 @@ export class GuildsController {
 	protected async getCurrentUserGuilds(
 		@SessionId() sessionId: string,
 		@SessionUserId() sessionUserId: string,
-	): Promise<RESTGetAPIUserGuildsResponse> {
+	): Promise<GetDiscordUserGuilds> {
 		const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
 
 		const currentUserGuilds = await this.discordService.getCurrentUserGuilds(sessionUserId, currentUserAccessToken);
