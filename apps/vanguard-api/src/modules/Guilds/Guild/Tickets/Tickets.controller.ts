@@ -1,4 +1,4 @@
-import type { RESTGetAPIGuildTicketsConfigurationResponse, RESTPostAPIGuildTicketPanelResponse } from '@vanguard/api-types/rest';
+import type { CreatePrismaGuildTicketPanel, GetPrismaGuildTicketsConfiguration } from '@vanguard/api-contracts/rest';
 
 import { Body, Controller, Delete, Get, Inject, Param, Post } from '@nestjs/common';
 
@@ -18,7 +18,7 @@ export class TicketsController {
 	protected async createGuildTicketPanel(
 		@Body(new ZodValidationPipe(CreateGuildTicketPanelSchema)) createGuildTicketPanelData: CreateGuildTicketPanelSchemaDto,
 		@Param('guildId') guildId: string,
-	): Promise<RESTPostAPIGuildTicketPanelResponse> {
+	): Promise<CreatePrismaGuildTicketPanel> {
 		const { channel_id: channelId, title } = createGuildTicketPanelData;
 
 		const ticketPanel = await this.ticketsService.createGuildTicketPanel(guildId, {
@@ -36,7 +36,7 @@ export class TicketsController {
 	}
 
 	@Get()
-	protected async getTicketsConfiguration(@Param('guildId') guildId: string): Promise<RESTGetAPIGuildTicketsConfigurationResponse> {
+	protected async getTicketsConfiguration(@Param('guildId') guildId: string): Promise<GetPrismaGuildTicketsConfiguration> {
 		const ticketsConfiguration = await this.ticketsService.getGuildTicketsConfiguration(guildId);
 		const ticketsConfigurationParsed = this.parserService.parseGuildTicketsConfiguration(ticketsConfiguration);
 
