@@ -17,7 +17,10 @@ export class TicketsService {
 		return this.prismaService.guildTicketsConfiguration;
 	}
 
-	public async createGuildTicketPanel(guildId: string, options: CreateGuildTicketPanelOptions): Promise<GuildTicketPanel> {
+	public async createGuildTicketPanel(
+		guildId: string,
+		options: CreateGuildTicketPanelOptions,
+	): Promise<GuildTicketPanel> {
 		const { channelId, title } = options;
 
 		const panelIdBigInt = DiscordSnowflake.generate();
@@ -33,7 +36,10 @@ export class TicketsService {
 		});
 	}
 
-	public async deleteGuildTicketPanel(guildId: string, panelId: string): Promise<GuildTicketPanel> {
+	public async deleteGuildTicketPanel(
+		guildId: string,
+		panelId: string,
+	): Promise<GuildTicketPanel> {
 		return await this.guildTicketPanel.delete({
 			where: {
 				guildId,

@@ -41,7 +41,8 @@ export class Logger<LoggerObject> extends BaseLogger<LoggerObject> {
 						'bold',
 					],
 				},
-				prettyLogTemplate: '{{dd}}/{{mm}}/{{yyyy}} {{hh}}:{{MM}}:{{ss}}\t{{logLevelName}}\t',
+				prettyLogTemplate:
+					'{{dd}}/{{mm}}/{{yyyy}} {{hh}}:{{MM}}:{{ss}}\t{{logLevelName}}\t',
 				prettyLogTimeZone: 'UTC',
 				type: 'pretty',
 				...options,

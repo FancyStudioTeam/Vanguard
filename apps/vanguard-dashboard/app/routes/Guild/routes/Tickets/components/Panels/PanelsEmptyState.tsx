@@ -8,7 +8,9 @@ export function PanelsEmptyState() {
 					<TicketIcon weight='fill' />
 				</section>
 				<h2 className='font-bold text-md'>No Ticket Panels Yet</h2>
-				<p className='text-balance text-neutral-400 text-sm'>You can start by creating a panel to manage your tickets.</p>
+				<p className='text-balance text-neutral-400 text-sm'>
+					You can start by creating a panel to manage your tickets.
+				</p>
 			</section>
 		</section>
 	);

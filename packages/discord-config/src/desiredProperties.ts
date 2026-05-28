@@ -1,4 +1,8 @@
-import { DesiredPropertiesBehavior, type RecursivePartial, type TransformersDesiredProperties } from '@discordeno/bot';
+import {
+	DesiredPropertiesBehavior,
+	type RecursivePartial,
+	type TransformersDesiredProperties,
+} from '@discordeno/bot';
 
 export const DESIRED_GUILD_PROPERTIES = {
 	icon: true,

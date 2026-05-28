@@ -1,4 +1,7 @@
-import { MessageComponentTypes, type TextDisplayComponent as TextDisplayComponentInterface } from '@discordeno/bot';
+import {
+	MessageComponentTypes,
+	type TextDisplayComponent as TextDisplayComponentInterface,
+} from '@discordeno/bot';
 
 export function TextDisplay({ children }: TextDisplayProps): TextDisplayComponentInterface {
 	return {

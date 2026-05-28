@@ -40,7 +40,9 @@ export function PanelActionsDelete({ guildId, panelId, revalidator }: PanelActio
 			</AlertDialogTrigger>
 			<AlertDialogContent>
 				<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-				<AlertDialogDescription>This action cannot be undone and will permanently delete this panel.</AlertDialogDescription>
+				<AlertDialogDescription>
+					This action cannot be undone and will permanently delete this panel.
+				</AlertDialogDescription>
 				<footer className='flex items-center justify-end gap-2'>
 					<AlertDialogClose className={ButtonVariants()}>Cancel</AlertDialogClose>
 					<AlertDialogClose

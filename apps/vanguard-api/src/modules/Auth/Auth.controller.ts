@@ -22,12 +22,16 @@ export class AuthController {
 
 	@Get('callback')
 	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
-	protected async exchangeAuthorizationCode(@Query('code') code: string | undefined, @Session() fastifySession: FastifySession) {
+	protected async exchangeAuthorizationCode(
+		@Query('code') code: string | undefined,
+		@Session() fastifySession: FastifySession,
+	) {
 		if (!code) {
 			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
 		}
 
-		const { access_token: userAccessToken, refresh_token: userRefreshToken } = await this.discordService.getUserAccess(code);
+		const { access_token: userAccessToken, refresh_token: userRefreshToken } =
+			await this.discordService.getUserAccess(code);
 		const { id: userId } = await this.discordService.getCurrentUser(userAccessToken);
 
 		const sessionId = this.sessionsService.generateSessionId();

@@ -9,8 +9,10 @@ const CHANNEL_ID_MUST_BE_STRING = 'Channel ID must be an string' as const;
 
 const TITLE_MUST_BE_STRING = 'Title must be a string';
 
-const TITLE_MUST_HAVE_MAX_LENGTH = `Title must have a maximum length of ${TITLE_MAX_LENGTH} characters` as const;
-const TITLE_MUST_HAVE_MIN_LENGTH = `Title must have a minimum length of ${TITLE_MIN_LENGTH} characters` as const;
+const TITLE_MUST_HAVE_MAX_LENGTH =
+	`Title must have a maximum length of ${TITLE_MAX_LENGTH} characters` as const;
+const TITLE_MUST_HAVE_MIN_LENGTH =
+	`Title must have a minimum length of ${TITLE_MIN_LENGTH} characters` as const;
 
 export const CreateGuildTicketPanelSchema = object(
 	{

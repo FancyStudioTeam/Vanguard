@@ -7,11 +7,15 @@ export class HandlerBase {
 	public bot: Bot | null = null;
 	public interaction: Interaction | null = null;
 
-	private getHandlerProperty<PropertyName extends keyof HandlerBase>(propertyName: PropertyName): NonNullable<HandlerBase[PropertyName]> {
+	private getHandlerProperty<PropertyName extends keyof HandlerBase>(
+		propertyName: PropertyName,
+	): NonNullable<HandlerBase[PropertyName]> {
 		const property = this[propertyName];
 
 		if (!property) {
-			throw new TypeError(`Property named '${propertyName}' has not been configured in the handler`);
+			throw new TypeError(
+				`Property named '${propertyName}' has not been configured in the handler`,
+			);
 		}
 
 		return property;
@@ -25,7 +29,9 @@ export class HandlerBase {
 		this.interaction = interaction;
 	}
 
-	public async createInteractionFollowup(options: CreateInteractionFollowupOptions): Promise<Message> {
+	public async createInteractionFollowup(
+		options: CreateInteractionFollowupOptions,
+	): Promise<Message> {
 		const { helpers } = this.getBot();
 		const { token } = this.getInteraction();
 

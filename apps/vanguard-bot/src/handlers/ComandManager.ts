@@ -5,10 +5,18 @@ import { cwd } from 'node:process';
 import { pathToFileURL } from 'node:url';
 
 import type { Interaction } from '@vanguard/discord-config/inferred-types';
-import type { ChatInputHandler, MessageContextHandler, UserContextHandler } from '@vanguard/discord-handlers/commands';
+import type {
+	ChatInputHandler,
+	MessageContextHandler,
+	UserContextHandler,
+} from '@vanguard/discord-handlers/commands';
 import type { DeclarableCommandConstructor } from '@vanguard/discord-handlers/decorators';
 
-import { type ApplicationCommandTypes, Collection, type CreateApplicationCommand } from '@discordeno/bot';
+import {
+	type ApplicationCommandTypes,
+	Collection,
+	type CreateApplicationCommand,
+} from '@discordeno/bot';
 
 import type { Bot } from '#bot/BotTypes.js';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
@@ -64,7 +72,9 @@ export class CommandManager {
 		return commandFileDirentsArray;
 	}
 
-	private getCommandHandlerOptions(declarableCommandHandler: DeclarableCommandHandler): CreateApplicationCommand {
+	private getCommandHandlerOptions(
+		declarableCommandHandler: DeclarableCommandHandler,
+	): CreateApplicationCommand {
 		const type = declarableCommandHandler.getApplicationCommandType();
 		const options = declarableCommandHandler.getApplicationCommandOptions();
 
@@ -80,7 +90,9 @@ export class CommandManager {
 		const { name, parentPath } = dirent;
 
 		const commandFilePathUrlHref = this.createCommandFileImportUrl(name, parentPath);
-		const commandFileImportData = (await import(commandFilePathUrlHref)) as CommandFileImportData;
+		const commandFileImportData = (await import(
+			commandFilePathUrlHref
+		)) as CommandFileImportData;
 
 		const { default: CommandHandlerConstructor } = commandFileImportData;
 
@@ -94,7 +106,9 @@ export class CommandManager {
 		await this.bot.helpers.upsertGlobalApplicationCommands(this.applicationCommands);
 	}
 
-	public getCommandFromInteraction(interaction: Interaction): CommandsCollectionValue | undefined {
+	public getCommandFromInteraction(
+		interaction: Interaction,
+	): CommandsCollectionValue | undefined {
 		const commandsCollectionKey = CommandManager.getCommandsCollectionKey(interaction);
 		const commandHandler = this.commands.get(commandsCollectionKey);
 
@@ -105,9 +119,13 @@ export class CommandManager {
 		this.commands.clear();
 
 		const commandFiles = await this.findCommandFiles();
-		const commandFileImportPromises = commandFiles.map((commandFile) => this.handleCommandFileImport(commandFile));
+		const commandFileImportPromises = commandFiles.map((commandFile) =>
+			this.handleCommandFileImport(commandFile),
+		);
 
-		Promise.allSettled(commandFileImportPromises).then(async () => await this.registerCommandsToBot());
+		Promise.allSettled(commandFileImportPromises).then(
+			async () => await this.registerCommandsToBot(),
+		);
 	}
 }
 

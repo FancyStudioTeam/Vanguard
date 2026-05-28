@@ -22,21 +22,28 @@ import {
 
 import { CLIENT_ID, CLIENT_SECRET, CLIENT_TOKEN } from '#lib/Constants/Client.js';
 import { logger } from '#lib/Logger.js';
-import { UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE, UNABLE_TO_GET_USER_INFORMATION_RESPONSE } from '#lib/Responses/Auth.js';
+import {
+	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
+	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
+} from '#lib/Responses/Auth.js';
 import { INTERNAL_SERVER_ERROR_RESPONSE, NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
 
 const channelsCacheKey = (guildId: string): string => `guilds:${guildId}/channels`;
 
 const guildCacheKey = (guildId: string): string => `guilds:${guildId}`;
-const guildMemberCacheKey = (guildId: string, userId: string): string => `guilds:${guildId}/users:${userId}`;
+const guildMemberCacheKey = (guildId: string, userId: string): string =>
+	`guilds:${guildId}/users:${userId}`;
 
 const userCacheKey = (userId: string): string => `users:${userId}`;
 const userGuildsCacheKey = (userId: string): string => `users:${userId}/guilds`;
 
 @Injectable()
 export class DiscordService {
-	private static ALL_PERMISSIONS = Object.values(PermissionFlagsBits).reduce((accumulator, permission) => accumulator | permission, 0n);
+	private static ALL_PERMISSIONS = Object.values(PermissionFlagsBits).reduce(
+		(accumulator, permission) => accumulator | permission,
+		0n,
+	);
 
 	private static CHANNELS_CACHE_KEY = channelsCacheKey;
 	private static CHANNELS_CACHE_TTL = 15_000 as const;
@@ -91,11 +98,18 @@ export class DiscordService {
 	}
 
 	private async handleGuildException(guildId: string, exception: unknown): Promise<never> {
-		if (exception instanceof DiscordAPIError && exception.code === RESTJSONErrorCodes.UnknownGuild) {
+		if (
+			exception instanceof DiscordAPIError &&
+			exception.code === RESTJSONErrorCodes.UnknownGuild
+		) {
 			const guildCacheKey = DiscordService.GUILD_CACHE_KEY(guildId);
 			const guildCacheTtl = DiscordService.GUILD_CACHE_TTL;
 
-			await this.cacheService.set<GuildValueWithStatus>(guildCacheKey, 'not_found', guildCacheTtl);
+			await this.cacheService.set<GuildValueWithStatus>(
+				guildCacheKey,
+				'not_found',
+				guildCacheTtl,
+			);
 
 			throw NOT_FOUND_RESPONSE();
 		}
@@ -103,12 +117,23 @@ export class DiscordService {
 		throw INTERNAL_SERVER_ERROR_RESPONSE();
 	}
 
-	private async handleGuildMemberException(guildId: string, userId: string, exception: unknown): Promise<never> {
-		if (exception instanceof DiscordAPIError && exception.code === RESTJSONErrorCodes.UnknownMember) {
+	private async handleGuildMemberException(
+		guildId: string,
+		userId: string,
+		exception: unknown,
+	): Promise<never> {
+		if (
+			exception instanceof DiscordAPIError &&
+			exception.code === RESTJSONErrorCodes.UnknownMember
+		) {
 			const guildMemberCacheKey = DiscordService.GUILD_MEMBER_CACHE_KEY(guildId, userId);
 			const guildMemberCacheTtl = DiscordService.GUILD_MEMBER_CACHE_TTL;
 
-			await this.cacheService.set<GuildMemberValueWithStatus>(guildMemberCacheKey, 'not_found', guildMemberCacheTtl);
+			await this.cacheService.set<GuildMemberValueWithStatus>(
+				guildMemberCacheKey,
+				'not_found',
+				guildMemberCacheTtl,
+			);
 
 			throw NOT_FOUND_RESPONSE();
 		}
@@ -123,7 +148,9 @@ export class DiscordService {
 		const requestManager = this.createRestManagerForBearer(accessToken);
 		const requestEndpoint = Routes.user();
 
-		const currentUser = (await requestManager.get(requestEndpoint)) as RESTGetAPICurrentUserResult;
+		const currentUser = (await requestManager.get(
+			requestEndpoint,
+		)) as RESTGetAPICurrentUserResult;
 
 		return currentUser;
 	}
@@ -131,11 +158,15 @@ export class DiscordService {
 	/**
 	 * @see https://docs.discord.com/developers/resources/user#get-current-user-guilds
 	 */
-	public async getCurrentUserGuilds(userId: string, accessToken: string): Promise<RESTAPIPartialCurrentUserGuild[]> {
+	public async getCurrentUserGuilds(
+		userId: string,
+		accessToken: string,
+	): Promise<RESTAPIPartialCurrentUserGuild[]> {
 		const userGuildsCacheKey = DiscordService.USER_GUILDS_CACHE_KEY(userId);
 		const userGuildsCacheTtl = DiscordService.USER_GUILDS_CACHE_TTL;
 
-		const cachedUserGuilds = await this.cacheService.get<UserGuildsCachedValue>(userGuildsCacheKey);
+		const cachedUserGuilds =
+			await this.cacheService.get<UserGuildsCachedValue>(userGuildsCacheKey);
 
 		if (cachedUserGuilds) {
 			return cachedUserGuilds;
@@ -144,7 +175,9 @@ export class DiscordService {
 		const requestManager = this.createRestManagerForBearer(accessToken);
 		const requestEndpoint = Routes.userGuilds();
 
-		const currentUserGuilds = (await requestManager.get(requestEndpoint).catch(() => [])) as RESTGetAPICurrentUserGuildsResult;
+		const currentUserGuilds = (await requestManager
+			.get(requestEndpoint)
+			.catch(() => [])) as RESTGetAPICurrentUserGuildsResult;
 		const currentUserGuildsCached = await this.cacheService.set<UserGuildsCachedValue>(
 			userGuildsCacheKey,
 			currentUserGuilds,
@@ -182,7 +215,11 @@ export class DiscordService {
 			const requestEndpoint = Routes.guild(guildId);
 
 			const guild = (await this.rest.get(requestEndpoint)) as RESTGetAPIGuildResult;
-			const guildCached = await this.cacheService.set<GuildValueWithObject>(guildCacheKey, guild, guildCacheTtl);
+			const guildCached = await this.cacheService.set<GuildValueWithObject>(
+				guildCacheKey,
+				guild,
+				guildCacheTtl,
+			);
 
 			return guildCached;
 		} catch (exception) {
@@ -206,7 +243,11 @@ export class DiscordService {
 		const requestEndpoint = Routes.guildChannels(guildId);
 
 		const channels = (await this.rest.get(requestEndpoint)) as RESTGetAPIGuildChannelsResult;
-		const channelsCached = await this.cacheService.set<ChannelsCachedValue>(channelsCacheKey, channels, channelsCacheTtl);
+		const channelsCached = await this.cacheService.set<ChannelsCachedValue>(
+			channelsCacheKey,
+			channels,
+			channelsCacheTtl,
+		);
 
 		return channelsCached;
 	}
@@ -218,7 +259,8 @@ export class DiscordService {
 		const guildMemberCacheKey = DiscordService.GUILD_MEMBER_CACHE_KEY(guildId, userId);
 		const guildMemberCacheTtl = DiscordService.GUILD_MEMBER_CACHE_TTL;
 
-		const cachedGuildMember = await this.cacheService.get<GuildMemberCachedValue>(guildMemberCacheKey);
+		const cachedGuildMember =
+			await this.cacheService.get<GuildMemberCachedValue>(guildMemberCacheKey);
 
 		if (cachedGuildMember !== undefined) {
 			/*
@@ -238,7 +280,9 @@ export class DiscordService {
 		try {
 			const requestEndpoint = Routes.guildMember(guildId, userId);
 
-			const guildMember = (await this.rest.get(requestEndpoint)) as RESTGetAPIGuildMemberResult;
+			const guildMember = (await this.rest.get(
+				requestEndpoint,
+			)) as RESTGetAPIGuildMemberResult;
 			const guildMemberCached = await this.cacheService.set<GuildMemberValueWithObject>(
 				guildMemberCacheKey,
 				guildMember,
@@ -268,7 +312,11 @@ export class DiscordService {
 			const requestEndpoint = Routes.user(userId);
 
 			const user = (await this.rest.get(requestEndpoint)) as RESTGetAPIUserResult;
-			const userCached = await this.cacheService.set<UserCachedValue>(userCacheKey, user, userCacheTtl);
+			const userCached = await this.cacheService.set<UserCachedValue>(
+				userCacheKey,
+				user,
+				userCacheTtl,
+			);
 
 			return userCached;
 		} catch {
@@ -292,7 +340,10 @@ export class DiscordService {
 				passThroughBody: true,
 			};
 
-			const userAccess = (await this.rest.post(requestEndpoint, requestOptions)) as RESTPostOAuth2AccessTokenResult;
+			const userAccess = (await this.rest.post(
+				requestEndpoint,
+				requestOptions,
+			)) as RESTPostOAuth2AccessTokenResult;
 
 			return userAccess;
 		} catch {

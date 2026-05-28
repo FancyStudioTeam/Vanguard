@@ -25,8 +25,12 @@ export class GuildsController {
 	): Promise<GetDiscordUserGuilds> {
 		const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
 
-		const currentUserGuilds = await this.discordService.getCurrentUserGuilds(sessionUserId, currentUserAccessToken);
-		const currentUserGuildsParsed = this.parserService.parseDiscordUserGuilds(currentUserGuilds);
+		const currentUserGuilds = await this.discordService.getCurrentUserGuilds(
+			sessionUserId,
+			currentUserAccessToken,
+		);
+		const currentUserGuildsParsed =
+			this.parserService.parseDiscordUserGuilds(currentUserGuilds);
 
 		return currentUserGuildsParsed;
 	}

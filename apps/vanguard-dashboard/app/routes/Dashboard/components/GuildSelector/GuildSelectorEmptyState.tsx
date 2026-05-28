@@ -10,7 +10,8 @@ export function GuildSelectorEmptyState() {
 				weight='fill'
 			/>
 			<AlertDescription>
-				You don't have any servers available right now, or your servers couldn't be loaded properly.
+				You don't have any servers available right now, or your servers couldn't be loaded
+				properly.
 			</AlertDescription>
 		</Alert>
 	);

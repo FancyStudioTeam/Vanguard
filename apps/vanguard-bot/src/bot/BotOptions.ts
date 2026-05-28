@@ -1,6 +1,9 @@
 import { platform } from 'node:process';
 
-import { DESIRED_PROPERTIES, DESIRED_PROPERTIES_BEHAVIOR } from '@vanguard/discord-config/desired-properties';
+import {
+	DESIRED_PROPERTIES,
+	DESIRED_PROPERTIES_BEHAVIOR,
+} from '@vanguard/discord-config/desired-properties';
 
 import type { CreateGatewayManagerOptions } from '@discordeno/bot';
 

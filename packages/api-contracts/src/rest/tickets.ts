@@ -1,4 +1,7 @@
-import type { PrismaGuildTicketPanel, PrismaGuildTicketsConfiguration } from '#interfaces/tickets.js';
+import type {
+	PrismaGuildTicketPanel,
+	PrismaGuildTicketsConfiguration,
+} from '#interfaces/tickets.js';
 
 export type DeletePrismaGuildTicketPanels = undefined;
 

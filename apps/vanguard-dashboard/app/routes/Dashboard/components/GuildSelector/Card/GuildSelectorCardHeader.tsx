@@ -1,8 +1,10 @@
-import type { APIUserGuild } from '@vanguard/api-types/interfaces';
+import type { DiscordUserGuild } from '@vanguard/api-contracts/interfaces';
 
 export function GuildSelectorCardHeader({ banner, id }: GuildSelectorCardHeaderProps) {
 	if (!banner) {
-		return <header className='h-25 w-full bg-linear-to-br from-neutral-900 via-neutral-800 to-neutral-900' />;
+		return (
+			<header className='h-25 w-full bg-linear-to-br from-neutral-900 via-neutral-800 to-neutral-900' />
+		);
 	}
 
 	return (
@@ -15,4 +17,4 @@ export function GuildSelectorCardHeader({ banner, id }: GuildSelectorCardHeaderP
 	);
 }
 
-export type GuildSelectorCardHeaderProps = Pick<APIUserGuild, 'banner' | 'id'>;
+export type GuildSelectorCardHeaderProps = Pick<DiscordUserGuild, 'banner' | 'id'>;

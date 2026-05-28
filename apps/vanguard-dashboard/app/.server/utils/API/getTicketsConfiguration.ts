@@ -1,4 +1,4 @@
-import type { RESTGetAPIGuildTicketsConfigurationResponse } from '@vanguard/api-types/rest';
+import type { GetPrismaGuildTicketsConfiguration } from '@vanguard/api-contracts/rest';
 
 import { redirect } from 'react-router';
 
@@ -6,7 +6,10 @@ import { BASE_API_URL } from '#lib/Shared.ts';
 import { HttpStatus } from '#server/lib/HttpStatus.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getTicketsConfiguration(guildId: string, request: Request): Promise<RESTGetAPIGuildTicketsConfigurationResponse> {
+export async function getTicketsConfiguration(
+	guildId: string,
+	request: Request,
+): Promise<GetPrismaGuildTicketsConfiguration> {
 	const response = await createRequest(guildId, request);
 	const responseBody = await response.json();
 

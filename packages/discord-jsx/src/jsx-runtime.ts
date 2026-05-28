@@ -8,7 +8,11 @@ export function Fragment(properties: FragmentProperties): unknown {
 	return children;
 }
 
-export function jsx(componentFunction: ComponentFunction, properties: Record<string, unknown>, ...children: unknown[]): unknown {
+export function jsx(
+	componentFunction: ComponentFunction,
+	properties: Record<string, unknown>,
+	...children: unknown[]
+): unknown {
 	const { children: propertiesChildren } = properties;
 
 	return componentFunction({

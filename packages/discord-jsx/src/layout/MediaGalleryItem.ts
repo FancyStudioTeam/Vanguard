@@ -1,6 +1,13 @@
-import type { MediaGalleryItem as MediaGalleryItemInterface, UnfurledMediaItem as UnfurledMediaItemInterface } from '@discordeno/bot';
+import type {
+	MediaGalleryItem as MediaGalleryItemInterface,
+	UnfurledMediaItem as UnfurledMediaItemInterface,
+} from '@discordeno/bot';
 
-export function MediaGalleryItem({ children, description, spoiler }: MediaGalleryItemProps): MediaGalleryItemInterface {
+export function MediaGalleryItem({
+	children,
+	description,
+	spoiler,
+}: MediaGalleryItemProps): MediaGalleryItemInterface {
 	return {
 		description,
 		media: children,
@@ -8,6 +15,7 @@ export function MediaGalleryItem({ children, description, spoiler }: MediaGaller
 	};
 }
 
-export interface MediaGalleryItemProps extends Pick<MediaGalleryItemInterface, 'description' | 'spoiler'> {
+export interface MediaGalleryItemProps
+	extends Pick<MediaGalleryItemInterface, 'description' | 'spoiler'> {
 	children: UnfurledMediaItemInterface;
 }

@@ -4,7 +4,10 @@ import { ApplicationCommandTypes, type CreateApplicationCommand } from '@discord
 import type { Class } from 'utility-types';
 
 import { HandlerBase } from '#base/HandlerBase.js';
-import { CANNOT_RETREIVE_TARGET, CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID } from '#messages/Errors.js';
+import {
+	CANNOT_RETREIVE_TARGET,
+	CANNOT_RETREIVE_TARGET_WITHOUT_TARGET_ID,
+} from '#messages/Errors.js';
 
 export abstract class UserContextHandler extends HandlerBase {
 	public declare readonly declare: UserContextHandlerDeclareOptions;
@@ -44,5 +47,10 @@ export abstract class UserContextHandler extends HandlerBase {
 export type UserContextHandlerConstructor = Class<UserContextHandler>;
 export type UserContextHandlerDeclareOptions = Pick<
 	CreateApplicationCommand,
-	'contexts' | 'defaultMemberPermissions' | 'integrationTypes' | 'name' | 'nameLocalizations' | 'nsfw'
+	| 'contexts'
+	| 'defaultMemberPermissions'
+	| 'integrationTypes'
+	| 'name'
+	| 'nameLocalizations'
+	| 'nsfw'
 >;

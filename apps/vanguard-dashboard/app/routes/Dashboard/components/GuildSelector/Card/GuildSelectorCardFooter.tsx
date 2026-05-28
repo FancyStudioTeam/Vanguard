@@ -1,4 +1,4 @@
-import type { APIUserGuild } from '@vanguard/api-types/interfaces';
+import type { DiscordUserGuild } from '@vanguard/api-contracts/interfaces';
 
 import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
 
@@ -33,4 +33,4 @@ export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFoo
 	);
 }
 
-export type GuildSelectorCardFooterProps = Pick<APIUserGuild, 'icon' | 'id' | 'name'>;
+export type GuildSelectorCardFooterProps = Pick<DiscordUserGuild, 'icon' | 'id' | 'name'>;

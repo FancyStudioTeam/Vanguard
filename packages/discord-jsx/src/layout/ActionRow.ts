@@ -1,4 +1,7 @@
-import { type ActionRow as ActionRowComponentInterface, MessageComponentTypes } from '@discordeno/bot';
+import {
+	type ActionRow as ActionRowComponentInterface,
+	MessageComponentTypes,
+} from '@discordeno/bot';
 
 import { flattenChildren } from '#utils/flattenChildren.js';
 

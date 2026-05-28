@@ -1,7 +1,10 @@
 import { CaretUpDownIcon } from '@phosphor-icons/react';
 
 import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from '#components/UI/Collapsible.tsx';
-import { SidebarGroupItem, type SidebarGroupItemProps as SidebarGroupItemsInterface } from './SidebarGroupItem.tsx';
+import {
+	SidebarGroupItem,
+	type SidebarGroupItemProps as SidebarGroupItemsInterface,
+} from './SidebarGroupItem.tsx';
 
 export function SidebarGroup({ category, items }: SidebarGroupProps) {
 	return (

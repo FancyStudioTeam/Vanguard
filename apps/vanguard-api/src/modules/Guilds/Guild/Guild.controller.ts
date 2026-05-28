@@ -24,7 +24,9 @@ export class GuildController {
 	}
 
 	@Get('channels')
-	protected async getGuildChannels(@Param('guildId') guildId: string): Promise<GetDiscordGuildChannels> {
+	protected async getGuildChannels(
+		@Param('guildId') guildId: string,
+	): Promise<GetDiscordGuildChannels> {
 		const channels = await this.discordService.getGuildChannels(guildId);
 		const channelsParsed = this.parserService.parseDiscordGuildChannels(channels);
 

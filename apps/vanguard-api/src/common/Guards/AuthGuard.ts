@@ -5,7 +5,11 @@ import type { FastifyRequest } from 'fastify';
 
 import { BypassAuthKey } from '#common/Decorators/BypassAuth.js';
 import { BypassGuildPermissionsKey } from '#common/Decorators/BypassGuildPermissionsKey.js';
-import { BAD_REQUEST_RESPONSE, FORBIDDEN_RESPONSE, UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
+import {
+	BAD_REQUEST_RESPONSE,
+	FORBIDDEN_RESPONSE,
+	UNAUTHORIZED_RESPONSE,
+} from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { hasPermission } from '#utils/Discord/hasPermission.js';
@@ -21,7 +25,8 @@ export class AuthGuard implements CanActivate {
 		const contextHandler = context.getClass();
 
 		const bypassAuth = this.reflector.get<boolean>(BypassAuthKey, contextHandler) ?? false;
-		const bypassGuildPermissions = this.reflector.get<boolean>(BypassGuildPermissionsKey, contextHandler) ?? false;
+		const bypassGuildPermissions =
+			this.reflector.get<boolean>(BypassGuildPermissionsKey, contextHandler) ?? false;
 
 		if (bypassAuth) {
 			return true;
@@ -48,7 +53,10 @@ export class AuthGuard implements CanActivate {
 			}
 
 			const guild = await this.discordService.getGuild(fastifyGuildId);
-			const guildMember = await this.discordService.getGuildMember(fastifyGuildId, sessionUserId);
+			const guildMember = await this.discordService.getGuildMember(
+				fastifyGuildId,
+				sessionUserId,
+			);
 
 			const permissions = this.discordService.permissionsOf(guild, guildMember);
 

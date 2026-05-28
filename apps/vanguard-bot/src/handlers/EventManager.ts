@@ -95,7 +95,9 @@ export class EventManager {
 		this.events.clear();
 
 		const eventFiles = await this.findEventFiles();
-		const eventFileImportPromises = eventFiles.map((eventFile) => this.handleEventFileImport(eventFile));
+		const eventFileImportPromises = eventFiles.map((eventFile) =>
+			this.handleEventFileImport(eventFile),
+		);
 
 		Promise.allSettled(eventFileImportPromises).then(() => this.registerEventsToBot());
 	}

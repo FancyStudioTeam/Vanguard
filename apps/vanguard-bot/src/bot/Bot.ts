@@ -2,7 +2,13 @@ import { createBot } from '@discordeno/bot';
 
 import { CommandManager } from '#handlers/ComandManager.js';
 import { EventManager } from '#handlers/EventManager.js';
-import { BOT_DESIRED_PROPERTIES, BOT_DESIRED_PROPERTIES_BEHAVIOR, BOT_GATEWAY_MANAGER, BOT_INTENTS, BOT_TOKEN } from './BotOptions.js';
+import {
+	BOT_DESIRED_PROPERTIES,
+	BOT_DESIRED_PROPERTIES_BEHAVIOR,
+	BOT_GATEWAY_MANAGER,
+	BOT_INTENTS,
+	BOT_TOKEN,
+} from './BotOptions.js';
 import type { Bot } from './BotTypes.js';
 
 export const discordenoBot = createBot({

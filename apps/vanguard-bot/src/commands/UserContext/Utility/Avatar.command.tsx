@@ -1,9 +1,19 @@
 import type { User } from '@vanguard/discord-config/inferred-types';
 import { UserContextHandler } from '@vanguard/discord-handlers/commands';
 import { Declare } from '@vanguard/discord-handlers/decorators';
-import { Container, MediaGallery, MediaGalleryItem, UnfurledMediaItem } from '@vanguard/discord-jsx';
+import {
+	Container,
+	MediaGallery,
+	MediaGalleryItem,
+	UnfurledMediaItem,
+} from '@vanguard/discord-jsx';
 
-import { avatarUrl, type ContainerComponent, defaultAvatarUrl, MessageFlags } from '@discordeno/bot';
+import {
+	avatarUrl,
+	type ContainerComponent,
+	defaultAvatarUrl,
+	MessageFlags,
+} from '@discordeno/bot';
 
 @Declare({
 	name: 'Avatar',

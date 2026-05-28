@@ -9,7 +9,12 @@ import type {
 import type { GuildTicketPanel, GuildTicketsConfiguration } from '@vanguard/prisma';
 
 import { Injectable } from '@nestjs/common';
-import type { APIGuild, APIGuildChannel, APIUser, RESTAPIPartialCurrentUserGuild } from 'discord-api-types/v10';
+import type {
+	APIGuild,
+	APIGuildChannel,
+	APIUser,
+	RESTAPIPartialCurrentUserGuild,
+} from 'discord-api-types/v10';
 
 @Injectable()
 export class ParserService {
@@ -21,7 +26,9 @@ export class ParserService {
 		};
 	}
 
-	public parseDiscordGuildChannels(discordGuildChannels: APIGuildChannel[]): DiscordGuildChannel[] {
+	public parseDiscordGuildChannels(
+		discordGuildChannels: APIGuildChannel[],
+	): DiscordGuildChannel[] {
 		return discordGuildChannels.map(this.parseDiscordGuildChannel);
 	}
 
@@ -44,7 +51,13 @@ export class ParserService {
 		};
 	}
 
-	public parseDiscordUserGuild({ banner, icon, id, name, permissions }: RESTAPIPartialCurrentUserGuild): DiscordUserGuild {
+	public parseDiscordUserGuild({
+		banner,
+		icon,
+		id,
+		name,
+		permissions,
+	}: RESTAPIPartialCurrentUserGuild): DiscordUserGuild {
 		return {
 			banner,
 			icon,
@@ -54,11 +67,20 @@ export class ParserService {
 		};
 	}
 
-	public parseDiscordUserGuilds(discordUserGuilds: RESTAPIPartialCurrentUserGuild[]): DiscordUserGuild[] {
+	public parseDiscordUserGuilds(
+		discordUserGuilds: RESTAPIPartialCurrentUserGuild[],
+	): DiscordUserGuild[] {
 		return discordUserGuilds.map(this.parseDiscordUserGuild);
 	}
 
-	public parseGuildTicketPanel({ channelId, channelParentId, enabled, panelId, title, type }: GuildTicketPanel): PrismaGuildTicketPanel {
+	public parseGuildTicketPanel({
+		channelId,
+		channelParentId,
+		enabled,
+		panelId,
+		title,
+		type,
+	}: GuildTicketPanel): PrismaGuildTicketPanel {
 		return {
 			channel_id: channelId,
 			channel_parent_id: channelParentId,

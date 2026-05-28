@@ -1,4 +1,7 @@
-import { MessageComponentTypes, type SeparatorComponent as SeparatorComponentInterface } from '@discordeno/bot';
+import {
+	MessageComponentTypes,
+	type SeparatorComponent as SeparatorComponentInterface,
+} from '@discordeno/bot';
 
 export function Separator({ divider, spacing }: SeparatorProps): SeparatorComponentInterface {
 	return {

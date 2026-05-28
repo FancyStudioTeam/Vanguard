@@ -8,7 +8,12 @@ import type { NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
 
-import { COOKIE_SALT, COOKIE_SECRET, COOKIE_SESSION_DATA_MAX_AGE, COOKIE_SESSION_DATA_NAME } from '#lib/Constants/Cookies.js';
+import {
+	COOKIE_SALT,
+	COOKIE_SECRET,
+	COOKIE_SESSION_DATA_MAX_AGE,
+	COOKIE_SESSION_DATA_NAME,
+} from '#lib/Constants/Cookies.js';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import { logger } from '#lib/Logger.js';
 import { AppModule } from '#modules/App.module.js';
@@ -64,7 +69,9 @@ app.setGlobalPrefix('api');
 await app.register(FastifyCookie);
 await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
-await app.listen(APP_PORT, APP_HOST).then(async () => logger.info(`Listening on address '${await app.getUrl()}'`));
+await app
+	.listen(APP_PORT, APP_HOST)
+	.then(async () => logger.info(`Listening on address '${await app.getUrl()}'`));
 
 declare module 'fastify' {
 	interface FastifyRequest {

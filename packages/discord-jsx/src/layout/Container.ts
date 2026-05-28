@@ -1,8 +1,15 @@
-import { type ContainerComponent as ContainerComponentInterface, MessageComponentTypes } from '@discordeno/bot';
+import {
+	type ContainerComponent as ContainerComponentInterface,
+	MessageComponentTypes,
+} from '@discordeno/bot';
 
 import { flattenChildren } from '#utils/flattenChildren.js';
 
-export function Container({ accentColor, children, spoiler }: ContainerProps): ContainerComponentInterface {
+export function Container({
+	accentColor,
+	children,
+	spoiler,
+}: ContainerProps): ContainerComponentInterface {
 	const components = flattenChildren(children);
 
 	return {
@@ -13,7 +20,8 @@ export function Container({ accentColor, children, spoiler }: ContainerProps): C
 	};
 }
 
-export interface ContainerProps extends Pick<ContainerComponentInterface, 'accentColor' | 'spoiler'> {
+export interface ContainerProps
+	extends Pick<ContainerComponentInterface, 'accentColor' | 'spoiler'> {
 	children: ContainerChildComponent | ContainerChildComponent[];
 }
 
