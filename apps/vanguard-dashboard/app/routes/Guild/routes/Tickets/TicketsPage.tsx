@@ -1,12 +1,11 @@
-import { PlusCircleIcon } from '@phosphor-icons/react/dist/ssr';
 import type { ReactNode } from 'react';
 import { match, P } from 'ts-pattern';
 
-import { Button } from '#components/UI/Button.tsx';
 import { GuildContext } from '#context/GuildContext.ts';
 import { UserContext } from '#context/UserContext.ts';
 import { getTicketsConfiguration } from '#server/utils/API/getTicketsConfiguration.ts';
 import type { Route } from './+types/TicketsPage.ts';
+import { PanelActionsCreate } from './components/PanelActions/PanelActionsCreate.tsx';
 import { PanelsEmptyState } from './components/Panels/PanelsEmptyState.tsx';
 import { PanelsTable } from './components/Panels/PanelsTable.tsx';
 
@@ -34,13 +33,7 @@ export default function ({ loaderData }: Route.ComponentProps) {
 		<div className='flex flex-col gap-6'>
 			<section className='flex items-center justify-between'>
 				<h1 className='font-bold text-xl'>Ticket Panels</h1>
-				<Button variant='secondary'>
-					<PlusCircleIcon
-						className='size-5 shrink-0'
-						weight='fill'
-					/>
-					<span>Create Panel</span>
-				</Button>
+				<PanelActionsCreate guildId={guildId} />
 			</section>
 
 			{match(panels)
