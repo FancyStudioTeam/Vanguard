@@ -9,7 +9,7 @@ export interface EventListenerData<Name extends BotEventNames> {
 	name: Name;
 }
 
-// @ts-expect-error
 export type EventListenerRunMethod<Name extends BotEventNames> = (
+	// @ts-expect-error
 	...data: Parameters<BotEvents[Name]>
 ) => unknown;
