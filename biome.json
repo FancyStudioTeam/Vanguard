@@ -89,7 +89,19 @@
 				}
 			},
 			"nursery": {
-				"useDestructuring": "warn"
+				"useDestructuring": {
+					"level": "error",
+					"options": {
+						"assignmentExpression": {
+							"array": true,
+							"object": true
+						},
+						"variableDeclarator": {
+							"array": true,
+							"object": true
+						}
+					}
+				}
 			},
 			"performance": {
 				"noBarrelFile": "error",
