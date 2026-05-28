@@ -31,6 +31,9 @@ export function PanelActionsCreate({ guildId }: PanelActionsCreateProps) {
 			fetch(requestUrl, {
 				body: JSON.stringify(arg),
 				credentials: 'include',
+				headers: {
+					'Content-Type': 'application/json',
+				},
 				method: 'POST',
 			});
 		},
