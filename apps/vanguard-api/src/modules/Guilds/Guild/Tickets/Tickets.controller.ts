@@ -60,7 +60,7 @@ export class TicketsController {
 						{
 							components: [
 								{
-									custom_id: `pannel:${ticketPanelId}`,
+									custom_id: `ticket_panel:${ticketPanelId}`,
 									label: 'Create Ticket',
 									style: ButtonStyle.Secondary,
 									type: ComponentType.Button,
