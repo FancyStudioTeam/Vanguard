@@ -22,7 +22,7 @@ export function createRedirectUrl(): string {
 			OAuth2Scopes.Identify,
 			OAuth2Scopes.Guilds,
 			OAuth2Scopes.GuildsMembersRead,
-		].join(encodeURIComponent(' ')),
+		].join(' '),
 	);
 
 	urlSearchParams.append('redirect_uri', createCallbackUrl());
