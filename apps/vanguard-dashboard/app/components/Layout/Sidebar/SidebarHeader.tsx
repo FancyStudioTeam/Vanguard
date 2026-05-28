@@ -1,4 +1,4 @@
-import type { APIGuild } from '@vanguard/api-types/interfaces';
+import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
 
 import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
 
@@ -33,4 +33,4 @@ export function SidebarHeader({ icon, id, name }: SidebarHeaderProps) {
 	);
 }
 
-export type SidebarHeaderProps = Pick<APIGuild, 'icon' | 'id' | 'name'>;
+export type SidebarHeaderProps = Pick<DiscordGuild, 'icon' | 'id' | 'name'>;

@@ -1,4 +1,4 @@
-import type { APIGuild } from '@vanguard/api-types/interfaces';
+import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
 
 import { SidebarGroups } from './Group/SidebarGroups.tsx';
 import { SidebarHeader } from './SidebarHeader.tsx';
@@ -17,5 +17,5 @@ export function Sidebar({ guild }: SidebarProps) {
 }
 
 export interface SidebarProps {
-	guild: APIGuild;
+	guild: DiscordGuild;
 }

@@ -12,6 +12,7 @@ import {
 	ScrollRestoration,
 	useRouteError,
 } from 'react-router';
+import { SWRConfig } from 'swr';
 import { match } from 'ts-pattern';
 
 import { Navbar } from '#components/Layout/Navbar/Navbar.tsx';
@@ -26,7 +27,22 @@ export function meta(): MetaDescriptor[] {
 }
 
 export default function App() {
-	return <Outlet />;
+	return (
+		<SWRConfig
+			value={{
+				fetcher: (resource, init) =>
+					fetch(resource, {
+						...init,
+						credentials: 'include',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					}).then((response) => response.json()),
+			}}
+		>
+			<Outlet />
+		</SWRConfig>
+	);
 }
 
 export function Layout({ children }: LayoutProps) {
