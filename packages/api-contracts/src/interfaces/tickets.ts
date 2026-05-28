@@ -1,8 +1,6 @@
-// biome-ignore-all lint/style/useNamingConvention: (x)
-
 import { GuildTicketPanelType } from '@vanguard/prisma';
 
-export interface APIGuildTicketPanel {
+export interface PrismaGuildTicketPanel {
 	channel_id: string;
 	channel_parent_id: string | null;
 	enabled: boolean;
@@ -11,9 +9,9 @@ export interface APIGuildTicketPanel {
 	type: GuildTicketPanelType;
 }
 
-export interface APIGuildTicketsConfiguration {
+export interface PrismaGuildTicketsConfiguration {
 	enabled: boolean;
-	panels: APIGuildTicketPanel[];
+	panels: PrismaGuildTicketPanel[];
 }
 
 export { GuildTicketPanelType };

@@ -1,6 +1,4 @@
-// biome-ignore-all lint/style/useNamingConvention: (x)
-
-export interface APIGuild {
+export interface DiscordGuild {
 	banner: string | null;
 	icon: string | null;
 	id: string;
@@ -8,14 +6,14 @@ export interface APIGuild {
 	owner_id: string;
 }
 
-export interface APIUser {
+export interface DiscordUser {
 	avatar: string | null;
 	global_name: string | null;
 	id: string;
 	username: string;
 }
 
-export interface APIUserGuild {
+export interface DiscordUserGuild {
 	banner: string | null;
 	icon: string | null;
 	id: string;

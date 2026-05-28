@@ -25,7 +25,7 @@
 		"#rest/*": "./dist/rest/*"
 	},
 	"license": "AGPL-3.0-only",
-	"name": "@vanguard/api-types",
+	"name": "@vanguard/api-contracts",
 	"packageManager": "pnpm@11.0.0",
 	"private": true,
 	"scripts": {
