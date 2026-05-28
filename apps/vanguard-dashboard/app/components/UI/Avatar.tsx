@@ -18,7 +18,7 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 	return (
 		<AvatarPrimitive.Fallback
 			className={classNames(
-				'flex size-10 items-center justify-center rounded-md border-2 border-neutral-800 text-sm',
+				'flex size-10 items-center justify-center rounded-md border-2 border-neutral-700 text-sm',
 				className,
 			)}
 			{...props}
@@ -30,7 +30,7 @@ export function AvatarImage({ className, ...props }: AvatarImageProps) {
 	return (
 		<AvatarPrimitive.Image
 			className={classNames(
-				'aspect-square size-10 rounded-md border-2 border-neutral-800',
+				'aspect-square size-10 rounded-md border-2 border-neutral-700',
 				className,
 			)}
 			{...props}

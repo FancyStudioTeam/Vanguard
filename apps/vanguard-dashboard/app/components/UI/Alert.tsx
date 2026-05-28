@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const AlertVariants = cva(
-	'flex gap-2 rounded-xl border-2 border-neutral-800 bg-neutral-900 p-4 [&>svg]:top-0 [&>svg]:size-5 [&>svg]:shrink-0',
+	'flex gap-2 rounded-xl border-2 border-neutral-700 bg-neutral-900 p-4 [&>svg]:top-0 [&>svg]:size-5 [&>svg]:shrink-0',
 	{
 		defaultVariants: {
 			variant: 'default',

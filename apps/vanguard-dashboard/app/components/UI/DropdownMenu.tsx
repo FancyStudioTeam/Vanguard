@@ -16,7 +16,7 @@ export function DropdownMenuContent({ className, ...props }: DropdownMenuContent
 			<MenuPrimitive.Positioner className='z-50'>
 				<MenuPrimitive.Popup
 					className={classNames(
-						'min-w-50 rounded-xl border-2 border-neutral-800 bg-neutral-900 p-2 shadow-md shadow-neutral-950 data-open:animate-duration-100 data-open:animate-fade-in-down',
+						'min-w-50 rounded-xl border-2 border-neutral-700 bg-neutral-900 p-2 shadow-md shadow-neutral-950 data-open:animate-duration-100 data-open:animate-fade-in-down',
 						className,
 					)}
 					{...props}

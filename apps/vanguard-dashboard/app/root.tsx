@@ -73,7 +73,7 @@ export function ErrorBoundary() {
 	const error = useRouteError();
 
 	return (
-		<main className='grid h-100 place-content-center rounded-xl border-2 border-neutral-800 border-dashed px-6'>
+		<main className='grid h-100 place-content-center rounded-xl border-2 border-neutral-700 border-dashed px-6'>
 			{match(error)
 				.returnType<ReactNode>()
 				.when(isRouteErrorResponse, ({ statusText }) => (
