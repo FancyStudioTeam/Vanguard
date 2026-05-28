@@ -1,8 +1,5 @@
 {
 	"author": "Vanguard Working Group",
-	"dependencies": {
-		"@vanguard/prisma": "workspace:*"
-	},
 	"devDependencies": {
 		"@types/node": "25.9.1",
 		"rimraf": "6.1.3",
