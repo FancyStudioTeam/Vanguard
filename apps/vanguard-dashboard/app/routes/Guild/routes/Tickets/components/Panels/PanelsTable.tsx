@@ -1,13 +1,9 @@
-import type { APIGuildTicketPanel } from '@vanguard/api-types/interfaces';
-
-import { useRevalidator } from 'react-router';
+import type { PrismaGuildTicketPanel } from '@vanguard/api-contracts/interfaces';
 
 import { classNames } from '#utils/Tailwind/classNames.ts';
 import { PanelActions } from '../PanelActions/PanelActions.tsx';
 
 export function PanelsTable({ guildId, panels }: PanelsTableProps) {
-	const revalidator = useRevalidator();
-
 	return (
 		<section className='overflow-hidden rounded-xl border-2 border-neutral-800'>
 			<table className='size-full border-collapse bg-neutral-900'>
@@ -39,7 +35,6 @@ export function PanelsTable({ guildId, panels }: PanelsTableProps) {
 								<PanelActions
 									guildId={guildId}
 									panelId={panelId}
-									revalidator={revalidator}
 								/>
 							</td>
 						</tr>
@@ -52,5 +47,5 @@ export function PanelsTable({ guildId, panels }: PanelsTableProps) {
 
 export interface PanelsTableProps {
 	guildId: string;
-	panels: APIGuildTicketPanel[];
+	panels: PrismaGuildTicketPanel[];
 }

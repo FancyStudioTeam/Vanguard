@@ -1,5 +1,3 @@
-import type { useRevalidator } from 'react-router';
-
 import { PanelActionsDelete } from './PanelActionsDelete.tsx';
 
 export function PanelActions(props: PanelActionsProps) {
@@ -13,5 +11,4 @@ export function PanelActions(props: PanelActionsProps) {
 export interface PanelActionsProps {
 	guildId: string;
 	panelId: string;
-	revalidator: ReturnType<typeof useRevalidator>;
 }

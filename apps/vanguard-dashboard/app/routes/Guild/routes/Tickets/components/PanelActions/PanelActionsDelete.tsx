@@ -1,5 +1,5 @@
 import { TrashIcon } from '@phosphor-icons/react';
-import type { useRevalidator } from 'react-router';
+import { useRevalidator } from 'react-router';
 import useSwrMutation from 'swr/mutation';
 
 import {
@@ -13,7 +13,9 @@ import {
 import { ButtonVariants } from '#components/UI/Button.tsx';
 import { createRequestUrl } from '#utils/URL/createRequestEndpoint.ts';
 
-export function PanelActionsDelete({ guildId, panelId, revalidator }: PanelActionsDeleteProps) {
+export function PanelActionsDelete({ guildId, panelId }: PanelActionsDeleteProps) {
+	const revalidator = useRevalidator();
+
 	const { trigger: triggerTicketPanelDeletion } = useSwrMutation(
 		createRequestUrl(`guilds/${guildId}/tickets/panels/${panelId}`),
 		(requestUrl: string) => {
@@ -62,5 +64,4 @@ export function PanelActionsDelete({ guildId, panelId, revalidator }: PanelActio
 export interface PanelActionsDeleteProps {
 	guildId: string;
 	panelId: string;
-	revalidator: ReturnType<typeof useRevalidator>;
 }
