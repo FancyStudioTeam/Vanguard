@@ -117,9 +117,6 @@ importers:
       '@discordeno/bot':
         specifier: 22.0.1-next.9eb5642
         version: 22.0.1-next.9eb5642
-      '@discordjs/formatters':
-        specifier: 0.6.2
-        version: 0.6.2
       '@vanguard/discord-config':
         specifier: workspace:*
         version: link:../../packages/discord-config
@@ -135,9 +132,6 @@ importers:
       '@vanguard/prisma':
         specifier: workspace:*
         version: link:../../packages/prisma
-      chalk:
-        specifier: 5.6.2
-        version: 5.6.2
       dotenv:
         specifier: 17.4.2
         version: 17.4.2
@@ -707,10 +701,6 @@ packages:
   '@discordjs/collection@2.1.1':
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
     engines: {node: '>=18'}
-
-  '@discordjs/formatters@0.6.2':
-    resolution: {integrity: sha512-y4UPwWhH6vChKRkGdMB4odasUbHOUwy7KL+OVwF86PvT6QVOwElx+TiI1/6kcmcEe+g5YRXJFiXSXUdabqZOvQ==}
-    engines: {node: '>=16.11.0'}
 
   '@discordjs/rest@2.6.1':
     resolution: {integrity: sha512-wwQdgjeaoYFiaG+atbqx6aJDpqW7JHAo0HrQkBTbYzM3/PJ3GweQIpgElNcGZ26DCUOXMyawYd0YF7vtr+fZXg==}
@@ -2332,10 +2322,6 @@ packages:
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
-
-  chalk@5.6.2:
-    resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   chardet@2.1.1:
     resolution: {integrity: sha512-PsezH1rqdV9VvyNhxxOW32/d75r01NY7TQCmOqomRo15ZSOKbpTFVsfjghxo6JloQUCGnH4k1LGu0R4yCLlWQQ==}
@@ -4712,10 +4698,6 @@ snapshots:
 
   '@discordjs/collection@2.1.1': {}
 
-  '@discordjs/formatters@0.6.2':
-    dependencies:
-      discord-api-types: 0.38.47
-
   '@discordjs/rest@2.6.1':
     dependencies:
       '@discordjs/collection': 2.1.1
@@ -6142,8 +6124,6 @@ snapshots:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
-
-  chalk@5.6.2: {}
 
   chardet@2.1.1: {}
 

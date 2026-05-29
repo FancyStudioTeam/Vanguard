@@ -2,13 +2,11 @@
 	"author": "Vanguard Working Group",
 	"dependencies": {
 		"@discordeno/bot": "22.0.1-next.9eb5642",
-		"@discordjs/formatters": "0.6.2",
 		"@vanguard/discord-config": "workspace:*",
 		"@vanguard/discord-handlers": "workspace:*",
 		"@vanguard/discord-jsx": "workspace:*",
 		"@vanguard/logger": "workspace:*",
 		"@vanguard/prisma": "workspace:*",
-		"chalk": "5.6.2",
 		"dotenv": "17.4.2"
 	},
 	"devDependencies": {
@@ -30,7 +28,6 @@
 	"private": true,
 	"scripts": {
 		"build": "pnpm vanguard:build",
-		"ddenox:update": "pnpm add ./ddenox-0.1.0.tgz --force",
 		"docker:build": "docker build --tag vanguard-client --file Dockerfile ../../.",
 		"docker:run": "docker run -d --env-file .env vanguard-client",
 		"docker:run:sh": "docker run -it --rm vanguard-client sh",
