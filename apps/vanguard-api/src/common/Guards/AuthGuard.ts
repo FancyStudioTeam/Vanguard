@@ -22,11 +22,20 @@ export class AuthGuard implements CanActivate {
 	) {}
 
 	public async canActivate(context: ExecutionContext): Promise<boolean> {
-		const contextHandler = context.getClass();
+		const contextHandler = context.getHandler();
+		const contextClass = context.getClass();
 
-		const bypassAuth = this.reflector.get<boolean>(BypassAuthKey, contextHandler) ?? false;
+		const bypassAuth =
+			this.reflector.getAllAndOverride<boolean>(BypassAuthKey, [
+				contextHandler,
+				contextClass,
+			]) ?? false;
+
 		const bypassGuildPermissions =
-			this.reflector.get<boolean>(BypassGuildPermissionsKey, contextHandler) ?? false;
+			this.reflector.getAllAndOverride<boolean>(BypassGuildPermissionsKey, [
+				contextHandler,
+				contextClass,
+			]) ?? false;
 
 		if (bypassAuth) {
 			return true;
