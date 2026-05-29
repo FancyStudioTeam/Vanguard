@@ -1,5 +1,5 @@
-import type { APIUser } from '@vanguard/api-types/interfaces';
+import type { DiscordUser } from '@vanguard/api-contracts/interfaces';
 
 import { createContext } from 'react-router';
 
-export const UserContext = createContext<APIUser>();
+export const UserContext = createContext<DiscordUser>();
