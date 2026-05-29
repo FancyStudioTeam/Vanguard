@@ -6,6 +6,11 @@
 		"typescript": "6.0.3"
 	},
 	"exports": {
+		"./enums": {
+			"import": "./dist/enums/index.js",
+			"require": "./dist/enums/index.js",
+			"types": "./dist/enums/index.d.ts"
+		},
 		"./interfaces": {
 			"import": "./dist/interfaces/index.js",
 			"require": "./dist/interfaces/index.js",
