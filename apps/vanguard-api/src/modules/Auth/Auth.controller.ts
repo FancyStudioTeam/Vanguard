@@ -3,12 +3,12 @@ import { Controller, Get, HttpStatus, Inject, Query, Redirect, Session } from '@
 import { BypassAuth } from '#common/Decorators/BypassAuth.js';
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
-import { MISSING_QUERY_STRING_PARAM_RESPONSE } from '#lib/Responses/Shared.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
+import { MissingOAuth2CodeException } from './Exceptions/MissingOauth2CodeException.js';
 
 @Controller('auth')
 @BypassAuth()
@@ -27,7 +27,7 @@ export class AuthController {
 		@Session() fastifySession: FastifySession,
 	) {
 		if (!code) {
-			throw MISSING_QUERY_STRING_PARAM_RESPONSE('code');
+			throw new MissingOAuth2CodeException();
 		}
 
 		const { access_token: userAccessToken, refresh_token: userRefreshToken } =

@@ -138,7 +138,8 @@
 									"kind": "typeProperty"
 								}
 							}
-						]
+						],
+						"strictCase": false
 					}
 				},
 				"useNodejsImportProtocol": {

@@ -29,18 +29,6 @@ export const INTERNAL_SERVER_ERROR_RESPONSE = (): HttpException =>
 		statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
 	});
 
-export const MISSING_QUERY_STRING_PARAM_RESPONSE = (name: string): HttpException =>
-	buildHttpException({
-		data: {
-			code: 'MISSING_QUERY_STRING_PARAM',
-			details: {
-				name,
-			},
-			message: `Missing query string param '${name}' from URL`,
-		},
-		statusCode: HttpStatus.BAD_REQUEST,
-	});
-
 export const NOT_FOUND_RESPONSE = (): HttpException =>
 	buildHttpException({
 		data: {
