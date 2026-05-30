@@ -42,7 +42,7 @@ export class CommandManager {
 		const { name, type } = data ?? {};
 
 		if (!(name && type)) {
-			throw new TypeError('Cannot retreive the interaction command name and type');
+			throw new TypeError('Cannot retreive the interaction command name or type');
 		}
 
 		return `name:${name}/type:${type}`;

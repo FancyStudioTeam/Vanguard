@@ -58,9 +58,9 @@ export class EventManager {
 			const eventFilePathUrlHref = this.createEventFileImportUrl(name, parentPath);
 			const eventFileImportData = (await import(eventFilePathUrlHref)) as EventFileImportData;
 
-			const { default: eventListener } = eventFileImportData;
+			const { default: eventListenerData } = eventFileImportData;
 
-			const { data: eventData, run: eventRun } = eventListener;
+			const { data: eventData, run: eventRun } = eventListenerData;
 			const { name: eventName } = eventData;
 
 			const eventListeners = this.upsertEventListeners(eventName);
@@ -82,14 +82,15 @@ export class EventManager {
 		}
 	}
 
-	private upsertEventListeners(eventName: string): EventListenerFunction[] {
-		const existingEventListeners = this.events.get(eventName);
+	private upsertEventListeners(
+		eventName: string,
+		defaultValue: EventListenerFunction[] = [],
+	): EventListenerFunction[] {
+		const eventListeners = this.events.get(eventName);
 
-		if (existingEventListeners) {
-			return existingEventListeners;
+		if (eventListeners) {
+			return eventListeners;
 		}
-
-		const defaultValue: EventListenerFunction[] = [];
 
 		this.events.set(eventName, defaultValue);
 
@@ -112,5 +113,4 @@ interface EventFileImportData {
 	default: EventListener<BotEventNames>;
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: (x)
-type EventListenerFunction = (...data: any[]) => any;
+type EventListenerFunction = (...data: unknown[]) => void;
