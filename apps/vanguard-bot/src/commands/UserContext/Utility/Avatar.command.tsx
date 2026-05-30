@@ -19,7 +19,7 @@ import {
 	name: 'Avatar',
 })
 export default class AvatarCommand extends UserContextHandler {
-	public async run() {
+	public async run(): Promise<void> {
 		const targetUser = super.getTargetUser();
 		const targetUserAvatarUrl = this.getUserAvatarUrl(targetUser);
 
