@@ -5,7 +5,7 @@ import { BadRequestException } from '@nestjs/common';
 export class MissingOAuth2CodeException extends BadRequestException {
 	public constructor() {
 		super({
-			code: ErrorCodes.MissingOauth2Code,
+			code: ErrorCodes.MissingOAuth2Code,
 			message: 'Missing Required OAuth2 Authorization Code',
 		});
 	}

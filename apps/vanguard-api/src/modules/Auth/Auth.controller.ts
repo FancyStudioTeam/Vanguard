@@ -8,7 +8,7 @@ import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
-import { MissingOAuth2CodeException } from './Exceptions/MissingOauth2CodeException.js';
+import { MissingOAuth2CodeException } from './Exceptions/MissingOAuth2CodeException.js';
 
 @Controller('auth')
 @BypassAuth()
