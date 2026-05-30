@@ -8,12 +8,7 @@ import {
 	UnfurledMediaItem,
 } from '@vanguard/discord-jsx';
 
-import {
-	avatarUrl,
-	type ContainerComponent,
-	defaultAvatarUrl,
-	MessageFlags,
-} from '@discordeno/bot';
+import { type ContainerComponent, displayAvatarUrl, MessageFlags } from '@discordeno/bot';
 
 @Declare({
 	name: 'Avatar',
@@ -46,13 +41,9 @@ export default class AvatarCommand extends UserContextHandler {
 	}
 
 	private getUserAvatarUrl({ avatar, discriminator, id }: User): string {
-		if (!avatar) {
-			return defaultAvatarUrl(id, discriminator);
-		}
-
-		return avatarUrl(id, avatar, {
+		return displayAvatarUrl(id, discriminator, avatar, {
 			format: 'webp',
-			size: 1024,
+			size: 1_024,
 		});
 	}
 }
