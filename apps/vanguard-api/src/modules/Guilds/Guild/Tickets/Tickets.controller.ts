@@ -6,7 +6,7 @@ import type {
 import { Body, Controller, Delete, Get, Inject, Param, Post } from '@nestjs/common';
 import { ButtonStyle, ChannelType, ComponentType, MessageFlags } from 'discord-api-types/v10';
 
-import { ZodValidationPipe } from '#common/Pipes/ZodValidation.pipe.js';
+import { ZodValidationPipe } from '#common/Pipes/ZodValidation.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { ParserService } from '#modules/Parser/Parser.service.js';
 import { InvalidTextChannelTypeException } from './Exceptions/InvalidTextChannelType.js';
