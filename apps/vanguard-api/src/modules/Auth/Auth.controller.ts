@@ -25,7 +25,7 @@ export class AuthController {
 	protected async exchangeAuthorizationCode(
 		@Query('code') code: string | undefined,
 		@Session() fastifySession: FastifySession,
-	) {
+	): Promise<void> {
 		if (!code) {
 			throw new MissingOAuth2CodeException();
 		}
@@ -48,13 +48,13 @@ export class AuthController {
 			sessionId,
 			userId,
 		});
+
+		return;
 	}
 
 	@Get('sign-in')
-	@Redirect(createRedirectUrl(), HttpStatus.TEMPORARY_REDIRECT)
-	/*
-	 * biome-ignore lint/suspicious/noEmptyBlockStatements: This method is
-	 * already handled by decorators.
-	 */
-	protected redirectToSignIn() {}
+	@Redirect(createRedirectUrl(), HttpStatus.FOUND)
+	protected redirectToSignIn(): void {
+		return;
+	}
 }
