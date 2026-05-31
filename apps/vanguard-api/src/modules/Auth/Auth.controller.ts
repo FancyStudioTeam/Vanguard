@@ -8,7 +8,7 @@ import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
-import { MissingOAuth2CodeException } from './Exceptions/MissingOAuth2CodeException.js';
+import { RequiredOAuth2CodePipe } from './Pipes/RequiredOAuth2CodePipe.js';
 
 @Controller('auth')
 @BypassAuth()
@@ -23,13 +23,9 @@ export class AuthController {
 	@Get('callback')
 	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
 	protected async exchangeAuthorizationCode(
-		@Query('code') code: string | undefined,
+		@Query('code', RequiredOAuth2CodePipe) code: string,
 		@Session() fastifySession: FastifySession,
 	): Promise<void> {
-		if (!code) {
-			throw new MissingOAuth2CodeException();
-		}
-
 		const { access_token: userAccessToken, refresh_token: userRefreshToken } =
 			await this.discordService.getUserAccess(code);
 		const { id: userId } = await this.discordService.getCurrentUser(userAccessToken);
