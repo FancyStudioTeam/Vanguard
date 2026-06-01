@@ -1,56 +1,47 @@
-import { Controller, Get, HttpStatus, Inject, Query, Redirect, Session } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Inject, Query, Redirect, Response } from '@nestjs/common';
+import type { FastifyReply } from 'fastify';
 
 import { BypassAuth } from '#common/Decorators/BypassAuth.js';
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
+import { ACCESS_TOKEN_COOKIE_MAX_AGE, ACCESS_TOKEN_COOKIE_NAME } from '#lib/Constants/Cookies.js';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
-import type { FastifySession } from '#lib/Types/Fastify.js';
-import { DiscordService } from '#modules/Discord/Discord.service.js';
-import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
-import { SessionsService } from '#modules/Sessions/Sessions.service.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
+import { AuthService } from './Auth.service.js';
 import { RequiredOAuth2CodePipe } from './Pipes/RequiredOAuth2CodePipe.js';
+
+// TODO: Implement a "sign-out" handler to invalidate the current session.
 
 @Controller('auth')
 @BypassAuth()
 @BypassGuildPermissions()
 export class AuthController {
-	public constructor(
-		@Inject(DiscordService) private readonly discordService: DiscordService,
-		@Inject(EncryptionService) private readonly encryptionService: EncryptionService,
-		@Inject(SessionsService) private readonly sessionsService: SessionsService,
-	) {}
+	public constructor(@Inject(AuthService) private readonly authService: AuthService) {}
 
 	@Get('callback')
-	@Redirect(BASE_DASHBOARD_URL, HttpStatus.TEMPORARY_REDIRECT)
-	protected async exchangeAuthorizationCode(
+	@Redirect(BASE_DASHBOARD_URL, HttpStatus.FOUND)
+	protected async handleDiscordCallback(
 		@Query('code', RequiredOAuth2CodePipe) code: string,
-		@Session() fastifySession: FastifySession,
+		@Response({
+			passthrough: true,
+		})
+		fastifyReply: FastifyReply,
 	): Promise<void> {
-		const { access_token: userAccessToken, refresh_token: userRefreshToken } =
-			await this.discordService.getUserAccess(code);
-		const { id: userId } = await this.discordService.getCurrentUser(userAccessToken);
+		const jsonWebToken = await this.authService.signInWithDiscord(code);
 
-		const sessionId = this.sessionsService.generateSessionId();
-
-		const encryptedAccessToken = this.encryptionService.encrypt(userAccessToken);
-		const encryptedRefreshToken = this.encryptionService.encrypt(userRefreshToken);
-
-		fastifySession.set('sessionId', sessionId);
-		fastifySession.set('sessionUserId', userId);
-
-		await this.sessionsService.createDatabaseSession({
-			accessToken: encryptedAccessToken,
-			refreshToken: encryptedRefreshToken,
-			sessionId,
-			userId,
+		fastifyReply.cookie(ACCESS_TOKEN_COOKIE_NAME, jsonWebToken, {
+			httpOnly: true,
+			maxAge: ACCESS_TOKEN_COOKIE_MAX_AGE,
+			path: '/',
+			sameSite: 'lax',
+			secure: true,
 		});
-
-		return;
 	}
 
 	@Get('sign-in')
 	@Redirect(createRedirectUrl(), HttpStatus.FOUND)
-	protected redirectToSignIn(): void {
-		return;
-	}
+	/*
+	 * biome-ignore lint/suspicious/noEmptyBlockStatements: This handler already
+	 * uses the 'Redirect' decorator.
+	 */
+	protected redirectToSignIn(): void {}
 }
