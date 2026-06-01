@@ -3,17 +3,11 @@ import './env.js';
 import { env } from 'node:process';
 
 import FastifyCookie from '@fastify/cookie';
-import FastifySecureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session';
+import type { FastifyCorsOptions } from '@fastify/cors';
 import type { NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
 
-import {
-	COOKIE_SALT,
-	COOKIE_SECRET,
-	COOKIE_SESSION_DATA_MAX_AGE,
-	COOKIE_SESSION_DATA_NAME,
-} from '#lib/Constants/Cookies.js';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
 import { logger } from '#lib/Logger.js';
 import { AppModule } from '#modules/App.module.js';
@@ -36,22 +30,7 @@ const APP_OPTIONS: NestApplicationOptions = {
 	],
 };
 
-const SECURE_SESSION_OPTIONS: SecureSessionPluginOptions = {
-	cookie: {
-		httpOnly: true,
-		maxAge: COOKIE_SESSION_DATA_MAX_AGE,
-		path: '/',
-		sameSite: 'lax',
-		secure: true,
-	},
-	cookieName: COOKIE_SESSION_DATA_NAME,
-	salt: COOKIE_SALT,
-	secret: COOKIE_SECRET,
-};
-
-const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
-
-app.enableCors({
+const CORS_OPTIONS: FastifyCorsOptions = {
 	credentials: true,
 	methods: [
 		'DELETE',
@@ -63,11 +42,14 @@ app.enableCors({
 	origin: [
 		BASE_DASHBOARD_URL,
 	],
-});
+};
+
+const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
+
+app.enableCors(CORS_OPTIONS);
 app.setGlobalPrefix('api');
 
 await app.register(FastifyCookie);
-await app.register(FastifySecureSession, SECURE_SESSION_OPTIONS);
 
 await app
 	.listen(APP_PORT, APP_HOST)

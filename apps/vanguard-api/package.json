@@ -4,6 +4,7 @@
 		"@discordeno/utils": "21.0.0",
 		"@discordjs/rest": "2.6.1",
 		"@fastify/cookie": "11.0.2",
+		"@fastify/cors": "11.2.0",
 		"@fastify/secure-session": "8.3.0",
 		"@nestjs/cache-manager": "3.1.2",
 		"@nestjs/common": "11.1.24",
@@ -11,6 +12,8 @@
 		"@nestjs/jwt": "11.0.2",
 		"@nestjs/mongoose": "11.0.4",
 		"@nestjs/platform-fastify": "11.1.24",
+		"@prisma/adapter-pg": "7.8.0",
+		"@prisma/client": "7.8.0",
 		"@sapphire/snowflake": "3.5.5",
 		"@vanguard/api-contracts": "workspace:*",
 		"@vanguard/logger": "workspace:*",
@@ -20,6 +23,7 @@
 		"dotenv": "17.4.2",
 		"fastify": "5.8.5",
 		"mongoose": "9.6.3",
+		"pg": "8.21.0",
 		"rxjs": "7.8.2",
 		"ts-pattern": "5.9.0",
 		"zod": "4.4.3"
@@ -28,6 +32,7 @@
 		"@nestjs/cli": "11.0.21",
 		"@types/node": "25.9.1",
 		"cross-env": "10.1.0",
+		"prisma": "7.8.0",
 		"rimraf": "6.1.3",
 		"typescript": "6.0.3"
 	},
@@ -50,7 +55,13 @@
 		"nest:build": "nest build",
 		"nest:dev": "cross-env HOST=127.0.0.1 NODE_ENV=development nest start --watch",
 		"nest:start": "cross-env HOST=0.0.0.0 NODE_ENV=production node dist/index.js",
-		"prebuild": "rimraf dist"
+		"prebuild": "rimraf dist",
+		"prisma:format": "prisma format",
+		"prisma:generate": "prisma generate",
+		"prisma:migrate:deploy": "prisma migrate deploy",
+		"prisma:migrate:dev": "prisma migrate dev",
+		"prisma:migrate:reset": "prisma migrate reset",
+		"prisma:studio": "prisma studio"
 	},
 	"type": "module",
 	"version": "0.1.0"
