@@ -5,19 +5,19 @@ import { SessionEntity } from './Session.entity.js';
 @Entity('session_credentials')
 export class SessionCredentialsEntity {
 	@Column({
-		length: 512,
+		length: 250,
 		type: 'varchar',
 	})
 	declare accessToken: string;
 
 	@Column({
-		type: 'date',
+		type: 'timestamp',
 		utc: true,
 	})
 	declare createdAt: Date;
 
 	@Column({
-		length: 512,
+		length: 250,
 		type: 'varchar',
 	})
 	declare refreshToken: string;
@@ -35,7 +35,7 @@ export class SessionCredentialsEntity {
 	declare tokenType: string;
 
 	@Column({
-		type: 'date',
+		type: 'timestamp',
 		update: true,
 		utc: true,
 	})

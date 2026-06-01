@@ -5,7 +5,7 @@ import { SessionCredentialsEntity } from './SessionCredentials.entity.js';
 @Entity('session')
 export class SessionEntity {
 	@Column({
-		type: 'date',
+		type: 'timestamp',
 		utc: true,
 	})
 	declare createdAt: Date;
@@ -23,7 +23,7 @@ export class SessionEntity {
 	declare sessionId: string;
 
 	@Column({
-		type: 'date',
+		type: 'timestamp',
 		update: true,
 		utc: true,
 	})
