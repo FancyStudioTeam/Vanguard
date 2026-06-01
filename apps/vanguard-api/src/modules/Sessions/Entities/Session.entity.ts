@@ -18,7 +18,7 @@ export class SessionEntity {
 
 	@PrimaryColumn({
 		length: 64,
-		type: 'string',
+		type: 'varchar',
 	})
 	declare sessionId: string;
 
@@ -31,7 +31,7 @@ export class SessionEntity {
 
 	@Column({
 		length: 19,
-		type: 'string',
+		type: 'varchar',
 	})
 	declare userId: string;
 }

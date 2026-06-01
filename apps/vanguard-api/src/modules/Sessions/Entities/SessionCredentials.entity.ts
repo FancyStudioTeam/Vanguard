@@ -6,7 +6,7 @@ import { SessionEntity } from './Session.entity.js';
 export class SessionCredentialsEntity {
 	@Column({
 		length: 512,
-		type: 'string',
+		type: 'varchar',
 	})
 	declare accessToken: string;
 
@@ -18,7 +18,7 @@ export class SessionCredentialsEntity {
 
 	@Column({
 		length: 512,
-		type: 'string',
+		type: 'varchar',
 	})
 	declare refreshToken: string;
 
@@ -30,7 +30,7 @@ export class SessionCredentialsEntity {
 
 	@Column({
 		length: 50,
-		type: 'string',
+		type: 'varchar',
 	})
 	declare tokenType: string;
 
@@ -43,6 +43,7 @@ export class SessionCredentialsEntity {
 
 	@PrimaryColumn({
 		length: 19,
+		type: 'varchar',
 		unique: true,
 	})
 	declare userId: string;
