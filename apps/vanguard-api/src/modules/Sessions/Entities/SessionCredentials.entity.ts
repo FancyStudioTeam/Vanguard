@@ -2,7 +2,7 @@ import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 
 import { SessionEntity } from './Session.entity.js';
 
-@Entity()
+@Entity('session_credentials')
 export class SessionCredentialsEntity {
 	@Column({
 		length: 512,

@@ -2,7 +2,7 @@ import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
 
 import { SessionCredentialsEntity } from './SessionCredentials.entity.js';
 
-@Entity()
+@Entity('session')
 export class SessionEntity {
 	@Column({
 		type: 'date',
