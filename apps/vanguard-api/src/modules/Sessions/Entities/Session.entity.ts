@@ -8,30 +8,30 @@ export class SessionEntity {
 		type: 'date',
 		utc: true,
 	})
-	declare readonly createdAt: Date;
+	declare createdAt: Date;
 
 	@OneToOne(
 		() => SessionCredentialsEntity,
 		(sessionCredentials) => sessionCredentials.userId,
 	)
-	declare readonly credentials: SessionCredentialsEntity;
+	declare credentials: SessionCredentialsEntity;
 
 	@PrimaryColumn({
 		length: 64,
 		type: 'string',
 	})
-	declare readonly sessionId: string;
+	declare sessionId: string;
 
 	@Column({
 		type: 'date',
 		update: true,
 		utc: true,
 	})
-	declare readonly updatedAt: Date;
+	declare updatedAt: Date;
 
 	@Column({
 		length: 19,
 		type: 'string',
 	})
-	declare readonly userId: string;
+	declare userId: string;
 }
