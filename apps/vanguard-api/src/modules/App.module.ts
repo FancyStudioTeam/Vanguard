@@ -29,6 +29,7 @@ import { UsersRoutes } from './Users/Users.routes.js';
 			UsersRoutes,
 		]),
 		TypeOrmModule.forRoot({
+			autoLoadEntities: true,
 			database: SESSIONS_DATABASE_NAME,
 			host: SESSIONS_DATABASE_HOST,
 			password: SESSIONS_DATABASE_USER_PASSWORD,
