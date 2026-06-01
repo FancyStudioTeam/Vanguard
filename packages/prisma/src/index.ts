@@ -6,5 +6,5 @@ export * from './generated/prisma/enums.js';
 export * from './generated/prisma/models.js';
 
 export const PrismaAdapter = new PrismaPg({
-	connectionString: env('POSTGRE_SQL_DATABASE_URL'),
+	connectionString: env('POSTGRE_SQL_VANGUARD_DATABASE_URL'),
 });
