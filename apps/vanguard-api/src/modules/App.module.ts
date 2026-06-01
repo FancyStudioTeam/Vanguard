@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
-import { MongooseModule } from '@nestjs/mongoose';
 
 import { HttpExceptionFilter } from '#common/Filters/HttpExceptionFilter.js';
 import { AuthGuard } from '#common/Guards/AuthGuard.js';
 import { LoggerInterceptor } from '#common/Interceptors/LoggerInterceptor.js';
-import { MONGO_DB_CONNECTION_URL } from '#lib/Constants/MongoDB.js';
 import { AuthModule } from './Auth/Auth.module.js';
 import { DiscordModule } from './Discord/Discord.module.js';
 import { GuildsModule } from './Guilds/Guilds.module.js';
@@ -18,9 +16,6 @@ import { UsersRoutes } from './Users/Users.routes.js';
 		AuthModule,
 		DiscordModule,
 		GuildsModule,
-		MongooseModule.forRoot(MONGO_DB_CONNECTION_URL, {
-			dbName: 'sessions',
-		}),
 		RouterModule.register([
 			GuildsRoutes,
 			UsersRoutes,
