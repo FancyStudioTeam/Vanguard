@@ -1,12 +1,13 @@
 import { randomBytes } from 'node:crypto';
 
 import { Inject, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import type { Model } from 'mongoose';
+import { InjectRepository } from '@nestjs/typeorm';
+import type { Repository } from 'typeorm';
 
 import { UNAUTHORIZED_RESPONSE } from '#lib/Responses/Shared.js';
-import { type CreateSessionOptions, Session } from '#schemas/Mongoose/Session.js';
 import { EncryptionService } from '../Encryption/Encryption.service.js';
+import { SessionEntity } from './Entities/Session.entity.js';
+import { SessionCredentialsEntity } from './Entities/SessionCredentials.entity.js';
 
 @Injectable()
 export class SessionsService {
@@ -14,12 +15,11 @@ export class SessionsService {
 
 	public constructor(
 		@Inject(EncryptionService) private readonly encryptionService: EncryptionService,
-		@InjectModel(Session.name) private readonly sessionModel: Model<Session>,
+		@InjectRepository(SessionCredentialsEntity)
+		private readonly sessionCredentialsRepository: Repository<SessionCredentialsEntity>,
+		@InjectRepository(SessionEntity)
+		private readonly sessionRepository: Repository<SessionEntity>,
 	) {}
-
-	public async createDatabaseSession(options: CreateSessionOptions): Promise<Session> {
-		return await this.sessionModel.create(options);
-	}
 
 	public generateSessionId(): string {
 		const sessionIdBytes = randomBytes(SessionsService.SESSION_ID_BYTES_LENGTH);
@@ -35,14 +35,31 @@ export class SessionsService {
 			throw UNAUTHORIZED_RESPONSE();
 		}
 
-		const { accessToken } = session;
+		const { credentials } = session;
+		const { accessToken } = credentials;
 
 		return this.encryptionService.decrypt(accessToken);
 	}
 
-	public async getDatabaseSession(sessionId: string): Promise<Session | null> {
-		return await this.sessionModel.findOne({
-			sessionId,
+	public async getDatabaseSession(sessionId: string): Promise<SessionEntity | null> {
+		return await this.sessionRepository.findOne({
+			select: {
+				credentials: true,
+			},
+			where: {
+				sessionId,
+			},
 		});
+	}
+
+	public async saveSessionCredentials(
+		userId: string,
+	): Promise<Repository<SessionCredentialsEntity>> {
+		const sessionCredentialsEntity = new SessionCredentialsEntity();
+
+		sessionCredentialsEntity.accessToken = accessToken;
+		sessionCredentialsEntity.createdAt = new Date();
+
+		return await this.sessionCredentialsRepository.save(entities, options);
 	}
 }

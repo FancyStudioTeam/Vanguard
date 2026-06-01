@@ -8,36 +8,42 @@ export class SessionCredentialsEntity {
 		length: 512,
 		type: 'string',
 	})
-	declare readonly accessToken: string;
+	declare accessToken: string;
 
 	@Column({
 		type: 'date',
 		utc: true,
 	})
-	declare readonly createdAt: Date;
+	declare createdAt: Date;
 
 	@Column({
 		length: 512,
 		type: 'string',
 	})
-	declare readonly refreshToken: string;
+	declare refreshToken: string;
 
 	@OneToMany(
 		() => SessionEntity,
 		(session) => session.userId,
 	)
-	declare readonly sessions: SessionEntity[];
+	declare sessions: SessionEntity[];
+
+	@Column({
+		length: 50,
+		type: 'string',
+	})
+	declare tokenType: string;
 
 	@Column({
 		type: 'date',
 		update: true,
 		utc: true,
 	})
-	declare readonly updatedAt: Date;
+	declare updatedAt: Date;
 
 	@PrimaryColumn({
 		length: 19,
 		unique: true,
 	})
-	declare readonly userId: string;
+	declare userId: string;
 }
