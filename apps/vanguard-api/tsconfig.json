@@ -11,9 +11,6 @@
 			"#modules/*": [
 				"./src/modules/*"
 			],
-			"#schemas/*": [
-				"./src/schemas/*"
-			],
 			"#utils/*": [
 				"./src/utils/*"
 			]

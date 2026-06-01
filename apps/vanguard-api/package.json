@@ -40,7 +40,6 @@
 		"#common/*": "./dist/common/*",
 		"#lib/*": "./dist/lib/*",
 		"#modules/*": "./dist/modules/*",
-		"#schemas/*": "./dist/schemas/*",
 		"#utils/*": "./dist/utils/*"
 	},
 	"license": "AGPL-3.0-only",
