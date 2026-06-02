@@ -26,7 +26,7 @@
 	"packageManager": "pnpm@11.0.0",
 	"private": true,
 	"scripts": {
-		"build": "tsc --project tsconfig.json",
+		"build": "tsgo --project tsconfig.json",
 		"prebuild": "rimraf dist && pnpm prisma:generate",
 		"prisma:format": "prisma format",
 		"prisma:generate": "prisma generate",

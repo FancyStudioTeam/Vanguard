@@ -6,6 +6,7 @@
 		"@commitlint/cli": "21.0.2",
 		"@commitlint/config-conventional": "21.0.2",
 		"@commitlint/types": "21.0.1",
+		"@typescript/native-preview": "7.0.0-dev.20260421.2",
 		"husky": "9.1.7",
 		"lint-staged": "17.0.5",
 		"turbo": "2.9.16"
