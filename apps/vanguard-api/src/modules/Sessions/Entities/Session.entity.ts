@@ -21,6 +21,9 @@ export class SessionEntity {
 	@OneToOne(
 		() => SessionCredentialsEntity,
 		(sessionCredentials) => sessionCredentials.userId,
+		{
+			onDelete: 'CASCADE',
+		},
 	)
 	@JoinColumn({
 		name: 'userId',
