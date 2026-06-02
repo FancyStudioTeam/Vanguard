@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 import { SessionEntity } from './Session.entity.js';
 
@@ -10,7 +10,7 @@ export class SessionCredentialsEntity {
 	})
 	declare accessToken: string;
 
-	@Column({
+	@CreateDateColumn({
 		type: 'timestamp',
 		utc: true,
 	})
@@ -34,7 +34,7 @@ export class SessionCredentialsEntity {
 	})
 	declare tokenType: string;
 
-	@Column({
+	@UpdateDateColumn({
 		type: 'timestamp',
 		update: true,
 		utc: true,
