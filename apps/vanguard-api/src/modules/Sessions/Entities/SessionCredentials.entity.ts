@@ -31,7 +31,7 @@ export class SessionCredentialsEntity {
 
 	@OneToMany(
 		() => SessionEntity,
-		(session) => session.userId,
+		(session) => session.credentials,
 	)
 	declare sessions: SessionEntity[];
 

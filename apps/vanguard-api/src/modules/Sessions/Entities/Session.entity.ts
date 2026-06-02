@@ -3,7 +3,7 @@ import {
 	CreateDateColumn,
 	Entity,
 	JoinColumn,
-	OneToOne,
+	ManyToOne,
 	PrimaryColumn,
 	UpdateDateColumn,
 } from 'typeorm';
@@ -18,9 +18,9 @@ export class SessionEntity {
 	})
 	declare createdAt: Date;
 
-	@OneToOne(
+	@ManyToOne(
 		() => SessionCredentialsEntity,
-		(sessionCredentials) => sessionCredentials.userId,
+		(sessionCredentials) => sessionCredentials.sessions,
 		{
 			onDelete: 'CASCADE',
 		},
