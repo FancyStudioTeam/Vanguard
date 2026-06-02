@@ -51,7 +51,6 @@ export class SessionCredentialsEntity {
 	@PrimaryColumn({
 		length: 19,
 		type: 'varchar',
-		unique: true,
 	})
 	declare userId: string;
 }
