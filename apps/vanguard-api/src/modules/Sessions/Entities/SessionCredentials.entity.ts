@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+	Column,
+	CreateDateColumn,
+	Entity,
+	OneToMany,
+	PrimaryColumn,
+	UpdateDateColumn,
+} from 'typeorm';
 
 import { SessionEntity } from './Session.entity.js';
 

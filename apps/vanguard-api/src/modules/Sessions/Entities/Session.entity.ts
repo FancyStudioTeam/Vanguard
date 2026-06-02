@@ -1,4 +1,11 @@
-import { Column, Entity, OneToOne, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+	Column,
+	CreateDateColumn,
+	Entity,
+	OneToOne,
+	PrimaryColumn,
+	UpdateDateColumn,
+} from 'typeorm';
 
 import { SessionCredentialsEntity } from './SessionCredentials.entity.js';
 
