@@ -2,6 +2,7 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
+	JoinColumn,
 	OneToOne,
 	PrimaryColumn,
 	UpdateDateColumn,
@@ -21,6 +22,9 @@ export class SessionEntity {
 		() => SessionCredentialsEntity,
 		(sessionCredentials) => sessionCredentials.userId,
 	)
+	@JoinColumn({
+		name: 'userId',
+	})
 	declare credentials: SessionCredentialsEntity;
 
 	@PrimaryColumn({
