@@ -4,6 +4,8 @@ import { env } from 'node:process';
 
 import FastifyCookie from '@fastify/cookie';
 import type { FastifyCorsOptions } from '@fastify/cors';
+import FastifyCsrf from '@fastify/csrf-protection';
+import FastifyHelmet from '@fastify/helmet';
 import type { NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
@@ -50,6 +52,8 @@ app.enableCors(CORS_OPTIONS);
 app.setGlobalPrefix('api');
 
 await app.register(FastifyCookie);
+await app.register(FastifyHelmet);
+await app.register(FastifyCsrf);
 
 await app
 	.listen(APP_PORT, APP_HOST)
