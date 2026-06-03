@@ -52,8 +52,8 @@ app.enableCors(CORS_OPTIONS);
 app.setGlobalPrefix('api');
 
 await app.register(FastifyCookie);
-await app.register(FastifyHelmet);
 await app.register(FastifyCsrf);
+await app.register(FastifyHelmet);
 
 await app
 	.listen(APP_PORT, APP_HOST)
