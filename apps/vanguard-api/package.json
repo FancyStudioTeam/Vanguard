@@ -12,7 +12,7 @@
 		"@nestjs/common": "11.1.26",
 		"@nestjs/core": "11.1.26",
 		"@nestjs/jwt": "11.0.2",
-		"@nestjs/platform-fastify": "11.1.24",
+		"@nestjs/platform-fastify": "11.1.26",
 		"@nestjs/typeorm": "11.0.1",
 		"@sapphire/snowflake": "3.5.5",
 		"@vanguard/api-contracts": "workspace:*",
