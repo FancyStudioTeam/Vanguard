@@ -10,7 +10,7 @@
 		"@fastify/secure-session": "8.3.0",
 		"@nestjs/cache-manager": "3.1.2",
 		"@nestjs/common": "11.1.24",
-		"@nestjs/core": "11.1.24",
+		"@nestjs/core": "11.1.26",
 		"@nestjs/jwt": "11.0.2",
 		"@nestjs/platform-fastify": "11.1.24",
 		"@nestjs/typeorm": "11.0.1",
