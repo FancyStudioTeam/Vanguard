@@ -200,8 +200,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       isbot:
-        specifier: 5.1.40
-        version: 5.1.40
+        specifier: 5.1.42
+        version: 5.1.42
       react:
         specifier: 19.2.7
         version: 19.2.7
@@ -3064,8 +3064,8 @@ packages:
     resolution: {integrity: sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==}
     engines: {node: '>=10'}
 
-  isbot@5.1.40:
-    resolution: {integrity: sha512-yNeeynhhtIVRBk12tBV4eHNxwB42HzR4Q3Ea7vCOiJhImGaAIdIMrbJtacQlBizGLjUPw+akkFI5Dn9T70XoVQ==}
+  isbot@5.1.42:
+    resolution: {integrity: sha512-/SXsVh7KpPRISrD4ffrGSxnTLlUBzEQUfWIusaJPrpJ93FW1P0YEZri5vAUkFsA0m2HRUhQRQadk2wJ+EeKowQ==}
     engines: {node: '>=18'}
 
   isexe@2.0.0:
@@ -5674,7 +5674,7 @@ snapshots:
       dedent: 1.7.2
       es-module-lexer: 1.7.0
       exit-hook: 2.2.1
-      isbot: 5.1.40
+      isbot: 5.1.42
       jsesc: 3.0.2
       lodash: 4.18.1
       p-map: 7.0.4
@@ -7055,7 +7055,7 @@ snapshots:
 
   is-unicode-supported@0.1.0: {}
 
-  isbot@5.1.40: {}
+  isbot@5.1.42: {}
 
   isexe@2.0.0: {}
 
