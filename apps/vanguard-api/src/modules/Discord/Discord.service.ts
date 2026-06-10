@@ -22,7 +22,7 @@ import {
 	Routes,
 } from 'discord-api-types/v10';
 
-import { CLIENT_ID, CLIENT_SECRET, CLIENT_TOKEN } from '#lib/Constants/Client.js';
+import { BOT_ID, BOT_SECRET, BOT_TOKEN } from '#lib/Constants/Bot.js';
 import { logger } from '#lib/Logger.js';
 import {
 	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
@@ -67,7 +67,7 @@ export class DiscordService {
 	public constructor(@Inject(CACHE_MANAGER) private readonly cacheService: Cache) {
 		this.rest = new REST();
 
-		this.rest.setToken(CLIENT_TOKEN);
+		this.rest.setToken(BOT_TOKEN);
 		this.rest.on('response', (request, response) => {
 			const { method, path } = request;
 			const { status } = response;
@@ -88,8 +88,8 @@ export class DiscordService {
 	private createRequestBodyForTokenExchange(code: string): string {
 		const urlSearchParams = new URLSearchParams();
 
-		urlSearchParams.set('client_id', CLIENT_ID);
-		urlSearchParams.set('client_secret', CLIENT_SECRET);
+		urlSearchParams.set('client_id', BOT_ID);
+		urlSearchParams.set('client_secret', BOT_SECRET);
 
 		urlSearchParams.set('code', code);
 

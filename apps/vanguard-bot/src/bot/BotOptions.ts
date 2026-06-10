@@ -5,9 +5,9 @@ import {
 	DESIRED_PROPERTIES_BEHAVIOR,
 } from '@vanguard/discord-config/desired-properties';
 
-import type { CreateGatewayManagerOptions } from '@discordeno/bot';
+import { ActivityTypes, type CreateGatewayManagerOptions } from '@discordeno/bot';
 
-import { CLIENT_GATEWAY_INTENTS, CLIENT_TOKEN } from '#lib/Constants.js';
+import { BOT_INTENTS, BOT_TOKEN } from '#lib/Constants.js';
 
 export const BOT_DESIRED_PROPERTIES = DESIRED_PROPERTIES;
 export const BOT_DESIRED_PROPERTIES_BEHAVIOR = DESIRED_PROPERTIES_BEHAVIOR;
@@ -21,7 +21,12 @@ export const BOT_GATEWAY_MANAGER_PROPERTIES = {
 export const BOT_GATEWAY_MANAGER = {
 	compress: true,
 	makePresence: async () => ({
-		activities: [],
+		activities: [
+			{
+				name: 'vanguard.fancystudio.xyz',
+				type: ActivityTypes.Watching,
+			},
+		],
 		afk: false,
 		since: null,
 		status: 'idle',
@@ -29,8 +34,7 @@ export const BOT_GATEWAY_MANAGER = {
 	properties: BOT_GATEWAY_MANAGER_PROPERTIES,
 } satisfies BotGatewayManager;
 
-export const BOT_INTENTS = CLIENT_GATEWAY_INTENTS;
-export const BOT_TOKEN = CLIENT_TOKEN;
+export { BOT_INTENTS, BOT_TOKEN };
 
 type BotGatewayManager = Omit<CreateGatewayManagerOptions, 'token'>;
 type BotGatewayManagerProperties = BotGatewayManager['properties'];

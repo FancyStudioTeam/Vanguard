@@ -1,6 +1,6 @@
 import { OAuth2Routes, OAuth2Scopes } from 'discord-api-types/v10';
 
-import { CLIENT_ID } from '#lib/Constants/Client.js';
+import { BOT_ID } from '#lib/Constants/Bot.js';
 import { createCallbackUrl } from './createCallbackUrl.js';
 
 /**
@@ -10,7 +10,7 @@ export function createRedirectUrl(): string {
 	const url = new URL(OAuth2Routes.authorizationURL);
 	const urlSearchParams = url.searchParams;
 
-	urlSearchParams.append('client_id', CLIENT_ID);
+	urlSearchParams.append('client_id', BOT_ID);
 
 	urlSearchParams.append('response_type', 'code');
 	urlSearchParams.append('prompt', 'none');
