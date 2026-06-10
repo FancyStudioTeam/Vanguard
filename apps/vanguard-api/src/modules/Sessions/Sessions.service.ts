@@ -54,12 +54,24 @@ export class SessionsService {
 
 	public async saveSessionCredentials(
 		userId: string,
-	): Promise<Repository<SessionCredentialsEntity>> {
+		{ accessToken, refreshToken, tokenType }: SaveSessionCredentials,
+	): Promise<SessionCredentialsEntity> {
 		const sessionCredentialsEntity = new SessionCredentialsEntity();
 
-		sessionCredentialsEntity.accessToken = accessToken;
-		sessionCredentialsEntity.createdAt = new Date();
+		const encryptedAccessToken = this.encryptionService.encrypt(accessToken);
+		const encryptedRefreshToken = this.encryptionService.encrypt(refreshToken);
 
-		return await this.sessionCredentialsRepository.save(entities, options);
+		sessionCredentialsEntity.accessToken = encryptedAccessToken;
+		sessionCredentialsEntity.refreshToken = encryptedRefreshToken;
+		sessionCredentialsEntity.tokenType = tokenType;
+		sessionCredentialsEntity.userId = userId;
+
+		return await this.sessionCredentialsRepository.save(sessionCredentialsEntity);
 	}
+}
+
+interface SaveSessionCredentials {
+	accessToken: string;
+	refreshToken: string;
+	tokenType: string;
 }

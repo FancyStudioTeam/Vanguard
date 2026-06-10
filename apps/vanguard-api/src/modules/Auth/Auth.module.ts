@@ -3,7 +3,6 @@ import { JwtModule } from '@nestjs/jwt';
 
 import { AUTH_SECRET } from '#lib/Constants/Auth.js';
 import { DiscordModule } from '#modules/Discord/Discord.module.js';
-import { EncryptionModule } from '#modules/Encryption/Encryption.module.js';
 import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
 import { AuthController } from './Auth.controller.js';
 import { AuthService } from './Auth.service.js';
@@ -22,7 +21,6 @@ const JSON_WEB_TOKEN_ISSUER = new URL('/', URL_BASE).toString();
 	],
 	imports: [
 		DiscordModule,
-		EncryptionModule,
 		JwtModule.register({
 			global: true,
 			secret: AUTH_SECRET,
