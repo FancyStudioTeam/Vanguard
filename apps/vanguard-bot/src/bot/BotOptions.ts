@@ -13,13 +13,19 @@ export const BOT_DESIRED_PROPERTIES = DESIRED_PROPERTIES;
 export const BOT_DESIRED_PROPERTIES_BEHAVIOR = DESIRED_PROPERTIES_BEHAVIOR;
 
 export const BOT_GATEWAY_MANAGER_PROPERTIES = {
-	browser: 'Discord Android',
+	browser: 'Discord Browser',
 	device: 'Discordeno',
 	os: platform,
 } satisfies BotGatewayManagerProperties;
 
 export const BOT_GATEWAY_MANAGER = {
 	compress: true,
+	makePresence: async () => ({
+		activities: [],
+		afk: false,
+		since: null,
+		status: 'idle',
+	}),
 	properties: BOT_GATEWAY_MANAGER_PROPERTIES,
 } satisfies BotGatewayManager;
 
