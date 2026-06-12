@@ -16,6 +16,9 @@
 	},
 	"license": "AGPL-3.0-only",
 	"name": "vanguard",
+	"nano-staged": {
+		"**/*.{js,jsx,ts,tsx,json,css}": "pnpm biome:write"
+	},
 	"packageManager": "pnpm@11.6.0",
 	"private": true,
 	"repository": {
