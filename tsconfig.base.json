@@ -17,6 +17,9 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"strictNullChecks": true,
-		"target": "esnext"
+		"target": "esnext",
+		"types": [
+			"node"
+		]
 	}
 }

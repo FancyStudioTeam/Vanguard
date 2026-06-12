@@ -89,6 +89,20 @@
 				}
 			},
 			"nursery": {
+				"noRestrictedDependencies": "error"
+			},
+			"performance": {
+				"noBarrelFile": "error",
+				"noReExportAll": "error"
+			},
+			"preset": "recommended",
+			"style": {
+				"noCommonJs": "error",
+				"noDefaultExport": "off",
+				"noMagicNumbers": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useBlockStatements": "error",
+				"useConsistentEnumValueType": "error",
 				"useDestructuring": {
 					"level": "error",
 					"options": {
@@ -101,19 +115,7 @@
 							"object": true
 						}
 					}
-				}
-			},
-			"performance": {
-				"noBarrelFile": "error",
-				"noReExportAll": "error"
-			},
-			"recommended": true,
-			"style": {
-				"noCommonJs": "error",
-				"noDefaultExport": "off",
-				"noMagicNumbers": "error",
-				"noUnusedTemplateLiteral": "error",
-				"useBlockStatements": "error",
+				},
 				"useImportType": "error",
 				"useNamingConvention": {
 					"fix": "safe",
@@ -147,16 +149,19 @@
 					"level": "error"
 				},
 				"useReadonlyClassProperties": {
-					"level": "error",
+					"level": "warn",
 					"options": {
 						"checkAllProperties": true
 					}
 				},
-				"useUnifiedTypeSignatures": "error"
+				"useUnifiedTypeSignatures": "warn"
 			},
 			"suspicious": {
-				"noEmptyBlockStatements": "error",
+				"noDuplicateEnumValues": "error",
+				"noEmptyBlockStatements": "warn",
+				"noProto": "error",
 				"noUnassignedVariables": "error",
+				"noUnnecessaryConditions": "warn",
 				"useAwait": "error"
 			}
 		}

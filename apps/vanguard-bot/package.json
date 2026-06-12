@@ -6,13 +6,11 @@
 		"@vanguard/discord-handlers": "workspace:*",
 		"@vanguard/discord-jsx": "workspace:*",
 		"@vanguard/logger": "workspace:*",
-		"@vanguard/prisma": "workspace:*",
-		"dotenv": "17.4.2"
+		"@vanguard/prisma": "workspace:*"
 	},
 	"devDependencies": {
-		"@types/node": "25.9.2",
+		"@types/node": "25.9.3",
 		"cross-env": "10.1.0",
-		"rimraf": "6.1.3",
 		"tsx": "4.22.4",
 		"typescript": "6.0.3"
 	},
@@ -24,14 +22,16 @@
 	},
 	"license": "AGPL-3.0-only",
 	"name": "vanguard-client",
-	"packageManager": "pnpm@11.0.0",
+	"packageManager": "pnpm@11.6.0",
 	"private": true,
 	"scripts": {
 		"build": "pnpm vanguard:build",
 		"docker:build": "docker build --tag vanguard-client --file Dockerfile ../../.",
 		"docker:run": "docker run -d --env-file .env vanguard-client",
 		"docker:run:sh": "docker run -it --rm vanguard-client sh",
-		"prebuild": "rimraf dist",
+
+		"prebuild": "pnpm rimraf",
+		"rimraf": "node ../../scripts/rimraf.js",
 		"vanguard:build": "tsgo --project tsconfig.json",
 		"vanguard:dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
 		"vanguard:start": "cross-env NODE_ENV=production node dist/index.js"
