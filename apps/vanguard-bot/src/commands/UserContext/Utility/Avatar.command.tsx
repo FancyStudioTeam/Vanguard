@@ -24,7 +24,7 @@ export default class AvatarCommand extends UserContextHandler {
 			components: [
 				containerComponent,
 			],
-			flags: MessageFlags.IsComponentsV2,
+			flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2,
 		});
 	}
 
