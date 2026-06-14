@@ -1,5 +1,28 @@
 {
+	"name": "@vanguard/prisma",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"prebuild": "pnpm rimraf && pnpm prisma:generate",
+		"build": "tsgo --project tsconfig.json",
+		"prisma:format": "prisma format",
+		"prisma:generate": "prisma generate",
+		"prisma:migrate:deploy": "prisma migrate deploy",
+		"prisma:migrate:dev": "prisma migrate dev",
+		"prisma:migrate:reset": "prisma migrate reset",
+		"prisma:studio": "prisma studio",
+		"rimraf": "node ../../scripts/rimraf.js"
+	},
 	"dependencies": {
 		"@prisma/adapter-pg": "7.8.0",
 		"@prisma/client": "7.8.0",
@@ -12,28 +35,5 @@
 		"tsx": "4.22.4",
 		"typescript": "6.0.3"
 	},
-	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js",
-			"types": "./dist/index.d.ts"
-		}
-	},
-	"license": "AGPL-3.0-only",
-	"name": "@vanguard/prisma",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"scripts": {
-		"build": "tsgo --project tsconfig.json",
-		"prebuild": "pnpm rimraf && pnpm prisma:generate",
-		"prisma:format": "prisma format",
-		"prisma:generate": "prisma generate",
-		"prisma:migrate:deploy": "prisma migrate deploy",
-		"prisma:migrate:dev": "prisma migrate dev",
-		"prisma:migrate:reset": "prisma migrate reset",
-		"prisma:studio": "prisma studio",
-		"rimraf": "node ../../scripts/rimraf.js"
-	},
-	"type": "module",
-	"version": "0.1.0"
+	"packageManager": "pnpm@11.6.0"
 }

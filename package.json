@@ -1,6 +1,31 @@
 {
-	"author": "Vanguard Working Group",
+	"name": "vanguard",
+	"version": "0.1.0",
+	"private": true,
 	"description": "Simplicity without compromise",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/FancyStudioTeam/Vanguard"
+	},
+	"license": "AGPL-3.0-only",
+	"author": "Vanguard Working Group",
+	"type": "module",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"biome:check": "biome check",
+		"biome:ci": "biome ci",
+		"biome:write": "biome check --write",
+		"docker:compose:build": "docker compose build",
+		"docker:compose:up": "docker compose up -d",
+		"prepare": "husky",
+		"turbo:build": "turbo build"
+	},
+	"nano-staged": {
+		"**/*.{js,jsx,ts,tsx,json,css}": "pnpm biome:write"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.0",
 		"@commitlint/cli": "21.0.2",
@@ -11,33 +36,8 @@
 		"nano-staged": "1.0.2",
 		"turbo": "2.9.18"
 	},
+	"packageManager": "pnpm@11.6.0",
 	"engines": {
 		"node": ">=22.18.0"
-	},
-	"license": "AGPL-3.0-only",
-	"name": "vanguard",
-	"nano-staged": {
-		"**/*.{js,jsx,ts,tsx,json,css}": "pnpm biome:write"
-	},
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/FancyStudioTeam/Vanguard"
-	},
-	"scripts": {
-		"biome:check": "biome check",
-		"biome:ci": "biome ci",
-		"biome:write": "biome check --write",
-		"docker:compose:build": "docker compose build",
-		"docker:compose:up": "docker compose up -d",
-		"prepare": "husky",
-		"turbo:build": "turbo build"
-	},
-	"type": "module",
-	"version": "0.1.0",
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	]
+	}
 }

@@ -1,5 +1,32 @@
 {
+	"name": "@vanguard/discord-jsx",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
+	"type": "module",
+	"imports": {
+		"#interactive/*": "./dist/interactive/*",
+		"#layout/*": "./dist/layout/*",
+		"#utils/*": "./dist/utils/*"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		},
+		"./jsx-runtime": {
+			"types": "./dist/jsx-runtime.d.ts",
+			"import": "./dist/jsx-runtime.js",
+			"require": "./dist/jsx-runtime.js"
+		}
+	},
+	"scripts": {
+		"prebuild": "pnpm rimraf",
+		"build": "tsgo --project tsconfig.json",
+		"rimraf": "node ../../scripts/rimraf.js"
+	},
 	"dependencies": {
 		"@discordeno/bot": "22.0.1-next.9eb5642"
 	},
@@ -7,32 +34,5 @@
 		"@types/node": "25.9.3",
 		"typescript": "6.0.3"
 	},
-	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js",
-			"types": "./dist/index.d.ts"
-		},
-		"./jsx-runtime": {
-			"import": "./dist/jsx-runtime.js",
-			"require": "./dist/jsx-runtime.js",
-			"types": "./dist/jsx-runtime.d.ts"
-		}
-	},
-	"imports": {
-		"#interactive/*": "./dist/interactive/*",
-		"#layout/*": "./dist/layout/*",
-		"#utils/*": "./dist/utils/*"
-	},
-	"license": "AGPL-3.0-only",
-	"name": "@vanguard/discord-jsx",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"scripts": {
-		"build": "tsgo --project tsconfig.json",
-		"prebuild": "pnpm rimraf",
-		"rimraf": "node ../../scripts/rimraf.js"
-	},
-	"type": "module",
-	"version": "0.1.0"
+	"packageManager": "pnpm@11.6.0"
 }

@@ -1,5 +1,33 @@
 {
+	"name": "vanguard-api",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
+	"type": "module",
+	"imports": {
+		"#common/*": "./dist/common/*",
+		"#lib/*": "./dist/lib/*",
+		"#modules/*": "./dist/modules/*",
+		"#utils/*": "./dist/utils/*"
+	},
+	"scripts": {
+		"prebuild": "pnpm rimraf",
+		"build": "pnpm nest:build",
+		"docker:build": "docker build --tag vanguard-api --file Dockerfile ../../.",
+		"docker:run": "docker run -d -p 3001:3001 --env-file .env vanguard-api",
+		"docker:run:sh": "docker run -it --rm vanguard-api sh",
+		"nest:build": "nest build",
+		"nest:dev": "cross-env HOST=127.0.0.1 NODE_ENV=development nest start --watch",
+		"nest:start": "cross-env HOST=0.0.0.0 NODE_ENV=production node dist/index.js",
+		"prisma:format": "prisma format",
+		"prisma:generate": "prisma generate",
+		"prisma:migrate:deploy": "prisma migrate deploy",
+		"prisma:migrate:dev": "prisma migrate dev",
+		"prisma:migrate:reset": "prisma migrate reset",
+		"prisma:studio": "prisma studio",
+		"rimraf": "node ../../scripts/rimraf.js"
+	},
 	"dependencies": {
 		"@discordeno/utils": "21.0.0",
 		"@discordjs/rest": "2.6.1",
@@ -35,33 +63,5 @@
 		"prisma": "7.8.0",
 		"typescript": "6.0.3"
 	},
-	"imports": {
-		"#common/*": "./dist/common/*",
-		"#lib/*": "./dist/lib/*",
-		"#modules/*": "./dist/modules/*",
-		"#utils/*": "./dist/utils/*"
-	},
-	"license": "AGPL-3.0-only",
-	"name": "vanguard-api",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"scripts": {
-		"build": "pnpm nest:build",
-		"docker:build": "docker build --tag vanguard-api --file Dockerfile ../../.",
-		"docker:run": "docker run -d -p 3001:3001 --env-file .env vanguard-api",
-		"docker:run:sh": "docker run -it --rm vanguard-api sh",
-		"nest:build": "nest build",
-		"nest:dev": "cross-env HOST=127.0.0.1 NODE_ENV=development nest start --watch",
-		"nest:start": "cross-env HOST=0.0.0.0 NODE_ENV=production node dist/index.js",
-		"prebuild": "pnpm rimraf",
-		"prisma:format": "prisma format",
-		"prisma:generate": "prisma generate",
-		"prisma:migrate:deploy": "prisma migrate deploy",
-		"prisma:migrate:dev": "prisma migrate dev",
-		"prisma:migrate:reset": "prisma migrate reset",
-		"prisma:studio": "prisma studio",
-		"rimraf": "node ../../scripts/rimraf.js"
-	},
-	"type": "module",
-	"version": "0.1.0"
+	"packageManager": "pnpm@11.6.0"
 }

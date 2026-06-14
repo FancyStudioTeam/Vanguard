@@ -1,39 +1,39 @@
 {
+	"name": "@vanguard/api-contracts",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
-	"devDependencies": {
-		"@types/node": "25.9.3",
-		"typescript": "6.0.3"
-	},
-	"exports": {
-		"./enums": {
-			"import": "./dist/enums/index.js",
-			"require": "./dist/enums/index.js",
-			"types": "./dist/enums/index.d.ts"
-		},
-		"./interfaces": {
-			"import": "./dist/interfaces/index.js",
-			"require": "./dist/interfaces/index.js",
-			"types": "./dist/interfaces/index.d.ts"
-		},
-		"./rest": {
-			"import": "./dist/rest/index.js",
-			"require": "./dist/rest/index.js",
-			"types": "./dist/rest/index.d.ts"
-		}
-	},
+	"type": "module",
 	"imports": {
 		"#interfaces/*": "./dist/interfaces/*",
 		"#rest/*": "./dist/rest/*"
 	},
-	"license": "AGPL-3.0-only",
-	"name": "@vanguard/api-contracts",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
+	"exports": {
+		"./enums": {
+			"types": "./dist/enums/index.d.ts",
+			"import": "./dist/enums/index.js",
+			"require": "./dist/enums/index.js"
+		},
+		"./interfaces": {
+			"types": "./dist/interfaces/index.d.ts",
+			"import": "./dist/interfaces/index.js",
+			"require": "./dist/interfaces/index.js"
+		},
+		"./rest": {
+			"types": "./dist/rest/index.d.ts",
+			"import": "./dist/rest/index.js",
+			"require": "./dist/rest/index.js"
+		}
+	},
 	"scripts": {
-		"build": "tsgo --project tsconfig.json",
 		"prebuild": "pnpm rimraf",
+		"build": "tsgo --project tsconfig.json",
 		"rimraf": "node ../../scripts/rimraf.js"
 	},
-	"type": "module",
-	"version": "0.1.0"
+	"devDependencies": {
+		"@types/node": "25.9.3",
+		"typescript": "6.0.3"
+	},
+	"packageManager": "pnpm@11.6.0"
 }

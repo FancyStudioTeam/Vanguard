@@ -1,5 +1,44 @@
 {
+	"name": "@vanguard/discord-handlers",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
+	"type": "module",
+	"imports": {
+		"#base/*": "./dist/base/*",
+		"#commands/*": "./dist/commands/*",
+		"#decorators/*": "./dist/decorators/*",
+		"#events/*": "./dist/events/*",
+		"#messages/*": "./dist/messages/*"
+	},
+	"exports": {
+		"./base": {
+			"types": "./dist/base/index.d.ts",
+			"import": "./dist/base/index.js",
+			"require": "./dist/base/index.js"
+		},
+		"./commands": {
+			"types": "./dist/commands/index.d.ts",
+			"import": "./dist/commands/index.js",
+			"require": "./dist/commands/index.js"
+		},
+		"./decorators": {
+			"types": "./dist/decorators/index.d.ts",
+			"import": "./dist/decorators/index.js",
+			"require": "./dist/decorators/index.js"
+		},
+		"./events": {
+			"types": "./dist/events/index.d.ts",
+			"import": "./dist/events/index.js",
+			"require": "./dist/events/index.js"
+		}
+	},
+	"scripts": {
+		"prebuild": "pnpm rimraf",
+		"build": "tsgo --project tsconfig.json",
+		"rimraf": "node ../../scripts/rimraf.js"
+	},
 	"dependencies": {
 		"@discordeno/bot": "22.0.1-next.9eb5642",
 		"@vanguard/discord-config": "workspace:*",
@@ -9,44 +48,5 @@
 		"@types/node": "25.9.3",
 		"typescript": "6.0.3"
 	},
-	"exports": {
-		"./base": {
-			"import": "./dist/base/index.js",
-			"require": "./dist/base/index.js",
-			"types": "./dist/base/index.d.ts"
-		},
-		"./commands": {
-			"import": "./dist/commands/index.js",
-			"require": "./dist/commands/index.js",
-			"types": "./dist/commands/index.d.ts"
-		},
-		"./decorators": {
-			"import": "./dist/decorators/index.js",
-			"require": "./dist/decorators/index.js",
-			"types": "./dist/decorators/index.d.ts"
-		},
-		"./events": {
-			"import": "./dist/events/index.js",
-			"require": "./dist/events/index.js",
-			"types": "./dist/events/index.d.ts"
-		}
-	},
-	"imports": {
-		"#base/*": "./dist/base/*",
-		"#commands/*": "./dist/commands/*",
-		"#decorators/*": "./dist/decorators/*",
-		"#events/*": "./dist/events/*",
-		"#messages/*": "./dist/messages/*"
-	},
-	"license": "AGPL-3.0-only",
-	"name": "@vanguard/discord-handlers",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"scripts": {
-		"build": "tsgo --project tsconfig.json",
-		"prebuild": "pnpm rimraf",
-		"rimraf": "node ../../scripts/rimraf.js"
-	},
-	"type": "module",
-	"version": "0.1.0"
+	"packageManager": "pnpm@11.6.0"
 }

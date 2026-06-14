@@ -1,5 +1,22 @@
 {
+	"name": "@vanguard/logger",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"prebuild": "pnpm rimraf",
+		"build": "tsgo --project tsconfig.json",
+		"rimraf": "node ../../scripts/rimraf.js"
+	},
 	"dependencies": {
 		"tslog": "4.10.2"
 	},
@@ -7,22 +24,5 @@
 		"@types/node": "25.9.3",
 		"typescript": "6.0.3"
 	},
-	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js",
-			"types": "./dist/index.d.ts"
-		}
-	},
-	"license": "AGPL-3.0-only",
-	"name": "@vanguard/logger",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"scripts": {
-		"build": "tsgo --project tsconfig.json",
-		"prebuild": "pnpm rimraf",
-		"rimraf": "node ../../scripts/rimraf.js"
-	},
-	"type": "module",
-	"version": "0.1.0"
+	"packageManager": "pnpm@11.6.0"
 }

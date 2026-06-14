@@ -1,5 +1,27 @@
 {
+	"name": "vanguard-client",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
+	"type": "module",
+	"imports": {
+		"#bot/*": "./dist/bot/*",
+		"#handlers/*": "./dist/handlers/*",
+		"#lib/*": "./dist/lib/*",
+		"#utils/*": "./dist/utils/*"
+	},
+	"scripts": {
+		"prebuild": "pnpm rimraf",
+		"build": "pnpm vanguard:build",
+		"docker:build": "docker build --tag vanguard-client --file Dockerfile ../../.",
+		"docker:run": "docker run -d --env-file .env vanguard-client",
+		"docker:run:sh": "docker run -it --rm vanguard-client sh",
+		"rimraf": "node ../../scripts/rimraf.js",
+		"vanguard:build": "tsgo --project tsconfig.json",
+		"vanguard:dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
+		"vanguard:start": "cross-env NODE_ENV=production node dist/index.js"
+	},
 	"dependencies": {
 		"@discordeno/bot": "22.0.1-next.9eb5642",
 		"@vanguard/discord-config": "workspace:*",
@@ -14,28 +36,5 @@
 		"tsx": "4.22.4",
 		"typescript": "6.0.3"
 	},
-	"imports": {
-		"#bot/*": "./dist/bot/*",
-		"#handlers/*": "./dist/handlers/*",
-		"#lib/*": "./dist/lib/*",
-		"#utils/*": "./dist/utils/*"
-	},
-	"license": "AGPL-3.0-only",
-	"name": "vanguard-client",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"scripts": {
-		"build": "pnpm vanguard:build",
-		"docker:build": "docker build --tag vanguard-client --file Dockerfile ../../.",
-		"docker:run": "docker run -d --env-file .env vanguard-client",
-		"docker:run:sh": "docker run -it --rm vanguard-client sh",
-
-		"prebuild": "pnpm rimraf",
-		"rimraf": "node ../../scripts/rimraf.js",
-		"vanguard:build": "tsgo --project tsconfig.json",
-		"vanguard:dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
-		"vanguard:start": "cross-env NODE_ENV=production node dist/index.js"
-	},
-	"type": "module",
-	"version": "0.1.0"
+	"packageManager": "pnpm@11.6.0"
 }

@@ -1,5 +1,32 @@
 {
+	"name": "@vanguard/discord-config",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
 	"author": "Vanguard Working Group",
+	"type": "module",
+	"exports": {
+		"./desired-properties": {
+			"types": "./dist/desiredProperties.d.ts",
+			"import": "./dist/desiredProperties.js",
+			"require": "./dist/desiredProperties.js"
+		},
+		"./inferred-bot-types": {
+			"types": "./dist/inferredBotTypes.d.ts",
+			"import": "./dist/inferredBotTypes.js",
+			"require": "./dist/inferredBotTypes.js"
+		},
+		"./inferred-types": {
+			"types": "./dist/inferredTypes.d.ts",
+			"import": "./dist/inferredTypes.js",
+			"require": "./dist/inferredTypes.js"
+		}
+	},
+	"scripts": {
+		"prebuild": "pnpm rimraf",
+		"build": "tsgo --project tsconfig.json",
+		"rimraf": "node ../../scripts/rimraf.js"
+	},
 	"dependencies": {
 		"@discordeno/bot": "22.0.1-next.9eb5642"
 	},
@@ -7,32 +34,5 @@
 		"@types/node": "25.9.3",
 		"typescript": "6.0.3"
 	},
-	"exports": {
-		"./desired-properties": {
-			"import": "./dist/desiredProperties.js",
-			"require": "./dist/desiredProperties.js",
-			"types": "./dist/desiredProperties.d.ts"
-		},
-		"./inferred-bot-types": {
-			"import": "./dist/inferredBotTypes.js",
-			"require": "./dist/inferredBotTypes.js",
-			"types": "./dist/inferredBotTypes.d.ts"
-		},
-		"./inferred-types": {
-			"import": "./dist/inferredTypes.js",
-			"require": "./dist/inferredTypes.js",
-			"types": "./dist/inferredTypes.d.ts"
-		}
-	},
-	"license": "AGPL-3.0-only",
-	"name": "@vanguard/discord-config",
-	"packageManager": "pnpm@11.6.0",
-	"private": true,
-	"scripts": {
-		"build": "tsgo --project tsconfig.json",
-		"prebuild": "pnpm rimraf",
-		"rimraf": "node ../../scripts/rimraf.js"
-	},
-	"type": "module",
-	"version": "0.1.0"
+	"packageManager": "pnpm@11.6.0"
 }
