@@ -235,10 +235,10 @@ importers:
         version: 19.2.3(@types/react@19.2.17)
       tailwind-animations:
         specifier: 1.0.1
-        version: 1.0.1(tailwindcss@4.3.0)
+        version: 1.0.1(tailwindcss@4.3.1)
       tailwindcss:
-        specifier: 4.3.0
-        version: 4.3.0
+        specifier: 4.3.1
+        version: 4.3.1
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -7962,9 +7962,9 @@ snapshots:
 
   symbol-observable@4.0.0: {}
 
-  tailwind-animations@1.0.1(tailwindcss@4.3.0):
+  tailwind-animations@1.0.1(tailwindcss@4.3.1):
     dependencies:
-      tailwindcss: 4.3.0
+      tailwindcss: 4.3.1
 
   tailwind-merge@3.6.0: {}
 
