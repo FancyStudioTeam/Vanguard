@@ -15,6 +15,7 @@ export class AuthService {
 	public async signInWithDiscord(code: string): Promise<string> {
 		const {
 			access_token: accessToken,
+			expires_in: expiresIn,
 			refresh_token: refreshToken,
 			token_type: tokenType,
 		} = await this.discordService.getUserAccess(code);
@@ -22,18 +23,20 @@ export class AuthService {
 
 		const sessionId = this.sessionsService.generateSessionId();
 
-		await this.sessionsService.saveSessionCredentials(userId, {
+		await this.sessionsService.createSession(sessionId, userId, {
 			accessToken,
+			expiresIn,
 			refreshToken,
 			tokenType,
 		});
 
-		return await this.signJsonWebToken(sessionId);
+		return await this.signJsonWebToken(sessionId, userId);
 	}
 
-	public async signJsonWebToken(sessionId: string): Promise<string> {
+	public async signJsonWebToken(sessionId: string, userId: string): Promise<string> {
 		return await this.jwtService.signAsync({
 			sid: sessionId,
+			sub: userId,
 		});
 	}
 }

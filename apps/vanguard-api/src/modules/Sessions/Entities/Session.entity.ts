@@ -1,14 +1,4 @@
-import {
-	Column,
-	CreateDateColumn,
-	Entity,
-	JoinColumn,
-	ManyToOne,
-	PrimaryColumn,
-	UpdateDateColumn,
-} from 'typeorm';
-
-import { SessionCredentialsEntity } from './SessionCredentials.entity.js';
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('session')
 export class SessionEntity {
@@ -18,23 +8,33 @@ export class SessionEntity {
 	})
 	declare createdAt: Date;
 
-	@ManyToOne(
-		() => SessionCredentialsEntity,
-		(sessionCredentials) => sessionCredentials.sessions,
-		{
-			onDelete: 'CASCADE',
-		},
-	)
-	@JoinColumn({
-		name: 'userId',
+	@Column('varchar', {
+		length: 250,
 	})
-	declare credentials: SessionCredentialsEntity;
+	declare discordAccessToken: string;
 
-	@PrimaryColumn({
+	@Column('varchar', {
+		length: 50,
+	})
+	declare discordAccessTokenType: string;
+
+	@Column('numeric')
+	declare discordAccessTokenExpiresIn: number;
+
+	@Column('varchar', {
+		length: 250,
+	})
+	declare discordRefreshToken: string;
+
+	@PrimaryColumn('varchar', {
 		length: 64,
-		type: 'varchar',
 	})
 	declare sessionId: string;
+
+	@Column('varchar', {
+		length: 19,
+	})
+	declare sessionUserId: string;
 
 	@UpdateDateColumn({
 		type: 'timestamp',
@@ -43,9 +43,7 @@ export class SessionEntity {
 	})
 	declare updatedAt: Date;
 
-	@Column({
-		length: 19,
-		type: 'varchar',
-	})
-	declare userId: string;
+	get isAccessTokenExpired(): boolean {
+		return Date.now() >= this.discordAccessTokenExpiresIn;
+	}
 }
