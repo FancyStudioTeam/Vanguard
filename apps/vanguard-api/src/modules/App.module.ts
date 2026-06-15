@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common';
-import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
+import { type MiddlewareConsumer, Module, type NestModule } from '@nestjs/common';
+import { APP_FILTER, APP_GUARD, RouterModule } from '@nestjs/core';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { HttpExceptionFilter } from '#common/Filters/HttpExceptionFilter.js';
 import { AuthGuard } from '#common/Guards/AuthGuard.js';
-import { LoggerInterceptor } from '#common/Interceptors/LoggerInterceptor.js';
+import { LoggerMiddleware } from '#common/Middlewares/LoggerMiddleware.js';
 import {
 	SESSIONS_DATABASE_HOST,
 	SESSIONS_DATABASE_NAME,
@@ -48,13 +48,13 @@ import { UsersRoutes } from './Users/Users.routes.js';
 			useClass: HttpExceptionFilter,
 		},
 		{
-			provide: APP_INTERCEPTOR,
-			useClass: LoggerInterceptor,
-		},
-		{
 			provide: APP_GUARD,
 			useClass: AuthGuard,
 		},
 	],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+	public configure(consumer: MiddlewareConsumer) {
+		consumer.apply(LoggerMiddleware).forRoutes('*');
+	}
+}
