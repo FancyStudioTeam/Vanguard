@@ -6,18 +6,14 @@ import {
 	type APIGuildChannel,
 	type APIGuildMember,
 	type APIRole,
-	type APIUser,
 	PermissionFlagsBits,
 	type RESTAPIPartialCurrentUserGuild,
-	type RESTGetAPIChannelResult,
 	type RESTGetAPICurrentUserGuildsResult,
 	type RESTGetAPICurrentUserResult,
 	type RESTGetAPIGuildChannelsResult,
 	type RESTGetAPIGuildMemberResult,
 	type RESTGetAPIGuildResult,
-	type RESTGetAPIUserResult,
 	RESTJSONErrorCodes,
-	type RESTPostAPIChannelMessageJSONBody,
 	type RESTPostOAuth2AccessTokenResult,
 	Routes,
 } from 'discord-api-types/v10';
@@ -36,7 +32,6 @@ const guildCacheKey = (guildId: string) => `guilds:${guildId}` as const;
 const guildMemberCacheKey = (guildId: string, userId: string) =>
 	`guilds:${guildId}/users:${userId}` as const;
 
-const userCacheKey = (userId: string) => `users:${userId}`;
 const userGuildsCacheKey = (userId: string) => `users:${userId}/guilds` as const;
 
 @Injectable()
@@ -54,9 +49,6 @@ export class DiscordService {
 
 	private static GUILD_MEMBER_CACHE_KEY = guildMemberCacheKey;
 	private static GUILD_MEMBER_CACHE_TTL = 10_000;
-
-	private static USER_CACHE_KEY = userCacheKey;
-	private static USER_CACHE_TTL = 10_000 as const;
 
 	private static USER_GUILDS_CACHE_KEY = userGuildsCacheKey;
 	private static USER_GUILDS_CACHE_TTL = 10_000 as const;
@@ -143,40 +135,21 @@ export class DiscordService {
 	}
 
 	/**
-	 * @see https://docs.discord.com/developers/resources/message#create-message
-	 */
-	public async createMessage(
-		channelId: string,
-		body: RESTPostAPIChannelMessageJSONBody,
-	): Promise<void> {
-		await this.rest.post(Routes.channelMessages(channelId), {
-			body,
-		});
-	}
-
-	/**
-	 * @see https://docs.discord.com/developers/resources/channel#get-channel
-	 */
-	public async getChannel(channelId: string): Promise<RESTGetAPIChannelResult> {
-		const requestEndpoint = Routes.channel(channelId);
-
-		const channel = (await this.rest.get(requestEndpoint)) as RESTGetAPIChannelResult;
-
-		return channel;
-	}
-
-	/**
 	 * @see https://docs.discord.com/developers/resources/user#get-current-user
 	 */
 	public async getCurrentUser(accessToken: string): Promise<RESTGetAPICurrentUserResult> {
 		const requestManager = this.createRestManagerForBearer(accessToken);
 		const requestEndpoint = Routes.user();
 
-		const currentUser = (await requestManager.get(
-			requestEndpoint,
-		)) as RESTGetAPICurrentUserResult;
+		try {
+			const currentUser = (await requestManager.get(
+				requestEndpoint,
+			)) as RESTGetAPICurrentUserResult;
 
-		return currentUser;
+			return currentUser;
+		} catch {
+			throw new UnableToRetrieveUserInformationException();
+		}
 	}
 
 	/**
@@ -320,35 +293,6 @@ export class DiscordService {
 	}
 
 	/**
-	 * @see https://docs.discord.com/developers/resources/user#get-user
-	 */
-	public async getUser(userId: string): Promise<APIUser> {
-		const userCacheKey = DiscordService.USER_CACHE_KEY(userId);
-		const userCacheTtl = DiscordService.USER_CACHE_TTL;
-
-		const cachedUser = await this.cacheService.get<UserCachedValue>(userCacheKey);
-
-		if (cachedUser !== undefined) {
-			return cachedUser;
-		}
-
-		try {
-			const requestEndpoint = Routes.user(userId);
-
-			const user = (await this.rest.get(requestEndpoint)) as RESTGetAPIUserResult;
-			const userCached = await this.cacheService.set<UserCachedValue>(
-				userCacheKey,
-				user,
-				userCacheTtl,
-			);
-
-			return userCached;
-		} catch {
-			throw new UnableToRetrieveUserInformationException();
-		}
-	}
-
-	/**
 	 * @see https://docs.discord.com/developers/topics/oauth2#authorization-code-grant
 	 */
 	public async getUserAccess(code: string): Promise<RESTPostOAuth2AccessTokenResult> {
@@ -437,7 +381,5 @@ type GuildMemberValueWithStatus = 'not_found';
 
 type GuildValueWithObject = APIGuild;
 type GuildValueWithStatus = 'not_found';
-
-type UserCachedValue = APIUser;
 
 type UserGuildsCachedValue = RESTAPIPartialCurrentUserGuild[];
