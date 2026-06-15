@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { HttpExceptionFilter } from '#common/Filters/HttpExceptionFilter.js';
@@ -28,6 +29,7 @@ import { UsersRoutes } from './Users/Users.routes.js';
 			GuildsRoutes,
 			UsersRoutes,
 		]),
+		ScheduleModule.forRoot(),
 		TypeOrmModule.forRoot({
 			autoLoadEntities: true,
 			database: SESSIONS_DATABASE_NAME,
