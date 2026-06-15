@@ -53,6 +53,6 @@ export class AuthController {
 	@Delete('sign-out')
 	@HttpCode(HttpStatus.NO_CONTENT)
 	protected signOut(@Session() fastifySession: FastifySession): void {
-		return void fastifySession.delete();
+		fastifySession.delete();
 	}
 }
