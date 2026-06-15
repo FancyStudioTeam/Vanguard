@@ -1,8 +1,8 @@
 import { ErrorCodes } from '@vanguard/api-contracts/enums';
 
-import { InternalServerErrorException as InternalServerErrorBuiltInException } from '@nestjs/common';
+import { InternalServerErrorException as _InternalServerErrorException } from '@nestjs/common';
 
-export class InternalServerErrorException extends InternalServerErrorBuiltInException {
+export class InternalServerErrorException extends _InternalServerErrorException {
 	public constructor() {
 		super({
 			code: ErrorCodes.InternalServerError,

@@ -1,8 +1,8 @@
 import { ErrorCodes } from '@vanguard/api-contracts/enums';
 
-import { NotFoundException as NotFoundBuiltInException } from '@nestjs/common';
+import { NotFoundException as _NotFoundException } from '@nestjs/common';
 
-export class NotFoundException extends NotFoundBuiltInException {
+export class NotFoundException extends _NotFoundException {
 	public constructor() {
 		super({
 			code: ErrorCodes.NotFound,
