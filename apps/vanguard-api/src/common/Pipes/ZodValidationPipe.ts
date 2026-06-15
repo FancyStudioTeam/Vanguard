@@ -1,10 +1,8 @@
 import { Injectable, type PipeTransform } from '@nestjs/common';
 import { ZodError, type ZodType } from 'zod';
 
-import {
-	INTERNAL_SERVER_ERROR_RESPONSE,
-	ZOD_VALIDATION_ERROR_RESPONSE,
-} from '#lib/Responses/Shared.js';
+import { InternalServerErrorException } from '#common/Exceptions/InternalServerErrorException.js';
+import { ValidationErrorException } from '#common/Exceptions/ValidationErrorException.js';
 
 @Injectable()
 export class ZodValidationPipe implements PipeTransform {
@@ -16,12 +14,12 @@ export class ZodValidationPipe implements PipeTransform {
 		} catch (exception) {
 			if (exception instanceof ZodError) {
 				const { issues } = exception;
-				const { message } = issues[0];
+				const { message, path } = issues[0];
 
-				throw ZOD_VALIDATION_ERROR_RESPONSE(message);
+				throw new ValidationErrorException(path, message);
 			}
 
-			throw INTERNAL_SERVER_ERROR_RESPONSE();
+			throw new InternalServerErrorException();
 		}
 	}
 }

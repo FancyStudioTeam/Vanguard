@@ -5,4 +5,5 @@ export enum ErrorCodes {
 	NotFound = 'NOT_FOUND',
 	UnableToExchangeAuthorizationCode = 'UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE',
 	UnableToRetrieveUserInformation = 'UNABLE_TO_RETRIEVE_USER_INFORMATION',
+	ValidationError = 'VALIDATION_ERROR',
 }

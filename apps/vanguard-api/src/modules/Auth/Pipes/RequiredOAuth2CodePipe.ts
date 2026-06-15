@@ -1,11 +1,11 @@
 import type { PipeTransform } from '@nestjs/common';
 
-import { MissingOAuth2CodeException } from '../Exceptions/MissingOAuth2CodeException.js';
+import { MissingAuthorizationCodeException } from '../Exceptions/MissingAuthorizationCodeException.js';
 
 export class RequiredOAuth2CodePipe implements PipeTransform {
 	public transform(value: unknown): string {
 		if (typeof value !== 'string' || !value.length) {
-			throw new MissingOAuth2CodeException();
+			throw new MissingAuthorizationCodeException();
 		}
 
 		return value;
