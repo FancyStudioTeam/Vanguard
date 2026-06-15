@@ -4,7 +4,6 @@ import { DiscordModule } from '#modules/Discord/Discord.module.js';
 import { ParserModule } from '#modules/Parser/Parser.module.js';
 import { SessionsModule } from '#modules/Sessions/Sessions.module.js';
 import { GuildController } from './Guild.controller.js';
-import { TicketsModule } from './Tickets/Tickets.module.js';
 
 @Module({
 	controllers: [
@@ -13,7 +12,6 @@ import { TicketsModule } from './Tickets/Tickets.module.js';
 	imports: [
 		DiscordModule,
 		SessionsModule,
-		TicketsModule,
 		ParserModule,
 	],
 })
