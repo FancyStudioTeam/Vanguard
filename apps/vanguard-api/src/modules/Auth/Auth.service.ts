@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 
+import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 
@@ -11,6 +12,12 @@ export class AuthService {
 	) {}
 
 	private static ONE_SECOND_MILLISECONDS = 1_000 as const;
+
+	public getAccessToken(fastifySession: FastifySession): string {
+		const accessToken = fastifySession.get('accessToken') ?? '';
+
+		return this.encryptionService.decrypt(accessToken);
+	}
 
 	public async signInWithDiscord(code: string): Promise<SignInWithDiscordResult> {
 		const {
