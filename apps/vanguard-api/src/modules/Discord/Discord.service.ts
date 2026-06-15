@@ -22,23 +22,22 @@ import {
 	Routes,
 } from 'discord-api-types/v10';
 
+import { InternalServerErrorException } from '#common/Exceptions/InternalServerErrorException.js';
+import { NotFoundException } from '#common/Exceptions/NotFoundException.js';
 import { BOT_ID, BOT_SECRET, BOT_TOKEN } from '#lib/Constants/Bot.js';
 import { logger } from '#lib/Logger.js';
-import {
-	UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE,
-	UNABLE_TO_GET_USER_INFORMATION_RESPONSE,
-} from '#lib/Responses/Auth.js';
-import { INTERNAL_SERVER_ERROR_RESPONSE, NOT_FOUND_RESPONSE } from '#lib/Responses/Shared.js';
 import { createCallbackUrl } from '#utils/URL/createCallbackUrl.js';
+import { UnableToExchangeAuthorizationCodeException } from './Exceptions/UnableToExchangeAuthorizationCodeException.js';
+import { UnableToRetrieveUserInformationException } from './Exceptions/UnableToRetrieveUserInformationException.js';
 
-const channelsCacheKey = (guildId: string): string => `guilds:${guildId}/channels`;
+const channelsCacheKey = (guildId: string) => `guilds:${guildId}/channels` as const;
 
-const guildCacheKey = (guildId: string): string => `guilds:${guildId}`;
-const guildMemberCacheKey = (guildId: string, userId: string): string =>
-	`guilds:${guildId}/users:${userId}`;
+const guildCacheKey = (guildId: string) => `guilds:${guildId}` as const;
+const guildMemberCacheKey = (guildId: string, userId: string) =>
+	`guilds:${guildId}/users:${userId}` as const;
 
-const userCacheKey = (userId: string): string => `users:${userId}`;
-const userGuildsCacheKey = (userId: string): string => `users:${userId}/guilds`;
+const userCacheKey = (userId: string) => `users:${userId}`;
+const userGuildsCacheKey = (userId: string) => `users:${userId}/guilds` as const;
 
 @Injectable()
 export class DiscordService {
@@ -113,10 +112,10 @@ export class DiscordService {
 				guildCacheTtl,
 			);
 
-			throw NOT_FOUND_RESPONSE();
+			throw new NotFoundException();
 		}
 
-		throw INTERNAL_SERVER_ERROR_RESPONSE();
+		throw new InternalServerErrorException();
 	}
 
 	private async handleGuildMemberException(
@@ -137,10 +136,10 @@ export class DiscordService {
 				guildMemberCacheTtl,
 			);
 
-			throw NOT_FOUND_RESPONSE();
+			throw new NotFoundException();
 		}
 
-		throw INTERNAL_SERVER_ERROR_RESPONSE();
+		throw new InternalServerErrorException();
 	}
 
 	/**
@@ -230,7 +229,7 @@ export class DiscordService {
 			 * attempting to retrieve a guild that does not exist for the bot.
 			 */
 			if (cachedGuild === 'not_found') {
-				throw NOT_FOUND_RESPONSE();
+				throw new NotFoundException();
 			}
 
 			return cachedGuild;
@@ -296,7 +295,7 @@ export class DiscordService {
 			 * attempting to retrieve a member that does not exist in the guild.
 			 */
 			if (cachedGuildMember === 'not_found') {
-				throw NOT_FOUND_RESPONSE();
+				throw new NotFoundException();
 			}
 
 			return cachedGuildMember;
@@ -345,7 +344,7 @@ export class DiscordService {
 
 			return userCached;
 		} catch {
-			throw UNABLE_TO_GET_USER_INFORMATION_RESPONSE();
+			throw new UnableToRetrieveUserInformationException();
 		}
 	}
 
@@ -372,7 +371,7 @@ export class DiscordService {
 
 			return userAccess;
 		} catch {
-			throw UNABLE_TO_EXCHANGE_AUTHORIZATION_CODE_RESPONSE();
+			throw new UnableToExchangeAuthorizationCodeException();
 		}
 	}
 
@@ -400,9 +399,7 @@ export class DiscordService {
 		]);
 		const guildRolesMap = new Map<string, APIRole>(guildRolesMapIterator);
 
-		/*
-		 * The '@everyone' role always exists and shares the same ID as the guild.
-		 */
+		// The '@everyone' role always exists and shares the same ID as the guild.
 		const everyoneRole = guildRolesMap.get(guildId) as APIRole;
 		const everyoneRolePermissions = everyoneRole.permissions;
 
