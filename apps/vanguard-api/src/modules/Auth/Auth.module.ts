@@ -27,6 +27,7 @@ const JSON_WEB_TOKEN_ISSUER = new URL('/', URL_BASE).toString();
 			signOptions: {
 				algorithm: 'HS512',
 				audience: JSON_WEB_TOKEN_AUDIENCE,
+				expiresIn: '1 Day',
 				issuer: JSON_WEB_TOKEN_ISSUER,
 			},
 			verifyOptions: {
