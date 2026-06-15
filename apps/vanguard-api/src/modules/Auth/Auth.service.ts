@@ -1,18 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 
 import { DiscordService } from '#modules/Discord/Discord.service.js';
-import { SessionsService } from '#modules/Sessions/Sessions.service.js';
+import { EncryptionService } from '#modules/Encryption/Encryption.service.js';
 
 @Injectable()
 export class AuthService {
 	public constructor(
 		@Inject(DiscordService) private readonly discordService: DiscordService,
-		@Inject(JwtService) private readonly jwtService: JwtService,
-		@Inject(SessionsService) private readonly sessionsService: SessionsService,
+		@Inject(EncryptionService) private readonly encryptionService: EncryptionService,
 	) {}
 
-	public async signInWithDiscord(code: string): Promise<string> {
+	private static ONE_SECOND_MILLISECONDS = 1_000 as const;
+
+	public async signInWithDiscord(code: string): Promise<SignInWithDiscordResult> {
 		const {
 			access_token: accessToken,
 			expires_in: expiresIn,
@@ -21,22 +21,25 @@ export class AuthService {
 		} = await this.discordService.getUserAccess(code);
 		const { id: userId } = await this.discordService.getCurrentUser(accessToken);
 
-		const sessionId = this.sessionsService.generateSessionId();
+		const accessTokenExpiresIn = Date.now() + expiresIn * AuthService.ONE_SECOND_MILLISECONDS;
 
-		await this.sessionsService.createSession(sessionId, userId, {
-			accessToken,
-			expiresIn,
-			refreshToken,
-			tokenType,
-		});
+		const encryptedAccessToken = this.encryptionService.encrypt(accessToken);
+		const encryptedRefreshToken = this.encryptionService.encrypt(refreshToken);
 
-		return await this.signJsonWebToken(sessionId, userId);
+		return {
+			accessToken: encryptedAccessToken,
+			accessTokenExpiresIn,
+			accessTokenType: tokenType,
+			refreshToken: encryptedRefreshToken,
+			userId,
+		};
 	}
+}
 
-	public async signJsonWebToken(sessionId: string, userId: string): Promise<string> {
-		return await this.jwtService.signAsync({
-			sid: sessionId,
-			sub: userId,
-		});
-	}
+interface SignInWithDiscordResult {
+	accessToken: string;
+	accessTokenExpiresIn: number;
+	accessTokenType: string;
+	refreshToken: string;
+	userId: string;
 }

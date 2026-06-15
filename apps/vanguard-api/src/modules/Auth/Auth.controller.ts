@@ -1,15 +1,22 @@
-import { Controller, Get, HttpStatus, Inject, Query, Redirect, Response } from '@nestjs/common';
-import type { FastifyReply } from 'fastify';
+import {
+	Controller,
+	Delete,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Inject,
+	Query,
+	Redirect,
+	Session,
+} from '@nestjs/common';
 
 import { BypassAuth } from '#common/Decorators/BypassAuth.js';
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
-import { ACCESS_TOKEN_COOKIE_MAX_AGE, ACCESS_TOKEN_COOKIE_NAME } from '#lib/Constants/Cookies.js';
 import { BASE_DASHBOARD_URL } from '#lib/Constants/Shared.js';
+import type { FastifySession } from '#lib/Types/Fastify.js';
 import { createRedirectUrl } from '#utils/URL/createRedirectUrl.js';
 import { AuthService } from './Auth.service.js';
 import { RequiredOAuth2CodePipe } from './Pipes/RequiredOAuth2CodePipe.js';
-
-// TODO: Implement a "sign-out" handler to invalidate the current session.
 
 @Controller('auth')
 @BypassAuth()
@@ -19,22 +26,20 @@ export class AuthController {
 
 	@Get('callback')
 	@Redirect(BASE_DASHBOARD_URL, HttpStatus.FOUND)
-	protected async handleDiscordCallback(
+	protected async signInWithDiscord(
 		@Query('code', RequiredOAuth2CodePipe) code: string,
-		@Response({
-			passthrough: true,
-		})
-		fastifyReply: FastifyReply,
+		@Session() fastifySession: FastifySession,
 	): Promise<void> {
-		const jsonWebToken = await this.authService.signInWithDiscord(code);
+		const { accessToken, accessTokenExpiresIn, accessTokenType, refreshToken, userId } =
+			await this.authService.signInWithDiscord(code);
 
-		fastifyReply.cookie(ACCESS_TOKEN_COOKIE_NAME, jsonWebToken, {
-			httpOnly: true,
-			maxAge: ACCESS_TOKEN_COOKIE_MAX_AGE,
-			path: '/',
-			sameSite: 'lax',
-			secure: true,
-		});
+		fastifySession.set('accessToken', accessToken);
+		fastifySession.set('accessTokenExpiresIn', accessTokenExpiresIn);
+		fastifySession.set('accessTokenType', accessTokenType);
+
+		fastifySession.set('refreshToken', refreshToken);
+
+		fastifySession.set('userId', userId);
 	}
 
 	@Get('sign-in')
@@ -44,4 +49,10 @@ export class AuthController {
 	 * uses the 'Redirect' decorator.
 	 */
 	protected redirectToSignIn(): void {}
+
+	@Delete('sign-out')
+	@HttpCode(HttpStatus.NO_CONTENT)
+	protected signOut(@Session() fastifySession: FastifySession): void {
+		return void fastifySession.delete();
+	}
 }
