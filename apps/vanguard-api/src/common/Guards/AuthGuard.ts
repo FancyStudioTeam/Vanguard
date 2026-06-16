@@ -5,11 +5,9 @@ import type { FastifyRequest } from 'fastify';
 
 import { BypassAuthKey } from '#common/Decorators/BypassAuth.js';
 import { BypassGuildPermissionsKey } from '#common/Decorators/BypassGuildPermissionsKey.js';
-import {
-	BAD_REQUEST_RESPONSE,
-	FORBIDDEN_RESPONSE,
-	UNAUTHORIZED_RESPONSE,
-} from '#lib/Responses/Shared.js';
+import { BadRequestException } from '#common/Exceptions/BadRequestException.js';
+import { ForbiddenException } from '#common/Exceptions/ForbiddenException.js';
+import { UnauthorizedException } from '#common/Exceptions/UnauthorizedException.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
 import { DiscordService } from '#modules/Discord/Discord.service.js';
 import { hasPermission } from '#utils/Discord/hasPermission.js';
@@ -25,19 +23,13 @@ export class AuthGuard implements CanActivate {
 		const contextHandler = context.getHandler();
 		const contextClass = context.getClass();
 
-		const bypassAuth =
-			this.reflector.getAllAndOverride<boolean>(BypassAuthKey, [
-				contextHandler,
-				contextClass,
-			]) ?? false;
+		const shouldBypassAuth = this.shouldBypassAuthGuard(contextHandler, contextClass);
+		const shouldBypassGuildPermissions = this.shouldBypassGuildPermissionsGuard(
+			contextHandler,
+			contextClass,
+		);
 
-		const bypassGuildPermissions =
-			this.reflector.getAllAndOverride<boolean>(BypassGuildPermissionsKey, [
-				contextHandler,
-				contextClass,
-			]) ?? false;
-
-		if (bypassAuth) {
+		if (shouldBypassAuth) {
 			return true;
 		}
 
@@ -46,37 +38,67 @@ export class AuthGuard implements CanActivate {
 		const fastifyRequest = httpContext.getRequest<FastifyRequest>();
 		const fastifySession = fastifyRequest.session as FastifySession;
 
-		const sessionId = fastifySession.get('sessionId');
-		const sessionUserId = fastifySession.get('sessionUserId');
+		const sessionAccessToken = fastifySession.get('accessToken');
+		const sessionRefreshToken = fastifySession.get('refreshToken');
 
-		if (!(sessionId && sessionUserId)) {
-			throw UNAUTHORIZED_RESPONSE();
+		const sessionUserId = fastifySession.get('userId');
+
+		const isValidFastifySession = Boolean(
+			sessionUserId && sessionAccessToken && sessionRefreshToken,
+		);
+
+		if (!isValidFastifySession) {
+			throw new UnauthorizedException();
 		}
 
-		if (!bypassGuildPermissions) {
+		if (!shouldBypassGuildPermissions) {
 			const fastifyParams: object = fastifyRequest.params ?? {};
 			const fastifyGuildId = Reflect.get(fastifyParams, 'guildId');
 
 			if (!fastifyGuildId) {
-				throw BAD_REQUEST_RESPONSE();
+				throw new BadRequestException();
 			}
 
 			const guild = await this.discordService.getGuild(fastifyGuildId);
 			const guildMember = await this.discordService.getGuildMember(
 				fastifyGuildId,
-				sessionUserId,
+				String(sessionUserId),
 			);
 
 			const permissions = this.discordService.permissionsOf(guild, guildMember);
 
 			if (!hasPermission(permissions, PermissionFlagsBits.ManageGuild)) {
-				throw FORBIDDEN_RESPONSE();
+				throw new ForbiddenException();
 			}
 		}
 
-		fastifyRequest.sessionId = sessionId;
-		fastifyRequest.sessionUserId = sessionUserId;
-
 		return true;
 	}
+
+	private shouldBypassAuthGuard(
+		contextHandler: ExecutionContextHandler,
+		contextClass: ExecutionContextClass,
+	): boolean {
+		return (
+			this.reflector.getAllAndOverride<boolean>(BypassAuthKey, [
+				contextHandler,
+				contextClass,
+			]) ?? false
+		);
+	}
+
+	private shouldBypassGuildPermissionsGuard(
+		contextHandler: ExecutionContextHandler,
+		contextClass: ExecutionContextClass,
+	): boolean {
+		return (
+			this.reflector.getAllAndOverride<boolean>(BypassGuildPermissionsKey, [
+				contextHandler,
+				contextClass,
+			]) ?? false
+		);
+	}
 }
+
+type ExecutionContextClass = ReturnType<ExecutionContext['getClass']>;
+type ExecutionContextHandler = ReturnType<ExecutionContext['getHandler']>;
