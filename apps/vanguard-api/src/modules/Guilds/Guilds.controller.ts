@@ -1,37 +1,21 @@
-import type { GetDiscordUserGuilds } from '@vanguard/api-contracts/rest';
+import type { GetDiscordUserGuildsResult } from '@vanguard/api-contracts/rest';
 
-import { Controller, Get, Inject } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Inject, Session } from '@nestjs/common';
 
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
-import { SessionId } from '#common/Decorators/SessionId.js';
-import { SessionUserId } from '#common/Decorators/SessionUserId.js';
-import { DiscordService } from '#modules/Discord/Discord.service.js';
-import { ParserService } from '#modules/Parser/Parser.service.js';
-import { SessionsService } from '#modules/Sessions/Sessions.service.js';
+import type { FastifySession } from '#lib/Types/Fastify.js';
+import { GuildsService } from './Guilds.service.js';
 
 @Controller()
 @BypassGuildPermissions()
 export class GuildsController {
-	public constructor(
-		@Inject(DiscordService) private readonly discordService: DiscordService,
-		@Inject(ParserService) private readonly parserService: ParserService,
-		@Inject(SessionsService) private readonly sessionsService: SessionsService,
-	) {}
+	public constructor(@Inject(GuildsService) private readonly guildsService: GuildsService) {}
 
 	@Get()
+	@HttpCode(HttpStatus.OK)
 	protected async getCurrentUserGuilds(
-		@SessionId() sessionId: string,
-		@SessionUserId() sessionUserId: string,
-	): Promise<GetDiscordUserGuilds> {
-		const currentUserAccessToken = await this.sessionsService.getAccessToken(sessionId);
-
-		const currentUserGuilds = await this.discordService.getCurrentUserGuilds(
-			sessionUserId,
-			currentUserAccessToken,
-		);
-		const currentUserGuildsParsed =
-			this.parserService.parseDiscordUserGuilds(currentUserGuilds);
-
-		return currentUserGuildsParsed;
+		@Session() fastifySession: FastifySession,
+	): Promise<GetDiscordUserGuildsResult> {
+		return await this.guildsService.getCurrentUserGuilds(fastifySession);
 	}
 }
