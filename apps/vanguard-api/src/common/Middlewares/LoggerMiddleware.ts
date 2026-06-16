@@ -10,10 +10,10 @@ export class LoggerMiddleware implements NestMiddleware {
 		fastifyReply: FastifyReply,
 		fastifyNext: FastifyNextFunction,
 	): void {
-		const { ip, method, url } = fastifyRequest;
+		const { ip, method, originalUrl } = fastifyRequest;
 		const { statusCode } = fastifyReply;
 
-		logger.info(`[${method}] '${url}' (${ip}) [${statusCode}]`);
+		logger.info(`[${method}] '${originalUrl}' (${ip}) [${statusCode}]`);
 
 		fastifyNext();
 	}
