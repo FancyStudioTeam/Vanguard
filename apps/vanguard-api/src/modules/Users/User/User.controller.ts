@@ -1,6 +1,6 @@
 import type { GetDiscordUserResult } from '@vanguard/api-contracts/rest';
 
-import { Controller, Get, Inject, Session } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Inject, Session } from '@nestjs/common';
 
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
@@ -12,6 +12,7 @@ export class UserController {
 	public constructor(@Inject(UserService) private readonly userService: UserService) {}
 
 	@Get()
+	@HttpCode(HttpStatus.OK)
 	protected async getCurrentUser(
 		@Session() fastifySession: FastifySession,
 	): Promise<GetDiscordUserResult> {
