@@ -1,36 +1,20 @@
-import type { GetDiscordGuild, GetDiscordGuildChannels } from '@vanguard/api-contracts/rest';
+import type { GetDiscordGuildResult } from '@vanguard/api-contracts/rest';
 
-import { Controller, Get, HttpStatus, Inject, Param, Redirect } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Inject, Param, Redirect } from '@nestjs/common';
 
 import { BypassAuth } from '#common/Decorators/BypassAuth.js';
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
-import { DiscordService } from '#modules/Discord/Discord.service.js';
-import { ParserService } from '#modules/Parser/Parser.service.js';
 import { createGuildInviteUrl } from '#utils/URL/createGuildInviteUrl.js';
+import { GuildService } from './Guild.service.js';
 
 @Controller()
 export class GuildController {
-	public constructor(
-		@Inject(DiscordService) private readonly discordService: DiscordService,
-		@Inject(ParserService) private readonly parserService: ParserService,
-	) {}
+	public constructor(@Inject(GuildService) private readonly guildService: GuildService) {}
 
 	@Get()
-	protected async getGuild(@Param('guildId') guildId: string): Promise<GetDiscordGuild> {
-		const guild = await this.discordService.getGuild(guildId);
-		const guildParsed = this.parserService.parseDiscordGuild(guild);
-
-		return guildParsed;
-	}
-
-	@Get('channels')
-	protected async getGuildChannels(
-		@Param('guildId') guildId: string,
-	): Promise<GetDiscordGuildChannels> {
-		const channels = await this.discordService.getGuildChannels(guildId);
-		const channelsParsed = this.parserService.parseDiscordGuildChannels(channels);
-
-		return channelsParsed;
+	@HttpCode(HttpStatus.OK)
+	protected async getGuild(@Param('guildId') guildId: string): Promise<GetDiscordGuildResult> {
+		return await this.guildService.getGuild(guildId);
 	}
 
 	@Get('invite')
