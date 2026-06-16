@@ -62,6 +62,7 @@ const SECURE_SESSION_OPTIONS: SecureSessionPluginOptions = {
 		secure: true,
 	},
 	cookieName: SESSION_COOKIE_NAME,
+	expiry: SESSION_COOKIE_MAX_AGE,
 	salt: SESSION_COOKIE_SALT,
 	secret: SESSION_COOKIE_SECRET,
 };
