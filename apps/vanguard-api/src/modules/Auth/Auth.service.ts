@@ -14,9 +14,7 @@ export class AuthService {
 	private static ONE_SECOND_MILLISECONDS = 1_000 as const;
 
 	public getAccessToken(fastifySession: FastifySession): string {
-		const accessToken = fastifySession.get('accessToken') ?? '';
-
-		return this.encryptionService.decrypt(accessToken);
+		return this.encryptionService.decrypt(fastifySession.get('accessToken') ?? '');
 	}
 
 	public async signInWithDiscord(code: string): Promise<SignInWithDiscordResult> {
