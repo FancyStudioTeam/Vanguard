@@ -1,9 +1,14 @@
+import { PageLayout } from '#layouts/PageLayout.tsx';
+import { Hero } from './components/Hero.tsx';
+
 export default function () {
 	return (
-		<main className='grid h-50 w-full place-content-center'>
-			<h1 className='animate-fade-in-up text-wrap font-bold text-5xl'>
-				Simplicity without compromise
-			</h1>
-		</main>
+		<PageLayout>
+			<main className='px-6'>
+				<section className='grid place-items-center bg-[url("/Background.svg")] bg-center bg-cover bg-no-repeat py-20'>
+					<Hero />
+				</section>
+			</main>
+		</PageLayout>
 	);
 }

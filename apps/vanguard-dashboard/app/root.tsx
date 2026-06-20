@@ -1,6 +1,10 @@
 import './fonts.css';
 import './tailwind.css';
 
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+import { SplitText } from 'gsap/SplitText';
 import type { ReactNode } from 'react';
 import {
 	isRouteErrorResponse,
@@ -15,13 +19,13 @@ import {
 import { SWRConfig } from 'swr';
 import { match } from 'ts-pattern';
 
-import { Navbar } from '#components/Layout/Navbar/Navbar.tsx';
+gsap.registerPlugin(useGSAP, ScrambleTextPlugin, SplitText);
 
 // biome-ignore lint/style/useComponentExportOnlyModules: (x)
 export function meta(): MetaDescriptor[] {
 	return [
 		{
-			title: 'Vanguard',
+			title: 'Vanguard - ',
 		},
 	];
 }
@@ -57,11 +61,8 @@ export function Layout({ children }: LayoutProps) {
 				<Meta />
 				<Links />
 			</head>
-			<body className='w-full bg-neutral-950 font-general-sans font-medium text-zinc-50 selection:bg-neutral-50 selection:text-neutral-950'>
-				<div className='mx-auto my-6 flex w-full max-w-7xl flex-col gap-6 px-6'>
-					<Navbar />
-					{children}
-				</div>
+			<body className='bg-neutral-950 font-general-sans font-medium text-zinc-50'>
+				{children}
 				<ScrollRestoration />
 				<Scripts />
 			</body>
