@@ -10,7 +10,6 @@ COPY apps/vanguard-api apps/vanguard-api
 
 COPY packages/api-contracts packages/api-contracts
 COPY packages/logger packages/logger
-COPY packages/prisma packages/prisma
 
 RUN pnpm install
 RUN pnpm run turbo:build

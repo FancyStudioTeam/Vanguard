@@ -1,8 +1,0 @@
-generator client {
-  output   = "../src/generated/prisma"
-  provider = "prisma-client"
-}
-
-datasource db {
-  provider = "postgresql"
-}

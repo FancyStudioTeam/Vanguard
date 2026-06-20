@@ -27,8 +27,7 @@
 		"@vanguard/discord-config": "workspace:*",
 		"@vanguard/discord-handlers": "workspace:*",
 		"@vanguard/discord-jsx": "workspace:*",
-		"@vanguard/logger": "workspace:*",
-		"@vanguard/prisma": "workspace:*"
+		"@vanguard/logger": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/node": "26.0.0",
