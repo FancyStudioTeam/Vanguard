@@ -3,6 +3,10 @@ import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 export const SPANISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 	lang: 'es-ES',
 	themeConfig: {
+		docFooter: {
+			next: 'Página Siguiente',
+			prev: 'Página Anterior',
+		},
 		lastUpdated: {
 			formatOptions: {
 				dateStyle: 'full',
