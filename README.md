@@ -1,6 +1,7 @@
 <div align="center">
-	<img alt="Logo of Vanguard" src="./assets/Logo.avif" height="175" width="175" />
+	<img alt="Logo of Vanguard" src="./assets/Logo.svg" height="175" width="175" />
 	<h1>Vanguard</h1>
+	<p>Vanguard's Official Source Code</p>
 </div>
 
 <p align="center">
@@ -12,6 +13,9 @@
 	</a>
 	<a href="https://github.com/FancyStudioTeam/Vanguard/stargazers">
 		<img alt="GitHub Repository Stars Badge" src="https://img.shields.io/github/stars/FancyStudioTeam/Vanguard?style=for-the-badge&labelColor=0a0a0a&color=fff" />
+	</a>
+	<a href="https://vanguard.fancystudio.xyz">
+		<img alt="Visit our Website Badge" src="https://img.shields.io/badge/Visit%20our%20Website-0a0a0a.svg?style=for-the-badge" />
 	</a>
 </p>
 
