@@ -14,6 +14,9 @@
 	<a href="https://github.com/FancyStudioTeam/Vanguard/stargazers">
 		<img alt="GitHub Repository Stars Badge" src="https://img.shields.io/github/stars/FancyStudioTeam/Vanguard?style=for-the-badge&labelColor=0a0a0a&color=fff" />
 	</a>
+	<a href="https://www.fancystudio.xyz/discord">
+		<img alt="Join our Community Badge" src="https://img.shields.io/badge/Join%20our%20Community-0a0a0a.svg?style=for-the-badge&logo=Discord&logoColor=fff" />
+	</a>
 	<a href="https://vanguard.fancystudio.xyz">
 		<img alt="Visit our Website Badge" src="https://img.shields.io/badge/Visit%20our%20Website-0a0a0a.svg?style=for-the-badge" />
 	</a>
