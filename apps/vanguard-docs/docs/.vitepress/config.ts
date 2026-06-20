@@ -21,6 +21,7 @@ export default defineConfig({
 		},
 	},
 	themeConfig: {
+		logo: '/Symbol.svg',
 		socialLinks: [
 			{
 				icon: 'github',
