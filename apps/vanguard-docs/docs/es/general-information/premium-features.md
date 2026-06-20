@@ -20,7 +20,7 @@ config:
 	# Esta funcionalidad está declarada como premium,
 	# pero Vanguard permitirá guardar su configuración.
 
-	# El formado del apodo será: [Member] Vanguard
+	# El formato del apodo será: [Member] Vanguard
 	member_nickname: "[Member] {{ member.display_name }}"
 ```
 
