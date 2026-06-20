@@ -1,12 +1,11 @@
-import { defineConfig } from 'vitepress';
+import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 
-export default defineConfig({
-	base: '/es/',
+export const SPANISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 	lang: 'es-ES',
 	themeConfig: {
 		sidebar: [
 			{
-				base: '/general-information/',
+				base: '/es/general-information/',
 				items: [
 					{
 						link: 'premium-features',
@@ -16,7 +15,7 @@ export default defineConfig({
 				text: 'Información General',
 			},
 			{
-				base: '/plugins/',
+				base: '/es/plugins/',
 				collapsed: false,
 				items: [
 					{
@@ -28,4 +27,4 @@ export default defineConfig({
 			},
 		],
 	},
-});
+};

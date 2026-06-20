@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitepress';
 
+import { ENGLISH_THEME_CONFIG } from './locales/English.js';
+import { SPANISH_THEME_CONFIG } from './locales/Spanish.js';
+
 export default defineConfig({
 	appearance: 'force-dark',
 	cleanUrls: true,
@@ -8,10 +11,13 @@ export default defineConfig({
 		es: {
 			label: 'Español',
 			lang: 'es',
+			link: '/es/',
+			...SPANISH_THEME_CONFIG,
 		},
 		root: {
 			label: 'English',
 			lang: 'en',
+			...ENGLISH_THEME_CONFIG,
 		},
 	},
 	themeConfig: {

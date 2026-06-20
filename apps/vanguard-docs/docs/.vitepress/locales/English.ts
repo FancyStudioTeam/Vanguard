@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitepress';
+import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 
-export default defineConfig({
+export const ENGLISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 	themeConfig: {
 		sidebar: [
 			{
@@ -26,4 +26,4 @@ export default defineConfig({
 			},
 		],
 	},
-});
+};
