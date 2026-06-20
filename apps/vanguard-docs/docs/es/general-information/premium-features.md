@@ -24,7 +24,7 @@ config:
 	member_nickname: "[Member] {{ member.display_name }}"
 ```
 
-Cuando el sistema sea ejecutado, Vanguard **comprobará si la comunidad posee una membresía premium**.
+Cuando el sistema empiece a ser ejecutado, Vanguard **comprobará si la comunidad posee una membresía premium**.
 
 En caso de que la comunidad **posea una membresía premium**, Vanguard **modificará el apodo del usuario** al formato indicado. En caso contrario, Vanguard **ignorará dicha funcionalidad**.
 :::
