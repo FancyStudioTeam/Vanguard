@@ -1,11 +1,9 @@
-import { NavbarButton } from './NavbarButton.tsx';
-import { NavbarLogo } from './NavbarLogo.tsx';
+import { VanguardCombinationMark } from '#components/Branding/VanguardCombinationMark.tsx';
 
 export function Navbar() {
 	return (
-		<nav className='sticky top-6 z-10 flex items-center justify-between rounded-xl border-2 border-neutral-700 bg-neutral-900 px-6 py-2'>
-			<NavbarLogo />
-			<NavbarButton />
+		<nav className='mx-auto flex w-full max-w-5xl justify-between py-4'>
+			<VanguardCombinationMark />
 		</nav>
 	);
 }
