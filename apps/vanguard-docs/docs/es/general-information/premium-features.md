@@ -1,6 +1,6 @@
 # Funcionalidades Premium
 
-Vanguard **está basado en un modelo [freemium](https://en.wikipedia.org/wiki/Freemium)**, ofreciendo funcionalidades esenciales gratuitas, mientras **limitamos otras funcionalidades más avanzadas como premium**.
+Vanguard **está basado en un modelo [freemium](https://es.wikipedia.org/wiki/Freemium)**, ofreciendo funcionalidades esenciales gratuitas, mientras **limitamos otras funcionalidades más avanzadas como premium**.
 
 Gracias a estas funcionalidades premium, **podemos garantizar el correcto funcionamiento de Vanguard** en **todas las comunidades de Discord**.
 

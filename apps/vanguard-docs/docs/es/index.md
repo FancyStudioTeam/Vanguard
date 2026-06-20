@@ -2,13 +2,13 @@
 layout: doc
 ---
 
-# ¡Bienvenido a la Documentación de Vanguard
+# ¡Bienvenido a la Documentación de Vanguard!
 
 :::warning Documentación en Desarrollo
 La documentación **está escrita por la comunidad de Vanguard** y **supervisada por su equipo de desarrollo**. Si tiene alguna duda, **le recomendamos consultar nuestro servidor de soporte**.
 :::
 
-En esta documentación aprenderás **todas las opciones disponibles** para **personalizar en profundidad a Vanguard** y sacar todo su potencial.
+En esta documentación aprenderás **todas las funcionalidades disponibles** para **personalizar en profundidad a Vanguard** y sacar todo su potencial.
 
 :::warning Notas Impotantes
 **Le recomendamos encarecidamente leer nuestras [notas importantes](#notas-importantes)** antes de utilizar Vanguard, para **comprobar si es capaz de satisfacer sus necesidades iniciales**.
@@ -36,7 +36,7 @@ Vanguard está pensado para **diseñar tus propios sistemas desde cero**, defini
 Esta documentación **está redactada de forma explícita para indicar el funcionamiento** de las **diferentes funcionalidades** que ofrece Vanguard en sus sistemas.
 
 :::tip Documentación en Diferentes Idiomas
-La documentación **está también redactada en diferentes idiomas**: [**Inglés**](/) y [**Español**](/es/).
+La documentación **está también redactada en diferentes idiomas**: [**English**](/) y [**Español**](/es/).
 :::
 
 :::warning Leer antes de Comenzar
