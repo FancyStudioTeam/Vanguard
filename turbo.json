@@ -5,9 +5,6 @@
 			"dependsOn": [
 				"^build"
 			],
-			"env": [
-				"POSTGRE_SQL_VANGUARD_DATABASE_URL"
-			],
 			"inputs": [
 				"$TURBO_DEFAULT$"
 			],
