@@ -3,6 +3,13 @@ import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 export const ENGLISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 	lang: 'en-US',
 	themeConfig: {
+		lastUpdated: {
+			formatOptions: {
+				dateStyle: 'full',
+				timeStyle: 'short',
+			},
+			text: 'Last Update',
+		},
 		nav: [
 			{
 				link: 'https://vanguard.fancystudio.xyz',

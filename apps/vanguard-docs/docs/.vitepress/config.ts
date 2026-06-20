@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress';
 
-import { ENGLISH_THEME_CONFIG } from './locales/English.js';
-import { SPANISH_THEME_CONFIG } from './locales/Spanish.js';
+import { ENGLISH_THEME_CONFIG } from './locales/English.ts';
+import { SPANISH_THEME_CONFIG } from './locales/Spanish.ts';
 
 export default defineConfig({
 	appearance: 'force-dark',
