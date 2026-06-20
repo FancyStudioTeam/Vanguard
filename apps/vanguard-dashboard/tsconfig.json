@@ -20,6 +20,9 @@
 			"#hooks/*": [
 				"./app/hooks/*"
 			],
+			"#layouts/*": [
+				"./app/layouts/*"
+			],
 			"#lib/*": [
 				"./app/lib/*"
 			],
