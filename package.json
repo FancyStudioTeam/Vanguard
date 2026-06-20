@@ -2,7 +2,7 @@
 	"name": "vanguard",
 	"version": "0.1.0",
 	"private": true,
-	"description": "Simplicity without compromise",
+	"description": "Vanguard's Official Source Code",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/FancyStudioTeam/Vanguard"
