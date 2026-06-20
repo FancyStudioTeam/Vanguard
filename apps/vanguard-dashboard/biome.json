@@ -28,6 +28,11 @@
 	"formatter": {
 		"attributePosition": "multiline"
 	},
+	"html": {
+		"formatter": {
+			"enabled": true
+		}
+	},
 	"linter": {
 		"domains": {
 			"react": "all"
