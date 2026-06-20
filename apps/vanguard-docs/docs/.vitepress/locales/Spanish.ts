@@ -17,6 +17,10 @@ export const SPANISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 				text: 'Página Web',
 			},
 		],
+		outline: {
+			label: 'En esta Página',
+			level: 'deep',
+		},
 		sidebar: [
 			{
 				base: '/es/general-information/',

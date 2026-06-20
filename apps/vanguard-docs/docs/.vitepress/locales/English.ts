@@ -17,6 +17,10 @@ export const ENGLISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 				text: 'Website',
 			},
 		],
+		outline: {
+			label: 'On this Page',
+			level: 'deep',
+		},
 		sidebar: [
 			{
 				base: '/general-information/',
