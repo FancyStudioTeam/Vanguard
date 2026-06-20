@@ -28,6 +28,13 @@
 	/* Tailwind CSS Neutral 800 */
 	--vp-c-gutter: oklch(26.9% 0 0);
 
+	/* Tailwind CSS Neutral 50 */
+	--vp-c-text-1: oklch(98.5% 0 0);
+	/* Tailwind CSS Neutral 400 */
+	--vp-c-text-2: oklch(70.8% 0 0);
+	/* Tailwind CSS Neutral 400 */
+	--vp-c-text-3: oklch(70.8% 0 0);
+
 	/* Tailwind CSS Neutral 950 */
 	--vp-sidebar-bg-color: var(--vp-c-bg);
 }
