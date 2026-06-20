@@ -136,8 +136,8 @@ importers:
   apps/vanguard-bot:
     dependencies:
       '@discordeno/bot':
-        specifier: 22.0.1-next.9eb5642
-        version: 22.0.1-next.9eb5642
+        specifier: 22.0.1-next.9832342
+        version: 22.0.1-next.9832342
       '@vanguard/discord-config':
         specifier: workspace:*
         version: link:../../packages/discord-config
@@ -267,8 +267,8 @@ importers:
   packages/discord-config:
     dependencies:
       '@discordeno/bot':
-        specifier: 22.0.1-next.9eb5642
-        version: 22.0.1-next.9eb5642
+        specifier: 22.0.1-next.9832342
+        version: 22.0.1-next.9832342
     devDependencies:
       '@types/node':
         specifier: 26.0.0
@@ -280,8 +280,8 @@ importers:
   packages/discord-handlers:
     dependencies:
       '@discordeno/bot':
-        specifier: 22.0.1-next.9eb5642
-        version: 22.0.1-next.9eb5642
+        specifier: 22.0.1-next.9832342
+        version: 22.0.1-next.9832342
       '@vanguard/discord-config':
         specifier: workspace:*
         version: link:../discord-config
@@ -299,8 +299,8 @@ importers:
   packages/discord-jsx:
     dependencies:
       '@discordeno/bot':
-        specifier: 22.0.1-next.9eb5642
-        version: 22.0.1-next.9eb5642
+        specifier: 22.0.1-next.9832342
+        version: 22.0.1-next.9832342
     devDependencies:
       '@types/node':
         specifier: 26.0.0
@@ -718,26 +718,26 @@ packages:
       conventional-commits-parser:
         optional: true
 
-  '@discordeno/bot@22.0.1-next.9eb5642':
-    resolution: {integrity: sha512-pSGFBeG82tHYeH+rIFGydbYaQ4bNUqDOZfUwbr8clEEVehAiElusp5fyaHC5VOvaNd1c3uNFSJm/Zv7EkCxeRQ==}
+  '@discordeno/bot@22.0.1-next.9832342':
+    resolution: {integrity: sha512-MY0ZM/wuRPlQpVLxKlEwnFVCS6pOGa+YdczAo8hdZBsRioHdkZWEPOCUR/FBBf+7im+/6fyxPVB+UV9ekIpx5A==}
 
-  '@discordeno/gateway@22.0.1-next.9eb5642':
-    resolution: {integrity: sha512-0WCYvgsbV+Hbmqj72SuF1QcEDWS56X5CoXxfsbg8vIp8sljfGdPGLCxcda2oyoiKTDawfTQELIdtmxWLzThrYg==}
+  '@discordeno/gateway@22.0.1-next.9832342':
+    resolution: {integrity: sha512-zapqc4qCiOF2JC80iZw/8/6X+JXwm+hsDXZFbhvKitvd30czsxngupsalgYwWVXbElrbe4Hh4zgUbH6cYb4njA==}
 
-  '@discordeno/rest@22.0.1-next.9eb5642':
-    resolution: {integrity: sha512-4f9+q+B+yrVu3+qghK/deyBbKAI5ALQqSUDLSLQErcXWACRu3NcQ4nUaWLYzu3u5JTJQAJFHwcDkiLLyEpaDzA==}
+  '@discordeno/rest@22.0.1-next.9832342':
+    resolution: {integrity: sha512-hfS9bkxNrn/a7MQNwuy3Y7XdL4QA8JMb96qqMznQaq67qmyeDxrhJa1V5UknNsE/dpN4ad8fsi9d0LwjBmdadg==}
 
   '@discordeno/types@21.0.0':
     resolution: {integrity: sha512-TUZAEqqlXRNQji+NCaQo8DruzI8rXbBvMaZYsZvN9f03PrdSddzMOy3cjs4eeL6ZMVocmMVRIaVnB713blylCw==}
 
-  '@discordeno/types@22.0.1-next.9eb5642':
-    resolution: {integrity: sha512-6ndhBTSmce8NemLoEs6mnt679c+pLW0/JFcgwqPWegQ0rfmOiX4+uR0LIxdexnRrg5DmbtHgMoZ8kijE87PXIA==}
+  '@discordeno/types@22.0.1-next.9832342':
+    resolution: {integrity: sha512-/RnQIKjl7jq6G1JpmELYmZgbKO2OcJta5kDpSzYMA1F4uAuYUuFrB6lfwZROEeKBvn5pdryi3A/Cl/frd2uSXg==}
 
   '@discordeno/utils@21.0.0':
     resolution: {integrity: sha512-I7I3Szlk+LkT/CRmJJiLPsjuBUjbuXUCvOzsgWCltkxDMIGmQeNoQtFK7t89V1Gcc4icsrnHVMho1BcaAITijg==}
 
-  '@discordeno/utils@22.0.1-next.9eb5642':
-    resolution: {integrity: sha512-rk1z7f4C3ZMwV/02lKNV/IvbTPkCu0CSE+KxHNpSGI73P71mhg80rA8pafuf8UoVYa/+kKtjiYRODp67PbVGJA==}
+  '@discordeno/utils@22.0.1-next.9832342':
+    resolution: {integrity: sha512-jJWy4mCI20ZeiLYG5cVXxJQZRws1urUVjnyvdiXCBZwMKnVMP7codCk/fBeP3mSNo+YC0ap38wwDGhSzlDeK7Q==}
 
   '@discordjs/collection@2.1.1':
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
@@ -4601,20 +4601,20 @@ snapshots:
     optionalDependencies:
       conventional-commits-parser: 6.4.0
 
-  '@discordeno/bot@22.0.1-next.9eb5642':
+  '@discordeno/bot@22.0.1-next.9832342':
     dependencies:
-      '@discordeno/gateway': 22.0.1-next.9eb5642
-      '@discordeno/rest': 22.0.1-next.9eb5642
-      '@discordeno/types': 22.0.1-next.9eb5642
-      '@discordeno/utils': 22.0.1-next.9eb5642
+      '@discordeno/gateway': 22.0.1-next.9832342
+      '@discordeno/rest': 22.0.1-next.9832342
+      '@discordeno/types': 22.0.1-next.9832342
+      '@discordeno/utils': 22.0.1-next.9832342
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@discordeno/gateway@22.0.1-next.9eb5642':
+  '@discordeno/gateway@22.0.1-next.9832342':
     dependencies:
-      '@discordeno/types': 22.0.1-next.9eb5642
-      '@discordeno/utils': 22.0.1-next.9eb5642
+      '@discordeno/types': 22.0.1-next.9832342
+      '@discordeno/utils': 22.0.1-next.9832342
       ws: 8.21.0
     optionalDependencies:
       fzstd: 0.1.1
@@ -4622,22 +4622,22 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@discordeno/rest@22.0.1-next.9eb5642':
+  '@discordeno/rest@22.0.1-next.9832342':
     dependencies:
-      '@discordeno/types': 22.0.1-next.9eb5642
-      '@discordeno/utils': 22.0.1-next.9eb5642
+      '@discordeno/types': 22.0.1-next.9832342
+      '@discordeno/utils': 22.0.1-next.9832342
 
   '@discordeno/types@21.0.0': {}
 
-  '@discordeno/types@22.0.1-next.9eb5642': {}
+  '@discordeno/types@22.0.1-next.9832342': {}
 
   '@discordeno/utils@21.0.0':
     dependencies:
       '@discordeno/types': 21.0.0
 
-  '@discordeno/utils@22.0.1-next.9eb5642':
+  '@discordeno/utils@22.0.1-next.9832342':
     dependencies:
-      '@discordeno/types': 22.0.1-next.9eb5642
+      '@discordeno/types': 22.0.1-next.9832342
 
   '@discordjs/collection@2.1.1': {}
 

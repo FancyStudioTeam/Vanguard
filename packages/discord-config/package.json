@@ -28,7 +28,7 @@
 		"rimraf": "node ../../scripts/rimraf.js"
 	},
 	"dependencies": {
-		"@discordeno/bot": "22.0.1-next.9eb5642"
+		"@discordeno/bot": "22.0.1-next.9832342"
 	},
 	"devDependencies": {
 		"@types/node": "26.0.0",
