@@ -22,7 +22,7 @@ export const ENGLISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 						text: 'Welcomes',
 					},
 				],
-				text: 'Features',
+				text: 'Modules',
 			},
 		],
 	},

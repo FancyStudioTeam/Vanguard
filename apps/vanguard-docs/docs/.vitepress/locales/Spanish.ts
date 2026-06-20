@@ -23,7 +23,7 @@ export const SPANISH_THEME_CONFIG: LocaleSpecificConfig<DefaultTheme.Config> = {
 						text: 'Bienvenidas',
 					},
 				],
-				text: 'Funcionalidades',
+				text: 'Módulos',
 			},
 		],
 	},
