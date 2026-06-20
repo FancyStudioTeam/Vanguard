@@ -31,7 +31,7 @@
 		"@vanguard/prisma": "workspace:*"
 	},
 	"devDependencies": {
-		"@types/node": "25.9.3",
+		"@types/node": "26.0.0",
 		"cross-env": "10.1.0",
 		"tsx": "4.22.4",
 		"typescript": "6.0.3"

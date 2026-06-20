@@ -45,7 +45,7 @@
 		"utility-types": "3.11.0"
 	},
 	"devDependencies": {
-		"@types/node": "25.9.3",
+		"@types/node": "26.0.0",
 		"typescript": "6.0.3"
 	},
 	"packageManager": "pnpm@11.6.0"
