@@ -4,6 +4,7 @@ import './tailwind.css';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import type { ReactNode } from 'react';
 import {
@@ -19,7 +20,7 @@ import {
 import { SWRConfig } from 'swr';
 import { match } from 'ts-pattern';
 
-gsap.registerPlugin(useGSAP, ScrambleTextPlugin, SplitText);
+gsap.registerPlugin(useGSAP, ScrambleTextPlugin, ScrollTrigger, SplitText);
 
 // biome-ignore lint/style/useComponentExportOnlyModules: (x)
 export function meta(): MetaDescriptor[] {
@@ -51,7 +52,10 @@ export default function App() {
 
 export function Layout({ children }: LayoutProps) {
 	return (
-		<html lang='en-US'>
+		<html
+			lang='en-US'
+			translate='no'
+		>
 			<head>
 				<meta charSet='utf-8' />
 				<meta
