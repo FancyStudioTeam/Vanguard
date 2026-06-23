@@ -2,7 +2,7 @@ import { VanguardCombinationMark } from '#components/Branding/VanguardCombinatio
 
 export function Navbar() {
 	return (
-		<nav className='mx-auto flex w-full max-w-5xl justify-between py-4'>
+		<nav className='mx-auto flex w-full max-w-5xl justify-between px-8 py-4'>
 			<VanguardCombinationMark />
 		</nav>
 	);

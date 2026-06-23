@@ -5,10 +5,10 @@ import { Navbar } from '#components/Layout/Navbar/Navbar.tsx';
 export function PageLayout({ children }: PageLayoutProps) {
 	return (
 		<>
-			<header className='fixed top-0 h-15 w-full px-6'>
+			<header className='fixed top-0 z-10 h-15 w-full backdrop-blur-xl'>
 				<Navbar />
 			</header>
-			{children}
+			<main>{children}</main>
 		</>
 	);
 }
