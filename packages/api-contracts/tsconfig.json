@@ -15,8 +15,5 @@
 			"node"
 		]
 	},
-	"exclude": [
-		"prisma.config.ts"
-	],
 	"extends": "../../tsconfig.base.json"
 }
