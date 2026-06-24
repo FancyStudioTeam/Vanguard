@@ -1,0 +1,21 @@
+{
+	"name": "@vanguard/contracts",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
+	"author": "Vanguard Working Group",
+	"type": "module",
+	"scripts": {
+		"prebuild": "pnpm rimraf",
+		"build": "tsgo --project tsconfig.json",
+		"rimraf": "node ../../scripts/rimraf.js"
+	},
+	"dependencies": {
+		"zod": "4.4.3"
+	},
+	"devDependencies": {
+		"@types/node": "26.0.0",
+		"typescript": "6.0.3"
+	},
+	"packageManager": "pnpm@11.6.0"
+}
