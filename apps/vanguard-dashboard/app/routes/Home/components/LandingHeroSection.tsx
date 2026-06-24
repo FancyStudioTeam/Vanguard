@@ -6,43 +6,30 @@ import { useRef } from 'react';
 export function LandingHeroSection() {
 	const headingReference = useRef<HTMLHeadingElement>(null);
 
-	useGSAP(
-		() => {
-			const headingReferenceValue = headingReference.current;
+	useGSAP(() => {
+		const headingReferenceValue = headingReference.current;
 
-			const gsapTimeline = gsap.timeline();
-			const gsapSplitText = SplitText.create(headingReferenceValue, {
-				type: 'words',
-			});
+		const gsapSplitText = SplitText.create(headingReferenceValue, {
+			type: 'words',
+		});
 
-			gsapTimeline
-				.set(headingReferenceValue, {
-					visibility: 'visible',
-				})
-				.fromTo(
-					gsapSplitText.words,
-					{
-						opacity: 0,
-						y: -100,
-					},
-					{
-						duration: 1,
-						ease: 'back.out',
-						opacity: 1,
-						stagger: 0.075,
-						y: 0,
-					},
-				);
-		},
-		{
-			scope: headingReference,
-		},
-	);
+		gsap.from(gsapSplitText.words, {
+			duration: 1,
+			ease: 'back.out',
+			opacity: 0,
+			scrollTrigger: {
+				toggleActions: 'restart none restart none',
+				trigger: headingReferenceValue,
+			},
+			stagger: 0.075,
+			y: 100,
+		});
+	});
 
 	return (
 		<section className='grid h-dvh min-h-125 place-items-center bg-[url("/Background.svg")] bg-center bg-cover bg-no-repeat px-8'>
 			<h1
-				className='invisible max-w-5xl text-wrap text-center font-bold text-5xl lg:text-7xl'
+				className='max-w-5xl text-wrap text-center font-bold text-5xl lg:text-7xl'
 				ref={headingReference}
 			>
 				Build your own Discord community with Vanguard
