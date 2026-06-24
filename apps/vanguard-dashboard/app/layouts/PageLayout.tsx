@@ -11,9 +11,11 @@ export function PageLayout({ children }: PageLayoutProps) {
 		const headerReferenceValue = headerReference.current;
 
 		ScrollTrigger.create({
-			onEnter: () => headerReferenceValue?.classList.add('bg-neutral-950'),
-			onLeaveBack: () => headerReferenceValue?.classList.remove('bg-neutral-950'),
 			start: 10,
+			toggleClass: {
+				className: 'bg-neutral-950',
+				targets: headerReferenceValue,
+			},
 		});
 	});
 
