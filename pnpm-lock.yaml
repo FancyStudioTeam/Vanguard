@@ -246,6 +246,19 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
+  packages/contracts:
+    dependencies:
+      zod:
+        specifier: 4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@types/node':
+        specifier: 26.0.0
+        version: 26.0.0
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+
   packages/discord-config:
     dependencies:
       '@discordeno/bot':
