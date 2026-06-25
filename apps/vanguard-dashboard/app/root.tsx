@@ -54,6 +54,7 @@ export default function App() {
 export function Layout({ children }: LayoutProps) {
 	return (
 		<html
+			className='scrollbar-gutter-stable scrollbar-thumb-rose-500 scrollbar-track-transparent scroll-smooth'
 			lang='en-US'
 			translate='no'
 		>
