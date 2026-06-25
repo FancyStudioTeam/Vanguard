@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 // biome-ignore lint/style/useComponentExportOnlyModules: (x)
 export const ButtonVariants = cva(
-	'flex h-10 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent font-semibold text-sm transition-colors [&>svg]:size-5 [&>svg]:shrink-0',
+	'flex h-10 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent font-semibold text-sm transition duration-300 active:scale-95 [&>svg]:size-5 [&>svg]:shrink-0',
 	{
 		defaultVariants: {
 			size: 'default',
@@ -16,7 +16,7 @@ export const ButtonVariants = cva(
 			},
 			variant: {
 				outline: '!border-neutral-800 hover:bg-neutral-800',
-				primary: 'bg-rose-500 text-rose-50 transition-opacity hover:opacity-75',
+				primary: 'bg-rose-500 text-rose-50 hover:opacity-75',
 			},
 		},
 	},
