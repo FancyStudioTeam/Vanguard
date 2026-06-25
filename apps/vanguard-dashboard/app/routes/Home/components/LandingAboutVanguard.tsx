@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react';
 import { SparkleIcon } from '@phosphor-icons/react';
 import gsap from 'gsap';
-import { type ReactNode, useRef } from 'react';
+import type { ReactNode } from 'react';
 
 const VANGUARD_FEATURES: Feature[] = [
 	{
@@ -47,59 +47,51 @@ const VANGUARD_FEATURES: Feature[] = [
 ];
 
 export function LandingAboutVanguard() {
-	const sectionReference = useRef<HTMLElement>(null);
+	useGSAP(() => {
+		const featureCards = gsap.utils.toArray<HTMLElement>('.feature-card');
 
-	useGSAP(
-		() => {
-			const featureCards = gsap.utils.toArray<HTMLElement>('.feature-card');
-
-			featureCards.forEach((card) => {
-				gsap.fromTo(
-					card,
-					{
-						opacity: 0,
-						y: 50,
+		featureCards.forEach((card) => {
+			gsap.fromTo(
+				card,
+				{
+					opacity: 0,
+					y: 50,
+				},
+				{
+					opacity: 1,
+					scrollTrigger: {
+						end: 'center center',
+						scrub: true,
+						start: 'top center',
+						trigger: card,
 					},
-					{
-						opacity: 1,
-						scrollTrigger: {
-							end: 'center center',
-							scrub: true,
-							start: 'top center',
-							trigger: card,
-						},
-						y: 0,
-					},
-				);
-			});
-		},
-		{
-			scope: sectionReference,
-		},
-	);
+					y: 0,
+				},
+			);
+		});
+	});
 
 	return (
-		<section
-			className='flex w-full flex-col px-8 xl:grid xl:grid-cols-2 xl:gap-32'
-			ref={sectionReference}
-		>
-			<div className='sticky top-15 z-10 flex items-center justify-center xl:top-0 xl:z-0 xl:h-dvh xl:justify-end'>
-				<h2 className='text-balance bg-linear-to-r from-neutral-50 to-neutral-400 bg-clip-text font-bold text-5xl/17 text-transparent xl:text-7xl/25'>
+		<section className='grid grid-cols-1 px-8 xl:grid-cols-2 xl:gap-32'>
+			<div className='sticky top-0 flex h-dvh items-center'>
+				<h2 className='ml-auto w-full max-w-xl text-balance bg-linear-to-r from-neutral-50 to-neutral-400 bg-clip-text text-end font-bold text-5xl/17 text-transparent xl:text-7xl/25'>
 					Why Vanguard?
 				</h2>
 			</div>
-			<div className='w-full max-w-xl'>
+			<div>
 				{VANGUARD_FEATURES.map(({ badge, content, heading }) => (
-					<section
-						className='feature-card flex h-max w-full max-w-2xl flex-col justify-center gap-4 xl:min-h-dvh [&>p]:text-balance [&>p]:text-md [&>p]:text-neutral-400'
+					<div
+						className='mr-auto w-full max-w-xl'
 						key={heading}
 					>
-						<h3 className='flex items-center gap-4 text-balance font-bold text-3xl'>
-							{heading}
-							{badge}
-						</h3>
-						{content}
-					</section>
+						<div className='feature-card flex h-max flex-col justify-center gap-4 xl:min-h-dvh [&>p]:text-balance [&>p]:text-md [&>p]:text-neutral-400'>
+							<h3 className='flex items-center gap-4 text-balance font-bold text-3xl'>
+								{heading}
+								{badge}
+							</h3>
+							{content}
+						</div>
+					</div>
 				))}
 			</div>
 		</section>
