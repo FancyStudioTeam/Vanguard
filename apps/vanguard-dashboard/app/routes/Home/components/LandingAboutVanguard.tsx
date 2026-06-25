@@ -22,7 +22,7 @@ const VANGUARD_FEATURES: Feature[] = [
 	},
 	{
 		badge: (
-			<span className='flex items-center gap-2 rounded-full bg-mauve-800 px-2 py-1 text-mauve-300 text-xs uppercase'>
+			<span className='flex items-center gap-2 rounded-full bg-rose-950 px-2 py-1 text-rose-300 text-xs uppercase'>
 				<SparkleIcon
 					className='size-5 shrink-0'
 					weight='fill'

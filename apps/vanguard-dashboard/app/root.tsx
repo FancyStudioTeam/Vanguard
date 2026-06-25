@@ -66,7 +66,7 @@ export function Layout({ children }: LayoutProps) {
 				<Meta />
 				<Links />
 			</head>
-			<body className='bg-neutral-950 font-general-sans font-medium text-zinc-50'>
+			<body className='bg-neutral-950 font-general-sans font-medium text-zinc-50 selection:bg-rose-500 selection:text-rose-50'>
 				{children}
 				<ScrollRestoration />
 				<Scripts />

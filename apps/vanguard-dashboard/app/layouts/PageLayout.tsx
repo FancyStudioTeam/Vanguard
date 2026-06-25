@@ -22,7 +22,7 @@ export function PageLayout({ children }: PageLayoutProps) {
 	return (
 		<>
 			<header
-				className='fixed top-0 z-10 h-15 w-full backdrop-blur-xs'
+				className='fixed top-0 z-10 w-full items-center backdrop-blur-xl'
 				ref={headerReference}
 			>
 				<Navbar />
