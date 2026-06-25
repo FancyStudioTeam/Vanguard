@@ -16,7 +16,7 @@ export const ButtonVariants = cva(
 			},
 			variant: {
 				outline: '!border-neutral-800 hover:bg-neutral-800',
-				primary: 'bg-rose-950 text-rose-300 hover:bg-rose-950/75',
+				primary: 'bg-rose-500 text-rose-50 transition-opacity hover:opacity-75',
 			},
 		},
 	},
