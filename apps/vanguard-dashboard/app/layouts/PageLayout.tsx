@@ -13,7 +13,7 @@ export function PageLayout({ children }: PageLayoutProps) {
 		ScrollTrigger.create({
 			start: 10,
 			toggleClass: {
-				className: 'bg-neutral-950/75',
+				className: 'bg-neutral-950',
 				targets: headerReferenceValue,
 			},
 		});
@@ -22,7 +22,7 @@ export function PageLayout({ children }: PageLayoutProps) {
 	return (
 		<>
 			<header
-				className='fixed top-0 z-10 w-full items-center backdrop-blur-xl'
+				className='fixed top-0 z-10 w-full items-center'
 				ref={headerReference}
 			>
 				<Navbar />
