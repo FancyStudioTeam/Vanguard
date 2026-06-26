@@ -1,25 +1,14 @@
 import type { DiscordUserGuild } from '@vanguard/api-contracts/interfaces';
 
-import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
+import { IdentificationCardIcon } from '@phosphor-icons/react';
+import { Link } from 'react-router';
 
-import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
+import { ButtonVariants } from '#components/UI/Button.tsx';
 
-export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFooterProps) {
+export function GuildSelectorCardFooter({ id, name }: GuildSelectorCardFooterProps) {
 	return (
-		<footer className='flex h-25 items-center gap-4 p-6'>
-			<Avatar>
-				<AvatarImage
-					className='size-15'
-					src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512&animated=true`}
-				/>
-				<AvatarFallback className='size-15'>
-					<ImageIcon
-						className='size-10 shrink-0'
-						weight='fill'
-					/>
-				</AvatarFallback>
-			</Avatar>
-			<ul className='min-w-0'>
+		<footer className='flex items-center gap-4'>
+			<ul className='min-w-0 flex-1'>
 				<li className='truncate font-bold'>{name}</li>
 				<li className='flex items-center gap-2 text-neutral-400 text-sm'>
 					<IdentificationCardIcon
@@ -29,8 +18,14 @@ export function GuildSelectorCardFooter({ icon, id, name }: GuildSelectorCardFoo
 					<span className='truncate'>{id}</span>
 				</li>
 			</ul>
+			<Link
+				className={ButtonVariants()}
+				to={`/dashboard/${id}`}
+			>
+				Manage Guild
+			</Link>
 		</footer>
 	);
 }
 
-export type GuildSelectorCardFooterProps = Pick<DiscordUserGuild, 'icon' | 'id' | 'name'>;
+export type GuildSelectorCardFooterProps = Pick<DiscordUserGuild, 'id' | 'name'>;

@@ -6,7 +6,7 @@ export function Avatar({ className, ...props }: AvatarProps) {
 	return (
 		<AvatarPrimitive.Root
 			className={classNames(
-				'shrink-0 select-none overflow-hidden rounded-md bg-neutral-800',
+				'shrink-0 select-none overflow-hidden rounded-full bg-neutral-800',
 				className,
 			)}
 			{...props}
@@ -18,7 +18,7 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 	return (
 		<AvatarPrimitive.Fallback
 			className={classNames(
-				'flex size-10 items-center justify-center rounded-md border-2 border-neutral-700 text-sm',
+				'flex size-10 items-center justify-center rounded-full text-sm',
 				className,
 			)}
 			{...props}
@@ -29,10 +29,7 @@ export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
 export function AvatarImage({ className, ...props }: AvatarImageProps) {
 	return (
 		<AvatarPrimitive.Image
-			className={classNames(
-				'aspect-square size-10 rounded-md border-2 border-neutral-700',
-				className,
-			)}
+			className={classNames('aspect-square size-10 rounded-full', className)}
 			{...props}
 		/>
 	);

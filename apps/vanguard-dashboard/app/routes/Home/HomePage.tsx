@@ -5,8 +5,10 @@ import { LandingHeroSection } from './components/LandingHeroSection.tsx';
 export default function () {
 	return (
 		<PageLayout>
-			<LandingHeroSection />
-			<LandingAboutVanguard />
+			<main>
+				<LandingHeroSection />
+				<LandingAboutVanguard />
+			</main>
 		</PageLayout>
 	);
 }
