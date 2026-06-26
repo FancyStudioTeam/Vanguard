@@ -1,4 +1,4 @@
-import type { GetDiscordUser } from '@vanguard/api-contracts/rest';
+import type { GetDiscordUserResult } from '@vanguard/api-contracts/rest';
 
 import { redirect } from 'react-router';
 
@@ -6,7 +6,7 @@ import { BASE_API_URL } from '#lib/Shared.ts';
 import { HttpStatus } from '#server/lib/HttpStatus.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getUser(request: Request): Promise<GetDiscordUser> {
+export async function getUser(request: Request): Promise<GetDiscordUserResult> {
 	const response = await createRequest(request);
 	const responseBody = await response.json();
 
