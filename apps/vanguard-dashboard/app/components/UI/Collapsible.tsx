@@ -14,10 +14,7 @@ export function Collapsible({ className, ...props }: CollapsibleProps) {
 export function CollapsibleTrigger({ className, ...props }: CollapsibleTriggerProps) {
 	return (
 		<CollapsiblePrimitive.Trigger
-			className={classNames(
-				'flex w-full cursor-pointer items-center justify-between rounded-md p-2 transition-colors',
-				className,
-			)}
+			className={classNames('flex w-full cursor-pointer', className)}
 			{...props}
 		/>
 	);

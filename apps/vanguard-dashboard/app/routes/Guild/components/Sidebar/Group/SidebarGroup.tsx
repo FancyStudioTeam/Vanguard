@@ -1,5 +1,6 @@
 import { CaretUpDownIcon } from '@phosphor-icons/react';
 
+import { ButtonVariants } from '#components/UI/Button.tsx';
 import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from '#components/UI/Collapsible.tsx';
 import {
 	SidebarGroupItem,
@@ -9,7 +10,12 @@ import {
 export function SidebarGroup({ category, items }: SidebarGroupProps) {
 	return (
 		<Collapsible defaultOpen={true}>
-			<CollapsibleTrigger className='font-bold text-xs uppercase hover:bg-neutral-800'>
+			<CollapsibleTrigger
+				className={ButtonVariants({
+					className: 'justify-between font-bold text-xs uppercase',
+					variant: 'ghost',
+				})}
+			>
 				<span className='truncate'>{category}</span>
 				<CaretUpDownIcon
 					className='size-5 shrink-0'

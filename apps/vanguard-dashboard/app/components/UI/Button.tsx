@@ -15,6 +15,7 @@ export const ButtonVariants = cva(
 				icon: 'p-2',
 			},
 			variant: {
+				ghost: 'hover:bg-neutral-800',
 				outline: '!border-neutral-800 hover:bg-neutral-800',
 				primary: 'bg-rose-500 text-rose-50 hover:opacity-75',
 			},
