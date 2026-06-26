@@ -1,14 +1,14 @@
 import type { ReactNode } from 'react';
 
+import { Footer } from '#components/Layout/Footer/Footer.tsx';
 import { Navbar } from '#components/Layout/Navbar/Navbar.tsx';
 
 export function PageLayout({ children }: PageLayoutProps) {
 	return (
 		<>
-			<header className='fixed top-0 z-10 w-full items-center backdrop-blur-xl'>
-				<Navbar />
-			</header>
+			<Navbar />
 			{children}
+			<Footer />
 		</>
 	);
 }
