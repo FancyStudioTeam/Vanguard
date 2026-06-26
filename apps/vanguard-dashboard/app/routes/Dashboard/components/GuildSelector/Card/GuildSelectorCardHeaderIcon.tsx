@@ -8,10 +8,10 @@ export function GuildSelectorCardHeaderIcon({ icon, id }: GuildSelectorCardHeade
 	return (
 		<Avatar>
 			<AvatarImage
-				className='size-20 rounded-full border-4 border-neutral-800'
+				className='size-20 rounded-full border-4 border-neutral-50'
 				src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512&animated=true`}
 			/>
-			<AvatarFallback className='size-20 border-4 border-neutral-800'>
+			<AvatarFallback className='size-20 border-4 border-neutral-50'>
 				<ImageIcon
 					className='size-10 shrink-0'
 					weight='fill'
