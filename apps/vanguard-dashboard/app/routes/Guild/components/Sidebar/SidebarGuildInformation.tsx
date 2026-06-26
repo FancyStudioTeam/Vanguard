@@ -1,6 +1,6 @@
 import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
 
-import { IdentificationCardIcon, ImageIcon } from '@phosphor-icons/react';
+import { IDcardFill, PicFill } from '@mingcute/react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
 
@@ -13,19 +13,13 @@ export function SidebarGuildInformation({ icon, id, name }: SidebarGuildInformat
 					src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512`}
 				/>
 				<AvatarFallback className='size-10'>
-					<ImageIcon
-						className='size-5 shrink-0'
-						weight='fill'
-					/>
+					<PicFill className='size-5 shrink-0' />
 				</AvatarFallback>
 			</Avatar>
 			<ul className='min-w-0'>
 				<li className='truncate font-bold'>{name}</li>
 				<li className='flex items-center gap-2 text-neutral-400 text-sm'>
-					<IdentificationCardIcon
-						className='size-5 shrink-0'
-						weight='fill'
-					/>
+					<IDcardFill className='size-5 shrink-0' />
 					<span className='truncate'>{id}</span>
 				</li>
 			</ul>

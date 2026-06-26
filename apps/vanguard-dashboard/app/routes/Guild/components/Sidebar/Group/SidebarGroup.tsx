@@ -1,4 +1,4 @@
-import { CaretUpDownIcon } from '@phosphor-icons/react';
+import { DownFill } from '@mingcute/react';
 
 import { ButtonVariants } from '#components/UI/Button.tsx';
 import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from '#components/UI/Collapsible.tsx';
@@ -12,15 +12,13 @@ export function SidebarGroup({ category, items }: SidebarGroupProps) {
 		<Collapsible defaultOpen={true}>
 			<CollapsibleTrigger
 				className={ButtonVariants({
-					className: 'justify-between font-bold text-xs uppercase',
+					className:
+						'justify-between font-bold text-xs uppercase [&>svg]:rotate-90 data-panel-open:[&>svg]:rotate-0',
 					variant: 'ghost',
 				})}
 			>
 				<span className='truncate'>{category}</span>
-				<CaretUpDownIcon
-					className='size-5 shrink-0'
-					weight='fill'
-				/>
+				<DownFill className='size-5 shrink-0 transition-transform duration-300' />
 			</CollapsibleTrigger>
 			<CollapsiblePanel>
 				<ul>

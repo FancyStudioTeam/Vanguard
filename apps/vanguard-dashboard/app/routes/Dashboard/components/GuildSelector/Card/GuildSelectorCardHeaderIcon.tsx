@@ -1,6 +1,6 @@
 import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
 
-import { ImageIcon } from '@phosphor-icons/react';
+import { PicFill } from '@mingcute/react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
 
@@ -12,10 +12,7 @@ export function GuildSelectorCardHeaderIcon({ icon, id }: GuildSelectorCardHeade
 				src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp?size=512&animated=true`}
 			/>
 			<AvatarFallback className='size-20 border-4 border-neutral-50'>
-				<ImageIcon
-					className='size-10 shrink-0'
-					weight='fill'
-				/>
+				<PicFill className='size-10 shrink-0' />
 			</AvatarFallback>
 		</Avatar>
 	);

@@ -1,4 +1,4 @@
-import { GridFourIcon, TicketIcon } from '@phosphor-icons/react/dist/ssr';
+import { LayoutGridFill } from '@mingcute/react';
 
 import { SidebarGroup, type SidebarGroupProps as SidebarGroupInterface } from './SidebarGroup.tsx';
 
@@ -8,13 +8,8 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 		items: [
 			{
 				href: `/dashboard/${guildId}`,
-				icon: GridFourIcon,
+				icon: LayoutGridFill,
 				name: 'Dashboard',
-			},
-			{
-				href: `/dashboard/${guildId}/tickets`,
-				icon: TicketIcon,
-				name: 'Tickets',
 			},
 		],
 	},

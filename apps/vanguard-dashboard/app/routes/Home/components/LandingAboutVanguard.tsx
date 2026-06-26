@@ -1,5 +1,5 @@
 import { useGSAP } from '@gsap/react';
-import { SparkleIcon } from '@phosphor-icons/react';
+import { SparklesFill } from '@mingcute/react';
 import gsap from 'gsap';
 import type { ReactNode } from 'react';
 
@@ -23,10 +23,7 @@ const VANGUARD_FEATURES: Feature[] = [
 	{
 		badge: (
 			<span className='flex items-center gap-2 rounded-full bg-rose-950 px-2 py-1 text-rose-300 text-xs uppercase'>
-				<SparkleIcon
-					className='size-5 shrink-0'
-					weight='fill'
-				/>
+				<SparklesFill className='size-5 shrink-0' />
 				Premium
 			</span>
 		),
