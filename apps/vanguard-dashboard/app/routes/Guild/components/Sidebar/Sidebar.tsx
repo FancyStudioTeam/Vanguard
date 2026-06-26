@@ -1,16 +1,16 @@
 import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
 
 import { SidebarGroups } from './Group/SidebarGroups.tsx';
+import { SidebarGuildInformation } from './SidebarGuildInformation.tsx';
 import { SidebarHeader } from './SidebarHeader.tsx';
-import { SidebarSeparator } from './SidebarSeparator.tsx';
 
 export function Sidebar({ guild }: SidebarProps) {
 	const { id: guildId } = guild;
 
 	return (
-		<aside className='sticky top-26 flex h-[calc(100dvh-8rem)] w-80 shrink-0 flex-col gap-4 overflow-y-auto rounded-xl border-2 border-neutral-700 bg-neutral-900 p-6'>
-			<SidebarHeader {...guild} />
-			<SidebarSeparator />
+		<aside className='absolute top-0 hidden h-dvh w-100 flex-col gap-4 overflow-y-auto p-6 md:flex'>
+			<SidebarHeader />
+			<SidebarGuildInformation {...guild} />
 			<SidebarGroups guildId={guildId} />
 		</aside>
 	);

@@ -1,11 +1,11 @@
 import { type MetaDescriptor, Outlet } from 'react-router';
 
-import { Sidebar } from '#components/Layout/Sidebar/Sidebar.tsx';
 import { GuildContext } from '#context/GuildContext.ts';
 import { UserContext } from '#context/UserContext.ts';
 import { getGuild } from '#server/utils/API/getGuild.ts';
 import { getUser } from '#server/utils/API/getUser.ts';
 import type { Route } from './+types/GuildLayout';
+import { Sidebar } from './components/Sidebar/Sidebar.tsx';
 
 export function meta(): MetaDescriptor[] {
 	return [
@@ -46,11 +46,13 @@ export default function ({ loaderData }: Route.ComponentProps) {
 	const { guild } = loaderData;
 
 	return (
-		<div className='flex flex-row gap-6'>
+		<div>
 			<Sidebar guild={guild} />
-			<main className='flex w-full flex-col gap-6'>
-				<Outlet />
-			</main>
+			<div className='p-6 md:ml-100'>
+				<div className='mx-auto w-full max-w-5xl'>
+					<Outlet />
+				</div>
+			</div>
 		</div>
 	);
 }

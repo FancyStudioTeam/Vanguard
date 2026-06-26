@@ -10,7 +10,7 @@ export function SidebarGroupItem({ href, icon: Icon, name }: SidebarGroupItemPro
 	return (
 		<a
 			className={classNames(
-				'flex items-center gap-2 rounded-md p-2 text-sm transition-colors',
+				'flex items-center gap-2 rounded-md p-2 font-semibold text-sm transition-colors',
 				isSelected ? 'bg-neutral-800 hover:bg-neutral-800/75' : 'hover:bg-neutral-800',
 			)}
 			href={href}
