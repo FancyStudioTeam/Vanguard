@@ -9,7 +9,7 @@ export function VanguardCombinationMark({ className, ...props }: VanguardCombina
 		<a
 			aria-label='Vanguard Home'
 			className={classNames(
-				'flex select-none items-center gap-2 transition-opacity hover:opacity-75',
+				'flex select-none items-center gap-2 transition-opacity duration-300 hover:opacity-75',
 				className,
 			)}
 			href='/'
