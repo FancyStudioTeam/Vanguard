@@ -1,5 +1,3 @@
-import { ButtonVariants } from '#components/UI/Button.tsx';
-import { PageLayout } from '#layouts/PageLayout.tsx';
 import './fonts.css';
 import './tailwind.css';
 
@@ -23,6 +21,9 @@ import {
 } from 'react-router';
 import { SWRConfig } from 'swr';
 import { match } from 'ts-pattern';
+
+import { ButtonVariants } from '#components/UI/Button.tsx';
+import { PageLayout } from '#layouts/PageLayout.tsx';
 
 gsap.registerPlugin(useGSAP, ScrambleTextPlugin, ScrollSmoother, ScrollTrigger, SplitText);
 
