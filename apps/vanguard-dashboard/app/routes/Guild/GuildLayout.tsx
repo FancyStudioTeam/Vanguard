@@ -49,9 +49,9 @@ export default function ({ loaderData }: Route.ComponentProps) {
 		<div>
 			<Sidebar guild={guild} />
 			<div className='p-6 md:ml-100'>
-				<div className='mx-auto w-full max-w-5xl'>
+				<main className='mx-auto flex w-full max-w-5xl flex-col gap-4'>
 					<Outlet />
-				</div>
+				</main>
 			</div>
 		</div>
 	);

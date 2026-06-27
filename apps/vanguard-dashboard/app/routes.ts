@@ -7,5 +7,7 @@ export default [
 
 	route('dashboard/:guildId', 'routes/Guild/GuildLayout.tsx', [
 		index('routes/Guild/GuildHomePage.tsx'),
+
+		route('customization', 'routes/Guild/routes/Customization/CustomizationPage.tsx'),
 	]),
 ] satisfies RouteConfig;
