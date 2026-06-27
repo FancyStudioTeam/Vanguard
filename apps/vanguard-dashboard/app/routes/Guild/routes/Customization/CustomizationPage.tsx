@@ -1,3 +1,5 @@
+import './CustomizationPage.css';
+
 import { PreviewMemberList } from './components/Preview/PreviewMemberList.tsx';
 
 export default function () {
