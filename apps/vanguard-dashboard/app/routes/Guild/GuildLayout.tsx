@@ -48,8 +48,8 @@ export default function ({ loaderData }: Route.ComponentProps) {
 	return (
 		<div>
 			<Sidebar guild={guild} />
-			<div className='p-6 md:ml-100'>
-				<main className='mx-auto flex w-full max-w-5xl flex-col gap-4'>
+			<div className='p-8 md:ml-100'>
+				<main className='mx-auto flex w-full max-w-5xl flex-col gap-6'>
 					<Outlet />
 				</main>
 			</div>
