@@ -2,8 +2,13 @@ import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
 
 import { classNames } from '#utils/Tailwind/classNames.ts';
 
-export function Tabs({ ...props }: TabsProps) {
-	return <TabsPrimitive.Root {...props} />;
+export function Tabs({ className, ...props }: TabsProps) {
+	return (
+		<TabsPrimitive.Root
+			className={classNames('flex w-full flex-col gap-4', className)}
+			{...props}
+		/>
+	);
 }
 
 export function TabsIndicator({ className, ...props }: TabsIndicatorProps) {
