@@ -12,7 +12,7 @@ export function GuildSelectorCardFooter({ id, name }: GuildSelectorCardFooterPro
 				<li className='truncate font-bold'>{name}</li>
 				<li className='flex items-center gap-2 text-neutral-400 text-sm'>
 					<IDcardFill className='size-5 shrink-0' />
-					<span className='truncate'>{id}</span>
+					<span className='truncate font-semibold'>{id}</span>
 				</li>
 			</ul>
 			<Link
