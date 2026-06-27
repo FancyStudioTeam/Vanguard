@@ -23,7 +23,7 @@ export function PreviewMemberProfile({ biography, nickname }: PreviewMemberProfi
 					</li>
 					<li className='text-neutral-400 text-sm'>Vanguard#1075</li>
 				</ul>
-				<p className='text-sm'>{biography}</p>
+				<p className='break-all text-sm'>{biography}</p>
 			</section>
 		</div>
 	);
