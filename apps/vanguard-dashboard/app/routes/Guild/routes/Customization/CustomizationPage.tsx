@@ -9,7 +9,7 @@ export default function () {
 					Give Vanguard a more customized look for your Discord community.
 				</p>
 			</section>
-			<section className='h-100 rounded-3xl bg-neutral-900 p-6'>
+			<section className='rounded-3xl bg-neutral-900 p-6'>
 				<PreviewMemberList />
 			</section>
 		</>
