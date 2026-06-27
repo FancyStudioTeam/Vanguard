@@ -1,4 +1,4 @@
-import { LayoutGridFill } from '@mingcute/react';
+import { LayoutGridFill, Magic3Fill, WaveHandFill } from '@mingcute/react';
 
 import { SidebarGroup, type SidebarGroupProps as SidebarGroupInterface } from './SidebarGroup.tsx';
 
@@ -10,6 +10,21 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 				href: `/dashboard/${guildId}`,
 				icon: LayoutGridFill,
 				name: 'Dashboard',
+			},
+			{
+				href: `/dashboard/${guildId}/customization`,
+				icon: Magic3Fill,
+				name: 'Bot Customization',
+			},
+		],
+	},
+	{
+		category: 'Essentials',
+		items: [
+			{
+				href: `/dashboard/${guildId}/welcomes`,
+				icon: WaveHandFill,
+				name: 'Welcomes',
 			},
 		],
 	},
