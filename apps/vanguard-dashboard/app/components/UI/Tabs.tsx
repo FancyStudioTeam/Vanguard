@@ -27,7 +27,7 @@ export function TabsList({ className, ...props }: TabsListProps) {
 	return (
 		<TabsPrimitive.List
 			className={classNames(
-				'relative z-1 flex w-min flex-row items-center rounded-full bg-neutral-950 p-2',
+				'relative z-1 flex w-fit flex-row items-center rounded-full bg-neutral-950 p-2',
 				className,
 			)}
 			{...props}
