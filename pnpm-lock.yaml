@@ -114,6 +114,9 @@ importers:
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -142,6 +145,9 @@ importers:
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       tsx:
         specifier: 4.22.4
         version: 4.22.4
@@ -254,6 +260,9 @@ importers:
       '@types/node':
         specifier: 26.0.1
         version: 26.0.1
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -267,6 +276,9 @@ importers:
       '@types/node':
         specifier: 26.0.1
         version: 26.0.1
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -280,6 +292,9 @@ importers:
       '@types/node':
         specifier: 26.0.1
         version: 26.0.1
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -299,6 +314,9 @@ importers:
       '@types/node':
         specifier: 26.0.1
         version: 26.0.1
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -312,6 +330,9 @@ importers:
       '@types/node':
         specifier: 26.0.1
         version: 26.0.1
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -325,6 +346,9 @@ importers:
       '@types/node':
         specifier: 26.0.1
         version: 26.0.1
+      premove:
+        specifier: 4.0.0
+        version: 4.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -3029,6 +3053,11 @@ packages:
   postgres-interval@1.2.0:
     resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
     engines: {node: '>=0.10.0'}
+
+  premove@4.0.0:
+    resolution: {integrity: sha512-zim/Hr4+FVdCIM7zL9b9Z0Wfd5Ya3mnKtiuDv7L5lzYzanSq6cOcVJ7EFcgK4I0pt28l8H0jX/x3nyog380XgQ==}
+    engines: {node: '>=6'}
+    hasBin: true
 
   prettier@3.8.4:
     resolution: {integrity: sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q==}
@@ -6468,6 +6497,8 @@ snapshots:
     dependencies:
       xtend: 4.0.2
     optional: true
+
+  premove@4.0.0: {}
 
   prettier@3.8.4: {}
 

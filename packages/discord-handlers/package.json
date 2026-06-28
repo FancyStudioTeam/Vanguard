@@ -35,9 +35,9 @@
 		}
 	},
 	"scripts": {
-		"prebuild": "pnpm rimraf",
+		"prebuild": "pnpm premove",
 		"build": "tsgo --project tsconfig.json",
-		"rimraf": "node ../../scripts/rimraf.js"
+		"premove": "premove dist"
 	},
 	"dependencies": {
 		"@discordeno/bot": "22.0.1-next.9eb5642",
@@ -46,6 +46,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "26.0.1",
+		"premove": "4.0.0",
 		"typescript": "6.0.3"
 	},
 	"packageManager": "pnpm@11.6.0"

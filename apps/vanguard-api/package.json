@@ -12,7 +12,7 @@
 		"#utils/*": "./dist/utils/*"
 	},
 	"scripts": {
-		"prebuild": "pnpm rimraf",
+		"prebuild": "pnpm premove",
 		"build": "pnpm nest:build",
 		"docker:build": "docker build --tag vanguard-api --file Dockerfile ../../.",
 		"docker:run": "docker run -d -p 3001:3001 --env-file .env vanguard-api",
@@ -20,7 +20,7 @@
 		"nest:build": "nest build",
 		"nest:dev": "cross-env HOST=127.0.0.1 NODE_ENV=development nest start --watch",
 		"nest:start": "cross-env HOST=0.0.0.0 NODE_ENV=production node dist/index.js",
-		"rimraf": "node ../../scripts/rimraf.js"
+		"premove": "premove dist"
 	},
 	"dependencies": {
 		"@discordeno/utils": "21.0.0",
@@ -51,6 +51,7 @@
 		"@nestjs/cli": "11.0.23",
 		"@types/node": "26.0.1",
 		"cross-env": "10.1.0",
+		"premove": "4.0.0",
 		"typescript": "6.0.3"
 	},
 	"packageManager": "pnpm@11.6.0"
