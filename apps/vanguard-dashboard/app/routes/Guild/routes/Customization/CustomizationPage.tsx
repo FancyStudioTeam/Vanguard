@@ -1,14 +1,20 @@
 import './CustomizationPage.css';
 
-import { PreviewMemberList } from './components/Preview/PreviewMemberList.tsx';
+import { Accordion } from '#components/UI/Accordion.tsx';
+import { AccordionBotCustomization } from './components/Accordions/AccordionBotCustomization.tsx';
 
 export default function () {
 	return (
 		<>
 			<h1 className='font-bold text-3xl'>Bot Customization</h1>
-			<section className='rounded-3xl bg-neutral-900 p-6'>
-				<PreviewMemberList />
-			</section>
+			<Accordion
+				className='flex flex-col gap-6'
+				defaultValue={[
+					'bot-customization',
+				]}
+			>
+				<AccordionBotCustomization />
+			</Accordion>
 		</>
 	);
 }

@@ -9,5 +9,6 @@ export default [
 		index('routes/Guild/GuildHomePage.tsx'),
 
 		route('customization', 'routes/Guild/routes/Customization/CustomizationPage.tsx'),
+		route('welcomes', 'routes/Guild/routes/Welcomes/WelcomesPage.tsx'),
 	]),
 ] satisfies RouteConfig;
