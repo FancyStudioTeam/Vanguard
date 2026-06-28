@@ -1,25 +1,24 @@
-import { Link } from 'react-router';
-
 import { ButtonVariants } from '#components/UI/Button.tsx';
 
 export function NavbarButtons() {
 	return (
 		<section className='hidden items-center gap-2 sm:flex'>
-			<Link
+			<a
 				className={ButtonVariants({
 					variant: 'outline',
 				})}
+				href='https://www.fancystudio.xyz/discord'
+				rel='noopener'
 				target='_blank'
-				to='https://www.fancystudio.xyz/discord'
 			>
 				Discord Server
-			</Link>
-			<Link
+			</a>
+			<a
 				className={ButtonVariants()}
-				to='/dashboard'
+				href='/dashboard'
 			>
 				Dashboard
-			</Link>
+			</a>
 		</section>
 	);
 }

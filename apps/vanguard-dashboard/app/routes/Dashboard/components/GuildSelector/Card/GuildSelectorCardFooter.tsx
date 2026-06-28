@@ -1,7 +1,6 @@
 import type { DiscordUserGuild } from '@vanguard/api-contracts/interfaces';
 
 import { IDcardFill } from '@mingcute/react';
-import { Link } from 'react-router';
 
 import { ButtonVariants } from '#components/UI/Button.tsx';
 
@@ -15,12 +14,12 @@ export function GuildSelectorCardFooter({ id, name }: GuildSelectorCardFooterPro
 					<span className='truncate font-semibold'>{id}</span>
 				</li>
 			</ul>
-			<Link
+			<a
 				className={ButtonVariants()}
-				to={`/dashboard/${id}`}
+				href={`/dashboard/${id}`}
 			>
 				Manage Guild
-			</Link>
+			</a>
 		</footer>
 	);
 }
