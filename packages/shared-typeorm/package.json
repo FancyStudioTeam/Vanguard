@@ -1,0 +1,29 @@
+{
+	"name": "@vanguard/shared-typeorm",
+	"version": "0.1.0",
+	"private": true,
+	"license": "AGPL-3.0-only",
+	"author": "Vanguard Working Group",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"prebuild": "pnpm premove",
+		"build": "tsgo --project tsconfig.json",
+		"premove": "premove dist"
+	},
+	"dependencies": {
+		"typeorm": "1.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "26.0.1",
+		"premove": "4.0.0",
+		"typescript": "6.0.3"
+	},
+	"packageManager": "pnpm@11.6.0"
+}
