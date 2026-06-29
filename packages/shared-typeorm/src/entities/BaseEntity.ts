@@ -5,11 +5,19 @@ export abstract class BaseEntity {
 		type: 'timestamp',
 		utc: true,
 	})
-	declare createdAt: Date;
+	declare createdTimestamp: string;
 
 	@UpdateDateColumn({
 		type: 'timestamp',
 		utc: true,
 	})
-	declare updatedAt: Date;
+	declare updatedTimestamp: string;
+
+	get createdAt(): Date {
+		return new Date(this.createdTimestamp);
+	}
+
+	get updatedAt(): Date {
+		return new Date(this.updatedTimestamp);
+	}
 }
