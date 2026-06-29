@@ -1,6 +1,6 @@
-import type { GetDiscordUserGuildsResult } from '@vanguard/api-contracts/rest';
+import type { RESTGetAPIUserGuilds } from '@vanguard/api-contracts/rest';
 
-import { Controller, Get, HttpCode, HttpStatus, Inject, Session } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Inject, Put, Session } from '@nestjs/common';
 
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
 import type { FastifySession } from '#lib/Types/Fastify.js';
@@ -15,7 +15,11 @@ export class GuildsController {
 	@HttpCode(HttpStatus.OK)
 	protected async getCurrentUserGuilds(
 		@Session() fastifySession: FastifySession,
-	): Promise<GetDiscordUserGuildsResult> {
+	): Promise<RESTGetAPIUserGuilds> {
 		return await this.guildsService.getCurrentUserGuilds(fastifySession);
 	}
+
+	@Put()
+	@HttpCode(HttpStatus.NO_CONTENT)
+	protected async updateBotProfile(): Promise<void> {}
 }

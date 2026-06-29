@@ -1,4 +1,4 @@
-import type { GetDiscordUserResult } from '@vanguard/api-contracts/rest';
+import type { RESTGetAPIUser } from '@vanguard/api-contracts/rest';
 
 import { Controller, Get, HttpCode, HttpStatus, Inject, Session } from '@nestjs/common';
 
@@ -15,7 +15,7 @@ export class UserController {
 	@HttpCode(HttpStatus.OK)
 	protected async getCurrentUser(
 		@Session() fastifySession: FastifySession,
-	): Promise<GetDiscordUserResult> {
+	): Promise<RESTGetAPIUser> {
 		return await this.userService.getCurrentUser(fastifySession);
 	}
 }

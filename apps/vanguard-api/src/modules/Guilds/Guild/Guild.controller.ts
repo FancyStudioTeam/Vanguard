@@ -1,4 +1,4 @@
-import type { GetDiscordGuildResult } from '@vanguard/api-contracts/rest';
+import type { RESTGetAPIGuild } from '@vanguard/api-contracts/rest';
 
 import { Controller, Get, HttpCode, HttpStatus, Inject, Param, Redirect } from '@nestjs/common';
 
@@ -13,7 +13,7 @@ export class GuildController {
 
 	@Get()
 	@HttpCode(HttpStatus.OK)
-	protected async getGuild(@Param('guildId') guildId: string): Promise<GetDiscordGuildResult> {
+	protected async getGuild(@Param('guildId') guildId: string): Promise<RESTGetAPIGuild> {
 		return await this.guildService.getGuild(guildId);
 	}
 

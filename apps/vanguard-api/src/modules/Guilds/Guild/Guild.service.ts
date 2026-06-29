@@ -1,4 +1,4 @@
-import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
+import type { APIGuild } from '@vanguard/api-contracts/interfaces';
 
 import { Inject, Injectable } from '@nestjs/common';
 
@@ -12,7 +12,7 @@ export class GuildService {
 		@Inject(ParserService) private readonly parserService: ParserService,
 	) {}
 
-	public async getGuild(guildId: string): Promise<DiscordGuild> {
+	public async getGuild(guildId: string): Promise<APIGuild> {
 		const guild = await this.discordService.getGuild(guildId);
 		const guildParsed = this.parserService.parseDiscordGuild(guild);
 
