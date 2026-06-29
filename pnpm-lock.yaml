@@ -141,6 +141,12 @@ importers:
       '@vanguard/shared-typeorm':
         specifier: workspace:*
         version: link:../../packages/shared-typeorm
+      reflect-metadata:
+        specifier: 0.2.2
+        version: 0.2.2
+      typeorm:
+        specifier: 1.0.0
+        version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
     devDependencies:
       '@types/node':
         specifier: 26.0.1

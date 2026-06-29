@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { BaseEntity } from './BaseEntity.js';
 
 @Entity()
-export class GuildBotProfile extends BaseEntity {
+export class GuildBotProfileEntity extends BaseEntity {
 	@Column('bytea', {
 		nullable: true,
 	})
