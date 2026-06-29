@@ -29,6 +29,18 @@ export const DESIRED_INTERACTION_PROPERTIES = {
 	user: true,
 } as const satisfies DesiredInteractionProperties;
 
+export const DESIRED_MEMBER_PROPERTIES = {
+	avatar: true,
+	banner: true,
+	guildId: true,
+	id: true,
+	nick: true,
+	permissions: true,
+	roles: true,
+	toggles: true,
+	user: true,
+} as const satisfies DesiredMemberProperties;
+
 export const DESIRED_MESSAGE_PROPERTIES = {
 	author: true,
 	channelId: true,
@@ -49,6 +61,7 @@ export const DESIRED_PROPERTIES = {
 	channel: DESIRED_CHANNEL_PROPERTIES,
 	guild: DESIRED_GUILD_PROPERTIES,
 	interaction: DESIRED_INTERACTION_PROPERTIES,
+	member: DESIRED_MEMBER_PROPERTIES,
 	message: DESIRED_MESSAGE_PROPERTIES,
 	user: DESIRED_USER_PROPERTIES,
 } as const satisfies DesiredProperties;
@@ -60,5 +73,6 @@ export type DesiredProperties = RecursivePartial<TransformersDesiredProperties>;
 export type DesiredChannelProperties = DesiredProperties['channel'];
 export type DesiredGuildProperties = DesiredProperties['guild'];
 export type DesiredInteractionProperties = DesiredProperties['interaction'];
+export type DesiredMemberProperties = DesiredProperties['member'];
 export type DesiredMessageProperties = DesiredProperties['message'];
 export type DesiredUserProperties = DesiredProperties['user'];
