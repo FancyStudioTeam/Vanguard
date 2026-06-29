@@ -38,7 +38,7 @@
 		"@nestjs/typeorm": "11.0.2",
 		"@sapphire/snowflake": "3.5.5",
 		"@vanguard/api-contracts": "workspace:*",
-		"@vanguard/logger": "workspace:*",
+		"@vanguard/shared-logger": "workspace:*",
 		"cache-manager": "7.2.8",
 		"discord-api-types": "0.38.49",
 		"fastify": "5.8.5",

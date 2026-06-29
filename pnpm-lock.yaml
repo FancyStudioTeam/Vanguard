@@ -80,9 +80,9 @@ importers:
       '@vanguard/api-contracts':
         specifier: workspace:*
         version: link:../../packages/api-contracts
-      '@vanguard/logger':
+      '@vanguard/shared-logger':
         specifier: workspace:*
-        version: link:../../packages/logger
+        version: link:../../packages/shared-logger
       cache-manager:
         specifier: 7.2.8
         version: 7.2.8
@@ -135,9 +135,9 @@ importers:
       '@vanguard/discord-jsx':
         specifier: workspace:*
         version: link:../../packages/discord-jsx
-      '@vanguard/logger':
+      '@vanguard/shared-logger':
         specifier: workspace:*
-        version: link:../../packages/logger
+        version: link:../../packages/shared-logger
     devDependencies:
       '@types/node':
         specifier: 26.0.1
@@ -337,7 +337,7 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
-  packages/logger:
+  packages/shared-logger:
     dependencies:
       tslog:
         specifier: 4.10.2

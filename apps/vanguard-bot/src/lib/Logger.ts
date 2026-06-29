@@ -1,3 +1,3 @@
-import { Logger } from '@vanguard/logger';
+import { Logger } from '@vanguard/shared-logger';
 
 export const logger = new Logger();
