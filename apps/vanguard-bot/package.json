@@ -27,7 +27,8 @@
 		"@vanguard/discord-config": "workspace:*",
 		"@vanguard/discord-handlers": "workspace:*",
 		"@vanguard/discord-jsx": "workspace:*",
-		"@vanguard/shared-logger": "workspace:*"
+		"@vanguard/shared-logger": "workspace:*",
+		"@vanguard/shared-typeorm": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/node": "26.0.1",
