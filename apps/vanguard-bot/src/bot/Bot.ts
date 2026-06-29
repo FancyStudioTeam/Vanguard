@@ -2,6 +2,7 @@ import { createBot } from '@discordeno/bot';
 
 import { CommandManager } from '#handlers/ComandManager.js';
 import { EventManager } from '#handlers/EventManager.js';
+import { logger } from '#lib/Logger.js';
 import {
 	BOT_DESIRED_PROPERTIES,
 	BOT_DESIRED_PROPERTIES_BEHAVIOR,
@@ -27,4 +28,4 @@ bot.eventManager = new EventManager(bot);
 await bot.commandManager.register();
 await bot.eventManager.register();
 
-bot.start();
+bot.start().catch(logger.error);

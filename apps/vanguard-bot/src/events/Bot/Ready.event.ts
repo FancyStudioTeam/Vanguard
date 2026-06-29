@@ -10,6 +10,6 @@ export default defineEventListener({
 		const { user } = payload;
 		const { username } = user;
 
-		logger.info(`Bot '${username}' has been connected`);
+		logger.info(`Bot '${username}' Connected Successfully`);
 	},
 });

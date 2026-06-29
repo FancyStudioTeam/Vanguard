@@ -9,6 +9,8 @@ export class GuildWelcomesEntity extends BaseEntity {
 	})
 	declare guildId: string;
 
-	@Column('bytea')
+	@Column('bytea', {
+		default: Buffer.alloc(0),
+	})
 	declare yamlData: Buffer;
 }
