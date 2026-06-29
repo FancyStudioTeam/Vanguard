@@ -1,2 +1,3 @@
 export * from './BaseEntity.js';
-export * from './GuildWelcomes.js';
+export * from './GuildPreferencesEntity.js';
+export * from './GuildWelcomesEntity.js';
