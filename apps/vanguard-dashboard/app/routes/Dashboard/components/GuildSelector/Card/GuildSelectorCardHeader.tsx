@@ -1,4 +1,4 @@
-import type { DiscordUserGuild } from '@vanguard/api-contracts/interfaces';
+import type { APIUserGuild } from '@vanguard/api-contracts/interfaces';
 
 import { GuildSelectorCardHeaderIcon } from './GuildSelectorCardHeaderIcon.tsx';
 
@@ -31,4 +31,4 @@ export function GuildSelectorCardHeader({ banner, icon, id }: GuildSelectorCardH
 	);
 }
 
-export type GuildSelectorCardHeaderProps = Pick<DiscordUserGuild, 'banner' | 'icon' | 'id'>;
+export type GuildSelectorCardHeaderProps = Pick<APIUserGuild, 'banner' | 'icon' | 'id'>;

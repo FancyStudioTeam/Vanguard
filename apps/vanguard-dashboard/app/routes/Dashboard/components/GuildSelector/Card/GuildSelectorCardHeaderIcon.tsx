@@ -1,4 +1,4 @@
-import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
+import type { APIUserGuild } from '@vanguard/api-contracts/interfaces';
 
 import { PicFill } from '@mingcute/react';
 
@@ -18,4 +18,4 @@ export function GuildSelectorCardHeaderIcon({ icon, id }: GuildSelectorCardHeade
 	);
 }
 
-export type GuildSelectorCardHeaderIconProps = Pick<DiscordGuild, 'icon' | 'id'>;
+export type GuildSelectorCardHeaderIconProps = Pick<APIUserGuild, 'icon' | 'id'>;

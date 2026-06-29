@@ -1,4 +1,4 @@
-import type { GetDiscordGuildResult } from '@vanguard/api-contracts/rest';
+import type { RESTGetAPIGuild } from '@vanguard/api-contracts/rest';
 
 import { redirect } from 'react-router';
 
@@ -6,7 +6,7 @@ import { BASE_API_URL } from '#lib/Shared.ts';
 import { HttpStatus } from '#server/lib/HttpStatus.ts';
 import { getCookieHeader } from '../Request/getCookieHeader.ts';
 
-export async function getGuild(request: Request, guildId: string): Promise<GetDiscordGuildResult> {
+export async function getGuild(request: Request, guildId: string): Promise<RESTGetAPIGuild> {
 	const response = await createRequest(request, guildId);
 	const responseBody = await response.json();
 

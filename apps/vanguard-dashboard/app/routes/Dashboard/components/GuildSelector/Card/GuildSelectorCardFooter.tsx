@@ -1,4 +1,4 @@
-import type { DiscordUserGuild } from '@vanguard/api-contracts/interfaces';
+import type { APIUserGuild } from '@vanguard/api-contracts/interfaces';
 
 import { IDcardFill } from '@mingcute/react';
 
@@ -24,4 +24,4 @@ export function GuildSelectorCardFooter({ id, name }: GuildSelectorCardFooterPro
 	);
 }
 
-export type GuildSelectorCardFooterProps = Pick<DiscordUserGuild, 'id' | 'name'>;
+export type GuildSelectorCardFooterProps = Pick<APIUserGuild, 'id' | 'name'>;
