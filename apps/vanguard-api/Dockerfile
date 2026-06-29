@@ -9,7 +9,8 @@ COPY package.json pnpm-workspace.yaml tsconfig.base.json turbo.json ./
 COPY apps/vanguard-api apps/vanguard-api
 
 COPY packages/api-contracts packages/api-contracts
-COPY packages/logger packages/logger
+
+COPY packages/shared-logger packages/shared-logger
 
 RUN pnpm install
 RUN pnpm run turbo:build
