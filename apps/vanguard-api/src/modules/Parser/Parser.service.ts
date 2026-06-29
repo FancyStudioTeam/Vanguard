@@ -1,28 +1,28 @@
-import type {
-	DiscordGuild,
-	DiscordUser,
-	DiscordUserGuild,
-} from '@vanguard/api-contracts/interfaces';
+import type { APIGuild, APIUser, APIUserGuild } from '@vanguard/api-contracts/interfaces';
 
 import { Injectable } from '@nestjs/common';
-import type { APIGuild, APIUser, RESTAPIPartialCurrentUserGuild } from 'discord-api-types/v10';
+import type {
+	APIGuild as APIDiscordGuild,
+	APIUser as APIDiscordUser,
+	RESTAPIPartialCurrentUserGuild as APIDiscordUserGuild,
+} from 'discord-api-types/v10';
 
 @Injectable()
 export class ParserService {
-	public parseDiscordGuild({ banner, icon, id, name, owner_id }: APIGuild): DiscordGuild {
+	public parseDiscordGuild({ banner, icon, id, name, owner_id }: APIDiscordGuild): APIGuild {
 		return {
 			banner,
 			icon,
 			id,
 			name,
-			ownerId: owner_id,
+			owner_id,
 		};
 	}
 
-	public parseDiscordUser({ avatar, global_name, id, username }: APIUser): DiscordUser {
+	public parseDiscordUser({ avatar, global_name, id, username }: APIDiscordUser): APIUser {
 		return {
 			avatar,
-			globalName: global_name,
+			global_name,
 			id,
 			username,
 		};
@@ -34,7 +34,7 @@ export class ParserService {
 		id,
 		name,
 		permissions,
-	}: RESTAPIPartialCurrentUserGuild): DiscordUserGuild {
+	}: APIDiscordUserGuild): APIUserGuild {
 		return {
 			banner,
 			icon,
@@ -44,9 +44,7 @@ export class ParserService {
 		};
 	}
 
-	public parseDiscordUserGuilds(
-		discordUserGuilds: RESTAPIPartialCurrentUserGuild[],
-	): DiscordUserGuild[] {
+	public parseDiscordUserGuilds(discordUserGuilds: APIDiscordUserGuild[]): APIUserGuild[] {
 		return discordUserGuilds.map(this.parseDiscordUserGuild);
 	}
 }
