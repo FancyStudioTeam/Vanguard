@@ -1,4 +1,4 @@
-import type { DiscordUserGuild } from '@vanguard/api-contracts/interfaces';
+import type { APIUserGuild } from '@vanguard/api-contracts/interfaces';
 
 import { Inject, Injectable } from '@nestjs/common';
 
@@ -15,7 +15,7 @@ export class GuildsService {
 		@Inject(ParserService) private readonly parserService: ParserService,
 	) {}
 
-	public async getCurrentUserGuilds(fastifySession: FastifySession): Promise<DiscordUserGuild[]> {
+	public async getCurrentUserGuilds(fastifySession: FastifySession): Promise<APIUserGuild[]> {
 		const accessToken = this.authService.getAccessToken(fastifySession);
 		const userId = fastifySession.get('userId') ?? '';
 

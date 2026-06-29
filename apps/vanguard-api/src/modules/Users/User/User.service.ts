@@ -1,4 +1,4 @@
-import type { DiscordUser } from '@vanguard/api-contracts/interfaces';
+import type { APIUser } from '@vanguard/api-contracts/interfaces';
 
 import { Inject, Injectable } from '@nestjs/common';
 
@@ -15,7 +15,7 @@ export class UserService {
 		@Inject(ParserService) private readonly parserService: ParserService,
 	) {}
 
-	public async getCurrentUser(fastifySession: FastifySession): Promise<DiscordUser> {
+	public async getCurrentUser(fastifySession: FastifySession): Promise<APIUser> {
 		const accessToken = this.authService.getAccessToken(fastifySession);
 
 		const currentUser = await this.discordService.getCurrentUser(accessToken);
