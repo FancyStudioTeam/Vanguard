@@ -23,12 +23,15 @@
 		"premove": "premove dist"
 	},
 	"dependencies": {
-		"@discordeno/utils": "21.0.0",
+		"@discordeno/rest": "22.0.1-next.9eb5642",
+		"@discordeno/types": "22.0.1-next.9eb5642",
+		"@discordeno/utils": "22.0.1-next.9eb5642",
 		"@discordjs/rest": "2.6.1",
 		"@fastify/cookie": "11.0.2",
 		"@fastify/cors": "11.2.0",
 		"@fastify/csrf-protection": "8.0.0",
 		"@fastify/helmet": "13.0.2",
+		"@fastify/multipart": "10.0.0",
 		"@fastify/secure-session": "8.3.0",
 		"@nestjs/cache-manager": "3.1.3",
 		"@nestjs/common": "11.1.27",
