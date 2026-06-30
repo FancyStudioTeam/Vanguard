@@ -30,7 +30,9 @@ const APP_DEFAULT_HOST = 'localhost';
 const APP_HOST = HOST ?? APP_DEFAULT_HOST;
 const APP_PORT = PORT ?? APP_DEFAULT_PORT;
 
-const APP_ADAPTER = new FastifyAdapter();
+const APP_ADAPTER = new FastifyAdapter({
+	trustProxy: true,
+});
 const APP_MODULE = AppModule;
 
 const APP_OPTIONS: NestApplicationOptions = {
