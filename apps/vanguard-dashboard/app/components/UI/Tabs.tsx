@@ -43,7 +43,7 @@ export function TabsTab({ className, ...props }: TabsTabProps) {
 	return (
 		<TabsPrimitive.Tab
 			className={classNames(
-				'cursor-pointer rounded-full px-4 py-2 font-semibold text-sm transition duration-300 hover:text-rose-500 data-active:text-rose-50',
+				'cursor-pointer whitespace-nowrap rounded-full px-4 py-2 font-semibold text-sm transition duration-300 hover:text-rose-500 data-disabled:pointer-events-none data-active:text-rose-50 data-disabled:opacity-75',
 				className,
 			)}
 			{...props}
