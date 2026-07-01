@@ -5,7 +5,7 @@ updates:
           - JavaScript
       package-ecosystem: npm
       schedule:
-          interval: daily
+          interval: weekly
       versioning-strategy: increase
 
 version: 2
