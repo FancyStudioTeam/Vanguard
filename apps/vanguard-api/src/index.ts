@@ -6,7 +6,7 @@ import FastifyCookie from '@fastify/cookie';
 import type { FastifyCorsOptions } from '@fastify/cors';
 import FastifyCsrf from '@fastify/csrf-protection';
 import FastifyHelmet from '@fastify/helmet';
-import FastifyMultipart from '@fastify/multipart';
+import FastifyMultipart, { type MultipartFile } from '@fastify/multipart';
 import FastifySecureSession, { type SecureSessionPluginOptions } from '@fastify/secure-session';
 import type { NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
@@ -89,5 +89,6 @@ declare module 'fastify' {
 	interface FastifyRequest {
 		sessionId: string;
 		sessionUserId: string;
+		uploadedFiles: Record<string, MultipartFile[]>;
 	}
 }
