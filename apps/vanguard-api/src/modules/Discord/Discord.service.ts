@@ -1,3 +1,5 @@
+import { createRestManager, type RestManager } from '@discordeno/rest';
+import type { EditBotMemberOptions } from '@discordeno/types';
 import { DiscordAPIError, REST, type RequestData } from '@discordjs/rest';
 import { CACHE_MANAGER, type Cache } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
@@ -54,9 +56,15 @@ export class DiscordService {
 	private static USER_GUILDS_CACHE_TTL = 10_000 as const;
 
 	public readonly rest: REST;
+	public readonly _rest: RestManager;
 
 	public constructor(@Inject(CACHE_MANAGER) private readonly cacheService: Cache) {
 		this.rest = new REST();
+
+		this._rest = createRestManager({
+			token: BOT_TOKEN,
+		});
+		this._rest.maxRetryCount = 0;
 
 		this.rest.setToken(BOT_TOKEN);
 		this.rest.on('response', (request, response) => {
@@ -316,6 +324,17 @@ export class DiscordService {
 			return userAccess;
 		} catch {
 			throw new UnableToExchangeAuthorizationCodeException();
+		}
+	}
+
+	/**
+	 * @see https://docs.discord.com/developers/resources/guild#modify-current-member
+	 */
+	public async patchBotProfile(guildId: string, options: EditBotMemberOptions): Promise<void> {
+		try {
+			await this._rest.editBotMember(guildId, options);
+		} catch {
+			throw new InternalServerErrorException();
 		}
 	}
 

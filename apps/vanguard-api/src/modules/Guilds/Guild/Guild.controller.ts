@@ -1,15 +1,37 @@
 import type { RESTGetAPIGuild } from '@vanguard/api-contracts/rest';
 
-import { Controller, Get, HttpCode, HttpStatus, Inject, Param, Redirect } from '@nestjs/common';
+import type { MultipartFile } from '@fastify/multipart';
+import {
+	Body,
+	Controller,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Inject,
+	Param,
+	Put,
+	Redirect,
+	UseInterceptors,
+} from '@nestjs/common';
 
 import { BypassAuth } from '#common/Decorators/BypassAuth.js';
 import { BypassGuildPermissions } from '#common/Decorators/BypassGuildPermissionsKey.js';
+import { UploadedFile } from '#common/Decorators/UploadedFile.js';
+import { FileInterceptor } from '#common/Interceptors/FileInterceptor.js';
+import { ZodValidationPipe } from '#common/Pipes/ZodValidationPipe.js';
 import { createGuildInviteUrl } from '#utils/URL/createGuildInviteUrl.js';
 import { GuildService } from './Guild.service.js';
+import {
+	UpdateBotProfileSchema,
+	type UpdateBotProfileSchemaDto,
+} from './Schemas/BotProfileSchema.js';
 
 @Controller()
 export class GuildController {
 	public constructor(@Inject(GuildService) private readonly guildService: GuildService) {}
+
+	private static CONVERSION_FACTOR = 1_024 as const;
+	private static MAXIMUM_FILE_SIZE_MEGA_BYTES = 5 as const;
 
 	@Get()
 	@HttpCode(HttpStatus.OK)
@@ -19,6 +41,7 @@ export class GuildController {
 
 	@Get('invite')
 	@Redirect()
+
 	@BypassAuth()
 	@BypassGuildPermissions()
 	protected redirectToGuildInvite(@Param('guildId') guildId: string): Record<string, unknown> {
@@ -26,5 +49,40 @@ export class GuildController {
 			statusCode: HttpStatus.FOUND,
 			url: createGuildInviteUrl(guildId),
 		};
+	}
+
+	@Put('bot-profile')
+	@HttpCode(HttpStatus.NO_CONTENT)
+
+	@UseInterceptors(
+		FileInterceptor({
+			allowedMimeTypes: [
+				'image/jpeg',
+				'image/gif',
+				'image/png',
+			],
+			fieldNames: [
+				'avatar',
+				'banner',
+			],
+			maximumFileSize:
+				GuildController.MAXIMUM_FILE_SIZE_MEGA_BYTES *
+				GuildController.CONVERSION_FACTOR ** 2,
+			maximumFilesLength: 2,
+		}),
+	)
+	protected async updateBotProfile(
+		@Body(new ZodValidationPipe(UpdateBotProfileSchema)) body: UpdateBotProfileSchemaDto,
+
+		@Param('guildId') guildId: string,
+
+		@UploadedFile('avatar') avatarFile: MultipartFile | null,
+		@UploadedFile('banner') bannerFile: MultipartFile | null,
+	): Promise<void> {
+		return await this.guildService.updateBotProfile(guildId, {
+			...body,
+			avatarFile,
+			bannerFile,
+		});
 	}
 }
