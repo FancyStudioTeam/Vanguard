@@ -1,14 +1,19 @@
 import {
-	AwardFill,
 	BankFill,
 	BlingFill,
+	Book2Fill,
+	ChartVertical2Fill,
 	Gift2Fill,
+	HistoryFill,
 	IDcardFill,
+	InviteFill,
+	LaurelWreathFill,
 	LayoutGridFill,
-	LifebuoyFill,
 	Magic3Fill,
-	MailboxFill,
+	RouteFill,
+	SendFill,
 	StarFill,
+	TwitchFill,
 	VIP1Fill,
 	WaveHandFill,
 	World2Fill,
@@ -48,11 +53,29 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 				icon: VIP1Fill,
 				name: 'Membership',
 			},
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/audit-logs`,
+				icon: HistoryFill,
+				name: 'Audit Logs',
+			},
 		],
 	},
 	{
 		category: 'Essentials',
 		items: [
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/automations`,
+				icon: RouteFill,
+				name: 'Automations',
+			},
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/logs`,
+				icon: Book2Fill,
+				name: 'Logs',
+			},
 			{
 				href: `/dashboard/${guildId}/welcomes`,
 				icon: WaveHandFill,
@@ -61,14 +84,31 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 			{
 				disabled: true,
 				href: `/dashboard/${guildId}/suggestions`,
-				icon: MailboxFill,
+				icon: SendFill,
 				name: 'Suggestions',
 			},
 			{
 				disabled: true,
 				href: `/dashboard/${guildId}/tickets`,
-				icon: LifebuoyFill,
+				icon: InviteFill,
 				name: 'Tickets',
+			},
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/polls`,
+				icon: ChartVertical2Fill,
+				name: 'Polls',
+			},
+		],
+	},
+	{
+		category: 'Social Media',
+		items: [
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/twitch`,
+				icon: TwitchFill,
+				name: 'Twitch',
 			},
 		],
 	},
@@ -77,15 +117,15 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 		items: [
 			{
 				disabled: true,
-				href: `/dashboard/${guildId}/levels`,
-				icon: BlingFill,
-				name: 'Levels',
+				href: `/dashboard/${guildId}/achievements`,
+				icon: LaurelWreathFill,
+				name: 'Achievements',
 			},
 			{
 				disabled: true,
-				href: `/dashboard/${guildId}/achievements`,
-				icon: AwardFill,
-				name: 'Achievements',
+				href: `/dashboard/${guildId}/levels`,
+				icon: BlingFill,
+				name: 'Levels',
 			},
 			{
 				disabled: true,
