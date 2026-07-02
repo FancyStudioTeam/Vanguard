@@ -10,6 +10,8 @@ COPY apps/vanguard-api apps/vanguard-api
 
 COPY packages/api-contracts packages/api-contracts
 
+COPY packages/contracts packages/contracts
+
 COPY packages/shared-logger packages/shared-logger
 COPY packages/shared-typeorm packages/shared-typeorm
 

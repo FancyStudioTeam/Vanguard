@@ -89,6 +89,9 @@ importers:
       '@vanguard/api-contracts':
         specifier: workspace:*
         version: link:../../packages/api-contracts
+      '@vanguard/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@vanguard/shared-logger':
         specifier: workspace:*
         version: link:../../packages/shared-logger
@@ -113,6 +116,9 @@ importers:
       typeorm:
         specifier: 1.0.0
         version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+      yaml:
+        specifier: 2.9.0
+        version: 2.9.0
       zod:
         specifier: 4.4.3
         version: 4.4.3
@@ -7173,8 +7179,7 @@ snapshots:
   yaml@1.10.3:
     optional: true
 
-  yaml@2.9.0:
-    optional: true
+  yaml@2.9.0: {}
 
   yargs-parser@21.1.1: {}
 

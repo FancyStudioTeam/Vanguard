@@ -41,6 +41,7 @@
 		"@nestjs/typeorm": "11.0.2",
 		"@sapphire/snowflake": "3.5.5",
 		"@vanguard/api-contracts": "workspace:*",
+		"@vanguard/contracts": "workspace:*",
 		"@vanguard/shared-logger": "workspace:*",
 		"@vanguard/shared-typeorm": "workspace:*",
 		"cache-manager": "7.2.8",
@@ -49,6 +50,7 @@
 		"rxjs": "7.8.2",
 		"ts-pattern": "5.9.0",
 		"typeorm": "1.0.0",
+		"yaml": "2.9.0",
 		"zod": "4.4.3"
 	},
 	"devDependencies": {

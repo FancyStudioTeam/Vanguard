@@ -1,5 +1,3 @@
-import { GuildWelcomesEntity } from '@vanguard/shared-typeorm/entities';
-
 import { type MiddlewareConsumer, Module, type NestModule } from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, RouterModule } from '@nestjs/core';
 import { ScheduleModule } from '@nestjs/schedule';
@@ -34,9 +32,6 @@ import { UsersRoutes } from './Users/Users.routes.js';
 		ScheduleModule.forRoot(),
 		TypeOrmModule.forRoot({
 			database: POSTGRES_DATABASE_NAME,
-			entities: [
-				GuildWelcomesEntity,
-			],
 			host: POSTGRES_DATABASE_HOST,
 			password: POSTGRES_DATABASE_USER_PASS,
 			port: POSTGRES_DATABASE_PORT,
