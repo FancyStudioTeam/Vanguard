@@ -18,6 +18,7 @@
 		"premove": "premove dist"
 	},
 	"dependencies": {
+		"@vanguard/contracts": "workspace:*",
 		"typeorm": "1.0.0"
 	},
 	"devDependencies": {

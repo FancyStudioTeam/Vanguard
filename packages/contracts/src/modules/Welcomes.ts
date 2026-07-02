@@ -1,4 +1,14 @@
-import { array, boolean, literal, object, record, strictObject, string, xor } from 'zod';
+import {
+	type infer as _infer,
+	array,
+	boolean,
+	literal,
+	object,
+	record,
+	strictObject,
+	string,
+	xor,
+} from 'zod';
 
 import { MessageSchema } from '#shared/Message.js';
 
@@ -74,3 +84,5 @@ export const WelcomesSchema = strictObject({
 	toggles: TogglesSchema,
 	webhooks: WebhooksSchema,
 });
+
+export type WelcomesSchemaDto = _infer<typeof WelcomesSchema>;
