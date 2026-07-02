@@ -337,7 +337,9 @@ export class DiscordService {
 	public async patchBotProfile(guildId: string, options: EditBotMemberOptions): Promise<void> {
 		try {
 			await this._rest.editBotMember(guildId, options);
-		} catch {
+		} catch (error) {
+			logger.error(error);
+
 			throw new InternalServerErrorException();
 		}
 	}

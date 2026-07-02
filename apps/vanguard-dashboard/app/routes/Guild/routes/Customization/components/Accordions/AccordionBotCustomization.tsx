@@ -1,6 +1,5 @@
 import { DownFill, PicFill } from '@mingcute/react';
 import { type ChangeEvent, useCallback, useId, useState } from 'react';
-import { useRevalidator } from 'react-router';
 import useSwrMutation from 'swr/mutation';
 
 import { AccordionItem, AccordionPanel, AccordionTrigger } from '#components/UI/Accordion.tsx';
@@ -43,16 +42,18 @@ async function createBotProfileUpdateRequest(
 	formData.append('biography', biography ?? '');
 	formData.append('nickname', nickname ?? '');
 
-	await fetch(requestUrl, {
+	const response = await fetch(requestUrl, {
 		body: formData,
 		credentials: 'include',
 		method: 'PUT',
 	});
+
+	if (!response.ok) {
+		throw await response.json();
+	}
 }
 
 export function AccordionBotCustomization({ guildId }: AccordionBotCustomizationProps) {
-	const { revalidate } = useRevalidator();
-
 	const { file: avatarFile, onChange: handleAvatarChange } = useFileInput();
 	const { file: bannerFile, onChange: handleBannerChange } = useFileInput();
 
@@ -79,7 +80,7 @@ export function AccordionBotCustomization({ guildId }: AccordionBotCustomization
 		createBotProfileUpdateRequest,
 		{
 			onError: ({ message }) => alert(message),
-			onSuccess: () => revalidate(),
+			onSuccess: () => alert('Profile Successfully Updated'),
 			throwOnError: true,
 		},
 	);
