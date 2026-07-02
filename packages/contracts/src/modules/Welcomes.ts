@@ -1,4 +1,4 @@
-import { array, boolean, literal, object, record, string, xor } from 'zod';
+import { array, boolean, literal, object, record, strictObject, string, xor } from 'zod';
 
 import { MessageSchema } from '#shared/Message.js';
 
@@ -14,7 +14,7 @@ const MEMBER_NICKNAME_MINIMUM_LENGTH = 1;
 const MEMBER_ROLES_MAXIMUM_LENGTH = 25;
 
 const RECORD_KEY_MAXIMUM_LENGTH = 50;
-const RECORD_KEY_MINIMUM_LENGTH = 5;
+const RECORD_KEY_MINIMUM_LENGTH = 1;
 
 const SNOWFLAKE_REGEX = /^(?<id>\d{17,20})$/;
 
@@ -38,7 +38,7 @@ export const MessagesSchema = record(
 	object({
 		delivery: xor([
 			object({
-				channel_id: string().nonempty().regex(SNOWFLAKE_REGEX),
+				id: string().nonempty().regex(SNOWFLAKE_REGEX),
 				type: literal(WelcomeMessageDeliveryType.Channel),
 			}),
 			object({
@@ -49,7 +49,7 @@ export const MessagesSchema = record(
 		enabled: boolean().optional().default(true),
 		message: MessageSchema,
 	}),
-);
+).optional();
 
 export const TogglesSchema = object({
 	ignore_bots: boolean().optional().default(true),
@@ -65,11 +65,12 @@ export const WebhooksSchema = record(
 			.max(WEBHOOK_NAME_MAXIMUM_LENGTH)
 			.optional()
 			.default('Webhook'),
-	}).optional(),
-);
+	}),
+).optional();
 
-export const WelcomesSchema = object({
+export const WelcomesSchema = strictObject({
 	member: MemberSchema,
+	messages: MessagesSchema,
 	toggles: TogglesSchema,
 	webhooks: WebhooksSchema,
 });
