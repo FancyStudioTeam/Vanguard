@@ -8,7 +8,7 @@ export function Sidebar({ guild }: SidebarProps) {
 	const { id: guildId } = guild;
 
 	return (
-		<aside className='absolute top-0 hidden h-dvh w-100 flex-col gap-4 overflow-y-auto p-8 md:flex'>
+		<aside className='absolute top-0 hidden h-dvh w-80 flex-col gap-4 overflow-y-auto p-8 md:flex'>
 			<SidebarHeader />
 			<SidebarGuildInformation {...guild} />
 			<SidebarGroups guildId={guildId} />

@@ -1,4 +1,4 @@
-import type { DiscordGuild } from '@vanguard/api-contracts/interfaces';
+import type { APIGuild } from '@vanguard/api-contracts/interfaces';
 
 import { IDcardFill, PicFill } from '@mingcute/react';
 
@@ -27,4 +27,4 @@ export function SidebarGuildInformation({ icon, id, name }: SidebarGuildInformat
 	);
 }
 
-export type SidebarGuildInformationProps = Pick<DiscordGuild, 'icon' | 'id' | 'name'>;
+export type SidebarGuildInformationProps = Pick<APIGuild, 'icon' | 'id' | 'name'>;

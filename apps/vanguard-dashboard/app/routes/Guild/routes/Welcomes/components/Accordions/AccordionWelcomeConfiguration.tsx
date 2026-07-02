@@ -48,7 +48,7 @@ export function AccordionWelcomeConfiguration({ guildId }: AccordionWelcomeConfi
 	const handleOnCodeUpdate = useCallback((value: string) => setCode(value), []);
 
 	const { isMutating, trigger: triggerWelcomeConfigurationUpdate } = useSwrMutation(
-		createRequestUrl(`guilds/${guildId}/welcomes`),
+		createRequestUrl(`guilds/${guildId}/welcomes/yaml`),
 		createWelcomeConfigurationUpdateRequest,
 		{
 			onError: ({ message }) => alert(message),
