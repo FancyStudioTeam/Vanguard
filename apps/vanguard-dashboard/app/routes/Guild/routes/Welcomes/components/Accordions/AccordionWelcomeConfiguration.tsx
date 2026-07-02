@@ -1,14 +1,67 @@
 import { DownFill } from '@mingcute/react';
 import { useCallback, useState } from 'react';
+import useSwrMutation from 'swr/mutation';
 
 import { AccordionItem, AccordionPanel, AccordionTrigger } from '#components/UI/Accordion.tsx';
+import { Button } from '#components/UI/Button.tsx';
 import { Editor } from '#components/UI/Editor.tsx';
+import { createRequestUrl } from '#utils/URL/createRequestEndpoint.ts';
 
-export function AccordionWelcomeConfiguration() {
+async function createWelcomeConfigurationUpdateRequest(
+	requestUrl: string,
+	{
+		arg,
+	}: {
+		arg: {
+			code: string;
+		};
+	},
+): Promise<void> {
+	const { code } = arg;
+
+	const textEncoder = new TextEncoder();
+
+	const textEncoderResult = textEncoder.encode(code) as Uint8Array;
+	const textEncoderResultBase64 = textEncoderResult.toBase64();
+
+	const requestBody = JSON.stringify({
+		data: textEncoderResultBase64,
+	});
+
+	const response = await fetch(requestUrl, {
+		body: requestBody,
+		credentials: 'include',
+		method: 'PUT',
+	});
+
+	if (!response.ok) {
+		throw await response.json();
+	}
+}
+
+export function AccordionWelcomeConfiguration({ guildId }: AccordionWelcomeConfigurationProps) {
 	const [code, setCode] = useState<string>('');
-	// const [codeBuffer, setCodeBuffer] = useState<Buffer | null>(null);
 
 	const handleOnCodeUpdate = useCallback((value: string) => setCode(value), []);
+
+	const { isMutating, trigger: triggerWelcomeConfigurationUpdate } = useSwrMutation(
+		createRequestUrl(`guilds/${guildId}/welcomes`),
+		createWelcomeConfigurationUpdateRequest,
+		{
+			onError: ({ message }) => alert(message),
+			onSuccess: () => alert('Profile Successfully Updated'),
+			throwOnError: true,
+		},
+	);
+
+	const handleOnButtonClick = useCallback(async () => {
+		await triggerWelcomeConfigurationUpdate({
+			code,
+		});
+	}, [
+		code,
+		triggerWelcomeConfigurationUpdate,
+	]);
 
 	return (
 		<AccordionItem value='welcomes-configuration'>
@@ -21,12 +74,23 @@ export function AccordionWelcomeConfiguration() {
 				</ul>
 				<DownFill className='size-7.5 shrink-0 transition-transform duration-300' />
 			</AccordionTrigger>
-			<AccordionPanel className='overflow-hidden rounded-b-3xl border-neutral-800 border-t-2 bg-neutral-900 py-6'>
+			<AccordionPanel className='flex flex-col gap-4 overflow-hidden rounded-b-3xl border-neutral-800 border-t-2 bg-neutral-900 py-6'>
 				<Editor
 					code={code}
 					onChange={handleOnCodeUpdate}
 				/>
+				<Button
+					className={'mx-4'}
+					disabled={isMutating}
+					onClick={handleOnButtonClick}
+				>
+					{isMutating ? 'Loading...' : 'Update Configuration'}
+				</Button>
 			</AccordionPanel>
 		</AccordionItem>
 	);
+}
+
+export interface AccordionWelcomeConfigurationProps {
+	guildId: string;
 }

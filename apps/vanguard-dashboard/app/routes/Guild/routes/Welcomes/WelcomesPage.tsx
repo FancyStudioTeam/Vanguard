@@ -1,7 +1,18 @@
 import { Accordion } from '#components/UI/Accordion.tsx';
+import type { Route } from './+types/WelcomesPage.ts';
 import { AccordionWelcomeConfiguration } from './components/Accordions/AccordionWelcomeConfiguration.tsx';
 
-export default function () {
+export function loader({ params }: Route.LoaderArgs) {
+	const { guildId } = params;
+
+	return {
+		guildId,
+	};
+}
+
+export default function ({ loaderData }: Route.ComponentProps) {
+	const { guildId } = loaderData;
+
 	return (
 		<>
 			<h1 className='font-bold text-3xl'>Welcomes</h1>
@@ -11,7 +22,7 @@ export default function () {
 					'welcomes-configuration',
 				]}
 			>
-				<AccordionWelcomeConfiguration />
+				<AccordionWelcomeConfiguration guildId={guildId} />
 			</Accordion>
 		</>
 	);
