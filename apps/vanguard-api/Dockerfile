@@ -11,6 +11,7 @@ COPY apps/vanguard-api apps/vanguard-api
 COPY packages/api-contracts packages/api-contracts
 
 COPY packages/shared-logger packages/shared-logger
+COPY packages/shared-typeorm packages/shared-typeorm
 
 RUN pnpm install
 RUN pnpm run turbo:build

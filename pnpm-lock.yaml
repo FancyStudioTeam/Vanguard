@@ -92,6 +92,9 @@ importers:
       '@vanguard/shared-logger':
         specifier: workspace:*
         version: link:../../packages/shared-logger
+      '@vanguard/shared-typeorm':
+        specifier: workspace:*
+        version: link:../../packages/shared-typeorm
       cache-manager:
         specifier: 7.2.8
         version: 7.2.8

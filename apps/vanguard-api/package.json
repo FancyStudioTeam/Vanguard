@@ -42,6 +42,7 @@
 		"@sapphire/snowflake": "3.5.5",
 		"@vanguard/api-contracts": "workspace:*",
 		"@vanguard/shared-logger": "workspace:*",
+		"@vanguard/shared-typeorm": "workspace:*",
 		"cache-manager": "7.2.8",
 		"discord-api-types": "0.38.49",
 		"fastify": "5.8.5",
