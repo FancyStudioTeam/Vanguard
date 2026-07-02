@@ -64,7 +64,11 @@ export class DiscordService {
 		this._rest = createRestManager({
 			token: BOT_TOKEN,
 		});
+
 		this._rest.maxRetryCount = 0;
+		this._rest.events.request = ({ method, url }: Request) =>
+			logger.trace(`[${method}] '${url}'`);
+		this._rest.events.requestError = (_: Request, error: unknown) => logger.error(error);
 
 		this.rest.setToken(BOT_TOKEN);
 		this.rest.on('response', (request, response) => {

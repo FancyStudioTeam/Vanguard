@@ -31,14 +31,14 @@ export class GuildService {
 			const avatarBuffer = await avatarFile.toBuffer();
 			const avatarBufferBase64 = avatarBuffer.toString('base64');
 
-			avatar = `data:${avatarFile.mimetype}/base64,${avatarBufferBase64}`;
+			avatar = `data:${avatarFile.mimetype};base64,${avatarBufferBase64}`;
 		}
 
 		if (bannerFile) {
 			const bannerBuffer = await bannerFile.toBuffer();
 			const bannerBufferBase64 = bannerBuffer.toString('base64');
 
-			banner = `data:${bannerFile.mimetype}/base64,${bannerBufferBase64}`;
+			banner = `data:${bannerFile.mimetype};base64,${bannerBufferBase64}`;
 		}
 
 		return await this.discordService.patchBotProfile(guildId, {
