@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import './env.js';
 
 import { env } from 'node:process';
