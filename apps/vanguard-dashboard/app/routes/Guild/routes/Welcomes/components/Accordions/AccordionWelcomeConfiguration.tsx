@@ -31,6 +31,9 @@ async function createWelcomeConfigurationUpdateRequest(
 	const response = await fetch(requestUrl, {
 		body: requestBody,
 		credentials: 'include',
+		headers: {
+			'Content-Type': 'application/json',
+		},
 		method: 'PUT',
 	});
 
@@ -49,7 +52,7 @@ export function AccordionWelcomeConfiguration({ guildId }: AccordionWelcomeConfi
 		createWelcomeConfigurationUpdateRequest,
 		{
 			onError: ({ message }) => alert(message),
-			onSuccess: () => alert('Profile Successfully Updated'),
+			onSuccess: () => alert('Configuration Successfully Updated'),
 			throwOnError: true,
 		},
 	);
