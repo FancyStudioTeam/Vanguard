@@ -118,7 +118,7 @@ importers:
         version: 5.9.0
       typeorm:
         specifier: 1.0.0
-        version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+        version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)(redis@6.1.0)
       yaml:
         specifier: 2.9.0
         version: 2.9.0
@@ -162,12 +162,15 @@ importers:
       '@vanguard/shared-typeorm':
         specifier: workspace:*
         version: link:../../packages/shared-typeorm
+      redis:
+        specifier: 6.1.0
+        version: 6.1.0
       reflect-metadata:
         specifier: 0.2.2
         version: 0.2.2
       typeorm:
         specifier: 1.0.0
-        version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+        version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)(redis@6.1.0)
     devDependencies:
       '@types/node':
         specifier: 26.0.1
@@ -385,9 +388,12 @@ importers:
 
   packages/shared-typeorm:
     dependencies:
+      '@vanguard/contracts':
+        specifier: workspace:*
+        version: link:../contracts
       typeorm:
         specifier: 1.0.0
-        version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+        version: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)(redis@6.1.0)
     devDependencies:
       '@types/node':
         specifier: 26.0.1
@@ -1378,6 +1384,42 @@ packages:
     peerDependencies:
       react-router: 8.0.1
 
+  '@redis/bloom@6.1.0':
+    resolution: {integrity: sha512-Rzascjd9J9bJsM45T/Z9CTg1QY/B63B6YO8QorLVMeXnbBDsKiSCVR/+GQ061hYPk8FpTzWmPY8tAv2sT+JEtQ==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.1.0
+
+  '@redis/client@6.1.0':
+    resolution: {integrity: sha512-7u1LefkezJF0HESlhO7ZFLEPfyY+NejP3SGv+Z4pGaT3oM5GVVLa0u3f4rDLUrcw+SRo8IlX9Y8JAONeDdg1Ag==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@node-rs/xxhash': ^1.1.0
+      '@opentelemetry/api': '>=1 <2'
+    peerDependenciesMeta:
+      '@node-rs/xxhash':
+        optional: true
+      '@opentelemetry/api':
+        optional: true
+
+  '@redis/json@6.1.0':
+    resolution: {integrity: sha512-/GFjQA6bu5pG9ClCJAI5Xx4bNXe7UTpxBBlIupBNTrn1+nY860apGnYJuaSCDV2BmEbTidpa7O2qa28oxKx+rg==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.1.0
+
+  '@redis/search@6.1.0':
+    resolution: {integrity: sha512-kS5agg+3yZbrdrt8omrew7FLCD8eOm7tarG1CROekPBRe+QGDR9aOpnHIQaYsYi6wPRTH70nQiF06AIjgURefQ==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.1.0
+
+  '@redis/time-series@6.1.0':
+    resolution: {integrity: sha512-uIDBtV8MmG/xpJsRqbGSO4iX6ryj37MLMP82lRpFvI7ykAVe5GyqgxigEbU+uZNv9kDPNMKw3dvI/S/J1BNBzA==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.1.0
+
   '@remix-run/node-fetch-server@0.13.3':
     resolution: {integrity: sha512-UfjOXed/DQteaM5VyTfqTeGpHwyL2J5aoRGY6cydip4tt1ehNNeSwuXCC7AEGE0RWBs/7bgKxYkL/B/+UDe4AA==}
 
@@ -2099,6 +2141,10 @@ packages:
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
+
+  cluster-key-slot@1.1.2:
+    resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
+    engines: {node: '>=0.10.0'}
 
   codemirror@6.0.2:
     resolution: {integrity: sha512-VhydHotNW5w1UGK0Qj96BwSk/Zqbp9WbnyK2W/eVMv4QyF41INRGpjUhFJY7/uDNuudSc33a/PKr4iDqRduvHw==}
@@ -3199,6 +3245,10 @@ packages:
 
   real-require@1.0.0:
     resolution: {integrity: sha512-P4nbQYQfePJxRSmY+v/KINxVucm4NF3p3s7pJveMTtom52FR4YGltUQLB8idDXwDDWW+eYrWDFbuzUnjoWHF7g==}
+
+  redis@6.1.0:
+    resolution: {integrity: sha512-0kvUPM8RHP/ZMa0xYaDTcG5e8tIGW6kz6MToVT0V8iOnk6bkXp2jncGRGe2bZEk41lZwiDspUqjZCSk5ohjcKw==}
+    engines: {node: '>= 20.0.0'}
 
   reflect-metadata@0.2.2:
     resolution: {integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==}
@@ -4883,7 +4933,7 @@ snapshots:
       '@nestjs/core': 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
-      typeorm: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+      typeorm: 1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)(redis@6.1.0)
 
   '@oxc-project/types@0.137.0': {}
 
@@ -4956,6 +5006,26 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  '@redis/bloom@6.1.0(@redis/client@6.1.0)':
+    dependencies:
+      '@redis/client': 6.1.0
+
+  '@redis/client@6.1.0':
+    dependencies:
+      cluster-key-slot: 1.1.2
+
+  '@redis/json@6.1.0(@redis/client@6.1.0)':
+    dependencies:
+      '@redis/client': 6.1.0
+
+  '@redis/search@6.1.0(@redis/client@6.1.0)':
+    dependencies:
+      '@redis/client': 6.1.0
+
+  '@redis/time-series@6.1.0(@redis/client@6.1.0)':
+    dependencies:
+      '@redis/client': 6.1.0
 
   '@remix-run/node-fetch-server@0.13.3': {}
 
@@ -5598,6 +5668,8 @@ snapshots:
   clone@1.0.4: {}
 
   clsx@2.1.1: {}
+
+  cluster-key-slot@1.1.2: {}
 
   codemirror@6.0.2:
     dependencies:
@@ -6625,6 +6697,17 @@ snapshots:
 
   real-require@1.0.0: {}
 
+  redis@6.1.0:
+    dependencies:
+      '@redis/bloom': 6.1.0(@redis/client@6.1.0)
+      '@redis/client': 6.1.0
+      '@redis/json': 6.1.0(@redis/client@6.1.0)
+      '@redis/search': 6.1.0(@redis/client@6.1.0)
+      '@redis/time-series': 6.1.0(@redis/client@6.1.0)
+    transitivePeerDependencies:
+      - '@node-rs/xxhash'
+      - '@opentelemetry/api'
+
   reflect-metadata@0.2.2: {}
 
   require-addon@1.2.0:
@@ -7007,7 +7090,7 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typeorm@1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0):
+  typeorm@1.0.0(babel-plugin-macros@3.1.0)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)(redis@6.1.0):
     dependencies:
       '@sqltools/formatter': 1.2.5
       ansis: 4.3.1
@@ -7023,6 +7106,7 @@ snapshots:
       mongodb: 7.2.0
       mysql2: 3.15.3
       pg: 8.21.0
+      redis: 6.1.0
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color

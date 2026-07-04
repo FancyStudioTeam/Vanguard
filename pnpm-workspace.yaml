@@ -27,3 +27,4 @@ minimumReleaseAgeExclude:
 packages:
     - apps/*
     - packages/*
+    - services/*

@@ -7,7 +7,7 @@ import {
 
 import type { CreateGatewayManagerOptions } from '@discordeno/bot';
 
-import { BOT_INTENTS, BOT_TOKEN } from '#lib/Constants.js';
+import { BOT_INTENTS, BOT_TOKEN } from '#lib/Constants/Bot.js';
 
 export const BOT_DESIRED_PROPERTIES = DESIRED_PROPERTIES;
 export const BOT_DESIRED_PROPERTIES_BEHAVIOR = DESIRED_PROPERTIES_BEHAVIOR;

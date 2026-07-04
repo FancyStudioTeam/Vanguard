@@ -10,7 +10,7 @@ import {
 	POSTGRES_DATABASE_PORT,
 	POSTGRES_DATABASE_USER_NAME,
 	POSTGRES_DATABASE_USER_PASS,
-} from './Constants.js';
+} from './Constants/TypeORM.js';
 import { logger } from './Logger.js';
 
 export const AppDataSource = new DataSource({
@@ -30,4 +30,4 @@ export const GuildWelcomesRepository = AppDataSource.getRepository(GuildWelcomes
 
 await AppDataSource.initialize()
 	.then(() => logger.info('Data Source Initialized Successfully'))
-	.catch(logger.error);
+	.catch((error) => logger.fatal('Data Source Encountered an Error while Initializing: ', error));
