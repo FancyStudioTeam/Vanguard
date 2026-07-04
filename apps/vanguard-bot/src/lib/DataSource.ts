@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { GuildWelcomesEntity } from '@vanguard/shared-typeorm/entities';
 
 import { DataSource } from 'typeorm';

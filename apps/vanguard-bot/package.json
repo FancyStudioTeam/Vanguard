@@ -29,7 +29,7 @@
 		"@vanguard/discord-jsx": "workspace:*",
 		"@vanguard/shared-logger": "workspace:*",
 		"@vanguard/shared-typeorm": "workspace:*",
-		"redis": "6.1.0",
+		"ioredis": "5.11.1",
 		"reflect-metadata": "0.2.2",
 		"typeorm": "1.0.0"
 	},
