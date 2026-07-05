@@ -18,7 +18,7 @@ import {
 	type CreateApplicationCommand,
 } from '@discordeno/bot';
 
-import type { Bot } from '#bot/BotTypes.js';
+import type { Bot } from '#bot/Bot.js';
 import { logger } from '#lib/Logger.js';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
 

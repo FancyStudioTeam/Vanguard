@@ -9,7 +9,7 @@ import type { EventListener } from '@vanguard/discord-handlers/events';
 
 import { Collection } from '@discordeno/bot';
 
-import type { Bot } from '#bot/BotTypes.js';
+import type { Bot } from '#bot/Bot.js';
 import { logger } from '#lib/Logger.js';
 import { isProductionEnvironment } from '#utils/isProductionEnvironment.js';
 

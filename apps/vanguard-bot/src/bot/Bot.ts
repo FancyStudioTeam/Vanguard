@@ -1,3 +1,5 @@
+import type { Bot as InferredBot } from '@vanguard/discord-config/inferred-types-bot';
+
 import { createBot } from '@discordeno/bot';
 
 import { CommandManager } from '#handlers/ComandManager.js';
@@ -10,7 +12,6 @@ import {
 	BOT_INTENTS,
 	BOT_TOKEN,
 } from './BotOptions.js';
-import type { Bot } from './BotTypes.js';
 
 export const discordenoBot = createBot({
 	desiredProperties: BOT_DESIRED_PROPERTIES,
@@ -29,3 +30,8 @@ await bot.commandManager.register();
 await bot.eventManager.register();
 
 bot.start().catch(logger.error);
+
+export interface Bot extends InferredBot {
+	commandManager: CommandManager;
+	eventManager: EventManager;
+}
