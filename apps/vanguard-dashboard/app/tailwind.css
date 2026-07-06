@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @import 'tailwind-animations';
 
+@source '../node_modules/@vanguard/ui';
+
 @theme inline {
 	--font-general-sans: 'General Sans';
 }
