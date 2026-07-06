@@ -1,6 +1,7 @@
+import { ButtonVariants } from '@vanguard/ui/Button.js';
+
 import { DownFill } from '@mingcute/react';
 
-import { ButtonVariants } from '#components/UI/Button.tsx';
 import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from '#components/UI/Collapsible.tsx';
 import {
 	SidebarGroupItem,

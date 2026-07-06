@@ -1,9 +1,10 @@
+import { Button } from '@vanguard/ui/Button.js';
+
 import { DownFill, PicFill } from '@mingcute/react';
 import { type ChangeEvent, useCallback, useId, useState } from 'react';
 import useSwrMutation from 'swr/mutation';
 
 import { AccordionItem, AccordionPanel, AccordionTrigger } from '#components/UI/Accordion.tsx';
-import { Button } from '#components/UI/Button.tsx';
 import { Input } from '#components/UI/Input.tsx';
 import { Label } from '#components/UI/Label.tsx';
 import { Tabs, TabsIndicator, TabsList, TabsPanel, TabsTab } from '#components/UI/Tabs.tsx';

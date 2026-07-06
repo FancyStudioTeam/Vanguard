@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '#components/UI/Avatar.tsx';
 
 export function SidebarGuildInformation({ icon, id, name }: SidebarGuildInformationProps) {
 	return (
-		<section className='flex items-center gap-2 rounded-full bg-neutral-900 p-2'>
+		<section className='flex items-center gap-2 rounded-full bg-zinc-900 p-2'>
 			<Avatar className='bg-neutral-800'>
 				<AvatarImage
 					className='size-10'

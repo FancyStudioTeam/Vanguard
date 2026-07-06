@@ -1,6 +1,8 @@
 import './fonts.css';
 import './tailwind.css';
 
+import { ButtonVariants } from '@vanguard/ui/Button.js';
+
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
@@ -22,7 +24,6 @@ import {
 import { SWRConfig } from 'swr';
 import { match } from 'ts-pattern';
 
-import { ButtonVariants } from '#components/UI/Button.tsx';
 import { PageLayout } from '#layouts/PageLayout.tsx';
 
 gsap.registerPlugin(useGSAP, ScrambleTextPlugin, ScrollSmoother, ScrollTrigger, SplitText);

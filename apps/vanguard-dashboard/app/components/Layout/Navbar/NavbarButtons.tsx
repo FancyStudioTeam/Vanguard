@@ -1,4 +1,4 @@
-import { ButtonVariants } from '#components/UI/Button.tsx';
+import { ButtonVariants } from '@vanguard/ui/Button.js';
 
 export function NavbarButtons() {
 	return (

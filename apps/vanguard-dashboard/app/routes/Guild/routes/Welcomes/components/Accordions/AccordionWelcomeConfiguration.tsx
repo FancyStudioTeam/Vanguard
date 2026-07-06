@@ -1,9 +1,10 @@
+import { Button } from '@vanguard/ui/Button.js';
+
 import { DownFill } from '@mingcute/react';
 import { useCallback, useState } from 'react';
 import useSwrMutation from 'swr/mutation';
 
 import { AccordionItem, AccordionPanel, AccordionTrigger } from '#components/UI/Accordion.tsx';
-import { Button } from '#components/UI/Button.tsx';
 import { Editor } from '#components/UI/Editor.tsx';
 import { createRequestUrl } from '#utils/URL/createRequestEndpoint.ts';
 

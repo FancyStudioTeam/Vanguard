@@ -1,8 +1,7 @@
 import type { APIUserGuild } from '@vanguard/api-contracts/interfaces';
+import { ButtonVariants } from '@vanguard/ui/Button.js';
 
 import { IDcardFill } from '@mingcute/react';
-
-import { ButtonVariants } from '#components/UI/Button.tsx';
 
 export function GuildSelectorCardFooter({ id, name }: GuildSelectorCardFooterProps) {
 	return (

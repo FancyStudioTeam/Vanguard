@@ -1,7 +1,7 @@
+import { ButtonVariants } from '@vanguard/ui/Button.js';
+
 import type { ComponentType } from 'react';
 import { useLocation } from 'react-router';
-
-import { ButtonVariants } from '#components/UI/Button.tsx';
 
 export function SidebarGroupItem({ disabled, href, icon: Icon, name }: SidebarGroupItemProps) {
 	const { pathname } = useLocation();
