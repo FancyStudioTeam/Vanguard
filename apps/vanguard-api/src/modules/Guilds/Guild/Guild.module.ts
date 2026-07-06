@@ -1,4 +1,4 @@
-import { GuildWelcomesEntity } from '@vanguard/shared-typeorm/entities';
+import { GuildWelcomesEntity } from '@vanguard/shared-typeorm/GuildWelcomesEntity.js';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';

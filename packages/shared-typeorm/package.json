@@ -6,10 +6,10 @@
 	"author": "Vanguard Working Group",
 	"type": "module",
 	"exports": {
-		"./entities": {
-			"types": "./dist/entities/index.d.ts",
-			"import": "./dist/entities/index.js",
-			"require": "./dist/entities/index.js"
+		"./*": {
+			"types": "./dist/*",
+			"import": "./dist/*",
+			"require": "./dist/*"
 		}
 	},
 	"scripts": {

@@ -1,5 +1,3 @@
-import type { WelcomesSchemaDto } from '@vanguard/contracts/modules';
-
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 import { BaseEntity } from './BaseEntity.js';
@@ -11,8 +9,8 @@ export class GuildWelcomesEntity extends BaseEntity {
 	})
 	declare guildId: string;
 
-	@Column('jsonb', {
-		default: '{}',
+	@Column('boolean', {
+		default: true,
 	})
-	declare yamlData: WelcomesSchemaDto;
+	declare enabled: boolean;
 }
