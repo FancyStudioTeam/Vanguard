@@ -31,7 +31,7 @@
 		"@discordeno/bot": "22.0.1-next.9eb5642"
 	},
 	"devDependencies": {
-		"@types/node": "26.0.1",
+		"@types/node": "26.1.0",
 		"premove": "4.0.0",
 		"typescript": "6.0.3"
 	},

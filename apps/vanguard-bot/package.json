@@ -34,10 +34,10 @@
 		"typeorm": "1.0.0"
 	},
 	"devDependencies": {
-		"@types/node": "26.0.1",
+		"@types/node": "26.1.0",
 		"cross-env": "10.1.0",
 		"premove": "4.0.0",
-		"tsx": "4.22.4",
+		"tsx": "4.23.0",
 		"typescript": "6.0.3"
 	},
 	"packageManager": "pnpm@11.6.0"

@@ -21,7 +21,7 @@
 		"tslog": "4.10.2"
 	},
 	"devDependencies": {
-		"@types/node": "26.0.1",
+		"@types/node": "26.1.0",
 		"premove": "4.0.0",
 		"typescript": "6.0.3"
 	},
