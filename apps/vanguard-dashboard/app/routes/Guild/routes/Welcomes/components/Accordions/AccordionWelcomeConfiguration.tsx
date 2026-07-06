@@ -5,7 +5,6 @@ import { useCallback, useState } from 'react';
 import useSwrMutation from 'swr/mutation';
 
 import { AccordionItem, AccordionPanel, AccordionTrigger } from '#components/UI/Accordion.tsx';
-import { Editor } from '#components/UI/Editor.tsx';
 import { createRequestUrl } from '#utils/URL/createRequestEndpoint.ts';
 
 async function createWelcomeConfigurationUpdateRequest(
@@ -44,9 +43,7 @@ async function createWelcomeConfigurationUpdateRequest(
 }
 
 export function AccordionWelcomeConfiguration({ guildId }: AccordionWelcomeConfigurationProps) {
-	const [code, setCode] = useState<string>('');
-
-	const handleOnCodeUpdate = useCallback((value: string) => setCode(value), []);
+	const [code, _] = useState<string>('');
 
 	const { isMutating, trigger: triggerWelcomeConfigurationUpdate } = useSwrMutation(
 		createRequestUrl(`guilds/${guildId}/welcomes/yaml`),
@@ -79,10 +76,6 @@ export function AccordionWelcomeConfiguration({ guildId }: AccordionWelcomeConfi
 				<DownFill className='size-7.5 shrink-0 transition-transform duration-300' />
 			</AccordionTrigger>
 			<AccordionPanel className='flex flex-col gap-4 overflow-hidden rounded-b-3xl border-neutral-800 border-t-2 bg-neutral-900 py-6'>
-				<Editor
-					code={code}
-					onChange={handleOnCodeUpdate}
-				/>
 				<Button
 					className={'mx-4'}
 					disabled={isMutating}
