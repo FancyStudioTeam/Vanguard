@@ -4,5 +4,6 @@
 @source '../node_modules/@vanguard/ui';
 
 @theme inline {
-	--font-general-sans: 'General Sans';
+	--font-mono: 'JetBrains Mono';
+	--font-sans: 'General Sans';
 }
