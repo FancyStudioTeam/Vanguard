@@ -43,7 +43,7 @@
 		"@vanguard/api-contracts": "workspace:*",
 		"@vanguard/shared-logger": "workspace:*",
 		"@vanguard/shared-typeorm": "workspace:*",
-		"cache-manager": "7.2.8",
+		"cache-manager": "7.2.9",
 		"discord-api-types": "0.38.49",
 		"fastify": "5.8.5",
 		"reflect-metadata": "0.2.2",
