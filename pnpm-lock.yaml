@@ -21,8 +21,8 @@ importers:
         specifier: 21.1.0
         version: 21.1.0
       '@typescript/native-preview':
-        specifier: 7.0.0-dev.20260626.1
-        version: 7.0.0-dev.20260626.1
+        specifier: 7.0.0-dev.20260706.1
+        version: 7.0.0-dev.20260706.1
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -1201,8 +1201,8 @@ packages:
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
-  '@mongodb-js/saslprep@1.4.11':
-    resolution: {integrity: sha512-o9rAHc0IpIjuPSxRutWpE1F62x7n+4mVS4rCNHkzhIUMQcc18bb6xEq5wd2NdN0WjepIyXIppRshYI2kQDOZVA==}
+  '@mongodb-js/saslprep@1.4.12':
+    resolution: {integrity: sha512-QAfAMwNgnYxZ2C6D1HgeP7Gc4i/uvJRim415PCIL9ptRxWMNbWeLBYb2/9R4pGKny/s1FVu2JA2cxCUBUOggrA==}
 
   '@napi-rs/wasm-runtime@1.1.6':
     resolution: {integrity: sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==}
@@ -1647,50 +1647,50 @@ packages:
   '@types/whatwg-url@13.0.0':
     resolution: {integrity: sha512-N8WXpbE6Wgri7KUSvrmQcqrMllKZ9uxkYWMt+mCSGwNc0Hsw9VQTW7ApqI4XNrx6/SaM2QQJCzMPDEXE058s+Q==}
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-VDPHf8RZRzsBH6cgArK1u9sH8MODMNkvkNczEt1EXpOLfZeplIhcpKld5Zc9Da8/S9YB4768rjfBkdFokxBu+Q==}
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-l9UTIdxt99UUJ7pe/xWWwjoxr9EnG+Sc2k6FUchQrSK0sFZOlx76+hQm6DvuzWOr+1JEpVP/LGmnx7+qk8Yr3Q==}
     engines: {node: '>=16.20.0'}
     cpu: [arm64]
     os: [darwin]
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-bi7iQZe2A90cFJ3EQnigezEI7F0e5vX6E/QUGluQ1mKZmcbbQCdAwDMDQFV8Z6w3xNrk9AYyNQbvq0DtzJX46w==}
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-2/ivq1yeOrhNnN+aQhCLtGeqZ90R5v9OaoON4tG0zEJZLy+jIZGnRK6+gbI8lBhKuIVY2pjpHPJxN1VCaBmxGA==}
     engines: {node: '>=16.20.0'}
     cpu: [x64]
     os: [darwin]
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-/iptuCYiucdY0HK0nE5ydRjIx0KOf3AY7fieRaQHA4X9/s4ey37rc/58aBX3dtx0x2EhlzpXT5f0ikYY65Zynw==}
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-eokiB0dLt8uUeWH2BbwhQZLrGay5quzptTsFs8kh/nFdSF4gYLoBwmpJn/o5YYrQU89T7Mvi4tKPkgo0TCnwIw==}
     engines: {node: '>=16.20.0'}
     cpu: [arm64]
     os: [linux]
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-ilB0Ew5GWLrqMklNVrMdCEyNePypoEMnd4l5aUopnDRebgtXmtu0RE2GDl9LOTZ1BwlbXsuYAkEHt18Ta25hxg==}
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-E2n8tnUcXwY4vRmyEpS8CfpJbK7y5coPtKtqDFtGZHbvWLPoiIP6OhHF5fIPCNMziBclz+5MR86OzxK1jt93YQ==}
     engines: {node: '>=16.20.0'}
     cpu: [arm]
     os: [linux]
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-4o80l1+RoJLkR1G4KOZjTYN1yOAGbq0K2CAP0zF35MPnD8O559Tw8OMuYA+XPpEFE0fkb7mmcxL8J9cxM/kAbw==}
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-JwrLUanCkVq+vbSjcc+qMqQN909Jhiy1s671q5vaYmBMLIzlhNSkvWqmHk+8XLt100zcgJDGgv+kHRazDlpPUQ==}
     engines: {node: '>=16.20.0'}
     cpu: [x64]
     os: [linux]
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-xHxewRWY74zJnwt4bj+Kdf6Owfs6L0Fbggb37psSa6CvofqcvSI3AyuwiBNjC0T8Eb/d/BMMXttbPJ4XXqMpXQ==}
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-z75g24yUxktDSnP41t5Y3lV8BbraGyFuRvxhpd5GwXxT/qKQ3bHHcmdTTDSLkn+SRD8fAnnbFqb274UIC4OcCA==}
     engines: {node: '>=16.20.0'}
     cpu: [arm64]
     os: [win32]
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-Iuf5nqTY4m5kxEvraDpieEf0XS6gDdjBBkw3g74pseznhpMeDFzgRvVCbSaf2pdjBNGugZbiBDVTEOclmD9cjA==}
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-kWP0dMeCvTN5E4X4lQ7dELxyarnfapY1R9KPwHZdN7mcY67uPYSFTvBHD1+V3Q4dTQHQVIaHDUNOfU6McBo1wA==}
     engines: {node: '>=16.20.0'}
     cpu: [x64]
     os: [win32]
 
-  '@typescript/native-preview@7.0.0-dev.20260626.1':
-    resolution: {integrity: sha512-2RC5omeJPqWKebi5zM3nkMSrTpKpq2zLB3SfceqmFZY3vMCXtIJSE6IpA/AszlKQmNcbT/kWscmgE/PXEvnguQ==}
+  '@typescript/native-preview@7.0.0-dev.20260706.1':
+    resolution: {integrity: sha512-lm3nzcj+cbml0Pt+0QyOpdhZES9WRj0Fv/fds2GaKSf9wXe8694gy6Fa5D65lRcP6q4HHivlrNqJo8rR5Klzww==}
     engines: {node: '>=16.20.0'}
     hasBin: true
 
@@ -2531,6 +2531,10 @@ packages:
 
   iconv-lite@0.7.2:
     resolution: {integrity: sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==}
+    engines: {node: '>=0.10.0'}
+
+  iconv-lite@0.7.3:
+    resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
     engines: {node: '>=0.10.0'}
 
   ieee754@1.2.1:
@@ -4640,7 +4644,7 @@ snapshots:
     dependencies:
       react: 19.2.7
 
-  '@mongodb-js/saslprep@1.4.11':
+  '@mongodb-js/saslprep@1.4.12':
     dependencies:
       sparse-bitfield: 3.0.3
     optional: true
@@ -5037,36 +5041,36 @@ snapshots:
       '@types/webidl-conversions': 7.0.3
     optional: true
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260626.1':
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260706.1':
     optional: true
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20260626.1':
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20260706.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20260626.1':
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20260706.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20260626.1':
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20260706.1':
     optional: true
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20260626.1':
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20260706.1':
     optional: true
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20260626.1':
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20260706.1':
     optional: true
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20260626.1':
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20260706.1':
     optional: true
 
-  '@typescript/native-preview@7.0.0-dev.20260626.1':
+  '@typescript/native-preview@7.0.0-dev.20260706.1':
     optionalDependencies:
-      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20260626.1
-      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20260626.1
-      '@typescript/native-preview-linux-arm': 7.0.0-dev.20260626.1
-      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20260626.1
-      '@typescript/native-preview-linux-x64': 7.0.0-dev.20260626.1
-      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20260626.1
-      '@typescript/native-preview-win32-x64': 7.0.0-dev.20260626.1
+      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20260706.1
+      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20260706.1
+      '@typescript/native-preview-linux-arm': 7.0.0-dev.20260706.1
+      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20260706.1
+      '@typescript/native-preview-linux-x64': 7.0.0-dev.20260706.1
+      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20260706.1
+      '@typescript/native-preview-win32-x64': 7.0.0-dev.20260706.1
 
   '@vladfrangu/async_event_emitter@2.4.7': {}
 
@@ -5943,6 +5947,11 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
+  iconv-lite@0.7.3:
+    dependencies:
+      safer-buffer: 2.1.2
+    optional: true
+
   ieee754@1.2.1: {}
 
   import-fresh@3.3.1:
@@ -6177,7 +6186,7 @@ snapshots:
 
   mongodb@7.2.0:
     dependencies:
-      '@mongodb-js/saslprep': 1.4.11
+      '@mongodb-js/saslprep': 1.4.12
       bson: 7.3.1
       mongodb-connection-string-url: 7.0.1
     optional: true
@@ -6203,7 +6212,7 @@ snapshots:
       aws-ssl-profiles: 1.1.2
       denque: 2.1.0
       generate-function: 2.3.1
-      iconv-lite: 0.7.2
+      iconv-lite: 0.7.3
       long: 5.3.2
       lru.min: 1.1.4
       named-placeholders: 1.1.6
