@@ -89,9 +89,6 @@ importers:
       '@vanguard/api-contracts':
         specifier: workspace:*
         version: link:../../packages/api-contracts
-      '@vanguard/contracts':
-        specifier: workspace:*
-        version: link:../../packages/contracts
       '@vanguard/shared-logger':
         specifier: workspace:*
         version: link:../../packages/shared-logger
@@ -288,22 +285,6 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
-  packages/contracts:
-    dependencies:
-      zod:
-        specifier: 4.4.3
-        version: 4.4.3
-    devDependencies:
-      '@types/node':
-        specifier: 26.0.1
-        version: 26.0.1
-      premove:
-        specifier: 4.0.0
-        version: 4.0.0
-      typescript:
-        specifier: 6.0.3
-        version: 6.0.3
-
   packages/discord-config:
     dependencies:
       '@discordeno/bot':
@@ -376,9 +357,6 @@ importers:
 
   packages/shared-typeorm:
     dependencies:
-      '@vanguard/contracts':
-        specifier: workspace:*
-        version: link:../contracts
       typeorm:
         specifier: 1.0.0
         version: 1.0.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
