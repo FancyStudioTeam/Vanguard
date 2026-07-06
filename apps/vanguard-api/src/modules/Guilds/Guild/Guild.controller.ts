@@ -25,10 +25,6 @@ import {
 	UpdateBotProfileSchema,
 	type UpdateBotProfileSchemaDto,
 } from './Schemas/BotProfileSchema.js';
-import {
-	UpdateWelcomesConfigurationSchema,
-	type UpdateWelcomesConfigurationSchemaDto,
-} from './Schemas/WelcomesConfigurationSchema.js';
 
 @Controller()
 export class GuildController {
@@ -89,13 +85,4 @@ export class GuildController {
 			bannerFile,
 		});
 	}
-
-	@Put('welcomes')
-	@HttpCode(HttpStatus.NO_CONTENT)
-	protected async updateWelcomesConfiguration(
-		@Body(ZodValidationPipe(UpdateWelcomesConfigurationSchema))
-		body: UpdateWelcomesConfigurationSchemaDto,
-
-		@Param('guildId') guildId: string,
-	): Promise<void> {}
 }

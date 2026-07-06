@@ -1,4 +1,7 @@
+import { GuildWelcomesEntity } from '@vanguard/shared-typeorm/entities';
+
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { DiscordModule } from '#modules/Discord/Discord.module.js';
 import { ParserModule } from '#modules/Parser/Parser.module.js';
@@ -12,6 +15,9 @@ import { GuildService } from './Guild.service.js';
 	imports: [
 		DiscordModule,
 		ParserModule,
+		TypeOrmModule.forFeature([
+			GuildWelcomesEntity,
+		]),
 	],
 	providers: [
 		GuildService,
