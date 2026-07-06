@@ -20,8 +20,16 @@ export function CollapsibleTrigger({ className, ...props }: CollapsibleTriggerPr
 	);
 }
 
-export function CollapsiblePanel({ ...props }: CollapsiblePanelProps) {
-	return <CollapsiblePrimitive.Panel {...props} />;
+export function CollapsiblePanel({ className, ...props }: CollapsiblePanelProps) {
+	return (
+		<CollapsiblePrimitive.Panel
+			className={classNames(
+				'h-(--collapsible-panel-height) overflow-hidden transition-[height] data-ending-style:h-0 data-starting-style:h-0',
+				className,
+			)}
+			{...props}
+		/>
+	);
 }
 
 export type CollapsiblePanelProps = CollapsiblePrimitive.Panel.Props;
