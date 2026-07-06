@@ -1,23 +1,27 @@
 import { ButtonVariants } from '@vanguard/ui/Button.js';
 
 import type { ComponentType } from 'react';
-import { useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 export function SidebarGroupItem({ disabled, href, icon: Icon, name }: SidebarGroupItemProps) {
 	const { pathname } = useLocation();
+
 	const isSelected = pathname === href;
 
 	return (
-		<a
+		<Link
 			className={ButtonVariants({
-				className: `justify-start ${disabled && 'pointer-events-none opacity-75'}`,
+				className: [
+					'justify-start',
+					disabled && 'pointer-events-none opacity-75',
+				],
 				variant: isSelected ? 'primary' : 'ghost',
 			})}
-			href={href}
+			to={href}
 		>
 			<Icon />
 			<span className='truncate'>{name}</span>
-		</a>
+		</Link>
 	);
 }
 
