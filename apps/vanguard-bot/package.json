@@ -7,7 +7,7 @@
 	"type": "module",
 	"imports": {
 		"#bot/*": "./dist/bot/*",
-		"#handlers/*": "./dist/handlers/*",
+		"#managers/*": "./dist/managers/*",
 		"#lib/*": "./dist/lib/*",
 		"#utils/*": "./dist/utils/*"
 	},

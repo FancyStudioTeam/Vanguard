@@ -2,9 +2,9 @@ import type { Bot as InferredBot } from '@vanguard/discord-config/inferred-types
 
 import { createBot } from '@discordeno/bot';
 
-import { CommandManager } from '#handlers/ComandManager.js';
-import { EventManager } from '#handlers/EventManager.js';
 import { logger } from '#lib/Logger.js';
+import { CommandManager } from '#managers/ComandManager.js';
+import { EventManager } from '#managers/EventManager.js';
 import {
 	BOT_DESIRED_PROPERTIES,
 	BOT_DESIRED_PROPERTIES_BEHAVIOR,
@@ -13,7 +13,7 @@ import {
 	BOT_TOKEN,
 } from './BotOptions.js';
 
-export const discordenoBot = createBot({
+const discordenoBot = createBot({
 	desiredProperties: BOT_DESIRED_PROPERTIES,
 	desiredPropertiesBehavior: BOT_DESIRED_PROPERTIES_BEHAVIOR,
 	gateway: BOT_GATEWAY_MANAGER,

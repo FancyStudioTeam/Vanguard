@@ -7,11 +7,11 @@
 			"#bot/*": [
 				"./src/bot/*"
 			],
-			"#handlers/*": [
-				"./src/handlers/*"
-			],
 			"#lib/*": [
 				"./src/lib/*"
+			],
+			"#managers/*": [
+				"src/managers/*"
 			],
 			"#utils/*": [
 				"./src/utils/*"
