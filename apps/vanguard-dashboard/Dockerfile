@@ -10,6 +10,7 @@ COPY apps/vanguard-dashboard apps/vanguard-dashboard
 COPY packages/api-contracts packages/api-contracts
 
 COPY packages/ui packages/ui
+COPY packages/ui-charts packages/ui-charts
 
 RUN pnpm install
 RUN pnpm run turbo:build

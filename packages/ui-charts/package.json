@@ -1,0 +1,34 @@
+{
+	"name": "@vanguard/ui-charts",
+	"private": true,
+	"license": "AGPL-3.0-only",
+	"author": "Vanguard Working Group",
+	"type": "module",
+	"exports": {
+		"./*": {
+			"types": "./dist/*",
+			"import": "./dist/*",
+			"require": "./dist/*"
+		}
+	},
+	"scripts": {
+		"prebuild": "pnpm premove",
+		"build": "tsgo --project tsconfig.json",
+		"premove": "premove dist"
+	},
+	"dependencies": {
+		"recharts": "3.9.2"
+	},
+	"devDependencies": {
+		"@types/node": "26.1.0",
+		"@types/react": "19.2.17",
+		"premove": "4.0.0",
+		"react": "19.2.7",
+		"typescript": "6.0.3"
+	},
+	"peerDependencies": {
+		"@types/react": "19.2.17",
+		"react": "19.2.7"
+	},
+	"packageManager": "pnpm@11.6.0"
+}
