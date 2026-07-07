@@ -208,6 +208,9 @@ importers:
       '@vanguard/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@vanguard/ui-charts':
+        specifier: workspace:*
+        version: link:../../packages/ui-charts
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
