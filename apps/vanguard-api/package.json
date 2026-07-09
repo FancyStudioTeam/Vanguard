@@ -59,7 +59,7 @@
 		"@types/node": "26.1.1",
 		"cross-env": "10.1.0",
 		"premove": "4.0.0",
-		"typescript": "7.0.2"
+		"typescript": "6.0.3"
 	},
 	"packageManager": "pnpm@11.6.0"
 }
