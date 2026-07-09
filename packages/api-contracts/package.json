@@ -28,13 +28,13 @@
 	},
 	"scripts": {
 		"prebuild": "pnpm premove",
-		"build": "tsgo --project tsconfig.json",
+		"build": "tsx --project tsconfig.json",
 		"premove": "premove dist"
 	},
 	"devDependencies": {
-		"@types/node": "26.1.0",
+		"@types/node": "26.1.1",
 		"premove": "4.0.0",
-		"typescript": "6.0.3"
+		"typescript": "7.0.2"
 	},
 	"packageManager": "pnpm@11.6.0"
 }

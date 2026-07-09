@@ -13,18 +13,18 @@
 	},
 	"scripts": {
 		"prebuild": "pnpm premove",
-		"build": "tsgo --project tsconfig.json",
+		"build": "tsx --project tsconfig.json",
 		"premove": "premove dist"
 	},
 	"dependencies": {
 		"recharts": "3.9.2"
 	},
 	"devDependencies": {
-		"@types/node": "26.1.0",
+		"@types/node": "26.1.1",
 		"@types/react": "19.2.17",
 		"premove": "4.0.0",
 		"react": "19.2.7",
-		"typescript": "6.0.3"
+		"typescript": "7.0.2"
 	},
 	"peerDependencies": {
 		"@types/react": "19.2.17",
