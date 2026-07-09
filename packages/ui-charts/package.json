@@ -13,7 +13,7 @@
 	},
 	"scripts": {
 		"prebuild": "pnpm premove",
-		"build": "tsx --project tsconfig.json",
+		"build": "tsc --project tsconfig.json",
 		"premove": "premove dist"
 	},
 	"dependencies": {

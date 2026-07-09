@@ -11,7 +11,7 @@
 				"./src/lib/*"
 			],
 			"#managers/*": [
-				"src/managers/*"
+				"./src/managers/*"
 			],
 			"#utils/*": [
 				"./src/utils/*"
