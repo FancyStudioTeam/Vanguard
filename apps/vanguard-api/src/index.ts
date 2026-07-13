@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+
 import './env.js';
 
 import { env } from 'node:process';
@@ -74,6 +75,7 @@ const SECURE_SESSION_OPTIONS: SecureSessionPluginOptions = {
 const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
 
 app.enableCors(CORS_OPTIONS);
+
 app.setGlobalPrefix('api');
 
 await app.register(FastifyCookie);
