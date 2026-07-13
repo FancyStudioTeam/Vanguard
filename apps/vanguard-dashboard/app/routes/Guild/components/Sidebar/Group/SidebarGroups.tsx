@@ -1,5 +1,6 @@
 import {
 	BankFill,
+	Birthday2Fill,
 	BlingFill,
 	Book2Fill,
 	ChartVertical2Fill,
@@ -12,8 +13,10 @@ import {
 	Magic3Fill,
 	RouteFill,
 	SendFill,
+	Server2Fill,
 	StarFill,
 	TwitchFill,
+	UserSecurityFill,
 	VIP1Fill,
 	WaveHandFill,
 	World2Fill,
@@ -102,6 +105,23 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 		],
 	},
 	{
+		category: 'Security',
+		items: [
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/verification`,
+				icon: UserSecurityFill,
+				name: 'Verification',
+			},
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/backups`,
+				icon: Server2Fill,
+				name: 'Backups',
+			},
+		],
+	},
+	{
 		category: 'Social Media',
 		items: [
 			{
@@ -144,6 +164,12 @@ const SIDEBAR_GROUPS_ITEMS = (guildId: string): SidebarGroupInterface[] => [
 				href: `/dashboard/${guildId}/economy`,
 				icon: BankFill,
 				name: 'Economy',
+			},
+			{
+				disabled: true,
+				href: `/dashboard/${guildId}/birthdays`,
+				icon: Birthday2Fill,
+				name: 'Birthdays',
 			},
 		],
 	},
