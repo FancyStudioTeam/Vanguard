@@ -48,8 +48,8 @@ importers:
         specifier: 2.6.1
         version: 2.6.1
       '@fastify/cookie':
-        specifier: 11.1.0
-        version: 11.1.0
+        specifier: 11.1.1
+        version: 11.1.1
       '@fastify/cors':
         specifier: 11.3.0
         version: 11.3.0
@@ -976,8 +976,8 @@ packages:
   '@fastify/busboy@3.2.0':
     resolution: {integrity: sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==}
 
-  '@fastify/cookie@11.1.0':
-    resolution: {integrity: sha512-fMl7eBwKaSeY/5LFiapxyXRvJx/KqLOI+ytV/fyGhAK8UqpDuPFIV4JW9fhYrnISy3rdMhc+Lry0lmaQGqdHDw==}
+  '@fastify/cookie@11.1.1':
+    resolution: {integrity: sha512-sJ0NXzGVYjUB4OynPZRsIcQ1mKSP4rW45xLCN0aelRq5Vl37xVVbz5kJ6Y0a9m2T0mCUjYCuvlUA9QlTafrZWw==}
 
   '@fastify/cors@11.2.0':
     resolution: {integrity: sha512-LbLHBuSAdGdSFZYTLVA3+Ch2t+sA6nq3Ejc6XLAKiQ6ViS2qFnvicpj0htsx03FyYeLs04HfRNBsz/a8SvbcUw==}
@@ -2259,6 +2259,10 @@ packages:
   cookie@1.1.1:
     resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
     engines: {node: '>=18'}
+
+  cookie@2.0.1:
+    resolution: {integrity: sha512-yuToqVvRrj6pfDXREyQAAv8SkAEk/8GS3jQRTiUMm66TVtBYmqQeoEjL2Lmq8Rpo6271vH76InTChTitEAm65w==}
+    engines: {node: '>=22'}
 
   cosmiconfig-typescript-loader@6.3.0:
     resolution: {integrity: sha512-Akr82WH1Wfqatyiqpj8HDkO2o2KmJRu1FhKfSNJP3K4IdXwHfEyL7MOb62i1AGQVLtIQM+iCE9CGOtrfhR+mmA==}
@@ -4622,9 +4626,9 @@ snapshots:
 
   '@fastify/busboy@3.2.0': {}
 
-  '@fastify/cookie@11.1.0':
+  '@fastify/cookie@11.1.1':
     dependencies:
-      cookie: 1.1.1
+      cookie: 2.0.1
       fastify-plugin: 6.0.0
 
   '@fastify/cors@11.2.0':
@@ -4684,7 +4688,7 @@ snapshots:
 
   '@fastify/secure-session@8.3.0(bare-events@2.9.1)':
     dependencies:
-      '@fastify/cookie': 11.1.0
+      '@fastify/cookie': 11.1.1
       fastify-plugin: 5.1.0
       sodium-native: 5.1.0(bare-events@2.9.1)
     transitivePeerDependencies:
@@ -5814,6 +5818,8 @@ snapshots:
   cookie@0.7.2: {}
 
   cookie@1.1.1: {}
+
+  cookie@2.0.1: {}
 
   cosmiconfig-typescript-loader@6.3.0(@types/node@26.1.1)(cosmiconfig@9.0.2(typescript@7.0.2))(typescript@7.0.2):
     dependencies:
