@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 // biome-ignore lint/style/useComponentExportOnlyModules: (x)
 export const ButtonVariants = cva(
-	'flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-full border-2 border-transparent font-semibold text-sm transition active:scale-95 disabled:pointer-events-none disabled:opacity-75 [&>svg]:size-5 [&>svg]:shrink-0',
+	'flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-full border-2 border-transparent font-semibold text-sm transition active:scale-95 data-disabled:pointer-events-none data-disabled:opacity-75 [&>svg]:size-5 [&>svg]:shrink-0',
 	{
 		defaultVariants: {
 			size: 'default',
