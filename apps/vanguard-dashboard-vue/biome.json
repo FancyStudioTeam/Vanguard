@@ -1,0 +1,72 @@
+{
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"noDuplicateClasses": "on",
+				"useSortedAttributes": "on",
+				"useSortedProperties": "on"
+			}
+		}
+	},
+	"css": {
+		"formatter": {
+			"quoteStyle": "single"
+		},
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"extends": "//",
+	"files": {
+		"includes": [
+			"**",
+			"!!**/build"
+		]
+	},
+	"formatter": {
+		"attributePosition": "multiline"
+	},
+	"html": {
+		"experimentalFullSupportEnabled": true,
+		"formatter": {
+			"enabled": true,
+			"indentScriptAndStyle": true
+		}
+	},
+	"linter": {
+		"domains": {
+			"vue": "all"
+		},
+		"rules": {
+			"correctness": {
+				"useImportExtensions": {
+					"level": "error",
+					"options": {
+						"forceJsExtensions": false
+					}
+				}
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "error",
+					"options": {
+						"functions": [
+							"class",
+							"className",
+							"cva",
+							"twMerge"
+						]
+					}
+				}
+			},
+			"style": {
+				"noImplicitBoolean": "error"
+			},
+			"suspicious": {
+				"noUnknownAtRules": "off"
+			}
+		}
+	}
+}
