@@ -1,54 +1,55 @@
 // biome-ignore-all lint/style/useNamingConvention: (x)
 
-import { BaseLogger, type ISettingsParam } from 'tslog';
+import { BaseLogger, type ISettingsParam, selectEnvironment } from 'tslog';
 
 export class Logger<LoggerObject> extends BaseLogger<LoggerObject> {
-	private static MAX_STACK_DEPTH_LEVEL = 5 as const;
-
 	public constructor(options?: ISettingsParam<LoggerObject>, loggerObject?: LoggerObject) {
 		super(
 			{
-				hideLogPositionForProduction: true,
-				prettyLogStyles: {
-					logLevelName: {
-						DEBUG: [
-							'bold',
-							'magenta',
-						],
-						ERROR: [
-							'bold',
-							'redBright',
-						],
-						FATAL: [
-							'bold',
-							'red',
-						],
-						INFO: [
-							'bold',
-							'cyan',
-						],
-						TRACE: [
-							'bold',
+				pretty: {
+					styles: {
+						logLevelName: {
+							DEBUG: [
+								'bold',
+								'magenta',
+							],
+							ERROR: [
+								'bold',
+								'redBright',
+							],
+							FATAL: [
+								'bold',
+								'red',
+							],
+							INFO: [
+								'bold',
+								'cyan',
+							],
+							TRACE: [
+								'bold',
+								'white',
+							],
+							WARN: [
+								'bold',
+								'yellow',
+							],
+						},
+						name: [
 							'white',
-						],
-						WARN: [
 							'bold',
-							'yellow',
 						],
 					},
-					name: [
-						'white',
-						'bold',
-					],
+					template: '{{dd}}/{{mm}}/{{yyyy}} {{hh}}:{{MM}}:{{ss}}\t{{logLevelName}}\t',
+					timeZone: 'UTC',
 				},
-				prettyLogTemplate:
-					'{{dd}}/{{mm}}/{{yyyy}} {{hh}}:{{MM}}:{{ss}}\t{{logLevelName}}\t',
-				prettyLogTimeZone: 'UTC',
+				stack: {
+					capture: 'off',
+				},
 				type: 'pretty',
 				...options,
 			},
 			loggerObject,
-			Logger.MAX_STACK_DEPTH_LEVEL,
+			selectEnvironment(),
 		);
 	}
 
@@ -64,12 +65,16 @@ export class Logger<LoggerObject> extends BaseLogger<LoggerObject> {
 		super.log(LoggerLevel.Fatal, 'FATAL', ...args);
 	}
 
-	public trace(...data: unknown[]): void {
-		super.log(LoggerLevel.Trace, 'TRACE', ...data);
+	public if(condition: unknown): this {
+		return super.if(condition);
 	}
 
 	public info(...args: unknown[]): void {
 		super.log(LoggerLevel.Info, 'INFO', ...args);
+	}
+
+	public trace(...data: unknown[]): void {
+		super.log(LoggerLevel.Trace, 'TRACE', ...data);
 	}
 
 	public warn(...args: unknown[]): void {
