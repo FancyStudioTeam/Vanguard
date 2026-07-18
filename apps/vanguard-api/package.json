@@ -26,8 +26,8 @@
 		"@discordeno/rest": "22.0.1-next.9eb5642",
 		"@discordeno/types": "22.0.1-next.9eb5642",
 		"@discordeno/utils": "22.0.1-next.9eb5642",
-		"@discordjs/rest": "2.6.1",
-		"@fastify/cookie": "11.1.0",
+		"@discordjs/rest": "2.6.2",
+		"@fastify/cookie": "11.1.2",
 		"@fastify/cors": "11.3.0",
 		"@fastify/csrf-protection": "8.0.0",
 		"@fastify/helmet": "13.1.0",
@@ -44,22 +44,22 @@
 		"@vanguard/shared-logger": "workspace:*",
 		"@vanguard/shared-typeorm": "workspace:*",
 		"cache-manager": "7.2.9",
-		"discord-api-types": "0.38.49",
+		"discord-api-types": "0.38.50",
 		"fastify": "5.10.0",
 		"reflect-metadata": "0.2.2",
 		"rxjs": "7.8.2",
-		"stripe": "22.3.0",
+		"stripe": "22.3.2",
 		"ts-pattern": "5.9.0",
-		"typeorm": "1.0.0",
+		"typeorm": "1.1.0",
 		"yaml": "2.9.0",
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@nestjs/cli": "11.0.23",
+		"@nestjs/cli": "11.0.24",
 		"@types/node": "26.1.1",
 		"cross-env": "10.1.0",
 		"premove": "4.0.0",
-		"typescript": "6.0.3"
+		"typescript": "7.0.2"
 	},
 	"packageManager": "pnpm@11.6.0"
 }
