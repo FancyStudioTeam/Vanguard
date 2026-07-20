@@ -26,7 +26,7 @@
 		"@discordeno/rest": "22.0.1-next.9eb5642",
 		"@discordeno/types": "22.0.1-next.9eb5642",
 		"@discordeno/utils": "22.0.1-next.9eb5642",
-		"@discordjs/rest": "2.6.2",
+		"@discordjs/rest": "2.6.3",
 		"@fastify/cookie": "11.1.2",
 		"@fastify/cors": "11.3.0",
 		"@fastify/csrf-protection": "8.0.0",
