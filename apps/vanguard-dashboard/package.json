@@ -24,7 +24,6 @@
 		"@react-router/serve": "8.2.0",
 		"@vanguard/api-contracts": "workspace:*",
 		"@vanguard/ui": "workspace:*",
-		"@vanguard/ui-charts": "workspace:*",
 		"class-variance-authority": "0.7.1",
 		"clsx": "2.1.1",
 		"gsap": "3.15.0",

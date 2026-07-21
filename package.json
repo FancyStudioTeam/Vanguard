@@ -27,7 +27,7 @@
 		"**/*.{js,jsx,ts,tsx,json,css}": "pnpm biome:write"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.4",
+		"@biomejs/biome": "2.5.5",
 		"@commitlint/cli": "21.2.1",
 		"@commitlint/config-conventional": "21.2.0",
 		"@commitlint/types": "21.2.0",
