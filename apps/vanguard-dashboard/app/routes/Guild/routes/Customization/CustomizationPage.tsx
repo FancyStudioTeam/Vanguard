@@ -1,8 +1,7 @@
 import './CustomizationPage.css';
 
-import { Accordion } from '#components/UI/Accordion.tsx';
 import type { Route } from './+types/CustomizationPage.ts';
-import { AccordionBotCustomization } from './components/Accordions/AccordionBotCustomization.tsx';
+import { BotCustomization } from './components/BotCustomization/BotCustomization.tsx';
 
 export function loader({ params }: Route.LoaderArgs) {
 	const { guildId } = params;
@@ -18,14 +17,7 @@ export default function ({ loaderData }: Route.ComponentProps) {
 	return (
 		<>
 			<h1 className='font-bold text-3xl'>Bot Customization</h1>
-			<Accordion
-				className='flex flex-col gap-6'
-				defaultValue={[
-					'bot-customization',
-				]}
-			>
-				<AccordionBotCustomization guildId={guildId} />
-			</Accordion>
+			<BotCustomization guildId={guildId} />
 		</>
 	);
 }
