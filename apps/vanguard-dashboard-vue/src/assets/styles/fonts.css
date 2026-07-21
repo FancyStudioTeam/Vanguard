@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'General Sans';
+	font-display: swap;
+
+	src: url('../fonts/GeneralSans.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-display: swap;
+
+	src: url('../fonts/JetBrainsMono.woff2') format('woff2');
+}

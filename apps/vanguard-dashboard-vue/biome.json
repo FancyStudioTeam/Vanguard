@@ -36,6 +36,7 @@
 	},
 	"linter": {
 		"domains": {
+			"tailwind": "all",
 			"vue": "all"
 		},
 		"rules": {
@@ -52,6 +53,10 @@
 					"fix": "safe",
 					"level": "error",
 					"options": {
+						"attributes": [
+							"class",
+							"className"
+						],
 						"functions": [
 							"class",
 							"className",
