@@ -19,6 +19,7 @@ const i18n = createI18n<
 	'en-US' | 'es-ES'
 >({
 	fallbackLocale: 'en-US',
+	legacy: false,
 	locale: 'en-US',
 	messages: {
 		'en-US': enUS,
