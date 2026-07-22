@@ -303,6 +303,12 @@ importers:
         specifier: 5.2.0
         version: 5.2.0(@vue/compiler-sfc@3.5.40)(esbuild@0.28.1)(pinia@4.0.2(@vue/devtools-api@8.1.5)(typescript@7.0.2)(vue@3.5.40(typescript@7.0.2)))(rolldown@1.1.5)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0))(vue@3.5.40(typescript@7.0.2))(webpack@5.106.2(esbuild@0.28.1))
     devDependencies:
+      '@iconify-json/circle-flags':
+        specifier: 1.2.10
+        version: 1.2.10
+      '@iconify-json/mingcute':
+        specifier: 1.2.7
+        version: 1.2.7
       '@tsconfig/node24':
         specifier: 24.0.4
         version: 24.0.4
@@ -310,6 +316,9 @@ importers:
         specifier: 26.1.1
         version: 26.1.1
       '@unocss/preset-attributify':
+        specifier: 66.7.5
+        version: 66.7.5
+      '@unocss/preset-icons':
         specifier: 66.7.5
         version: 66.7.5
       '@unocss/preset-web-fonts':
@@ -1162,6 +1171,12 @@ packages:
     peerDependencies:
       gsap: ^3.12.5
       react: '>=17'
+
+  '@iconify-json/circle-flags@1.2.10':
+    resolution: {integrity: sha512-sZRxs689a281RtZvuAiKtV7pQHv8Tk0HkinSM7QvLgdLEK8xgGRCcbDvL09Rq+/KtemmsMzGhS9/qt+r3ca+Ug==}
+
+  '@iconify-json/mingcute@1.2.7':
+    resolution: {integrity: sha512-bp4z6F53KAQp99aSL7qPCHL7HWUNGMNKIhfo/dx9pwVHiad/WusUbTOFXEZfpA44syJPzSOxa3O6Pwiq7qZz1g==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -5674,6 +5689,14 @@ snapshots:
     dependencies:
       gsap: 3.15.0
       react: 19.2.7
+
+  '@iconify-json/circle-flags@1.2.10':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/mingcute@1.2.7':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/types@2.0.0': {}
 
