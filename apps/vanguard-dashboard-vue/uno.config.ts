@@ -6,7 +6,10 @@ import { defineConfig } from 'unocss';
 
 export default defineConfig({
 	presets: [
-		presetAttributify(),
+		presetAttributify({
+			prefix: 'uno-',
+			prefixedOnly: true,
+		}),
 		presetIcons(),
 		presetWind4(),
 		presetWebFonts({
