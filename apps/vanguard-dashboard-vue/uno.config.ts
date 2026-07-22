@@ -9,6 +9,7 @@ export default defineConfig({
 		presetWind4(),
 		presetWebFonts({
 			fonts: {
+				mono: 'JetBrains Mono',
 				sans: 'General Sans',
 			},
 			provider: 'fontshare',
