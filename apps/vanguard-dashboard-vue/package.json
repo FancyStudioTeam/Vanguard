@@ -13,19 +13,23 @@
 	"dependencies": {
 		"@vueuse/core": "14.3.0",
 		"pinia": "4.0.2",
+		"reka-ui": "2.10.1",
 		"vue": "3.5.40",
+		"vue-i18n": "11.4.7",
 		"vue-router": "5.2.0"
 	},
 	"devDependencies": {
-		"@tailwindcss/vite": "4.3.3",
 		"@tsconfig/node24": "24.0.4",
 		"@types/node": "26.1.1",
+		"@unocss/preset-attributify": "66.7.5",
+		"@unocss/preset-web-fonts": "^66.7.5",
+		"@unocss/preset-wind4": "66.7.5",
+		"@vanguard/ui-vue": "workspace:*",
 		"@vitejs/plugin-vue": "6.0.8",
 		"@vitejs/plugin-vue-jsx": "5.1.6",
 		"@vue/tsconfig": "0.9.1",
-		"npm-run-all2": "9.0.2",
-		"tailwindcss": "4.3.3",
 		"typescript": "7.0.2",
+		"unocss": "66.7.5",
 		"vite": "8.1.5",
 		"vite-plugin-vue-devtools": "8.1.5",
 		"vue-tsc": "3.3.7"
