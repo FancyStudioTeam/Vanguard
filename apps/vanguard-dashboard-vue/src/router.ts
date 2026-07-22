@@ -1,14 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-const router = createRouter({
+export const router = createRouter({
 	history: createWebHistory(),
 	routes: [
 		{
-			component: () => import('./views/HomeView.vue'),
-			name: 'home',
+			children: [
+				{
+					component: () => import('./views/Home/HomeView.vue'),
+					name: 'Home',
+					path: '',
+				},
+				{
+					component: () => import('./views/GuildSelector/GuildSelectorView.vue'),
+					meta: {
+						requiresAuth: true,
+					},
+					name: 'Dashboard',
+					path: '/dashboard',
+				},
+			],
+			component: () => import('./layouts/PageLayout.vue'),
 			path: '/',
 		},
 	],
 });
 
-export default router;
+declare module 'vue-router' {
+	interface RouteMeta {
+		requiresAuth?: boolean;
+	}
+}
