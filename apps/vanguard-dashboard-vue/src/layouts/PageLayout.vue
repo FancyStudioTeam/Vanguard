@@ -22,13 +22,14 @@
 		</nav>
 	</header>
 	<RouterView />
-	<footer>
+	<footer uno-p-8>
 		<p
+			id="vanguard-text"
 			uno-bg="clip-text linear-to-b"
 			uno-font="bold pixel"
 			uno-from-zinc-800
 			uno-leading-none
-			uno-text="22vw center transparent"
+			uno-text="20vw center transparent"
 			uno-to-transparent
 			uno-tracking-tighter
 			uno-uppercase
@@ -37,6 +38,16 @@
 		</p>
 	</footer>
 </template>
+
+<style>
+	#vanguard-text {
+		/*
+			biome-ignore lint/correctness/noUnknownProperty: This property is already
+			added to the specification.
+		*/
+		text-fit: grow;
+	}
+</style>
 
 <script lang="ts" setup vapor>
 	const handleDiscordServerButton = () =>
