@@ -1,9 +1,0 @@
-@import 'tailwindcss';
-@import 'tailwind-animations';
-
-@source '../node_modules/@vanguard/ui';
-
-@theme inline {
-	--font-mono: 'JetBrains Mono';
-	--font-sans: 'General Sans';
-}
