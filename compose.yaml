@@ -14,12 +14,3 @@ services:
             dockerfile: ./apps/vanguard-bot/Dockerfile
         env_file:
             - ./apps/vanguard-bot/.env
-
-    dashboard:
-        build:
-            context: .
-            dockerfile: ./apps/vanguard-dashboard/Dockerfile
-        env_file:
-            - ./apps/vanguard-dashboard/.env
-        ports:
-            - "3101:3101"
