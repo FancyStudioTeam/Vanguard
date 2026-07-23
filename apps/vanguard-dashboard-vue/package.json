@@ -28,7 +28,6 @@
 		"@unocss/preset-icons": "66.7.5",
 		"@unocss/preset-web-fonts": "^66.7.5",
 		"@unocss/preset-wind4": "66.7.5",
-		"@vanguard/ui-vue": "workspace:*",
 		"@vitejs/plugin-vue": "6.0.8",
 		"@vitejs/plugin-vue-jsx": "5.1.6",
 		"@vue/tsconfig": "0.9.1",

@@ -24,4 +24,13 @@ export default defineConfig({
 			provider: 'fontshare',
 		}),
 	],
+	shortcuts: {
+		button: 'flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-full border-2 border-transparent font-semibold text-sm transition active:scale-95 disabled:pointer-events-none disabled:opacity-75',
+		'button-filled': 'bg-rose-500 text-rose-50 hover:opacity-75',
+		'button-filled-secondary': 'bg-zinc-800 text-zinc-50 hover:opacity-75',
+		'button-ghost': 'hover:bg-zinc-800',
+		'button-outline': '!border-zinc-800 hover:bg-zinc-800',
+		'button-size-default': 'px-4 py-2',
+		'button-size-icon': 'p-2',
+	},
 });

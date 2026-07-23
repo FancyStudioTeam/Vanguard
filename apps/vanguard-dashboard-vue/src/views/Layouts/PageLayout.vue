@@ -27,9 +27,9 @@
 			id="vanguard-text"
 			uno-bg="clip-text linear-to-b"
 			uno-font="bold pixel"
-			uno-from-zinc-800
+			uno-from-zinc-400
 			uno-leading-none
-			uno-text="20vw center transparent"
+			uno-text="center transparent"
 			uno-to-transparent
 			uno-tracking-tighter
 			uno-uppercase
