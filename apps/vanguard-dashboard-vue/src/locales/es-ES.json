@@ -1,3 +1,13 @@
 {
-	"hello": "mundo"
+	"navbar": {
+		"buttons": {
+			"discord": "Servidor de Discord"
+		}
+	},
+	"not-found": {
+		"buttons": {
+			"home": "Volver a la Página Principal"
+		},
+		"title": "Página No Encontrada"
+	}
 }

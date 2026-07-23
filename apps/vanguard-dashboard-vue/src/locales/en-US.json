@@ -1,3 +1,13 @@
 {
-	"hello": "world"
+	"navbar": {
+		"buttons": {
+			"discord": "Discord Server"
+		}
+	},
+	"not-found": {
+		"buttons": {
+			"home": "Back to the Home Page"
+		},
+		"title": "Page Not Found"
+	}
 }
