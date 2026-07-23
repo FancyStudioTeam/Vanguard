@@ -188,7 +188,7 @@ importers:
         specifier: 7.0.2
         version: 7.0.2
 
-  apps/vanguard-dashboard-vue:
+  apps/vanguard-dashboard:
     dependencies:
       '@iconify-json/simple-icons':
         specifier: 1.2.91
