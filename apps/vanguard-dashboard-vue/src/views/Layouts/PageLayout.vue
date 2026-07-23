@@ -1,26 +1,5 @@
 <template>
-	<header uno-backdrop-blur-xs uno-fixed uno-items-center uno-top-0 uno-w-full uno-z-10>
-		<nav
-			uno-flex
-			uno-h-15
-			uno-items-center
-			uno-max-w-7xl
-			uno-mx-auto
-			uno-p="x-8 y-4"
-			uno-w-full
-		>
-			<RouterLink
-				uno-active="scale-95"
-				uno-font-bold
-				uno-hover="opacity-75"
-				uno-text-xl
-				uno-transition
-				:to="{ name: 'Home' }"
-			>
-				Vanguard
-			</RouterLink>
-		</nav>
-	</header>
+	<NavbarComponent />
 	<RouterView />
 	<footer uno-p-8>
 		<p
@@ -41,15 +20,11 @@
 
 <style>
 	#vanguard-text {
-		/*
-			biome-ignore lint/correctness/noUnknownProperty: This property is already
-			added to the specification.
-		*/
+		/* biome-ignore lint/correctness/noUnknownProperty: (x) */
 		text-fit: grow;
 	}
 </style>
 
 <script lang="ts" setup vapor>
-	const handleDiscordServerButton = () =>
-		window.location.replace('https://www.fancystudio.xyz/discord');
+	import NavbarComponent from '@/components/Layout/Navbar/NavbarComponent.vue';
 </script>

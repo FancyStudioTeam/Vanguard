@@ -284,6 +284,9 @@ importers:
 
   apps/vanguard-dashboard-vue:
     dependencies:
+      '@iconify-json/simple-icons':
+        specifier: 1.2.91
+        version: 1.2.91
       '@vueuse/core':
         specifier: 14.3.0
         version: 14.3.0(vue@3.5.40(typescript@7.0.2))
@@ -321,6 +324,9 @@ importers:
       '@types/node':
         specifier: 26.1.1
         version: 26.1.1
+      '@unocss/extractor-arbitrary-variants':
+        specifier: 66.7.5
+        version: 66.7.5
       '@unocss/preset-attributify':
         specifier: 66.7.5
         version: 66.7.5
@@ -1158,6 +1164,9 @@ packages:
 
   '@iconify-json/mingcute@1.2.7':
     resolution: {integrity: sha512-bp4z6F53KAQp99aSL7qPCHL7HWUNGMNKIhfo/dx9pwVHiad/WusUbTOFXEZfpA44syJPzSOxa3O6Pwiq7qZz1g==}
+
+  '@iconify-json/simple-icons@1.2.91':
+    resolution: {integrity: sha512-plQJHZxzpkIXaeYjJF0Sc9nkzYF32EDX9olx7j1hcKYFaiTrQXbcngZmvzuV0pG6uZPU3ZuA/GIsgxSHOm6jrQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -5687,6 +5696,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/mingcute@1.2.7':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/simple-icons@1.2.91':
     dependencies:
       '@iconify/types': 2.0.0
 

@@ -11,6 +11,7 @@
 		"type-check": "vue-tsc --build"
 	},
 	"dependencies": {
+		"@iconify-json/simple-icons": "1.2.91",
 		"@vueuse/core": "14.3.0",
 		"animejs": "4.5.0",
 		"clsx": "2.1.1",
@@ -25,6 +26,7 @@
 		"@iconify-json/mingcute": "1.2.7",
 		"@tsconfig/node24": "24.0.4",
 		"@types/node": "26.1.1",
+		"@unocss/extractor-arbitrary-variants": "66.7.5",
 		"@unocss/preset-attributify": "66.7.5",
 		"@unocss/preset-icons": "66.7.5",
 		"@unocss/preset-web-fonts": "^66.7.5",
