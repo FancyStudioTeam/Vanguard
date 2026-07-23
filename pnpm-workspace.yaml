@@ -1,6 +1,7 @@
 allowBuilds:
     "@nestjs/core": true
     esbuild: true
+    vue-demi: true
 
 minimumReleaseAgeExclude:
     - "@biomejs/biome"
