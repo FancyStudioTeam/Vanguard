@@ -1,0 +1,28 @@
+{
+	"name": "@vanguard/ui-vue",
+	"private": true,
+	"license": "AGPL-3.0-only",
+	"author": "Vanguard Working Group",
+	"type": "module",
+	"exports": {
+		"./*": {
+			"types": "./src/*",
+			"import": "./src/*",
+			"require": "./src/*"
+		}
+	},
+	"dependencies": {
+		"class-variance-authority": "0.7.1",
+		"clsx": "2.1.1",
+		"reka-ui": "2.10.1",
+		"tailwind-merge": "3.6.0"
+	},
+	"devDependencies": {
+		"typescript": "7.0.2",
+		"vue": "3.5.40"
+	},
+	"peerDependencies": {
+		"vue": "3.5.40"
+	},
+	"packageManager": "pnpm@11.6.0"
+}
