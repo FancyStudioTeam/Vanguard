@@ -60,6 +60,7 @@
 						"functions": [
 							"class",
 							"className",
+							"clsx",
 							"cva",
 							"twMerge"
 						]

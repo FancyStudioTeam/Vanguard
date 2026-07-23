@@ -2,6 +2,7 @@ import presetAttributify from '@unocss/preset-attributify';
 import presetIcons from '@unocss/preset-icons';
 import presetWebFonts from '@unocss/preset-web-fonts';
 import presetWind4 from '@unocss/preset-wind4';
+import { clsx } from 'clsx';
 import { defineConfig } from 'unocss';
 
 export default defineConfig({
@@ -25,12 +26,14 @@ export default defineConfig({
 		}),
 	],
 	shortcuts: {
-		button: 'flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-full border-2 border-transparent font-semibold text-sm transition active:scale-95 disabled:pointer-events-none disabled:opacity-75',
-		'button-filled': 'bg-rose-500 text-rose-50 hover:opacity-75',
-		'button-filled-secondary': 'bg-zinc-800 text-zinc-50 hover:opacity-75',
-		'button-ghost': 'hover:bg-zinc-800',
-		'button-outline': '!border-zinc-800 hover:bg-zinc-800',
-		'button-size-default': 'px-4 py-2',
-		'button-size-icon': 'p-2',
+		button: clsx(
+			'flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-full border-2 border-transparent font-semibold text-sm transition active:scale-95 disabled:pointer-events-none disabled:opacity-75',
+		),
+		'button-filled': clsx('bg-rose-500 text-rose-50 hover:opacity-75'),
+		'button-filled-secondary': clsx('bg-zinc-800 text-zinc-50 hover:opacity-75'),
+		'button-ghost': clsx('hover:bg-zinc-800'),
+		'button-outline': clsx('!border-zinc-800 hover:bg-zinc-800'),
+		'button-size-default': clsx('px-4 py-2'),
+		'button-size-icon': clsx('p-2'),
 	},
 });
