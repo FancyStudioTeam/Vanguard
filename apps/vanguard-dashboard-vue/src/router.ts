@@ -6,12 +6,12 @@ export const router = createRouter({
 		{
 			children: [
 				{
-					component: () => import('./views/Home/HomeView.vue'),
+					component: () => import('./views/Routes/Home/HomeView.vue'),
 					name: 'Home',
 					path: '',
 				},
 				{
-					component: () => import('./views/GuildSelector/GuildSelectorView.vue'),
+					component: () => import('./views/Routes/Dashboard/DashboardVIew.vue'),
 					meta: {
 						requiresAuth: true,
 					},
@@ -19,7 +19,7 @@ export const router = createRouter({
 					path: '/dashboard',
 				},
 			],
-			component: () => import('./layouts/PageLayout.vue'),
+			component: () => import('./views/Layouts/PageLayout.vue'),
 			path: '/',
 		},
 	],
