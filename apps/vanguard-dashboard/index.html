@@ -9,42 +9,12 @@
 	<body uno-bg-zinc-950 uno-font-medium uno-selection="bg-rose-500 text-rose-50" uno-text-zinc-50>
 		<div id="app" />
 		<noscript>
-			<style>
-				* {
-					padding: 0;
-					margin: 0;
-				}
-
-				body {
-					font-family: 'Open Sans', sans-serif;
-					color: oklch(98.5% 0 none);
-					text-align: center;
-					background-color: oklch(14.1% 0.005 285.823);
-				}
-
-				main {
-					display: grid;
-					place-items: center;
-					height: 100dvh;
-				}
-
-				section {
-					display: flex;
-					flex-direction: column;
-					gap: 10px;
-					max-width: 300px;
-				}
-
-				p {
-					font-weight: 600;
-					color: oklch(70.5% 0.015 286.067);
-					text-wrap: balance;
-				}
-			</style>
-			<main>
-				<section>
-					<h1>Vanguard</h1>
-					<p>You need to enable JavaScript to run this application.</p>
+			<main uno-grid uno-h-dvh uno-place-items-center>
+				<section uno-flex="~ col" uno-gap-4>
+					<h1 uno-font-bold uno-text-xl>Vanguard</h1>
+					<p uno-font-semibold uno-text-zinc-400>
+						You need to enable JavaScript to run this application.
+					</p>
 				</section>
 			</main>
 		</noscript>
