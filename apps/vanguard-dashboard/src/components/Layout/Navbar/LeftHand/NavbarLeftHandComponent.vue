@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup vapor>
-	import NavbarLogoComponent from './LeftHand/NavbarLogoComponent.vue';
+	import NavbarLogoComponent from './NavbarLogoComponent.vue';
 </script>

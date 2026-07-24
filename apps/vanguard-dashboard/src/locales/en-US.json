@@ -1,13 +1,21 @@
 {
-	"navbar": {
-		"buttons": {
-			"discord": "Discord Server"
+	"Layout": {
+		"Navbar": {
+			"Buttons": {
+				"DiscordServer": "Discord Server",
+				"LocalesDropdown": "Change Language"
+			},
+			"Links": {
+				"Dashboard": "Dashboard",
+				"Pricing": "Pricing"
+			}
 		}
 	},
-	"not-found": {
-		"buttons": {
-			"home": "Back to the Home Page"
-		},
-		"title": "Page Not Found"
+	"Views": {
+		"NotFound": {
+			"Buttons": {
+				"ReturnHome": "Return to the Home Page"
+			}
+		}
 	}
 }

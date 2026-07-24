@@ -6,6 +6,6 @@
 </template>
 
 <script lang="ts" setup vapor>
-	import NavbarDiscordServerButtonComponent from './RightHand/NavbarDiscordServerButtonComponent.vue';
-	import NavbarLocaleSelectorComponent from './RightHand/NavbarLocaleSelectorComponent.vue';
+	import NavbarDiscordServerButtonComponent from './NavbarDiscordServerButtonComponent.vue';
+	import NavbarLocaleSelectorComponent from './NavbarLocaleSelectorComponent.vue';
 </script>

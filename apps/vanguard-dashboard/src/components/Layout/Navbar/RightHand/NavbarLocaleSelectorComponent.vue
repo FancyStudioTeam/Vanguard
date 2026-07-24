@@ -1,6 +1,9 @@
 <template>
 	<DropdownMenuRoot v-model:open="openState" :modal="false">
-		<DropdownMenuTrigger uno-focus-outline-none>
+		<DropdownMenuTrigger
+			uno-focus-outline-none
+			:aria-label="t('Layout.Navbar.Buttons.LocalesDropdown')"
+		>
 			<span uno-button="~ filled-secondary size-icon">
 				<span uno-i-mingcute-translate-2-fill uno-rounded-full uno-size-5 />
 			</span>
@@ -35,8 +38,7 @@
 	import { computed, ref } from 'vue';
 	import { useI18n } from 'vue-i18n';
 
-	const { availableLocales, locale } = useI18n();
-
+	const { availableLocales, locale, t } = useI18n();
 	const openState = ref(false);
 
 	const handleLocaleUpdate = (localeCode: string) => {

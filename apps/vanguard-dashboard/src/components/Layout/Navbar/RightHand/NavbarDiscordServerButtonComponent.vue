@@ -1,6 +1,6 @@
 <template>
 	<button type="button" uno-button="~ outline size-default" @click="handleDiscordServerButton">
-		{{ t("navbar.buttons.discord") }}
+		{{ t("Layout.Navbar.Buttons.DiscordServer") }}
 	</button>
 </template>
 

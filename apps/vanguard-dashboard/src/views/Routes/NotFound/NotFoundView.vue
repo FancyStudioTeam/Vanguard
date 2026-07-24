@@ -3,7 +3,7 @@
 		<section uno-flex="~ col" uno-gap-4>
 			<h1 uno-font-bold uno-text="7xl center">404</h1>
 			<RouterLink uno-button="~ filled size-default" :to="{ name: 'Home' }">
-				{{ t("not-found.buttons.home") }}
+				{{ t("Views.NotFound.Buttons.ReturnHome") }}
 			</RouterLink>
 		</section>
 	</main>

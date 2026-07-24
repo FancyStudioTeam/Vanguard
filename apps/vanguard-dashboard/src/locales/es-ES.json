@@ -1,13 +1,21 @@
 {
-	"navbar": {
-		"buttons": {
-			"discord": "Servidor de Discord"
+	"Layout": {
+		"Navbar": {
+			"Buttons": {
+				"DiscordServer": "Servidor de Discord",
+				"LocalesDropdown": "Cambiar Idioma"
+			},
+			"Links": {
+				"Dashboard": "Panel de Control",
+				"Pricing": "Precios"
+			}
 		}
 	},
-	"not-found": {
-		"buttons": {
-			"home": "Volver a la Página Principal"
-		},
-		"title": "Página No Encontrada"
+	"Views": {
+		"NotFound": {
+			"Buttons": {
+				"ReturnHome": "Volver a la Página Principal"
+			}
+		}
 	}
 }

@@ -19,7 +19,15 @@ export const router = createRouter({
 					path: '/dashboard',
 				},
 				{
+					component: () => import('./views/Routes/Pricing/PricingView.vue'),
+					name: 'Pricing',
+					path: '/pricing',
+				},
+				{
 					component: () => import('./views/Routes/NotFound/NotFoundView.vue'),
+					meta: {
+						useFullViewport: true,
+					},
 					name: 'NotFound',
 					path: '/:pathMatch(.*)*',
 				},
@@ -33,5 +41,6 @@ export const router = createRouter({
 declare module 'vue-router' {
 	interface RouteMeta {
 		requiresAuth?: boolean;
+		useFullViewport?: boolean;
 	}
 }
