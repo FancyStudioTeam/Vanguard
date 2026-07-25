@@ -8,14 +8,7 @@
 		uno-z-10
 		:class="$route.meta.useFullViewport ? 'fixed' : 'sticky'"
 	>
-		<nav
-			uno-gap-4
-			uno-grid="~ cols-1 md:cols-3"
-			uno-max-w-7xl
-			uno-mx-auto
-			uno-p="x-8 y-2"
-			uno-w-full
-		>
+		<nav uno-grid="~ cols-1 md:cols-3" uno-max-w-7xl uno-mx-auto uno-p="x-8 y-2" uno-w-full>
 			<NavbarLeftHandComponent />
 			<NavbarMiddleHandComponent />
 			<NavbarRightHandComponent />
