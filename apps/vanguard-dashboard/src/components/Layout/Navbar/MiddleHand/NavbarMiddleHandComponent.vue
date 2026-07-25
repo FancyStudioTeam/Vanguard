@@ -7,7 +7,7 @@
 			uno-uppercase
 			v-for="item in NAVIGATION_ITEMS"
 			:key="item.locationName"
-			:class="{ 'font-semibold text-zinc-50': isCurrentLocation(item.locationName) }"
+			:class="{ 'font-semibold !text-zinc-50': isCurrentLocation(item.locationName) }"
 			:to="{ name: item.locationName }"
 		>
 			{{ t(item.localeKey) }}
