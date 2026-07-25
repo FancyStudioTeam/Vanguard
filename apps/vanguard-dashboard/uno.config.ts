@@ -16,10 +16,6 @@ export default defineConfig({
 		presetWebFonts({
 			fonts: {
 				mono: 'JetBrains Mono',
-				pixel: {
-					name: 'Tiny5',
-					provider: 'fontsource',
-				},
 				sans: 'General Sans',
 			},
 			provider: 'fontshare',

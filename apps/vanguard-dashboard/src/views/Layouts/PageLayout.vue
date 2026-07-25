@@ -5,7 +5,7 @@
 		<p
 			id="vanguard-text"
 			uno-bg="clip-text linear-to-b"
-			uno-font="bold pixel"
+			uno-font-bold
 			uno-from-zinc-400
 			uno-leading-none
 			uno-text="center transparent"

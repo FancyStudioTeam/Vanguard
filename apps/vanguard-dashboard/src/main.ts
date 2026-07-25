@@ -1,5 +1,6 @@
 import 'virtual:uno.css';
 
+import { PiniaColada } from '@pinia/colada';
 import { createHead } from '@unhead/vue/client';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
@@ -48,6 +49,7 @@ const pinia = createPinia();
 app.use(head);
 app.use(i18n);
 app.use(pinia);
+app.use(PiniaColada);
 app.use(router);
 
 app.use(DataLoaderPlugin, {
