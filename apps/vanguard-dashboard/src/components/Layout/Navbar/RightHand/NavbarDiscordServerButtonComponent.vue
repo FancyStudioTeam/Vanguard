@@ -1,5 +1,9 @@
 <template>
-	<a href="https://www.fancystudio.xyz" target="_blank" uno-button="~ outline size-default">
+	<a
+		href="https://www.fancystudio.xyz/discord"
+		target="_blank"
+		uno-button="~ outline size-default"
+	>
 		{{ t("Layout.Navbar.Buttons.DiscordServer") }}
 	</a>
 </template>
