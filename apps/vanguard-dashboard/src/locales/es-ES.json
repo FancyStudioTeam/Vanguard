@@ -11,6 +11,20 @@
 			}
 		}
 	},
+	"SEO": {
+		"Dashboard": {
+			"Title": "Panel de Control"
+		},
+		"Home": {
+			"Title": "Inicio"
+		},
+		"NotFound": {
+			"Title": "No Encontrado"
+		},
+		"Pricing": {
+			"Title": "Precios"
+		}
+	},
 	"Views": {
 		"NotFound": {
 			"Buttons": {

@@ -11,6 +11,20 @@
 			}
 		}
 	},
+	"SEO": {
+		"Dashboard": {
+			"Title": "Dashboard"
+		},
+		"Home": {
+			"Title": "Home"
+		},
+		"NotFound": {
+			"Title": "Not Found"
+		},
+		"Pricing": {
+			"Title": "Pricing"
+		}
+	},
 	"Views": {
 		"NotFound": {
 			"Buttons": {

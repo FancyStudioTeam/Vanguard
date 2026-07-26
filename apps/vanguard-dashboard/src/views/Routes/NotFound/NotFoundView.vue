@@ -10,7 +10,14 @@
 </template>
 
 <script lang="ts" setup vapor>
+	import { useSeoMeta } from '@unhead/vue';
+	import { computed } from 'vue';
 	import { useI18n } from 'vue-i18n';
 
 	const { t } = useI18n();
+
+	useSeoMeta({
+		robots: 'follow, noindex',
+		title: computed(() => t('SEO.NotFound.Title')),
+	});
 </script>

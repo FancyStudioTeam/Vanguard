@@ -27,6 +27,8 @@ const head = createHead({
 			htmlAttrs: {
 				lang: locale,
 			},
+			title: 'Welcome',
+			titleTemplate: '%s - Vanguard',
 		},
 	],
 });
