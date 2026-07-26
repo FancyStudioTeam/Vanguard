@@ -30,6 +30,7 @@
 		"@vanguard/shared-logger": "workspace:*",
 		"@vanguard/shared-typeorm": "workspace:*",
 		"ioredis": "5.11.1",
+		"pg": "8.22.0",
 		"reflect-metadata": "0.2.2",
 		"typeorm": "1.1.0"
 	},
