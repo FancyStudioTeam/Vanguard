@@ -2,11 +2,11 @@
 	<section uno-flex="~ row" uno-gap-4 uno-items-center uno-justify-center>
 		<RouterLink
 			uno-text="xs zinc-400 hover:zinc-50"
-			uno-transition="[color,font-weight]"
+			uno-transition
 			uno-uppercase
 			v-for="item in NAVIGATION_ITEMS"
 			:key="item.locationName"
-			:class="{ 'font-semibold !text-zinc-50': isCurrentLocation(item.locationName) }"
+			:class="{ '!text-zinc-50': isCurrentLocation(item.locationName) }"
 			:to="{ name: item.locationName }"
 		>
 			{{ t(item.localeKey) }}

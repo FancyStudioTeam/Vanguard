@@ -3,6 +3,7 @@
 		uno-bg-zinc-950
 		uno-items-center
 		uno-top-0
+		uno-w-full
 		uno-z-10
 		:class="$route.meta.useFullViewport ? 'fixed' : 'sticky'"
 	>
