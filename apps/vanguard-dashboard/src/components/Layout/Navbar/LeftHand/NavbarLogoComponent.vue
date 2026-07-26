@@ -7,11 +7,12 @@
 		uno-gap-2
 		uno-hover-opacity-75
 		uno-items-center
+		uno-select-none
 		uno-text-xl
 		uno-transition
 		:to="{ name: 'Home' }"
 	>
-		<VanguardSymbolComponent />
+		<VanguardSymbolComponent uno-size-5 />
 		<span>Vanguard</span>
 	</RouterLink>
 </template>

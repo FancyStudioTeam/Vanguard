@@ -1,10 +1,8 @@
 <template>
 	<header
-		uno-backdrop-blur-xs
-		uno-bg="zinc-950/75"
+		uno-bg-zinc-950
 		uno-items-center
 		uno-top-0
-		uno-w-full
 		uno-z-10
 		:class="$route.meta.useFullViewport ? 'fixed' : 'sticky'"
 	>
