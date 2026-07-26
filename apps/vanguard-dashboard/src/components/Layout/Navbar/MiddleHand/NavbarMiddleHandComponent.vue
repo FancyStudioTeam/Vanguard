@@ -1,12 +1,12 @@
 <template>
 	<section uno-flex="~ row" uno-gap-4 uno-items-center uno-justify-center>
 		<RouterLink
+			active-class="!text-zinc-50"
 			uno-text="xs zinc-400 hover:zinc-50"
 			uno-transition
 			uno-uppercase
 			v-for="item in NAVIGATION_ITEMS"
 			:key="item.locationName"
-			:class="{ '!text-zinc-50': isCurrentLocation(item.locationName) }"
 			:to="{ name: item.locationName }"
 		>
 			{{ t(item.localeKey) }}
@@ -16,12 +16,8 @@
 
 <script lang="ts" setup vapor>
 	import { useI18n } from 'vue-i18n';
-	import { useRoute } from 'vue-router';
 
 	const { t } = useI18n();
-	const route = useRoute();
-
-	const isCurrentLocation = (locationName: string) => locationName === route.name;
 
 	const NAVIGATION_ITEMS: NavigationItem[] = [
 		{
