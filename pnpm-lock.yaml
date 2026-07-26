@@ -82,7 +82,7 @@ importers:
         version: 6.1.3(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))
       '@nestjs/typeorm':
         specifier: 11.0.3
-        version: 11.0.3(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0))
+        version: 11.0.3(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.22.0))
       '@sapphire/snowflake':
         specifier: 3.5.5
         version: 3.5.5
@@ -104,6 +104,9 @@ importers:
       fastify:
         specifier: 5.10.0
         version: 5.10.0
+      pg:
+        specifier: 8.22.0
+        version: 8.22.0
       reflect-metadata:
         specifier: 0.2.2
         version: 0.2.2
@@ -118,7 +121,7 @@ importers:
         version: 5.9.0
       typeorm:
         specifier: 1.1.0
-        version: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+        version: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.22.0)
       zod:
         specifier: 4.4.3
         version: 4.4.3
@@ -173,7 +176,7 @@ importers:
         version: 0.2.2
       typeorm:
         specifier: 1.1.0
-        version: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+        version: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.22.0)
     devDependencies:
       '@types/node':
         specifier: 26.1.1
@@ -374,7 +377,7 @@ importers:
     dependencies:
       typeorm:
         specifier: 1.1.0
-        version: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+        version: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.22.0)
     devDependencies:
       '@types/node':
         specifier: 26.1.1
@@ -3521,8 +3524,8 @@ packages:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
 
-  pg@8.21.0:
-    resolution: {integrity: sha512-AUP1EYJuHraQGsVoCQVIcM7TEJVGtDzxWtGFZd8rds9d+CCXlU5Js1rYgfLNvxy9iJrpHjGrRjoi/3BT9fRyiA==}
+  pg@8.22.0:
+    resolution: {integrity: sha512-8wih1vVIBMxoUM2oB4soJsD9tDnDpLv4OXBJ+EJzFsvycD+lfyIreC2gGHq78f8jbLLt+bvlPTFdFZfJkOuzAA==}
     engines: {node: '>= 16.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -5516,13 +5519,13 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@nestjs/typeorm@11.0.3(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0))':
+  '@nestjs/typeorm@11.0.3(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.22.0))':
     dependencies:
       '@nestjs/common': 11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
-      typeorm: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0)
+      typeorm: 1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.22.0)
 
   '@oxc-parser/binding-android-arm-eabi@0.131.0':
     optional: true
@@ -7552,19 +7555,15 @@ snapshots:
   pg-cloudflare@1.4.0:
     optional: true
 
-  pg-connection-string@2.14.0:
-    optional: true
+  pg-connection-string@2.14.0: {}
 
-  pg-int8@1.0.1:
-    optional: true
+  pg-int8@1.0.1: {}
 
-  pg-pool@3.14.0(pg@8.21.0):
+  pg-pool@3.14.0(pg@8.22.0):
     dependencies:
-      pg: 8.21.0
-    optional: true
+      pg: 8.22.0
 
-  pg-protocol@1.15.0:
-    optional: true
+  pg-protocol@1.15.0: {}
 
   pg-types@2.2.0:
     dependencies:
@@ -7573,23 +7572,20 @@ snapshots:
       postgres-bytea: 1.0.1
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
-    optional: true
 
-  pg@8.21.0:
+  pg@8.22.0:
     dependencies:
       pg-connection-string: 2.14.0
-      pg-pool: 3.14.0(pg@8.21.0)
+      pg-pool: 3.14.0(pg@8.22.0)
       pg-protocol: 1.15.0
       pg-types: 2.2.0
       pgpass: 1.0.5
     optionalDependencies:
       pg-cloudflare: 1.4.0
-    optional: true
 
   pgpass@1.0.5:
     dependencies:
       split2: 4.2.0
-    optional: true
 
   picocolors@1.1.1: {}
 
@@ -7647,19 +7643,15 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postgres-array@2.0.0:
-    optional: true
+  postgres-array@2.0.0: {}
 
-  postgres-bytea@1.0.1:
-    optional: true
+  postgres-bytea@1.0.1: {}
 
-  postgres-date@1.0.7:
-    optional: true
+  postgres-date@1.0.7: {}
 
   postgres-interval@1.2.0:
     dependencies:
       xtend: 4.0.2
-    optional: true
 
   powershell-utils@0.1.0: {}
 
@@ -8046,7 +8038,7 @@ snapshots:
 
   type-level-regexp@0.1.17: {}
 
-  typeorm@1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.21.0):
+  typeorm@1.1.0(babel-plugin-macros@3.1.0)(ioredis@5.11.1)(mongodb@7.2.0)(mysql2@3.15.3)(pg@8.22.0):
     dependencies:
       '@sqltools/formatter': 1.2.5
       ansis: 4.3.1
@@ -8062,7 +8054,7 @@ snapshots:
       ioredis: 5.11.1
       mongodb: 7.2.0
       mysql2: 3.15.3
-      pg: 8.21.0
+      pg: 8.22.0
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -8467,8 +8459,7 @@ snapshots:
       is-wsl: 3.1.1
       powershell-utils: 0.1.0
 
-  xtend@4.0.2:
-    optional: true
+  xtend@4.0.2: {}
 
   y18n@5.0.8: {}
 
