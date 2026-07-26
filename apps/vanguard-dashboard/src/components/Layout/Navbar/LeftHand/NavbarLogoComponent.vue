@@ -1,6 +1,5 @@
 <template>
 	<RouterLink
-		uno-active-scale-95
 		uno-flex="~ row"
 		uno-focus-outline-none
 		uno-font-bold
