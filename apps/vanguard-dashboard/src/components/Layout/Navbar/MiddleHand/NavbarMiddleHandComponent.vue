@@ -1,7 +1,6 @@
 <template>
 	<section uno-flex="~ row" uno-gap-4 uno-items-center uno-justify-center>
 		<RouterLink
-			uno-hover-font-semibold
 			uno-text="xs zinc-400 hover:zinc-50"
 			uno-transition="[color,font-weight]"
 			uno-uppercase
