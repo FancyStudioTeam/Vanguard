@@ -76,8 +76,6 @@ const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADA
 
 app.enableCors(CORS_OPTIONS);
 
-app.setGlobalPrefix('api');
-
 await app.register(FastifyCookie);
 await app.register(FastifyCsrf);
 await app.register(FastifyHelmet);
