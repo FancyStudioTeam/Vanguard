@@ -7,9 +7,9 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.js"
+			"types": "./dist/Logger.d.ts",
+			"import": "./dist/Logger.js",
+			"require": "./dist/Logger.js"
 		}
 	},
 	"scripts": {

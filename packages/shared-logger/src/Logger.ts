@@ -1,9 +1,11 @@
 // biome-ignore-all lint/style/useNamingConvention: (x)
 
-import { BaseLogger, type ISettingsParam, selectEnvironment } from 'tslog';
+import * as tslog from 'tslog';
+
+const { BaseLogger } = tslog;
 
 export class Logger<LoggerObject> extends BaseLogger<LoggerObject> {
-	public constructor(options?: ISettingsParam<LoggerObject>, loggerObject?: LoggerObject) {
+	public constructor(options?: tslog.ISettingsParam<LoggerObject>, loggerObject?: LoggerObject) {
 		super(
 			{
 				pretty: {
@@ -49,7 +51,9 @@ export class Logger<LoggerObject> extends BaseLogger<LoggerObject> {
 				...options,
 			},
 			loggerObject,
-			selectEnvironment(),
+			createEnvironmentProvider(),
+			Number.NaN,
+			tslog.fullCoreFeatures,
 		);
 	}
 
@@ -81,6 +85,27 @@ export class Logger<LoggerObject> extends BaseLogger<LoggerObject> {
 		super.log(LoggerLevel.Warn, 'WARN', ...args);
 	}
 }
+
+function createEnvironmentProvider(): EnvironmentProvider {
+	if (hasEnvironmentFunction(tslog, 'createNodeEnvironment')) {
+		return tslog.createNodeEnvironment();
+	}
+
+	if (hasEnvironmentFunction(tslog, 'createUniversalEnvironment')) {
+		return tslog.createUniversalEnvironment();
+	}
+
+	throw new TypeError('Cannot Create an Environment Provider for BaseLogger');
+}
+
+function hasEnvironmentFunction<
+	Object extends Record<PropertyKey, unknown>,
+	Key extends PropertyKey,
+>(object: Object, key: Key): object is Object & Record<Key, () => EnvironmentProvider> {
+	return typeof object[key] === 'function';
+}
+
+type EnvironmentProvider = (typeof BaseLogger)['prototype']['runtime'];
 
 enum LoggerLevel {
 	Debug = 2,
