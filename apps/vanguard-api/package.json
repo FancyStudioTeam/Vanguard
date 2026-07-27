@@ -44,7 +44,7 @@
 		"@vanguard/shared-logger": "workspace:*",
 		"@vanguard/shared-typeorm": "workspace:*",
 		"cache-manager": "7.2.9",
-		"discord-api-types": "0.38.51",
+		"discord-api-types": "0.38.52",
 		"fastify": "5.10.0",
 		"pg": "8.22.0",
 		"reflect-metadata": "0.2.2",
