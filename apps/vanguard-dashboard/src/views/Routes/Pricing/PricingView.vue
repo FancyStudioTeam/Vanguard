@@ -1,6 +1,6 @@
 <template>
 	<main uno-gap-4 uno-max-w-7xl uno-mx-auto uno-p="x-8 y-24" uno-w-full>
-		<h1>Pricing</h1>
+		<ComparisonTableComponent />
 	</main>
 </template>
 
@@ -8,6 +8,8 @@
 	import { useSeoMeta } from '@unhead/vue';
 	import { computed } from 'vue';
 	import { useI18n } from 'vue-i18n';
+
+	import ComparisonTableComponent from './components/ComparisonTable/ComparisonTableComponent.vue';
 
 	const { t } = useI18n();
 

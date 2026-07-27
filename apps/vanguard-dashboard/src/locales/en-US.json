@@ -30,6 +30,18 @@
 			"Buttons": {
 				"ReturnHome": "Return to the Home Page"
 			}
+		},
+		"Pricing": {
+			"ComparisonTable": {
+				"Features": {
+					"BotCustomization": "Bot Customization"
+				},
+				"Header": {
+					"Comparison": "Plan Comparison",
+					"Free": "Free",
+					"Premium": "Premium"
+				}
+			}
 		}
 	}
 }
