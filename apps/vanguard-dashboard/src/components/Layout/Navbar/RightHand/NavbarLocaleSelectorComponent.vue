@@ -11,15 +11,15 @@
 		<DropdownMenuPortal>
 			<DropdownMenuContent uno-dropdown-menu :side-offset="10">
 				<DropdownMenuGroup uno-p-2>
-					<DropdownMenuItem
-						uno-dropdown-menu-item
-						v-for="locale in AVAILABLE_LOCALES"
-						:key="locale.code"
-						@click="handleLocaleUpdate(locale.code)"
-					>
-						<span uno-shrink-0 uno-size-5 :class="locale.icon" />
-						<span>{{ locale.name }}</span>
-					</DropdownMenuItem>
+					<template v-for="locale in LOCALES" :key="locale.code">
+						<DropdownMenuItem
+							uno-dropdown-menu-item
+							@click="handleLocaleUpdate(locale.code)"
+						>
+							<span uno-size-5 :class="locale.icon" />
+							<span>{{ locale.name }}</span>
+						</DropdownMenuItem>
+					</template>
 				</DropdownMenuGroup>
 			</DropdownMenuContent>
 		</DropdownMenuPortal>
@@ -56,7 +56,7 @@
 		},
 	};
 
-	const AVAILABLE_LOCALES = computed(() =>
+	const LOCALES = computed(() =>
 		availableLocales.map((localeCode) => ({
 			code: localeCode,
 			...getPrettyLocaleSettings(localeCode),
