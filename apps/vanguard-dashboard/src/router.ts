@@ -35,6 +35,11 @@ export const router = createRouter({
 			component: () => import('./views/Layouts/PageLayout.vue'),
 			path: '/',
 		},
+		{
+			component: () => import('./views/Layouts/DashboardLayout.vue'),
+			name: 'Guild',
+			path: '/dashboard/:guildId',
+		},
 	],
 });
 
