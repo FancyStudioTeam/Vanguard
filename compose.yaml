@@ -4,6 +4,9 @@ services:
             context: .
             dockerfile: ./apps/vanguard-api/Dockerfile
         environment:
+            BASE_DASHBOARD_URL: ${BASE_DASHBOARD_URL}
+            BASE_URL: ${BASE_URL}
+
             BOT_ID: ${BOT_ID}
             BOT_SECRET: ${BOT_SECRET}
             BOT_TOKEN: ${BOT_TOKEN}
