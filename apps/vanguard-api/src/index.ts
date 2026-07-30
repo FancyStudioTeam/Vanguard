@@ -74,6 +74,8 @@ const SECURE_SESSION_OPTIONS: SecureSessionPluginOptions = {
 
 const app = await NestFactory.create<NestFastifyApplication>(APP_MODULE, APP_ADAPTER, APP_OPTIONS);
 
+app.setGlobalPrefix('api');
+
 app.enableCors(CORS_OPTIONS);
 
 await app.register(FastifyCookie);
