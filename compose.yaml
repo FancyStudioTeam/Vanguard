@@ -1,3 +1,7 @@
+networks:
+    dokploy-network:
+        external: true
+
 services:
     api:
         build:
@@ -26,6 +30,9 @@ services:
             SESSION_COOKIE_SECRET: ${SESSION_COOKIE_SECRET}
 
             STRIPE_KEY: ${STRIPE_KEY}
+        networks:
+            - default
+            - dokploy-network
         ports:
             - "3001:3001"
 
@@ -50,3 +57,6 @@ services:
 
             REDIS_DATABASE_USER_NAME: ${REDIS_DATABASE_USER_NAME}
             REDIS_DATABASE_USER_PASS: ${REDIS_DATABASE_USER_PASS}
+        networks:
+            - default
+            - dokploy-network
