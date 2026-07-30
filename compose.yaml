@@ -3,6 +3,26 @@ services:
         build:
             context: .
             dockerfile: ./apps/vanguard-api/Dockerfile
+        environment:
+            BOT_ID: ${BOT_ID}
+            BOT_SECRET: ${BOT_SECRET}
+            BOT_TOKEN: ${BOT_TOKEN}
+
+            ENCRYPTION_SECRET: ${ENCRYPTION_SECRET}
+
+            NODE_ENV: production
+
+            POSTGRES_DATABASE_HOST: ${POSTGRES_DATABASE_HOST}
+            POSTGRES_DATABASE_NAME: ${POSTGRES_DATABASE_NAME}
+            POSTGRES_DATABASE_PORT: ${POSTGRES_DATABASE_PORT}
+
+            POSTGRES_DATABASE_USER_NAME: ${POSTGRES_DATABASE_USER_NAME}
+            POSTGRES_DATABASE_USER_PASS: ${POSTGRES_DATABASE_USER_PASS}
+
+            SESSION_COOKIE_SALT: ${SESSION_COOKIE_SALT}
+            SESSION_COOKIE_SECRET: ${SESSION_COOKIE_SECRET}
+
+            STRIPE_KEY: ${STRIPE_KEY}
         ports:
             - "3001:3001"
 
@@ -10,3 +30,20 @@ services:
         build:
             context: .
             dockerfile: ./apps/vanguard-bot/Dockerfile
+        environment:
+            BOT_TOKEN: ${BOT_TOKEN}
+
+            NODE_ENV: production
+
+            POSTGRES_DATABASE_HOST: ${POSTGRES_DATABASE_HOST}
+            POSTGRES_DATABASE_NAME: ${POSTGRES_DATABASE_NAME}
+            POSTGRES_DATABASE_PORT: ${POSTGRES_DATABASE_PORT}
+
+            POSTGRES_DATABASE_USER_NAME: ${POSTGRES_DATABASE_USER_NAME}
+            POSTGRES_DATABASE_USER_PASS: ${POSTGRES_DATABASE_USER_PASS}
+
+            REDIS_DATABASE_HOST: ${REDIS_DATABASE_HOST}
+            REDIS_DATABASE_PORT: ${REDIS_DATABASE_PORT}
+
+            REDIS_DATABASE_USER_NAME: ${REDIS_DATABASE_USER_NAME}
+            REDIS_DATABASE_USER_PASS: ${REDIS_DATABASE_USER_PASS}
