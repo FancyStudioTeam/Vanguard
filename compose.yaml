@@ -60,3 +60,10 @@ services:
         networks:
             - default
             - dokploy-network
+
+    dashboard:
+        build:
+            context: .
+            dockerfile: ./apps/vanguard-dashboard/Dockerfile
+        ports:
+            - "3101:3101"
