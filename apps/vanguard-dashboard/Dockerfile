@@ -11,7 +11,7 @@ COPY apps/vanguard-dashboard apps/vanguard-dashboard
 RUN pnpm install
 RUN pnpm run turbo:build
 
-WORKDIR /main/apps/vanguard-api
+WORKDIR /main/apps/vanguard-dashboard
 
 ENV PORT=3101
 
