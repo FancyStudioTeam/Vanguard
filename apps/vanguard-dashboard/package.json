@@ -4,11 +4,11 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"build": "run-p type-check \"build-only {@}\" --",
-		"build-only": "vite build",
-		"dev": "vite",
-		"preview": "vite preview",
-		"type-check": "vue-tsc --build"
+		"build": "run-p vue:type-check \"vite:build:only {@}\" --",
+		"vite:build:only": "vite build",
+		"vite:dev": "vite",
+		"vite:preview": "vite preview",
+		"vue:type-check": "vue-tsc --build"
 	},
 	"dependencies": {
 		"@iconify-json/simple-icons": "1.2.92",
@@ -44,5 +44,8 @@
 		"vite": "8.1.5",
 		"vite-plugin-vue-devtools": "8.2.1",
 		"vue-tsc": "3.3.8"
+	},
+	"engines": {
+		"node": ">=24.0.0"
 	}
 }
