@@ -9,7 +9,7 @@ COPY package.json pnpm-workspace.yaml tsconfig.base.json turbo.json ./
 COPY apps/vanguard-dashboard apps/vanguard-dashboard
 
 RUN pnpm install
-RUN pnpm run build
+RUN pnpm run turbo:build
 
 WORKDIR /main/apps/vanguard-api
 
