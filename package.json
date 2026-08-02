@@ -27,13 +27,13 @@
 		"**/*.{js,jsx,ts,tsx,json,css}": "pnpm biome:write"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.5",
+		"@biomejs/biome": "2.5.6",
 		"@commitlint/cli": "21.2.1",
 		"@commitlint/config-conventional": "21.2.0",
 		"@commitlint/types": "21.2.0",
 		"husky": "9.1.7",
 		"nano-staged": "1.0.2",
-		"turbo": "2.10.7",
+		"turbo": "2.10.8",
 		"typescript": "7.0.2"
 	},
 	"packageManager": "pnpm@11.6.0"
