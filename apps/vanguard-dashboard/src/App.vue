@@ -13,10 +13,9 @@
 	import { watch } from 'vue';
 	import { useI18n } from 'vue-i18n';
 
-useSeoMeta({
-	themeColor: "#f43f5e"
-	})
-
+	useSeoMeta({
+		themeColor: '#f43f5e',
+	});
 
 	const { patch } = useHead();
 	const { locale } = useI18n();
