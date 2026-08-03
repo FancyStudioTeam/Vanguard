@@ -9,9 +9,14 @@
 </style>
 
 <script lang="ts" setup vapor>
-	import { useHead } from '@unhead/vue';
+	import { useHead, useSeoMeta } from '@unhead/vue';
 	import { watch } from 'vue';
 	import { useI18n } from 'vue-i18n';
+
+useSeoMeta({
+	themeColor: "#f43f5e"
+	})
+
 
 	const { patch } = useHead();
 	const { locale } = useI18n();

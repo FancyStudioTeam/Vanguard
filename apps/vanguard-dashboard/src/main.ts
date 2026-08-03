@@ -2,6 +2,7 @@ import 'virtual:uno.css';
 
 import { PiniaColada } from '@pinia/colada';
 import { createHead } from '@unhead/vue/client';
+import { InferSeoMetaPlugin } from '@unhead/vue/plugins';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
@@ -30,6 +31,9 @@ const head = createHead({
 			title: 'Welcome',
 			titleTemplate: '%s - Vanguard',
 		},
+	],
+	plugins: [
+		InferSeoMetaPlugin(),
 	],
 });
 const i18n = createI18n<
