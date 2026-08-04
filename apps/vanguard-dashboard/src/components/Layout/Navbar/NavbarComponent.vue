@@ -7,9 +7,8 @@
 		uno-z-10
 		:class="$route.meta.useFullViewport ? 'fixed' : 'sticky'"
 	>
-		<nav uno-grid="~ cols-1 md:cols-3" uno-max-w-7xl uno-mx-auto uno-p="x-8 y-2" uno-w-full>
+		<nav uno-grid="~ cols-1 md:cols-2" uno-max-w-7xl uno-mx-auto uno-p="x-8 y-2" uno-w-full>
 			<NavbarLeftHandComponent />
-			<NavbarMiddleHandComponent />
 			<NavbarRightHandComponent />
 		</nav>
 	</header>
@@ -17,6 +16,5 @@
 
 <script lang="ts" setup vapor>
 	import NavbarLeftHandComponent from './LeftHand/NavbarLeftHandComponent.vue';
-	import NavbarMiddleHandComponent from './MiddleHand/NavbarMiddleHandComponent.vue';
 	import NavbarRightHandComponent from './RightHand/NavbarRightHandComponent.vue';
 </script>

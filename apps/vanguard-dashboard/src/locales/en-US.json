@@ -2,12 +2,8 @@
 	"Layout": {
 		"Navbar": {
 			"Buttons": {
-				"DiscordServer": "Discord Server",
-				"LocalesDropdown": "Change Language"
-			},
-			"Links": {
-				"Dashboard": "Dashboard",
-				"Pricing": "Pricing"
+				"LocalesDropdown": "Change Language",
+				"Premium": "Premium"
 			}
 		}
 	},
