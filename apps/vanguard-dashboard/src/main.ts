@@ -18,9 +18,18 @@ const AVAILABLE_LOCALES = [
 	'es-ES',
 ] as const;
 
+const locale = getPreferredLocale();
+
 const app = createApp(App);
 
 const head = createHead({
+	init: [
+		{
+			htmlAttrs: {
+				lang: locale,
+			},
+		},
+	],
 	plugins: [
 		InferSeoMetaPlugin(),
 	],
@@ -34,7 +43,7 @@ const i18n = createI18n<
 >({
 	fallbackLocale: 'en-US',
 	legacy: false,
-	locale: getPreferredLocale(),
+	locale,
 	messages: {
 		'en-US': enUS,
 		'es-ES': esES,
