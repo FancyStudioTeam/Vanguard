@@ -18,24 +18,14 @@ const AVAILABLE_LOCALES = [
 	'es-ES',
 ] as const;
 
-const locale = getPreferredLocale();
-
 const app = createApp(App);
 
 const head = createHead({
-	init: [
-		{
-			htmlAttrs: {
-				lang: locale,
-			},
-			title: 'Welcome',
-			titleTemplate: '%s - Vanguard',
-		},
-	],
 	plugins: [
 		InferSeoMetaPlugin(),
 	],
 });
+
 const i18n = createI18n<
 	[
 		I18nMessageSchema,
@@ -50,6 +40,7 @@ const i18n = createI18n<
 		'es-ES': esES,
 	},
 });
+
 const pinia = createPinia();
 
 app.use(head);
