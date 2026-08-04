@@ -1,5 +1,11 @@
 {
 	"Layout": {
+		"Footer": {
+			"Vanguard": {
+				"Dashboard": "Panel de Control",
+				"Premium": "Premium"
+			}
+		},
 		"Navbar": {
 			"Buttons": {
 				"LocalesDropdown": "Cambiar Idioma",
