@@ -2,7 +2,7 @@
 	<RouterLink uno-button="~ filled size-default" :to="{ name: 'Premium' }">
 		<span uno-i-mingcute-vip-1-fill uno-size-5 />
 		<span>
-			{{ t("Layout.Navbar.Buttons.Premium") }}
+			{{ t("Layout.Navbar.Buttons.Upgrade") }}
 		</span>
 	</RouterLink>
 </template>

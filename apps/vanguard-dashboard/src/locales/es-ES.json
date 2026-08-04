@@ -9,7 +9,7 @@
 		"Navbar": {
 			"Buttons": {
 				"LocalesDropdown": "Cambiar Idioma",
-				"Premium": "Premium"
+				"Upgrade": "Obtener Premium"
 			}
 		}
 	},
@@ -43,7 +43,8 @@
 					"Free": "Gratuito",
 					"Premium": "Premium"
 				}
-			}
+			},
+			"Title": "Lleva tu Comunidad de Discord a un Nuevo Nivel"
 		}
 	}
 }
