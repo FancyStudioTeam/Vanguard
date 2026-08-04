@@ -23,8 +23,8 @@
 		"NotFound": {
 			"Title": "No Encontrado"
 		},
-		"Pricing": {
-			"Title": "Precios"
+		"Premium": {
+			"Title": "Premium"
 		}
 	},
 	"Views": {
@@ -33,7 +33,7 @@
 				"ReturnHome": "Volver a la Página Principal"
 			}
 		},
-		"Pricing": {
+		"Premium": {
 			"ComparisonTable": {
 				"Features": {
 					"BotCustomization": "Personalización del Bot"

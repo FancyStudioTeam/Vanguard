@@ -6,13 +6,13 @@
 				uno-bg-zinc-900
 			>
 				<th>
-					{{ t("Views.Pricing.ComparisonTable.Header.Comparison") }}
+					{{ t("Views.Premium.ComparisonTable.Header.Comparison") }}
 				</th>
 				<th>
-					{{ t("Views.Pricing.ComparisonTable.Header.Free") }}
+					{{ t("Views.Premium.ComparisonTable.Header.Free") }}
 				</th>
 				<th>
-					{{ t("Views.Pricing.ComparisonTable.Header.Premium") }}
+					{{ t("Views.Premium.ComparisonTable.Header.Premium") }}
 				</th>
 			</tr>
 		</thead>
@@ -55,7 +55,7 @@
 
 	const COMPARISON_ROWS: ComparisonRow[] = [
 		{
-			localeKey: 'Views.Pricing.ComparisonTable.Features.BotCustomization',
+			localeKey: 'Views.Premium.ComparisonTable.Features.BotCustomization',
 			plans: {
 				free: false,
 				premium: true,

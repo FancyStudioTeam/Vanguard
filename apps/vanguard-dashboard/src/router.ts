@@ -20,8 +20,8 @@ export const router = createRouter({
 				},
 				{
 					component: () => import('./views/Routes/Pricing/PricingView.vue'),
-					name: 'Pricing',
-					path: '/pricing',
+					name: 'Premium',
+					path: '/premium',
 				},
 				{
 					component: () => import('./views/Routes/NotFound/NotFoundView.vue'),

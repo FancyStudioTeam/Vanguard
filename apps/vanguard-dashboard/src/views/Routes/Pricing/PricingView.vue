@@ -1,5 +1,5 @@
 <template>
-	<main uno-gap-4 uno-max-w-7xl uno-mx-auto uno-p="x-8 y-24" uno-w-full>
+	<main uno-gap-4 uno-max-w-7xl uno-mx-auto uno-p="x-8 y-32" uno-w-full>
 		<ComparisonTableComponent />
 	</main>
 </template>
@@ -15,6 +15,6 @@
 
 	useSeoMeta({
 		robots: 'follow, index',
-		title: computed(() => t('SEO.Pricing.Title')),
+		title: computed(() => t('SEO.Premium.Title')),
 	});
 </script>
