@@ -9,14 +9,14 @@
 </style>
 
 <script lang="ts" setup vapor>
-	import { useHead } from '@unhead/vue';
+	import { useHead, useSeoMeta } from '@unhead/vue';
 	import { watch } from 'vue';
 	import { useI18n } from 'vue-i18n';
 
 	const { patch } = useHead();
 	const { locale } = useI18n();
 
-	useHead({
+	useSeoMeta({
 		title: 'Welcome',
 		titleTemplate: '%s - Vanguard',
 	});
