@@ -5,7 +5,7 @@
 			uno-grid="~ cols-1 md:cols-2"
 			uno-max-w-7xl
 			uno-mx-auto
-			uno-p="x-8 y-32"
+			uno-p-8
 			uno-w-full
 		>
 			<FooterInformationSectionComponent />

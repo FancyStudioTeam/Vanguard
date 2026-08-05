@@ -1,5 +1,7 @@
 <template>
-	<RouterView />
+	<ToastProvider>
+		<RouterView />
+	</ToastProvider>
 </template>
 
 <style>
@@ -10,6 +12,7 @@
 
 <script lang="ts" setup vapor>
 	import { useHead } from '@unhead/vue';
+	import { ToastProvider } from 'reka-ui';
 	import { watch } from 'vue';
 	import { useI18n } from 'vue-i18n';
 
