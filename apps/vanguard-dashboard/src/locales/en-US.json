@@ -44,7 +44,28 @@
 					"Premium": "Premium"
 				}
 			},
-			"Title": "✦ Take Your Discord Community to the Next Level ✦"
+			"FrequentlyAskedQuestions": {
+				"Sections": {
+					"AboutPremium": {
+						"Content": "Vanguard Premium is a paid subscription that gives communities full access to all of Vanguard's features. While a subscription isn't required to use Vanguard, it does give you access to exclusive features.",
+						"Header": "What is Vanguard Premium?"
+					},
+					"Currency": {
+						"Content": "The only currency we currently accept is the euro. However, payment processors convert your currency to euros for a small fee.",
+						"Header": "Can I pay in a different currency?"
+					},
+					"PaymentSecurity": {
+						"Content": "Yes. Vanguard does not have access to your credit or debit card information. Payments are processed through Stripe, a secure payment platform trusted by millions of businesses around the world.",
+						"Header": "Is my payment secure?"
+					},
+					"Revenue": {
+						"Content": "Vanguard is a service managed and provided by FancyStudio. FancyStudio is responsible for collecting payments for the various services to cover its infrastructure costs, including our employees' salaries and taxes.",
+						"Header": "What is the money raised used for?"
+					}
+				},
+				"Title": "Frequently Asked Questions"
+			},
+			"Title": "Take Your Community to the Next Level"
 		}
 	}
 }

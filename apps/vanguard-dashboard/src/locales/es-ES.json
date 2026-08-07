@@ -44,7 +44,28 @@
 					"Premium": "Premium"
 				}
 			},
-			"Title": "✦ Lleva tu Comunidad de Discord a un Nuevo Nivel ✦"
+			"FrequentlyAskedQuestions": {
+				"Sections": {
+					"AboutPremium": {
+						"Content": "Vanguard Premium es una suscripción de pago que otorga a las comunidades un acceso completo a todas las funcionalidades de Vanguard. Si bien no es necesario tener una suscripción para utilizar Vanguard, la suscripción te otorga funcionalidades exclusivas.",
+						"Header": "¿Qué es Vanguard Premium?"
+					},
+					"Currency": {
+						"Content": "La única divisa que aceptamos actualmente es el euro. Sin embargo, los procesadores de pagos realizan la conversión de su divisa a euros por una pequeña comisión.",
+						"Header": "¿Se puede pagar en una diferente divisa?"
+					},
+					"PaymentSecurity": {
+						"Content": "Sí. Vanguard no tiene acceso la información a su tarjeta de crédito o débito. Los pagos se gestionan a través de Stripe, una plataforma segura de pagos en la que confían millones de empresas alrededor del mundo.",
+						"Header": "¿Es mi pago seguro?"
+					},
+					"Revenue": {
+						"Content": "Vanguard es un servicio gestionado y provisto por FancyStudio. FancyStudio se encarga de recaudar el dinero de los diferentes servicios para pagar sus infraestructuras, incluyendo salarios de nuestros empleados e impuestos.",
+						"Header": "¿Para qué se utiliza el dinero recaudado?"
+					}
+				},
+				"Title": "Preguntas Frecuentes"
+			},
+			"Title": "Lleva tu Comunidad a un Nuevo Nivel"
 		}
 	}
 }

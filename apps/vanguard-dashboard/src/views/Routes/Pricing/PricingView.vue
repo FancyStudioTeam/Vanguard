@@ -1,15 +1,10 @@
 <template>
-	<main uno-flex="~ col" uno-gap-12 uno-max-w-7xl uno-mx-auto uno-p="x-8 y-32" uno-w-full>
-		<h1
-			id="premium-title"
-			uno-font-bold
-			uno-max-w-5xl
-			uno-mx-auto
-			uno-text="3xl balance center md:5xl"
-		>
+	<main uno-flex="~ col" uno-gap-24 uno-max-w-7xl uno-mx-auto uno-p="x-8 y-32" uno-w-full>
+		<h1 id="premium-title" uno-font-bold uno-text="5xl balance center md:7xl">
 			{{ premiumTitle }}
 		</h1>
 		<ComparisonTableComponent />
+		<FAQComponent />
 	</main>
 </template>
 
@@ -20,6 +15,7 @@
 	import { useI18n } from 'vue-i18n';
 
 	import ComparisonTableComponent from './components/ComparisonTable/ComparisonTableComponent.vue';
+	import FAQComponent from './components/FAQ/FAQComponent.vue';
 
 	const { t } = useI18n();
 
