@@ -42,8 +42,8 @@ importers:
         specifier: 22.0.1-next.9eb5642
         version: 22.0.1-next.9eb5642
       '@discordeno/utils':
-        specifier: 22.0.1-next.9eb5642
-        version: 22.0.1-next.9eb5642
+        specifier: 22.0.1-next.9832342
+        version: 22.0.1-next.9832342
       '@discordjs/rest':
         specifier: 2.6.3
         version: 2.6.3
@@ -777,8 +777,14 @@ packages:
   '@discordeno/rest@22.0.1-next.9eb5642':
     resolution: {integrity: sha512-4f9+q+B+yrVu3+qghK/deyBbKAI5ALQqSUDLSLQErcXWACRu3NcQ4nUaWLYzu3u5JTJQAJFHwcDkiLLyEpaDzA==}
 
+  '@discordeno/types@22.0.1-next.9832342':
+    resolution: {integrity: sha512-/RnQIKjl7jq6G1JpmELYmZgbKO2OcJta5kDpSzYMA1F4uAuYUuFrB6lfwZROEeKBvn5pdryi3A/Cl/frd2uSXg==}
+
   '@discordeno/types@22.0.1-next.9eb5642':
     resolution: {integrity: sha512-6ndhBTSmce8NemLoEs6mnt679c+pLW0/JFcgwqPWegQ0rfmOiX4+uR0LIxdexnRrg5DmbtHgMoZ8kijE87PXIA==}
+
+  '@discordeno/utils@22.0.1-next.9832342':
+    resolution: {integrity: sha512-jJWy4mCI20ZeiLYG5cVXxJQZRws1urUVjnyvdiXCBZwMKnVMP7codCk/fBeP3mSNo+YC0ap38wwDGhSzlDeK7Q==}
 
   '@discordeno/utils@22.0.1-next.9eb5642':
     resolution: {integrity: sha512-rk1z7f4C3ZMwV/02lKNV/IvbTPkCu0CSE+KxHNpSGI73P71mhg80rA8pafuf8UoVYa/+kKtjiYRODp67PbVGJA==}
@@ -4981,7 +4987,13 @@ snapshots:
       '@discordeno/types': 22.0.1-next.9eb5642
       '@discordeno/utils': 22.0.1-next.9eb5642
 
+  '@discordeno/types@22.0.1-next.9832342': {}
+
   '@discordeno/types@22.0.1-next.9eb5642': {}
+
+  '@discordeno/utils@22.0.1-next.9832342':
+    dependencies:
+      '@discordeno/types': 22.0.1-next.9832342
 
   '@discordeno/utils@22.0.1-next.9eb5642':
     dependencies:
